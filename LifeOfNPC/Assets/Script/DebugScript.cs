@@ -24,7 +24,7 @@ public class DebugScript : MonoBehaviour {
 			Craft.CraftItem(new Item("Apple", 1, "An Apple"), new Item("Apple", 1, "An Apple"),
 			                new Item("Orange", 1, "A Orange"));
 		}
-		if (GUI.Button (new Rect (10, 275, 100, 30), "Add Recipe")){
+        if (GUI.Button (new Rect (10, 275, 100, 30), "Add Recipe")){
 			List<string> ltmp = new List<string> ();
 			ltmp.Add("Apple");
 			ltmp.Add("Apple");
@@ -33,11 +33,17 @@ public class DebugScript : MonoBehaviour {
 			Craft.AddRecipe("Banana", ltmp, "A Banana");
 		}
 
-		int pos = 100;
+        if (GUI.Button(new Rect(10, 310, 100, 30), "Back"))
+        {
+            GameObject.Destroy(gameObject);            
+        }
+
+        int pos = 100;
 		int i = 0;
 		int k = 35;
+        //writes items and numbers to screen
 		foreach (Item it in Inventory._Items) {
-			GUI.Label(new Rect(300, (pos += i*k), 100, 30), it.name + " " + it.amount);
+            GUI.Label(new Rect(300, (pos += i*k), 100, 30), it.name + " " + it.amount);
 			i++;
 		}
 	}

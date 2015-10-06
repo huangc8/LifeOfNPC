@@ -15,7 +15,7 @@ public class Craft : MonoBehaviour {
 		_Recipes = new List<Recipe> ();
 	}
 
-	// Craft a Item
+	// Craft an Item
 	public static void CraftItem(Item material_1, Item material_2, Item material_3){
 
 		List<string> ltmp = new List<string> ();
