@@ -92,6 +92,7 @@ public class Inventory : MonoBehaviour {
 	#region On Screen Inventory
 	void Debugging(){
 		AddItem ("Apple", 1, "An Apple");
+		AddItem ("Orange", 1, "An Orange");
 	}
 
 	// opens up the inventory panel
