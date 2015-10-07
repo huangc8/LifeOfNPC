@@ -1,45 +1,37 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
-public class ClickandDrag : MonoBehaviour
+
+public class ClickandDrag : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
 {
+	public Item it;
+	public int slotNum;
+	public Transform originalParent;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        //on mouse down 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 MousePosition = Input.mousePosition;//gets mouse position
-            MousePosition.z = Camera.main.transform.position.z;//distance from camera to screen
-            MousePosition = Camera.main.ScreenToWorldPoint(MousePosition);//converts mouse position(pixels) to world position
-                                                                          //Debug.Log(MousePosition);
-
-            if (GetComponent<Collider2D>().OverlapPoint(MousePosition))
-            {
-                //Debug.Log("clicked on");
-                OnMouseDrag();
-
-            }
-        }
-        else
-        {
-            //dragging = false;
-        }
-    }
-
-    void OnMouseDrag()
-    {
-        Vector3 MousePosition = Input.mousePosition;//gets mouse position
-        MousePosition = Camera.main.ScreenToWorldPoint(MousePosition);//converts mouse position(pixels) to world position
-        transform.position = new Vector3(MousePosition.x, MousePosition.y, 0);//set object position to mouse position while mouse is down
-    }
-
+	// On beginning drag
+	public void OnPointerDown(PointerEventData eventData){
+		if (it != null) {
+			originalParent = this.transform.parent;
+			this.transform.SetParent(this.transform.parent.parent);
+			this.transform.position = eventData.position;
+			GetComponent<CanvasGroup>().blocksRaycasts = false;
+		}
+	}
+		
+	// During drag
+	public void OnDrag(PointerEventData eventData){
+		if (it != null) {
+			this.transform.position = eventData.position;
+		}
+	}
+	
+	// End of Drag
+	public void OnEndDrag(PointerEventData eventData){
+		if (it != null) {
+			this.transform.SetParent(originalParent);
+			this.transform.position = originalParent.transform.position;
+			GetComponent<CanvasGroup>().blocksRaycasts = true;
+		}
+	}
 }

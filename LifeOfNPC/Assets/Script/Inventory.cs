@@ -7,17 +7,31 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
 
-	public static Inventory _Inventory;		// reference to the class
-	public static List<Item> _Items;		// current own item list
-	public static List<int> _RemoveIndex;	// removing item index
-	public GameObject itemObjectPf;			// prefab for item object
+	#region Data
+	// Inventory Data
+	public static Inventory _Inventory;			// reference to the class
+	public static List<Item> _Items;			// current own item list
+	public static GameObject InventoryPanel;	// Inventory Panel object
+	public static GameObject canvas;			// the Canvas object
+
+	// Prefabs
+	public static GameObject InventoryPanelPf;	// prefab for inventory panel
+	public GameObject InventoryPanelPf_r;		// none static inventory panel
+	public GameObject canvas_r;					// none static canvas reference
+	// utilities
+	public static List<int> _RemoveIndex;		// removing item index
+	#endregion
 
 	// Use this for initialization
 	void Start () {
 		_Items = new List<Item>();
 		_RemoveIndex = new List<int> ();
+		InventoryPanelPf = InventoryPanelPf_r;
+		canvas = canvas_r;
+		Debugging ();
 	}
 
+	#region functions
 	// Add an Item
 	public static void AddItem(string name, int addAmount, string description){
 		
@@ -37,8 +51,9 @@ public class Inventory : MonoBehaviour {
 		}
 	}// end of CreateItem
 
+	// Make an Item on Screen
 	public static void CreateObject(){
-		
+
 	}
 
 	// Remove certain amount of item
@@ -72,4 +87,22 @@ public class Inventory : MonoBehaviour {
 			_RemoveIndex.Clear();
 		}
 	}// end of RemoveUpdate
+	#endregion
+
+	#region On Screen Inventory
+	void Debugging(){
+		AddItem ("Apple", 1, "An Apple");
+	}
+
+	// opens up the inventory panel
+	public static void OpenInventoryPanel(){
+		InventoryPanel = Instantiate (InventoryPanelPf) as GameObject;
+		InventoryPanel.transform.SetParent (canvas.transform, false);
+	}
+
+	// close inventory
+	public static void CloseInventoryPanel(){
+		Destroy (InventoryPanel);
+	}
+	#endregion
 }

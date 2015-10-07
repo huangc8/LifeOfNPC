@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+
 
 public class Item : MonoBehaviour {
 
@@ -10,7 +11,6 @@ public class Item : MonoBehaviour {
 	public string name;
 	public int amount;
 	public string description;
-	public Sprite icon;
 		
 	// constructor
 	public Item (string name, int amount, string description){
@@ -18,7 +18,20 @@ public class Item : MonoBehaviour {
 		this.amount = amount;
 		this.description = description;
 	}
-		
+
+	#region Display
+	// display item with given item
+	public void DisplayItem(Item it){
+		this.name = it.name;
+		this.amount = it.amount;
+		this.description = it.description;
+		this.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprite/" + it.name);
+		this.GetComponentInChildren<Text> ().text = amount.ToString ();
+	}
+
+	#endregion
+
+	#region functions
 	// add more of this item
 	public void AddMore(int amount){
 		this.amount += amount;
@@ -28,4 +41,5 @@ public class Item : MonoBehaviour {
 	public void RemoveMore(int amount){
 		this.amount -= amount;
 	}
+	#endregion
 }

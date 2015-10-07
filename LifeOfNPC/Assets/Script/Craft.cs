@@ -15,6 +15,7 @@ public class Craft : MonoBehaviour {
 		_Recipes = new List<Recipe> ();
 	}
 
+	#region Craft
 	// Craft an Item
 	public static void CraftItem(Item material_1, Item material_2, Item material_3){
 
@@ -47,7 +48,7 @@ public class Craft : MonoBehaviour {
 		// add crafted item
 		Inventory.AddItem (recipe.name, 1, recipe.description);
 	}
-
+	#endregion
 	#region Recipe
 	// Add a Recipe
 	public static void AddRecipe(string name, List<string> materials, string description){
@@ -59,7 +60,7 @@ public class Craft : MonoBehaviour {
 
 	// Get a Recipe
 	public static Recipe GetRecipe(string name){
-		
+		// find the recipe and return else return null
 		foreach(Recipe re in _Recipes){
 			if(re.name == name){
 				return re;
@@ -70,6 +71,7 @@ public class Craft : MonoBehaviour {
 	#endregion
 }
 
+#region RecipeClass
 // Recipe Class
 public class Recipe : IComparable<Item> {
 	public string name;
@@ -115,3 +117,4 @@ public class Recipe : IComparable<Item> {
 		}
 	}
 }
+#endregion

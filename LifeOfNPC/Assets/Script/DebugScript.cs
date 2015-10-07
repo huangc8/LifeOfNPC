@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class DebugScript : MonoBehaviour {
 
 	void OnGUI(){
+		/*
 		if(GUI.Button(new Rect(10, 100, 100, 30), "Add Apple")){
 			Inventory.AddItem("Apple", 1, "An Apple");
 		}
@@ -32,11 +33,15 @@ public class DebugScript : MonoBehaviour {
 
 			Craft.AddRecipe("Banana", ltmp, "A Banana");
 		}
-
+		*/
         if (GUI.Button(new Rect(10, 310, 100, 30), "Back"))
         {
-            GameObject.Destroy(gameObject);            
+			Inventory.CloseInventoryPanel();
         }
+
+		if (GUI.Button (new Rect (10, 345, 100, 30), "Open")) {
+			Inventory.OpenInventoryPanel();    
+		}
 
         int pos = 100;
 		int i = 0;
