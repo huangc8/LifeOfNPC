@@ -29,8 +29,10 @@ public class ClickandDrag : MonoBehaviour, IPointerDownHandler, IDragHandler, IE
 	// End of Drag
 	public void OnEndDrag(PointerEventData eventData){
 		if (it != null) {
-			this.transform.SetParent(originalParent);
-			this.transform.position = originalParent.transform.position;
+			if(this.transform.parent.GetComponent<DropBoxScript>() == null){
+				this.transform.SetParent(originalParent);
+				this.transform.position = originalParent.transform.position;
+			}
 			GetComponent<CanvasGroup>().blocksRaycasts = true;
 		}
 	}
