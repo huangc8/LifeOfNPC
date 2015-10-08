@@ -44,14 +44,18 @@ public class ClickandDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 	public void OnEndDrag(PointerEventData eventData){
 		if (it != null) {
 			if(this.transform.parent.GetComponent<DropBoxScript>() == null){
-				if(replacement != null){
-					Item ti = this.GetComponent<Item>();
-					ti.amount += replacement.GetComponent<Item>().amount;
-					ti.UpdateDisplay();
-					Destroy(replacement);
+				if(this.transform.parent.GetComponent<MaterialBoxScript>() != null){
+					replacement = null;
+				}else{
+					if(replacement != null){
+						Item ti = this.GetComponent<Item>();
+						ti.amount += replacement.GetComponent<Item>().amount;
+						ti.UpdateDisplay();
+						Destroy(replacement);
+					}
+					this.transform.SetParent(originalParent);
+					this.transform.position = originalParent.transform.position;
 				}
-				this.transform.SetParent(originalParent);
-				this.transform.position = originalParent.transform.position;
 			}else{
 				replacement = null;
 			}

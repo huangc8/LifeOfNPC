@@ -15,10 +15,9 @@ public class DropBoxScript : MonoBehaviour, IDropHandler {
 
 			// stack up item
 			if(droppedItem.name == stackItem.name){
-				droppedItem.amount += stackItem.amount;
-				droppedItem.UpdateDisplay();
-				droppedItem.transform.SetParent (this.transform);
-				droppedItem.transform.position = this.transform.position;
+				stackItem.amount += droppedItem.amount;
+				stackItem.UpdateDisplay();
+				Destroy(eventData.pointerDrag);
 			}
 		}
 	}
