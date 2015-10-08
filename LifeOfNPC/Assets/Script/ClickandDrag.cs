@@ -1,18 +1,32 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
 
-public class ClickandDrag : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
+public class ClickandDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	public Item it;
-	public int slotNum;
 	public Transform originalParent;
-
+	public GameObject replacement;
+	
 	// On beginning drag
-	public void OnPointerDown(PointerEventData eventData){
+	public void OnBeginDrag(PointerEventData eventData){
 		if (it != null) {
+
+			// create a replacement placeholder
+			if(this.transform.GetComponent<Item>().amount > 1){
+				replacement = Instantiate(gameObject);
+				Item ri = replacement.GetComponent<Item>();
+				ri.amount--;
+				ri.UpdateDisplay();
+				replacement.transform.SetParent(this.transform.parent, false);
+			}
+
 			originalParent = this.transform.parent;
+			Item ti = this.GetComponent<Item>();
+			ti.amount = 1;
+			ti.UpdateDisplay();
 			this.transform.SetParent(this.transform.parent.parent);
 			this.transform.position = eventData.position;
 			GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -30,8 +44,16 @@ public class ClickandDrag : MonoBehaviour, IPointerDownHandler, IDragHandler, IE
 	public void OnEndDrag(PointerEventData eventData){
 		if (it != null) {
 			if(this.transform.parent.GetComponent<DropBoxScript>() == null){
+				if(replacement != null){
+					Item ti = this.GetComponent<Item>();
+					ti.amount += replacement.GetComponent<Item>().amount;
+					ti.UpdateDisplay();
+					Destroy(replacement);
+				}
 				this.transform.SetParent(originalParent);
 				this.transform.position = originalParent.transform.position;
+			}else{
+				replacement = null;
 			}
 			GetComponent<CanvasGroup>().blocksRaycasts = true;
 		}

@@ -46,7 +46,6 @@ public class InventoryPanelScript : MonoBehaviour {
 			for (int i = 0; i < Inventory._Items.Count; i++) {
 				GameObject newItem = Instantiate (inventoryItemPF) as GameObject;
 				newItem.GetComponent<Item> ().DisplayItem (Inventory._Items [i]);
-				newItem.GetComponent<ClickandDrag>().slotNum = i;
 				newItem.transform.SetParent (slots [i].transform, false);
 			}
 		}

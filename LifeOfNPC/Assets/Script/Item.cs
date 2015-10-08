@@ -29,6 +29,13 @@ public class Item : MonoBehaviour {
 		this.GetComponentInChildren<Text> ().text = amount.ToString ();
 	}
 
+	// update the display parts
+	public void UpdateDisplay(){
+		if (this.GetComponentInChildren<Text> ().text != null) {
+			this.GetComponentInChildren<Text> ().text = amount.ToString ();
+		}
+	}
+
 	#endregion
 
 	#region functions

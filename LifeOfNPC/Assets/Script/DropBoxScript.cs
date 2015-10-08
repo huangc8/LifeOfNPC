@@ -11,11 +11,14 @@ public class DropBoxScript : MonoBehaviour, IDropHandler {
 			droppedItem.transform.position = this.transform.position;
 		} else {
 			Item droppedItem = eventData.pointerDrag.GetComponent<Item> ();
-			Item thisItem = this.GetComponentInChildren<Item> ();
+			Item stackItem = this.GetComponentInChildren<Item> ();
+
 			// stack up item
-			if(droppedItem.name == thisItem.name){
-				thisItem.AddMore(droppedItem.amount);
-				Destroy(droppedItem);
+			if(droppedItem.name == stackItem.name){
+				droppedItem.amount += stackItem.amount;
+				droppedItem.UpdateDisplay();
+				droppedItem.transform.SetParent (this.transform);
+				droppedItem.transform.position = this.transform.position;
 			}
 		}
 	}
