@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 using System;
 
 public class DropBoxScript : MonoBehaviour, IDropHandler {
+
+	// drop the item
 	public void OnDrop(PointerEventData eventData){
 		if (this.GetComponentInChildren<Item> () == null) {
 			Item droppedItem = eventData.pointerDrag.GetComponent<Item> ();

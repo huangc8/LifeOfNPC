@@ -48,5 +48,9 @@ public class Item : MonoBehaviour {
 	public void RemoveMore(int amount){
 		this.amount -= amount;
 	}
+
+	public string GetName(){
+		return this.name;
+	}
 	#endregion
 }

@@ -7,23 +7,35 @@ using System.Collections.Generic;
 
 public class Craft : MonoBehaviour {
 
-	public static Craft _Craft;
-	public static List<Recipe> _Recipes;
+	#region Data
+	public static Craft _Craft;					// reference to the class
+	public static List<Recipe> _Recipes;		// current own recipes list
+	public static GameObject CraftPanel;		// Craft Panel object
+	public static GameObject canvas;			// the Canvas object
+
+	public static GameObject CraftPanelPf;		// prefab for craft panel
+	public GameObject CraftPanelPf_r;			// none static craft panel
+	public GameObject canvas_r;					// none static canvas reference
 	
 	// Use this for initialization
 	void Start () {
 		_Recipes = new List<Recipe> ();
+		CraftPanelPf = CraftPanelPf_r;
+		canvas = canvas_r;
 	}
+	#endregion
 
 	#region Craft
 	// Craft an Item
-	public static void CraftItem(Item material_1, Item material_2, Item material_3){
+	public static Recipe CraftItem(Item material_1, Item material_2, Item material_3){
 
+		// make list
 		List<string> ltmp = new List<string> ();
 		ltmp.Add (material_1.name);
 		ltmp.Add (material_2.name);
 		ltmp.Add (material_3.name);
 
+		// find the recipe
 		Recipe rt = null;
 		foreach (Recipe r in _Recipes) {
 			if(r.checkRecipe(ltmp)){
@@ -31,22 +43,36 @@ public class Craft : MonoBehaviour {
 			}
 		}
 
+		// craft or return null
 		if (rt != null) {
-			ActualCraft(rt, material_1, material_2, material_3);
+			// remove materials
+			Inventory.RemoveItem (material_1.name, material_1.amount);
+			Inventory.RemoveItem (material_2.name, material_2.amount);
+			Inventory.RemoveItem (material_3.name, material_3.amount);
+			
+			// add crafted item
+			Inventory.AddItem (rt.name, 1, rt.description);
+			return rt;
 		} else {
 			Debug.Log("No such recipe");
+			return null;
 		}
 	}
+	#endregion
 
-	// Remove materials and add item to inventory
-	public static void ActualCraft(Recipe recipe, Item material_1, Item material_2, Item material_3){
-		// remove materials
-		Inventory.RemoveItem (material_1.name, material_1.amount);
-		Inventory.RemoveItem (material_2.name, material_2.amount);
-		Inventory.RemoveItem (material_3.name, material_3.amount);
-
-		// add crafted item
-		Inventory.AddItem (recipe.name, 1, recipe.description);
+	#region On Screen Craft
+	public static void OpenCraftPanel(){
+		if (CraftPanel == null) {
+			CraftPanel = Instantiate (CraftPanelPf) as GameObject;
+			CraftPanel.transform.SetParent (canvas.transform, false);
+		}
+	}
+	
+	// close inventory
+	public static void CloseCraftPanel(){
+		if (CraftPanel != null) {
+			Destroy (CraftPanel);
+		}
 	}
 	#endregion
 	#region Recipe

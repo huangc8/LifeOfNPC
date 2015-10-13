@@ -28,7 +28,6 @@ public class Inventory : MonoBehaviour {
 		_RemoveIndex = new List<int> ();
 		InventoryPanelPf = InventoryPanelPf_r;
 		canvas = canvas_r;
-		Debugging ();
 	}
 
 	#region functions
@@ -90,20 +89,19 @@ public class Inventory : MonoBehaviour {
 	#endregion
 
 	#region On Screen Inventory
-	void Debugging(){
-		AddItem ("Apple", 3, "An Apple");
-		AddItem ("Orange", 1, "An Orange");
-	}
-
 	// opens up the inventory panel
 	public static void OpenInventoryPanel(){
-		InventoryPanel = Instantiate (InventoryPanelPf) as GameObject;
-		InventoryPanel.transform.SetParent (canvas.transform, false);
+		if (InventoryPanel == null) {
+			InventoryPanel = Instantiate (InventoryPanelPf) as GameObject;
+			InventoryPanel.transform.SetParent (canvas.transform, false);
+		}
 	}
 
 	// close inventory
 	public static void CloseInventoryPanel(){
-		Destroy (InventoryPanel);
+		if (InventoryPanel != null) {
+			Destroy (InventoryPanel);
+		}
 	}
 	#endregion
 }
