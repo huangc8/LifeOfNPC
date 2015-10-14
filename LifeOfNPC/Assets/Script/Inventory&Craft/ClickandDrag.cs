@@ -27,7 +27,7 @@ public class ClickandDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 			Item ti = this.GetComponent<Item>();
 			ti.amount = 1;
 			ti.UpdateDisplay();
-			this.transform.SetParent(this.transform.parent.parent);
+			this.transform.SetParent(Inventory.getCanvas().transform, false);
 			this.transform.position = eventData.position;
 			GetComponent<CanvasGroup>().blocksRaycasts = false;
 		}

@@ -10,6 +10,7 @@ public class InventoryPanelScript : MonoBehaviour {
 	GameObject inventoryPanel; 				// the inventory panel
 	GameObject slotPanel;					// the slot panel
 	int slotAmount = 32;					// the amount of slots *32
+	public GameObject backButton;			// the close inventory button
 
 	// Prefabs
 	public GameObject inventorySlotPf;		// the inventory slot object
@@ -49,5 +50,11 @@ public class InventoryPanelScript : MonoBehaviour {
 				newItem.transform.SetParent (slots [i].transform, false);
 			}
 		}
+	}
+
+	// Close the panel
+	public void ClosePanel(){
+		Inventory.CloseInventoryPanel ();
+		Craft.CloseCraftPanel ();
 	}
 }

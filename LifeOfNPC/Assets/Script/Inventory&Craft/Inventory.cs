@@ -103,5 +103,10 @@ public class Inventory : MonoBehaviour {
 			Destroy (InventoryPanel);
 		}
 	}
+
+	// get canvas reference
+	public static GameObject getCanvas(){
+		return canvas;
+	}
 	#endregion
 }

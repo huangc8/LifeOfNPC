@@ -18,25 +18,4 @@ public class DebugScript : MonoBehaviour {
 		
 		Craft.AddRecipe("Banana", ltmp, "A Banana");
 	}
-
-	void OnGUI(){
-
-        if (GUI.Button(new Rect(10, 310, 100, 30), "BackInv"))
-        {
-			Inventory.CloseInventoryPanel();
-        }
-
-		if (GUI.Button (new Rect (10, 345, 100, 30), "OpenInv")) {
-			Inventory.OpenInventoryPanel();    
-		}
-
-		if (GUI.Button (new Rect (120, 310, 100, 30), "OpenCrf")) {
-			Craft.OpenCraftPanel();
-		}
-
-		if (GUI.Button (new Rect (120, 345, 100, 30), "BackCrf")) {
-			Craft.CloseCraftPanel();
-		}
-
-	}
 }
