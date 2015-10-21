@@ -75,7 +75,9 @@ public class GameMaster : MonoBehaviour {
 
 		// add items
 		foreach (Item it in _Supply.supplyList) {
-			Inventory.AddItem(it);
+			if(it.amount > 0){
+				Inventory.AddItem(it);
+			}
 		}
 		_Supply.supplyList.Clear ();
 	}
