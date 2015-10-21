@@ -11,81 +11,90 @@ public class StartDialogScene : MonoBehaviour {
     public static Hero CurrentHero;
     public static Text HeroDialog;
     public static GameObject DialogPanel;
-    public static GameObject Button;
+    public static GameObject BuyButton;
+    public static GameObject SellButton;
+    public static GameObject IncPriceButton;       // prefab for Buy button
+    public static GameObject DecPriceButton;       // prefab for Buy button
     public static GameObject OfferField;
     public static GameObject canvas;            // the Canvas object
 
     // Prefabs
     public static GameObject DialogPanelPF;  // prefab for Dialog panel
-    public static GameObject ButtonPF;       // prefab for Buy button
+    public static GameObject BuyButtonPF;       // prefab for Buy button
+    public static GameObject SellButtonPF;       // prefab for Buy button
+    public static GameObject IncPriceButtonPF;       // prefab for Buy button
+    public static GameObject DecPriceButtonPF;       // prefab for Buy button
     public static GameObject OfferFieldPF;   // prefab for offer field
 
     public GameObject DialogPanelPf_r;       // non static Dialog panel
-    public GameObject ButtonPf_r;            // non static button
+    public GameObject BuyButtonPf_r;            // non static button
+    public GameObject SellButtonPf_r;            // non static button
+    public GameObject IncPriceButtonPF_r;       // prefab for Buy button
+    public GameObject DecPriceButtonPF_r;       // prefab for Buy button
     public GameObject OfferFieldPF_r;        // non static field
     public GameObject canvas_r;              // non static canvas reference
 
     // Use this for initialization
     void Start() {
 
-        CurrentHero = new Hero();
-        CurrentHero.FillInventory(CurrentHero.qii);
-        Debug.Log(CurrentHero.money);
-        HeroDialog = GetComponent("Text") as Text;
-        CurrentHero.printInventory();
-        HeroDialog.text = CurrentHero.dialog;//prints text to heros text box
+        CurrentHero = new Hero();//create hero
+        CurrentHero.FillInventory(CurrentHero.qii);//fill hero inventory based on quality of inventory variable
+        HeroDialog = GetComponent("Text") as Text;//sets dialog
+        HeroDialog.text = CurrentHero.text.text;//prints text to heros text box
 
         DialogPanelPF = DialogPanelPf_r;
-        ButtonPF = ButtonPf_r;
+        BuyButtonPF = BuyButtonPf_r;
+        SellButtonPF = SellButtonPf_r;
+        IncPriceButtonPF = IncPriceButtonPF_r;  
+        DecPriceButtonPF = DecPriceButtonPF_r;       // prefab for Buy button
         OfferFieldPF = OfferFieldPF_r;
         canvas = canvas_r;
+
+        Inventory.AddItem("Apple", 1, "An Apple");
+        Inventory.AddItem("Orange", 1, "An Orange");
+        Inventory.AddItem("Banana", 1, "A Banana");
+
     }
 
     void Update()
     {
-        HeroDialog.text = CurrentHero.dialog;
+        HeroDialog.text = CurrentHero.lines[CurrentHero.patience];//changes heros dialog
     }
 
 
-    // opens up the inventory panel
+
+    #region Sell to hero
+    // opens up the sell inventory
     public static void SellHeroPanel()
     {
         DialogPanel = Instantiate(DialogPanelPF) as GameObject;
         DialogPanel.transform.SetParent(canvas.transform, false);
 
+
+
         int i = 0;
         foreach (Item it in Inventory._Items)
         {
-            Button = Instantiate(ButtonPF) as GameObject;//creates button on the dialog panel
-            Button.transform.SetParent(DialogPanel.transform, false);//sets position
-            Button.transform.Translate(new Vector3(0, i*30, 0));//spaces buttons
-            Button.GetComponentInChildren<Text>().text = "Buy " + it.name;//sets the text that is inside the button
+            SellButton = Instantiate(SellButtonPF) as GameObject;//creates button on the dialog panel
+            SellButton.transform.SetParent(DialogPanel.transform, false);//sets position
+            SellButton.transform.Translate(new Vector3(0, i*-60, 0));//spaces buttons
+            SellButton.GetComponentInChildren<Text>().text = "Sell " + it.name;//sets the text that is inside the button
+
+            OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel
+            OfferField.transform.SetParent(SellButton.transform, false);//parents and sets position
+
+            IncPriceButton = Instantiate(IncPriceButtonPF) as GameObject;//creates button on the dialog panel
+            IncPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
+
+            DecPriceButton = Instantiate(DecPriceButtonPF) as GameObject;//creates button on the dialog panel
+            DecPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
             i++;
         }
     }
 
-    public void SellToHero()
-    {
-        int OfferedPrice = int.Parse(OfferField.GetComponent<InputField>().text);//converts text in input to int
-        Debug.Log(OfferedPrice);
+    #endregion
 
-        if (OfferedPrice < 100)
-        {
-            CurrentHero.dialog = "Come on you can go higher right";
-            CloseDialogPanel();
-            BuyHeroPanel();
-        }
 
-        else
-        {
-            CurrentHero.dialog = "I guess i could sell that low";
-            CurrentHero.H_Inventory.RemoveAt(0);
-            CurrentHero.money += OfferedPrice;
-            Debug.Log("Money:" + CurrentHero.money);
-            CloseDialogPanel();
-            BuyHeroPanel();
-        }
-    }
 
     #region Buy From Hero
     public static void BuyHeroPanel()
@@ -95,38 +104,22 @@ public class StartDialogScene : MonoBehaviour {
 
         foreach (Item it in CurrentHero.H_Inventory)
         {
-            Button = Instantiate(ButtonPF) as GameObject;//creates button on the dialog panel
-            Button.transform.SetParent(DialogPanel.transform, false);//sets position
-            Button.GetComponentInChildren<Text>().text = "Buy " + it.name;//sets the text that is inside the button
+            BuyButton = Instantiate(BuyButtonPF) as GameObject;//creates button on the dialog panel
+            BuyButton.transform.SetParent(DialogPanel.transform, false);//parents sets position
+            BuyButton.GetComponentInChildren<Text>().text = "Buy " + it.name;//sets the text that is inside the button
 
             OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel
-            OfferField.transform.SetParent(DialogPanel.transform, false);//sets position
+            OfferField.transform.SetParent(BuyButton.transform, false);//parents and sets position
+
+            IncPriceButton = Instantiate(IncPriceButtonPF) as GameObject;//creates button on the dialog panel
+            IncPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
+
+            DecPriceButton = Instantiate(DecPriceButtonPF) as GameObject;//creates button on the dialog panel
+            DecPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
 
         }
     }
 
-    public void BuyFromHero()
-    {
-        int OfferedPrice = int.Parse(OfferField.GetComponent<InputField>().text);//converts text in input to int
-        Debug.Log(OfferedPrice);
-
-        if (OfferedPrice < 100)
-        {
-            CurrentHero.dialog = "Come on you can go higher right";
-            CloseDialogPanel();
-            BuyHeroPanel();
-        }
-
-        else
-        {
-            CurrentHero.dialog = "I guess i could sell that low";
-            CurrentHero.H_Inventory.RemoveAt(0);
-            CurrentHero.money += OfferedPrice;
-            Debug.Log("Money:" + CurrentHero.money);
-            CloseDialogPanel();
-            BuyHeroPanel();
-        }
-    }
     #endregion
 
 

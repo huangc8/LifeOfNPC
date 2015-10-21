@@ -3,20 +3,24 @@ using System.Collections;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Text;
 using System.Collections.Generic;
 
 public class Hero : MonoBehaviour {
 
 
-        //Hero class
-        public string name;
-        public int money;
-        public float thriftiness;//price range hero expects for the item
-        public int qii;//quality of inventory items
-        public float willingness;//willingness to sell items to store owner
-        public List<Item> H_Inventory;//heros inventory
-        public string dialog;
-        public int patience;
+    //Hero class
+    public string name;
+    public int money;
+    public float thriftiness;//price range hero expects for the item
+    public int qii;//quality of inventory items
+    public float willingness;//willingness to sell items to store owner
+    public List<Item> H_Inventory;//heros inventory
+    public string[] lines;
+    public string dialog;
+    public int patience;
+
+    public TextAsset text;//text asset to contain dialog
 
     //constructor
     public Hero()
@@ -26,9 +30,16 @@ public class Hero : MonoBehaviour {
         thriftiness = UnityEngine.Random.Range(0, 51);
         qii = UnityEngine.Random.Range(1,4);
         H_Inventory = new List<Item>();
-        dialog = "Hi my name is " + name;
+        patience = 0;
+        
+        text = Resources.Load("HeroDialog") as TextAsset;
+        char delimiters = ',';
+        
+        lines = text.text.Split(delimiters);
+        dialog = lines[patience];
 
     }//ends hero constructor
+
 
 
     public void printInventory()
@@ -80,5 +91,6 @@ public class Hero : MonoBehaviour {
         }//ends switch
     }
 
+ 
 
 }//ends class
