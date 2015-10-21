@@ -50,9 +50,22 @@ public class Inventory : MonoBehaviour {
 		}
 	}// end of CreateItem
 
-	// Make an Item on Screen
-	public static void CreateObject(){
-
+	// Add an Item
+	public static void AddItem(Item item){
+		// increase exisitng item amount
+		bool found = false;
+		foreach(Item it in _Items){
+			if(it.name == item.name){
+				it.AddMore(item.amount);
+				found = true;
+				break;
+			}
+		}
+		
+		// add a new item
+		if (found == false) {
+			_Items.Add(new Item(item.name, item.amount, item.description));
+		}
 	}
 
 	// Remove certain amount of item
@@ -90,18 +103,21 @@ public class Inventory : MonoBehaviour {
 
 	#region On Screen Inventory
 	// opens up the inventory panel
-	public static void OpenInventoryPanel(){
+	public void OpenInventoryPanel(){
 		if (InventoryPanel == null) {
 			InventoryPanel = Instantiate (InventoryPanelPf) as GameObject;
+			InventoryPanel.GetComponent<InventoryPanelScript>()._Inventory = this;
 			InventoryPanel.transform.SetParent (canvas.transform, false);
 		}
+		GetComponent<GameMaster>().CloseNightMenu ();
 	}
 
 	// close inventory
-	public static void CloseInventoryPanel(){
+	public void CloseInventoryPanel(){
 		if (InventoryPanel != null) {
 			Destroy (InventoryPanel);
 		}
+		GetComponent<GameMaster>().OpenNightMenu ();
 	}
 
 	// get canvas reference

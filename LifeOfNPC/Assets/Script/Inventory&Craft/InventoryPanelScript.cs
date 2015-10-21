@@ -6,10 +6,11 @@ public class InventoryPanelScript : MonoBehaviour {
 
 	#region Data
 	// Inventory Panel
+	public Inventory _Inventory;			// the inventory reference
 	public List<GameObject> slots;			// the slots of inventory
-	GameObject inventoryPanel; 				// the inventory panel
-	GameObject slotPanel;					// the slot panel
-	int slotAmount = 32;					// the amount of slots *32
+	public GameObject inventoryPanel; 		// the inventory panel
+	public GameObject slotPanel;			// the slot panel
+	public int slotAmount = 32;				// the amount of slots *32
 	public GameObject backButton;			// the close inventory button
 
 	// Prefabs
@@ -25,6 +26,7 @@ public class InventoryPanelScript : MonoBehaviour {
 		PopulateItems ();
 	}
 
+	#region function
 	// Create the UI Panels
 	public void CreatePanels(){
 		inventoryPanel = this.gameObject;
@@ -54,7 +56,8 @@ public class InventoryPanelScript : MonoBehaviour {
 
 	// Close the panel
 	public void ClosePanel(){
-		Inventory.CloseInventoryPanel ();
+		_Inventory.CloseInventoryPanel ();
 		Craft.CloseCraftPanel ();
 	}
+	#endregion
 }

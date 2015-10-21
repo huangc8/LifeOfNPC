@@ -11,6 +11,8 @@ public class Item : MonoBehaviour {
 	public string name;
 	public int amount;
 	public string description;
+	public int sellPrice;
+	public int supplyPrice;
 		
 	// constructor
 	public Item (string name, int amount, string description){
@@ -20,6 +22,7 @@ public class Item : MonoBehaviour {
 	}
 
 	#region Display
+
 	// display item with given item
 	public void DisplayItem(Item it){
 		this.name = it.name;
