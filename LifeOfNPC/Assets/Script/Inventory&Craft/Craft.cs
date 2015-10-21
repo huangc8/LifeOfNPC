@@ -75,6 +75,7 @@ public class Craft : MonoBehaviour {
 		}
 	}
 	#endregion
+
 	#region Recipe
 	// Add a Recipe
 	public static void AddRecipe(string name, List<string> materials, string description){
