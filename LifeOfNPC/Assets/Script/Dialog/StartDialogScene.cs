@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class StartDialogScene : MonoBehaviour {
 
     public static Hero CurrentHero;
-    public static Text HeroDialog;
+
     public static GameObject DialogPanel;
     public static GameObject BuyButton;
     public static GameObject SellButton;
@@ -19,12 +19,14 @@ public class StartDialogScene : MonoBehaviour {
     public static GameObject canvas;            // the Canvas object
 
     // Prefabs
+
     public static GameObject DialogPanelPF;  // prefab for Dialog panel
     public static GameObject BuyButtonPF;       // prefab for Buy button
     public static GameObject SellButtonPF;       // prefab for Buy button
     public static GameObject IncPriceButtonPF;       // prefab for Buy button
     public static GameObject DecPriceButtonPF;       // prefab for Buy button
     public static GameObject OfferFieldPF;   // prefab for offer field
+
 
     public GameObject DialogPanelPf_r;       // non static Dialog panel
     public GameObject BuyButtonPf_r;            // non static button
@@ -36,12 +38,7 @@ public class StartDialogScene : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-
-        CurrentHero = new Hero();//create hero
-        CurrentHero.FillInventory(CurrentHero.qii);//fill hero inventory based on quality of inventory variable
-        HeroDialog = GetComponent("Text") as Text;//sets dialog
-        HeroDialog.text = CurrentHero.text.text;//prints text to heros text box
-
+        
         DialogPanelPF = DialogPanelPf_r;
         BuyButtonPF = BuyButtonPf_r;
         SellButtonPF = SellButtonPf_r;
@@ -51,14 +48,14 @@ public class StartDialogScene : MonoBehaviour {
         canvas = canvas_r;
 
         Inventory.AddItem("Apple", 1, "An Apple");
-        Inventory.AddItem("Orange", 1, "An Orange");
-        Inventory.AddItem("Banana", 1, "A Banana");
+        //Inventory.AddItem("Orange", 1, "An Orange");
+        //Inventory.AddItem("Banana", 1, "A Banana");
 
     }
 
     void Update()
     {
-        HeroDialog.text = CurrentHero.lines[CurrentHero.patience];//changes heros dialog
+        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponentInChildren<Hero>().lines[CreateHero.Hero.GetComponentInChildren<Hero>().patience];//changes heros dialog
     }
 
 
@@ -102,10 +99,12 @@ public class StartDialogScene : MonoBehaviour {
         DialogPanel = Instantiate(DialogPanelPF) as GameObject;
         DialogPanel.transform.SetParent(canvas.transform, false);
 
-        foreach (Item it in CurrentHero.H_Inventory)
+        int i = 0;
+        foreach (Item it in CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory)
         {
             BuyButton = Instantiate(BuyButtonPF) as GameObject;//creates button on the dialog panel
             BuyButton.transform.SetParent(DialogPanel.transform, false);//parents sets position
+            BuyButton.transform.Translate(new Vector3(0, i * -60, 0));//spaces buttons
             BuyButton.GetComponentInChildren<Text>().text = "Buy " + it.name;//sets the text that is inside the button
 
             OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel

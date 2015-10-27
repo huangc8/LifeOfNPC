@@ -11,26 +11,25 @@ public class BuyFromHero : MonoBehaviour {
     public void BuyfromHero()
     {
 
-        StartDialogScene.CurrentHero.patience = 1;
-        int OfferedPrice = int.Parse(transform.GetComponentInChildren<InputField>().text);//converts text in input to int
+        int OfferedPrice = int.Parse(transform.GetComponentInChildren<InputField>().text);//converts text in input field to int
         //Debug.Log(OfferedPrice);
 
         if (OfferedPrice < 100)
         {
-            StartDialogScene.CurrentHero.patience++;
-            if (StartDialogScene.CurrentHero.patience == StartDialogScene.CurrentHero.lines.Length - 1)
+            CreateHero.Hero.GetComponentInChildren<Hero>().patience++;
+            if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)
             {
-                StartDialogScene.CurrentHero.patience--;
+                CreateHero.Hero.GetComponentInChildren<Hero>().patience--;
                 StartDialogScene.CloseDialogPanel();
             }
         }
 
         else
         {
-            StartDialogScene.CurrentHero.patience = StartDialogScene.CurrentHero.lines.Length - 1;
-            StartDialogScene.CurrentHero.H_Inventory.RemoveAt(0);
-            StartDialogScene.CurrentHero.money += OfferedPrice;
-            Debug.Log("Money:" + StartDialogScene.CurrentHero.money);
+            CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
+            CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory.RemoveAt(0);
+            CreateHero.Hero.GetComponentInChildren<Hero>().money += OfferedPrice;
+            Debug.Log("Money:" + CreateHero.Hero.GetComponentInChildren<Hero>().money);
             StartDialogScene.CloseDialogPanel();
             StartDialogScene.BuyHeroPanel();
         }
