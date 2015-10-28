@@ -36,6 +36,8 @@ public class StartDialogScene : MonoBehaviour {
     public GameObject OfferFieldPF_r;        // non static field
     public GameObject canvas_r;              // non static canvas reference
 
+    public bool HaveInventory = false;
+
     // Use this for initialization
     void Start() {
         
@@ -47,23 +49,27 @@ public class StartDialogScene : MonoBehaviour {
         OfferFieldPF = OfferFieldPF_r;
         canvas = canvas_r;
 
-        Inventory.AddItem("Apple", 1, "An Apple");
-        //Inventory.AddItem("Orange", 1, "An Orange");
-        //Inventory.AddItem("Banana", 1, "A Banana");
-
     }
 
     void Update()
     {
-        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponentInChildren<Hero>().lines[CreateHero.Hero.GetComponentInChildren<Hero>().patience];//changes heros dialog
-    }
+        if (!HaveInventory)
+        {
+            HaveInventory = true;
+            Inventory.AddItem("Apple", 1, "An Apple");
+            Inventory.AddItem("Orange", 1, "An Orange");
+            Inventory.AddItem("Banana", 1, "A Banana");
+        }
 
+        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponentInChildren<Hero>().dialog;//changes heros dialog
+    }
 
 
     #region Sell to hero
     // opens up the sell inventory
     public static void SellHeroPanel()
     {
+
         DialogPanel = Instantiate(DialogPanelPF) as GameObject;
         DialogPanel.transform.SetParent(canvas.transform, false);
 
@@ -106,6 +112,7 @@ public class StartDialogScene : MonoBehaviour {
             BuyButton.transform.SetParent(DialogPanel.transform, false);//parents sets position
             BuyButton.transform.Translate(new Vector3(0, i * -60, 0));//spaces buttons
             BuyButton.GetComponentInChildren<Text>().text = "Buy " + it.name;//sets the text that is inside the button
+            BuyButton.GetComponentInChildren<BuyFromHero>().Itemindex = i;
 
             OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel
             OfferField.transform.SetParent(BuyButton.transform, false);//parents and sets position

@@ -33,7 +33,7 @@ public class Hero : MonoBehaviour {
     public string dialog;
     public int patience;
 
-    public TextAsset text;//text file asset that contains dialog
+    public TextAsset BuyingDialog;//text file asset that contains dialog
 
     //constructor
     public Hero()
@@ -45,10 +45,10 @@ public class Hero : MonoBehaviour {
         H_Inventory = new List<Item>();
         patience = 0;
         
-        text = Resources.Load("HeroDialog") as TextAsset;//text file that is loaded from resourses
+        BuyingDialog = Resources.Load("HeroDialog") as TextAsset;//text file that is loaded from resourses
         char delimiters = ',';
         
-        lines = text.text.Split(delimiters);//separates dialog into individual lines
+        lines = BuyingDialog.text.Split(delimiters);//separates dialog into individual lines
         dialog = lines[patience];
 
         //H_Inventory.Add(new Item("Apple", 1, "An Apple"));

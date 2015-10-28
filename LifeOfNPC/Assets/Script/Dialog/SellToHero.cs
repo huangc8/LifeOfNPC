@@ -8,16 +8,49 @@ using UnityEngine.UI;
 
 public class SellToHero : MonoBehaviour {
 
+    public float InitialThresholdPrice;
+    public float NewThresholdPrice;
+    public int attempt;
+
+    void Start()
+    {
+        float itemprice = 100;//will be the price of the item
+        InitialThresholdPrice = ((100 - CreateHero.Hero.GetComponentInChildren<Hero>().thriftiness) / 100) * itemprice;//sets the initial price hero will buy at
+        Debug.Log("Current Threshold Price:" + InitialThresholdPrice);
+        attempt = 5;
+        NewThresholdPrice = InitialThresholdPrice;
+
+    }
+
     public void SelltoHero()
     {
         //CreateHero.Hero.GetComponentInChildren<Hero>().patience = 1;
         int OfferedPrice = int.Parse(transform.GetComponentInChildren<InputField>().text);//converts text in input to int
         Debug.Log(OfferedPrice);
 
-        if (OfferedPrice > 100)
+        if (OfferedPrice >= NewThresholdPrice * 1.1 )//if price is outside of price range do this else accept price
         {
-            CreateHero.Hero.GetComponentInChildren<Hero>().patience++;
-            if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)
+            
+            if (attempt == 5)//on first attempt hero offers their initial price
+            {
+                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "How about " + InitialThresholdPrice;//price the hero offers
+                attempt--;
+            }
+
+            else if(attempt != 0)//increase Price threshold 
+            {
+                NewThresholdPrice = NewThresholdPrice + ((OfferedPrice - NewThresholdPrice)/5);
+                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "Ok how about " + NewThresholdPrice;//price the hero offers
+                attempt--;
+            }
+
+            else//if the nmber of attempts is reached
+            {
+                CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
+            }
+
+            if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)//closes out the sell menu if hero
+                                                                                                                                            //runs out of patience
             {
                 CreateHero.Hero.GetComponentInChildren<Hero>().patience--;
                 StartDialogScene.CloseDialogPanel();
@@ -26,11 +59,14 @@ public class SellToHero : MonoBehaviour {
 
         else
         {
-            CreateHero.Hero.GetComponentInChildren<Hero>().dialog = CreateHero.Hero.GetComponentInChildren<Hero>().lines[2];
-            string item = transform.GetComponentInChildren<Text>().text;
-            Inventory.RemoveItem(item, 1);
-            StartDialogScene.CurrentHero.GetComponentInChildren<Hero>().money -= OfferedPrice;
-            Debug.Log("Money:" + StartDialogScene.CurrentHero.GetComponentInChildren<Hero>().money);
+            CreateHero.Hero.GetComponentInChildren<Hero>().dialog = OfferedPrice + " sounds fair enough";
+            string item = transform.GetComponentInChildren<Text>().text;//the text in the button
+            
+            string itemName = item.Substring(item.IndexOf(" ")+1);//should get the item name from the button
+            Debug.Log(itemName);
+            Inventory.RemoveItem(itemName, 1);
+            CreateHero.Hero.GetComponentInChildren<Hero>().money -= OfferedPrice;
+            Debug.Log("Money:" + CreateHero.Hero.GetComponentInChildren<Hero>().money);
             StartDialogScene.CloseDialogPanel();
             StartDialogScene.SellHeroPanel();
         }
