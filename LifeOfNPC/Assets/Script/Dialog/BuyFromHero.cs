@@ -8,15 +8,48 @@ using UnityEngine.UI;
 
 public class BuyFromHero : MonoBehaviour {
 
+    public float InitialThresholdPrice;
+    public float NewThresholdPrice;
+    public int attempt;
+    public int Itemindex;
+
+    void Start()
+    {
+        float itemprice = 100;//will be the price of the item
+        InitialThresholdPrice = ((100 + CreateHero.Hero.GetComponentInChildren<Hero>().thriftiness) / 100) * itemprice;//sets the initial price hero will buy at
+        Debug.Log("Current Threshold Price:" + InitialThresholdPrice);
+        attempt = 5;
+        NewThresholdPrice = InitialThresholdPrice;
+
+    }
+
     public void BuyfromHero()
     {
-
+        Debug.Log("");
         int OfferedPrice = int.Parse(transform.GetComponentInChildren<InputField>().text);//converts text in input field to int
         //Debug.Log(OfferedPrice);
 
-        if (OfferedPrice < 100)
+        if (OfferedPrice <= NewThresholdPrice * 0.9)
         {
-            CreateHero.Hero.GetComponentInChildren<Hero>().patience++;
+            if (attempt == 5)//on first attempt hero offers their initial price
+            {
+                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "How about " + InitialThresholdPrice;//price the hero offers
+                attempt--;
+            }
+
+            else if (attempt != 0)//increase Price threshold 
+            {
+                NewThresholdPrice = NewThresholdPrice - ((NewThresholdPrice - OfferedPrice) / 5);
+                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "Ok how about " + NewThresholdPrice;//price the hero offers
+                attempt--;
+            }
+
+            else//if the nmber of attempts is reached
+            {
+                CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
+            }
+
+
             if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)
             {
                 CreateHero.Hero.GetComponentInChildren<Hero>().patience--;
@@ -27,8 +60,10 @@ public class BuyFromHero : MonoBehaviour {
         else
         {
             CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
-            CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory.RemoveAt(0);
-            CreateHero.Hero.GetComponentInChildren<Hero>().money += OfferedPrice;
+            Debug.Log(Itemindex);
+            Inventory.AddItem(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex]);//moves item from hero inventory to players inventory
+            CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory.RemoveAt(Itemindex);//remove item from hero inventory
+            CreateHero.Hero.GetComponentInChildren<Hero>().money += OfferedPrice;//add money to hero
             Debug.Log("Money:" + CreateHero.Hero.GetComponentInChildren<Hero>().money);
             StartDialogScene.CloseDialogPanel();
             StartDialogScene.BuyHeroPanel();
