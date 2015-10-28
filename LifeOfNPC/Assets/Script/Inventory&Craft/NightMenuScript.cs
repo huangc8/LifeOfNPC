@@ -26,4 +26,12 @@ public class NightMenuScript : MonoBehaviour {
 		_GameMaster.newDay ();
 		_GameMaster.OpenNightMenu ();
 	}	
+
+	public void OpenInventory(){
+		_Inventory.OpenInventoryPanel ();
+	}
+
+	public void OpenSetPrice(){
+		_Inventory.OpenSetPricePanel ();
+	}
 }

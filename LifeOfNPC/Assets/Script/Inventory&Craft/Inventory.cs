@@ -13,10 +13,13 @@ public class Inventory : MonoBehaviour {
 	public static List<Item> _Items;			// current own item list
 	public static GameObject InventoryPanel;	// Inventory Panel object
 	public static GameObject canvas;			// the Canvas object
+	public static GameObject SetPricePanel;		// the set price panel
 
 	// Prefabs
 	public static GameObject InventoryPanelPf;	// prefab for inventory panel
+	public static GameObject SetPricePanelPf;	// set price panel
 	public GameObject InventoryPanelPf_r;		// none static inventory panel
+	public GameObject SetPricePanelPf_r;		// set price panel non static
 	public GameObject canvas_r;					// none static canvas reference
 	// utilities
 	public static List<int> _RemoveIndex;		// removing item index
@@ -27,6 +30,7 @@ public class Inventory : MonoBehaviour {
 		_Items = new List<Item>();
 		_RemoveIndex = new List<int> ();
 		InventoryPanelPf = InventoryPanelPf_r;
+		SetPricePanelPf = SetPricePanelPf_r;
 		canvas = canvas_r;
 	}
 
@@ -124,5 +128,34 @@ public class Inventory : MonoBehaviour {
 	public static GameObject getCanvas(){
 		return canvas;
 	}
+
+	// open set price panel
+	public void OpenSetPricePanel(){
+		if (SetPricePanel == null) {
+			SetPricePanel = Instantiate(SetPricePanelPf) as GameObject;
+			SetPricePanel.GetComponent<SetPricePanelScript>()._Inventory = this;
+			SetPricePanel.GetComponent<SetPricePanelScript>().PopulateSetPriceButton();
+			SetPricePanel.transform.SetParent(canvas.transform, false);
+		}
+		GetComponent<GameMaster> ().CloseNightMenu ();
+	}
+
+	// close set price panel
+	public void CloseSetPricePanel(){
+		// update sell price in inventory
+		GameObject contentPanel = SetPricePanel.GetComponent<SetPricePanelScript> ().contentPanel;		
+		int index = 0;
+		foreach (Transform gb in contentPanel.transform) {
+			Inventory._Items[index].sellPrice = gb.GetComponent<PriceListButtonScript>().price;
+			index++;
+		}
+
+		// destroy set price panel
+		if (SetPricePanel != null) {
+			Destroy(SetPricePanel);
+		}
+		GetComponent<GameMaster> ().OpenNightMenu ();
+	}
+
 	#endregion
 }
