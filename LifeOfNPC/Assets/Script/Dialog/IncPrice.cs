@@ -11,7 +11,7 @@ public class IncPrice : MonoBehaviour {
     public void Incprice()
     {
         int currentPrice = int.Parse(transform.GetComponentInParent<InputField>().text);
-        Debug.Log(currentPrice);
+        //Debug.Log(currentPrice);
         currentPrice += 10;
         transform.GetComponentInParent<InputField>().text = currentPrice.ToString();
     }

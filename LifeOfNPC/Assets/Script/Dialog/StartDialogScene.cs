@@ -56,12 +56,12 @@ public class StartDialogScene : MonoBehaviour {
         if (!HaveInventory)
         {
             HaveInventory = true;
-            Inventory.AddItem("Apple", 1, "An Apple");
+            //Inventory.AddItem("Apple", 1, "An Apple");
             Inventory.AddItem("Orange", 1, "An Orange");
             Inventory.AddItem("Banana", 1, "A Banana");
         }
 
-        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponentInChildren<Hero>().dialog;//changes heros dialog
+        //CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponentInChildren<Hero>().lines[CreateHero.Hero.GetComponentInChildren<Hero>().dialogIndex];//changes heros dialog
     }
 
 
@@ -122,6 +122,8 @@ public class StartDialogScene : MonoBehaviour {
 
             DecPriceButton = Instantiate(DecPriceButtonPF) as GameObject;//creates button on the dialog panel
             DecPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
+
+            i++;
 
         }
     }

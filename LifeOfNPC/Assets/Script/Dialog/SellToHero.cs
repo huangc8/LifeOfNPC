@@ -64,6 +64,8 @@ public class SellToHero : MonoBehaviour {
             
             string itemName = item.Substring(item.IndexOf(" ")+1);//should get the item name from the button
             Debug.Log(itemName);
+            Item it = new Item(itemName, 1, "");
+            CreateHero.Hero.GetComponent<Hero>().H_Inventory.Add(it);
             Inventory.RemoveItem(itemName, 1);
             CreateHero.Hero.GetComponentInChildren<Hero>().money -= OfferedPrice;
             Debug.Log("Money:" + CreateHero.Hero.GetComponentInChildren<Hero>().money);

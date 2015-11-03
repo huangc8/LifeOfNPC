@@ -1,1 +1,5 @@
-hi my name is steve. im the hero,you can go higher right?, Come on i know you can go a little higher,I guess i could sell that low.
+1 - W: “Shopkeeper?  Are you in?”  |
+1 - S: “Greetings, customer!  What can I do for you?”  |
+2 - W: “I’d like &.”  |
+3 - S: “Well, let’s see what we have for you!” |
+
