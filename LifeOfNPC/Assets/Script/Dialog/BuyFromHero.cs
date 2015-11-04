@@ -12,6 +12,7 @@ public class BuyFromHero : MonoBehaviour {
     public float NewThresholdPrice;
     public int attempt;
     public int Itemindex;
+    public Item item;
 
     void Start()
     {
@@ -25,9 +26,8 @@ public class BuyFromHero : MonoBehaviour {
 
     public void BuyfromHero()
     {
-        Debug.Log("");
         int OfferedPrice = int.Parse(transform.GetComponentInChildren<InputField>().text);//converts text in input field to int
-        //Debug.Log(OfferedPrice);
+
 
         if (OfferedPrice <= NewThresholdPrice * 0.9)
         {
@@ -44,9 +44,11 @@ public class BuyFromHero : MonoBehaviour {
                 attempt--;
             }
 
-            else//if the nmber of attempts is reached
+            else//if the number of attempts is reached
             {
-                CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
+                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll sell that elsewhere";
+                transform.GetComponent<Button>().interactable = false;
+
             }
 
 
@@ -59,9 +61,11 @@ public class BuyFromHero : MonoBehaviour {
 
         else
         {
+
             CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
-            Debug.Log(Itemindex);
+            Debug.Log(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex].name);
             Inventory.AddItem(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex]);//moves item from hero inventory to players inventory
+
             CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory.RemoveAt(Itemindex);//remove item from hero inventory
             CreateHero.Hero.GetComponentInChildren<Hero>().money += OfferedPrice;//add money to hero
             Debug.Log("Money:" + CreateHero.Hero.GetComponentInChildren<Hero>().money);

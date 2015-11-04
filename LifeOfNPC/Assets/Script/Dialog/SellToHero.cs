@@ -46,7 +46,8 @@ public class SellToHero : MonoBehaviour {
 
             else//if the nmber of attempts is reached
             {
-                CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
+                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll buy that elsewhere";
+                transform.GetComponent<Button>().interactable = false;
             }
 
             if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)//closes out the sell menu if hero
@@ -64,6 +65,8 @@ public class SellToHero : MonoBehaviour {
             
             string itemName = item.Substring(item.IndexOf(" ")+1);//should get the item name from the button
             Debug.Log(itemName);
+            Item it = new Item(itemName, 1, "");
+            CreateHero.Hero.GetComponent<Hero>().H_Inventory.Add(it);
             Inventory.RemoveItem(itemName, 1);
             CreateHero.Hero.GetComponentInChildren<Hero>().money -= OfferedPrice;
             Debug.Log("Money:" + CreateHero.Hero.GetComponentInChildren<Hero>().money);
