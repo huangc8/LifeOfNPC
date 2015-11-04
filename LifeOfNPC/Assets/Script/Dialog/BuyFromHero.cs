@@ -41,7 +41,7 @@ public class BuyFromHero : MonoBehaviour {
 
             else if (attempt != 0)//increase Price threshold 
             {
-                NewThresholdPrice = NewThresholdPrice - ((NewThresholdPrice - OfferedPrice) / 5);
+                NewThresholdPrice = NewThresholdPrice - ((NewThresholdPrice - OfferedPrice) / 4);
                 CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "Ok how about " + NewThresholdPrice;//price the hero offers
                 attempt--;
             }
