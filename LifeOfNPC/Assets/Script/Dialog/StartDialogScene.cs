@@ -56,7 +56,6 @@ public class StartDialogScene : MonoBehaviour {
         if (!HaveInventory)
         {
             HaveInventory = true;
-            //Inventory.AddItem("Apple", 1, "An Apple");
             Inventory.AddItem("Orange", 1, "An Orange");
             Inventory.AddItem("Banana", 1, "A Banana");
         }

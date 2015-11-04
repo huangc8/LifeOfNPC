@@ -11,18 +11,6 @@ public class Hero : MonoBehaviour {
 
     //Hero class
 
-    //public static GameObject hero;
-    //public static GameObject canvas;            // the Canvas object
-    //public static Text HeroDialogBox;
-
-    //public static GameObject HeroPF;
-
-    //public GameObject HeroPf_r;
-    //public GameObject canvas_r;              // non static canvas reference
-
-
-
-
     public string name;
     public int money;
     public float thriftiness;//price range hero expects for the item
@@ -34,7 +22,6 @@ public class Hero : MonoBehaviour {
     public int patience;
 
     //for determining dialog
-    public int DealStage;
     public int HeroClass;//whether hero is a wizard, warrior, or ranger
     public int purpose;
     public int dialogIndex;
@@ -56,21 +43,23 @@ public class Hero : MonoBehaviour {
         
 
         HeroClass = UnityEngine.Random.Range(1, 3);
-        purpose = UnityEngine.Random.Range(1, 3);
+        purpose = UnityEngine.Random.Range(0,1);
 
         switch (HeroClass)
         {
             case 1:
                 //wizard
-
+                BuyingDialog = Resources.Load("StockWizardDialog") as TextAsset;//text file that is loaded from resourses
                 break;
 
             case 2:
                 //warrior
+                BuyingDialog = Resources.Load("StockWarriorDialog") as TextAsset;//text file that is loaded from resourses
                 break;
 
             case 3:
                 //ranger
+                BuyingDialog = Resources.Load("StockRangerDialog") as TextAsset;//text file that is loaded from resourses
                 break;
 
             default:
@@ -78,12 +67,11 @@ public class Hero : MonoBehaviour {
 
         }
 
-        BuyingDialog = Resources.Load("HeroDialog") as TextAsset;//text file that is loaded from resourses
-        char delimiters = '#';
         
+        char delimiters = '#';
         dialogScript = BuyingDialog.text.Split(delimiters);//separates dialog into individual scripts
         delimiters = '|';
-        lines = dialogScript[0].Split(delimiters);
+        lines = dialogScript[1].Split(delimiters);
         dialog = "";
         
 
@@ -120,7 +108,7 @@ public class Hero : MonoBehaviour {
         switch (qii)
         {
             case 1:
-                int lowItems = 1;
+                int lowItems = 2;
                 for (int i = 0; i < lowItems; i++)
                 {
                     Debug.Log("low quality");
@@ -130,7 +118,7 @@ public class Hero : MonoBehaviour {
                 break;
 
             case 2:
-                int mediItems = 1;
+                int mediItems = 2;
                 for (int i = 0; i < mediItems; i++)
                 {
                     Debug.Log("medium quality");
@@ -140,7 +128,7 @@ public class Hero : MonoBehaviour {
                 break;
 
             case 3:
-                int highItems = 1;
+                int highItems = 2;
                 for (int i = 0; i < highItems; i++)
                 {
                     Debug.Log("high quality");

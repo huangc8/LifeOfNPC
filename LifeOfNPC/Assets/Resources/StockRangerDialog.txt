@@ -1,0 +1,68 @@
+1 - R: “Are you the Shopkeeper?”  |
+1 - S: “Greetings, customer!  What can I do for you?”  |
+2 - R: “I’d like [required items here].”  |
+3 - S: “Well, let’s see what we have for you!” |
+3a1 - S: “Do you have any materials you want to sell me?” |
+3a1 - R: [Failure case] “I’m afraid not.” |
+3a1 - R: [Success case] “Yes, actually.”  |
+3a2 - R: “For [set amount of money within range], I’ll give you these [randomly generated items here].”|
+3a3a - S: [Player accepts offer] “Pleasure doing business with you.” |
+3a3a - R: “Of course.”|
+3a3b - S: [Player denies offer] “I’m afraid I can’t accept that price.”|
+3a3b - S: [Player sets new price] “For [new price here], I’ll take them.”|
+3a3c - R: [Success case] “Alright then.”|
+3a3d - R: [Failure case] “That’s too high of a price for me.  [set amount of money within range] is my final offer.”|
+3a3e - S: [Player accepts final offer] “Very well then.”  |
+3a3e - R: “Thank you, Shopkeeper.”|
+3a3f - S: [Player rejects final offer] “That’s not a price I can accept.”  |
+3a3f - R: “I suppose our transaction is over, then.”  |
+3b1 - R: “I want [items customer wants] please.”|
+3b2 - [Player selects which items to offer the customer] |
+3b2 - S: “Here are [insert items here].  What do you think?” |
+3b3a - R: [Success case] “Yes, I’d like those.” |
+3b3b - R: [Failure case] “No, thank you.” |
+3b4 - [Player sets price of items]|
+3b4 - S: “I’ll sell them all to you for [price player sets].”|
+3b5a - R: [Success case] “Certainly.  You have my thanks, Shopkeeper.”  |
+3b5b - R: [Failure case] “I can’t pay that price.”|
+3b5b - R: “I’ll pay [randomly generated price within customer’s thriftiness range], if I must.”  |
+3b6 - [Player sets price of items]|
+3b6 - S: “Then how does [new price player sets] sound?” |
+3b7a - R: [Success case] “I’ll accept your price, Shopkeeper.” |
+3b7b - R: [Failure case] “I’ll have to take my business elsewhere, then.”|
+4a - [Successful transaction] “Thank you, Shopkeeper.  These goods will be of great use in the Dungeon.”  |
+4b - [Failed transaction] “I’d heard good things about this shop, but I suppose I’ll need to go somewhere else instead.”  |
+#1 - R: “Are you the Shopkeeper?”  |
+1 - S: “Greetings, customer!  What can I do for you?”  |
+2 - R: “I would prefer goods that suit my role.”  |
+3 - S: “Well, let’s see what we have for you!” |
+3a1 - S: “Do you have any materials you want to sell me?” |
+3a1 - R: [Failure case] “I’m afraid not.” |
+3a1 - R: [Success case] “Yes, actually.”  |
+3a2 - R: “For [set amount of money within range], I’ll give you these [randomly generated items here].”|
+3a3a - S: [Player accepts offer] “Pleasure doing business with you.” |
+3a3a - R: “Of course.”|
+3a3b - S: [Player denies offer] “I’m afraid I can’t accept that price.”|
+3a3b - S: [Player sets new price] “For [new price here], I’ll take them.”|
+3a3c - R: [Success case] “Alright then.”|
+3a3d - R: [Failure case] “That’s too high of a price for me.  [set amount of money within range] is my final offer.”|
+3a3e - S: [Player accepts final offer] “Very well then.”  |
+3a3e - R: “Thank you, Shopkeeper.”|
+3a3f - S: [Player rejects final offer] “That’s not a price I can accept.”  |
+3a3f - R: “I suppose our transaction is over, then.”  |
+3b1 - R: “Suggest adequate items for my style of adventuring, please.”|
+3b2 - [Player selects which items to offer the customer] |
+3b2 - S: “Here are [insert items here].  What do you think?” |
+3b3a - R: [Success case] “Yes, I’d like those.” |
+3b3b - R: [Failure case] “No, thank you.” |
+3b4 - [Player sets price of items]|
+3b4 - S: “I’ll sell them all to you for [price player sets].”|
+3b5a - R: [Success case] “Certainly.  You have my thanks, Shopkeeper.”  |
+3b5b - R: [Failure case] “I can’t pay that price.”|
+3b5b - R: “I’ll pay [randomly generated price within customer’s thriftiness range], if I must.”  |
+3b6 - [Player sets price of items]|
+3b6 - S: “Then how does [new price player sets] sound?” |
+3b7a - R: [Success case] “I’ll accept your price, Shopkeeper.” |
+3b7b - R: [Failure case] “I’ll have to take my business elsewhere, then.”|
+4a - [Successful transaction] “Thank you, Shopkeeper.  These goods will be of great use in the Dungeon.”  |
+4b - [Failed transaction] “I’d heard good things about this shop, but I suppose I’ll need to go somewhere else instead.”  |

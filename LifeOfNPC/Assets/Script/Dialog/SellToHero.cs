@@ -46,7 +46,8 @@ public class SellToHero : MonoBehaviour {
 
             else//if the nmber of attempts is reached
             {
-                CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
+                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll buy that elsewhere";
+                transform.GetComponent<Button>().interactable = false;
             }
 
             if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)//closes out the sell menu if hero
