@@ -17,9 +17,15 @@ public class RecipePanelScript : MonoBehaviour {
 			GameObject newButton = Instantiate(RecipeListButtonPf) as GameObject;
 			RecipeListButtonScript rlb = newButton.GetComponent<RecipeListButtonScript>();
 			rlb.NameLabel.text = re.name;
-			rlb.MaterialLabel_1.text = re.materials[0];
-			rlb.MaterialLabel_2.text = re.materials[1];
-			rlb.MaterialLabel_3.text = re.materials[2];
+			if(re.materials.Count == 2){
+				rlb.MaterialLabel_1.text = re.materials[0];
+				rlb.MaterialLabel_2.text = re.materials[1];
+			}
+			else if(re.materials.Count == 3){
+				rlb.MaterialLabel_1.text = re.materials[0];
+				rlb.MaterialLabel_2.text = re.materials[1];
+				rlb.MaterialLabel_3.text = re.materials[2];
+			}
 			rlb.icon.sprite = Resources.Load<Sprite>("Sprite/" + re.name);
 			newButton.transform.SetParent(contentPanel.transform, false);
 		}

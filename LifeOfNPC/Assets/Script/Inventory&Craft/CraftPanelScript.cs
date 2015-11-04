@@ -18,9 +18,14 @@ public class CraftPanelScript : MonoBehaviour {
 	void Start(){
 		if (recipe != null) {
 			nameLabel.text = recipe.name;
-			materialLabel_1.text = recipe.materials[0];
-			materialLabel_2.text = recipe.materials[1];
-			materialLabel_3.text = recipe.materials[2];
+			if(recipe.materials.Count > 2){
+				materialLabel_1.text = recipe.materials[0];
+				materialLabel_2.text = recipe.materials[1];
+				materialLabel_3.text = recipe.materials[2];
+			}else{
+				materialLabel_1.text = recipe.materials[0];
+				materialLabel_2.text = recipe.materials[1];
+			}
 		}
 	}
 

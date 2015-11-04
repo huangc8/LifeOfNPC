@@ -94,6 +94,7 @@ public class InventoryPanelScript : MonoBehaviour {
 	public void ClosePanel(){
 		_Inventory.CloseInventoryPanel ();
 		Craft.CloseCraftPanel ();
+		Craft.CloseRecipePanel ();
 	}
 	#endregion
 }
