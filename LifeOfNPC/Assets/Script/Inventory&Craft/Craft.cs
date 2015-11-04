@@ -36,9 +36,9 @@ public class Craft : MonoBehaviour {
 
 		// make list
 		List<string> ltmp = new List<string> ();
-		ltmp.Add (material_1.name);
-		ltmp.Add (material_2.name);
-		ltmp.Add (material_3.name);
+		ltmp.Add (material_1.name + " x " + material_1.amount);
+		ltmp.Add (material_2.name + " x " + material_2.amount);
+		ltmp.Add (material_3.name + " x " + material_3.amount);
 
 		// find the recipe
 		Recipe rt = null;
