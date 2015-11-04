@@ -10,6 +10,7 @@ public class Item : MonoBehaviour {
 	// Item Class
 	public string name;
 	public int amount;
+	public int type;					// item - 0, armor - 1, weapon - 2 
 	public string description;
 	public int sellPrice;
 	public int supplyPrice;
@@ -18,6 +19,7 @@ public class Item : MonoBehaviour {
 	public Item (string name, int amount, string description){
 		this.name = name;
 		this.amount = amount;
+		this.type = 0;
 		this.description = description;
 	}
 

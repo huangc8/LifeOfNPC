@@ -11,16 +11,21 @@ public class Craft : MonoBehaviour {
 	public static Craft _Craft;					// reference to the class
 	public static List<Recipe> _Recipes;		// current own recipes list
 	public static GameObject CraftPanel;		// Craft Panel object
+	public static GameObject RecipePanel;		// recipe panel
 	public static GameObject canvas;			// the Canvas object
 
 	public static GameObject CraftPanelPf;		// prefab for craft panel
+	public static GameObject RecipePanelPf;		// prefab for recipe panel
 	public GameObject CraftPanelPf_r;			// none static craft panel
+	public GameObject RecipePanelPf_r;			// none static recipe panel
 	public GameObject canvas_r;					// none static canvas reference
+
 	
 	// Use this for initialization
 	void Start () {
 		_Recipes = new List<Recipe> ();
 		CraftPanelPf = CraftPanelPf_r;
+		RecipePanelPf = RecipePanelPf_r;
 		canvas = canvas_r;
 	}
 	#endregion
@@ -61,9 +66,24 @@ public class Craft : MonoBehaviour {
 	#endregion
 
 	#region On Screen Craft
-	public static void OpenCraftPanel(){
+	public static void OpenRecipePanel(){
+		if (RecipePanel == null) {
+			RecipePanel = Instantiate (RecipePanelPf) as GameObject;
+			RecipePanel.transform.SetParent(canvas.transform, false);
+		}
+	}
+
+	public static void CloseRecipePanel(){
+		if (RecipePanel != null) {
+			Destroy (RecipePanel);
+		}
+	}
+
+	public static void OpenCraftPanel(string name){
 		if (CraftPanel == null) {
+			Recipe recipe = GetRecipe(name);
 			CraftPanel = Instantiate (CraftPanelPf) as GameObject;
+			CraftPanel.GetComponent<CraftPanelScript>().recipe = recipe;
 			CraftPanel.transform.SetParent (canvas.transform, false);
 		}
 	}

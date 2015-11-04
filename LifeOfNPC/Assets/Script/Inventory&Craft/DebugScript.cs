@@ -17,5 +17,9 @@ public class DebugScript : MonoBehaviour {
 		ltmp.Add("Orange");
 		
 		Craft.AddRecipe("Banana", ltmp, "A Banana");
+
+
+		List<string> ltmp2 = new List<string> ();
+
 	}
 }
