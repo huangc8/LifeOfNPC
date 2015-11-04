@@ -16,6 +16,8 @@ public class BuyFromHero : MonoBehaviour {
 
     void Start()
     {
+        item = CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex];
+        Debug.Log(item.supplyPrice);
         float itemprice = 100;//will be the price of the item
         InitialThresholdPrice = ((100 + CreateHero.Hero.GetComponentInChildren<Hero>().thriftiness) / 100) * itemprice;//sets the initial price hero will buy at
         Debug.Log("Current Threshold Price:" + InitialThresholdPrice);
@@ -61,7 +63,7 @@ public class BuyFromHero : MonoBehaviour {
 
         else
         {
-
+            CreateHero.Hero.GetComponentInChildren<Hero>().dialog = OfferedPrice + " sounds fair enough";
             CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
             Debug.Log(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex].name);
             Inventory.AddItem(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex]);//moves item from hero inventory to players inventory

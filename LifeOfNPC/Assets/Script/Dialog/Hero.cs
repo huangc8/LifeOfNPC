@@ -50,16 +50,19 @@ public class Hero : MonoBehaviour {
             case 1:
                 //wizard
                 BuyingDialog = Resources.Load("StockWizardDialog") as TextAsset;//text file that is loaded from resourses
+                Debug.Log("Your a wizard Harry");
                 break;
 
             case 2:
                 //warrior
                 BuyingDialog = Resources.Load("StockWarriorDialog") as TextAsset;//text file that is loaded from resourses
+                Debug.Log("I am a warrior");
                 break;
 
             case 3:
                 //ranger
                 BuyingDialog = Resources.Load("StockRangerDialog") as TextAsset;//text file that is loaded from resourses
+                Debug.Log("I am a ranger");
                 break;
 
             default:

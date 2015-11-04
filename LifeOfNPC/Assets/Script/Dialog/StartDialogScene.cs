@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class StartDialogScene : MonoBehaviour {
 
     public static Hero CurrentHero;
+    public static bool inMenu;
 
     public static GameObject DialogPanel;
     public static GameObject BuyButton;
@@ -48,6 +49,7 @@ public class StartDialogScene : MonoBehaviour {
         DecPriceButtonPF = DecPriceButtonPF_r;       // prefab for Buy button
         OfferFieldPF = OfferFieldPF_r;
         canvas = canvas_r;
+        inMenu = false;
 
     }
 
@@ -68,29 +70,31 @@ public class StartDialogScene : MonoBehaviour {
     // opens up the sell inventory
     public static void SellHeroPanel()
     {
-
-        DialogPanel = Instantiate(DialogPanelPF) as GameObject;
-        DialogPanel.transform.SetParent(canvas.transform, false);
-
-
-
-        int i = 0;
-        foreach (Item it in Inventory._Items)
+        if (!inMenu)
         {
-            SellButton = Instantiate(SellButtonPF) as GameObject;//creates button on the dialog panel
-            SellButton.transform.SetParent(DialogPanel.transform, false);//sets position
-            SellButton.transform.Translate(new Vector3(0, i*-60, 0));//spaces buttons
-            SellButton.GetComponentInChildren<Text>().text = "Sell " + it.name;//sets the text that is inside the button
+            DialogPanel = Instantiate(DialogPanelPF) as GameObject;
+            DialogPanel.transform.SetParent(canvas.transform, false);
+            inMenu = true;
 
-            OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel
-            OfferField.transform.SetParent(SellButton.transform, false);//parents and sets position
 
-            IncPriceButton = Instantiate(IncPriceButtonPF) as GameObject;//creates button on the dialog panel
-            IncPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
+            int i = 0;
+            foreach (Item it in Inventory._Items)
+            {
+                SellButton = Instantiate(SellButtonPF) as GameObject;//creates button on the dialog panel
+                SellButton.transform.SetParent(DialogPanel.transform, false);//sets position
+                SellButton.transform.Translate(new Vector3(0, i * -60, 0));//spaces buttons
+                SellButton.GetComponentInChildren<Text>().text = "Sell " + it.name;//sets the text that is inside the button
 
-            DecPriceButton = Instantiate(DecPriceButtonPF) as GameObject;//creates button on the dialog panel
-            DecPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
-            i++;
+                OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel
+                OfferField.transform.SetParent(SellButton.transform, false);//parents and sets position
+
+                IncPriceButton = Instantiate(IncPriceButtonPF) as GameObject;//creates button on the dialog panel
+                IncPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
+
+                DecPriceButton = Instantiate(DecPriceButtonPF) as GameObject;//creates button on the dialog panel
+                DecPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
+                i++;
+            }
         }
     }
 
@@ -101,29 +105,33 @@ public class StartDialogScene : MonoBehaviour {
     #region Buy From Hero
     public static void BuyHeroPanel()
     {
-        DialogPanel = Instantiate(DialogPanelPF) as GameObject;
-        DialogPanel.transform.SetParent(canvas.transform, false);
-
-        int i = 0;
-        foreach (Item it in CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory)
+        if (!inMenu)
         {
-            BuyButton = Instantiate(BuyButtonPF) as GameObject;//creates button on the dialog panel
-            BuyButton.transform.SetParent(DialogPanel.transform, false);//parents sets position
-            BuyButton.transform.Translate(new Vector3(0, i * -60, 0));//spaces buttons
-            BuyButton.GetComponentInChildren<Text>().text = "Buy " + it.name;//sets the text that is inside the button
-            BuyButton.GetComponentInChildren<BuyFromHero>().Itemindex = i;
+            DialogPanel = Instantiate(DialogPanelPF) as GameObject;
+            DialogPanel.transform.SetParent(canvas.transform, false);
+            inMenu = true;
 
-            OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel
-            OfferField.transform.SetParent(BuyButton.transform, false);//parents and sets position
+            int i = 0;
+            foreach (Item it in CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory)
+            {
+                BuyButton = Instantiate(BuyButtonPF) as GameObject;//creates button on the dialog panel
+                BuyButton.transform.SetParent(DialogPanel.transform, false);//parents sets position
+                BuyButton.transform.Translate(new Vector3(0, i * -60, 0));//spaces buttons
+                BuyButton.GetComponentInChildren<Text>().text = "Buy " + it.name;//sets the text that is inside the button
+                BuyButton.GetComponentInChildren<BuyFromHero>().Itemindex = i;
 
-            IncPriceButton = Instantiate(IncPriceButtonPF) as GameObject;//creates button on the dialog panel
-            IncPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
+                OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel
+                OfferField.transform.SetParent(BuyButton.transform, false);//parents and sets position
 
-            DecPriceButton = Instantiate(DecPriceButtonPF) as GameObject;//creates button on the dialog panel
-            DecPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
+                IncPriceButton = Instantiate(IncPriceButtonPF) as GameObject;//creates button on the dialog panel
+                IncPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
 
-            i++;
+                DecPriceButton = Instantiate(DecPriceButtonPF) as GameObject;//creates button on the dialog panel
+                DecPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
 
+                i++;
+
+            }
         }
     }
 
@@ -133,6 +141,7 @@ public class StartDialogScene : MonoBehaviour {
     // close inventory
     public static void CloseDialogPanel()
     {
+        inMenu = false;
         Destroy(DialogPanel);
     }
 }
