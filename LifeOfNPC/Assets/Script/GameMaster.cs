@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameMaster : MonoBehaviour {
@@ -8,6 +9,8 @@ public class GameMaster : MonoBehaviour {
 	public GameObject canvas;
 	public GameObject NightMenu;
 	public GameObject NightMenuPf;
+	public Image Background;
+	public int currentPhase;
 	#endregion
 
 	#region Player Data
@@ -23,7 +26,8 @@ public class GameMaster : MonoBehaviour {
 		// Debug
 		gold = 30;
 		currentDay = 1;
-		OpenNightMenu ();
+		currentPhase = 1;
+		ChangePhase ();
 		this.GetComponent<Supply> ().DebugPart ();
 	}
 
@@ -62,6 +66,26 @@ public class GameMaster : MonoBehaviour {
 	// close the night menu
 	public void CloseNightMenu(){
 		Destroy (NightMenu);
+	}
+
+	public void StartDayPhase(){
+		this.GetComponent<StartDialogScene> ().StartDayPhase ();
+	}
+
+	public void EndDayPhase(){
+		this.GetComponent<StartDialogScene> ().EndDayPhase ();
+	}
+
+	public void ChangePhase(){
+		if (currentPhase == 0) {
+			currentPhase = 1;
+			EndDayPhase ();
+			OpenNightMenu ();
+		} else {
+			currentPhase = 1;
+			CloseNightMenu();
+			StartDayPhase();
+		}
 	}
 	#endregion
 
