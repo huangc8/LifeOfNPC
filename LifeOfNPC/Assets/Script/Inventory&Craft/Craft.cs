@@ -36,9 +36,14 @@ public class Craft : MonoBehaviour {
 
 		// make list
 		List<string> ltmp = new List<string> ();
-		ltmp.Add (material_1.name + " x " + material_1.amount);
-		ltmp.Add (material_2.name + " x " + material_2.amount);
-		ltmp.Add (material_3.name + " x " + material_3.amount);
+		if (material_3 != null) {
+			ltmp.Add (material_1.name + " x " + material_1.amount);
+			ltmp.Add (material_2.name + " x " + material_2.amount);
+			ltmp.Add (material_3.name + " x " + material_3.amount);
+		} else {
+			ltmp.Add (material_1.name + " x " + material_1.amount);
+			ltmp.Add (material_2.name + " x " + material_2.amount);
+		}
 
 		// find the recipe
 		Recipe rt = null;
@@ -51,10 +56,14 @@ public class Craft : MonoBehaviour {
 		// craft or return null
 		if (rt != null) {
 			// remove materials
-			Inventory.RemoveItem (material_1.name, material_1.amount);
-			Inventory.RemoveItem (material_2.name, material_2.amount);
-			Inventory.RemoveItem (material_3.name, material_3.amount);
-			
+			if(material_3 != null){
+				Inventory.RemoveItem (material_1.name, material_1.amount);
+				Inventory.RemoveItem (material_2.name, material_2.amount);
+				Inventory.RemoveItem (material_3.name, material_3.amount);
+			}else{
+				Inventory.RemoveItem (material_1.name, material_1.amount);
+				Inventory.RemoveItem (material_2.name, material_2.amount);
+			}
 			// add crafted item
 			Inventory.AddItem (rt.name, 1, rt.description);
 			return rt;

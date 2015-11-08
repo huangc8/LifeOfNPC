@@ -26,21 +26,18 @@ public class DebugScript : MonoBehaviour {
 		List<string> ltmp2 = new List<string> ();
 		ltmp2.Add ("Consecrated Spring Water x 1");
 		ltmp2.Add ("Eight-Leaf Clover x 2");
-		ltmp2.Add ("Eight-Leaf Clover x 3");
 		Craft.AddRecipe ("Elixir of Minor Rejuvination", ltmp2, "A potion");
 
 		// Elixir of Rejuvenation
 		List<string> ltmp3 = new List<string> ();
 		ltmp3.Add ("Consecrated Spring Water x 3");
 		ltmp3.Add ("Eight-Leaf Clover x 5");
-		ltmp2.Add ("Eight-Leaf Clover x 3");
 		Craft.AddRecipe ("Elixir of Rejuvenation", ltmp3, "A potion");
 
 		// Elixir of Major Rejuvenation
 		List<string> ltmp4 = new List<string> ();
 		ltmp4.Add ("Consecrated Spring Water x 5");
 		ltmp4.Add ("Eight-Leaf Clover x 8");
-		ltmp2.Add ("Eight-Leaf Clover x 3");
 		Craft.AddRecipe ("Elixir of Major Rejuvenation", ltmp4, "A potion");
 	}
 }
