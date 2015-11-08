@@ -54,7 +54,7 @@ public class SellToHero : MonoBehaviour {
                                                                                                                                             //runs out of patience
             {
                 CreateHero.Hero.GetComponentInChildren<Hero>().patience--;
-                StartDialogScene.CloseDialogPanel();
+                StartDialogScene.CloseSellToPanel();
             }
         }
 
@@ -70,7 +70,7 @@ public class SellToHero : MonoBehaviour {
             Inventory.RemoveItem(itemName, 1);
             CreateHero.Hero.GetComponentInChildren<Hero>().money -= OfferedPrice;
             Debug.Log("Money:" + CreateHero.Hero.GetComponentInChildren<Hero>().money);
-            StartDialogScene.CloseDialogPanel();
+            StartDialogScene.CloseSellToPanel();
             StartDialogScene.SellHeroPanel();
         }
     }
