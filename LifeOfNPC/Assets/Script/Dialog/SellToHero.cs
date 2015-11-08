@@ -25,7 +25,7 @@ public class SellToHero : MonoBehaviour {
     public void SelltoHero()
     {
         //CreateHero.Hero.GetComponentInChildren<Hero>().patience = 1;
-        int OfferedPrice = int.Parse(transform.GetComponentInChildren<InputField>().text);//converts text in input to int
+        int OfferedPrice = int.Parse(this.GetComponent<SellButtonObjects>().OfferField.text);//converts text in input to int
         Debug.Log(OfferedPrice);
 
         if (OfferedPrice >= NewThresholdPrice * 1.1 )//if price is outside of price range do this else accept price

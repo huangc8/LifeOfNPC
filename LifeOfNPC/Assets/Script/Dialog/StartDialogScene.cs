@@ -13,7 +13,7 @@ public class StartDialogScene : MonoBehaviour {
 
     public static GameObject BuyFromPanel;
     public static GameObject SellToPanel;
-    //public static GameObject ContentPanel;
+    public static GameObject ContentPanel;
     public static GameObject BuyButton;
     public static GameObject SellButton;
     public static GameObject IncPriceButton;       // prefab for Buy button
@@ -25,7 +25,7 @@ public class StartDialogScene : MonoBehaviour {
 
     public static GameObject BuyFromPanelPF;  // prefab for Dialog panel
     public static GameObject SellToPanelPF;  // prefab for Dialog panel
-    //public static GameObject ContentPanelPF;
+    public static GameObject ContentPanelPF;
     public static GameObject BuyButtonPF;       // prefab for Buy button
     public static GameObject SellButtonPF;       // prefab for Buy button
     public static GameObject IncPriceButtonPF;       // prefab for Buy button
@@ -35,7 +35,7 @@ public class StartDialogScene : MonoBehaviour {
 
     public GameObject BuyFromPanelPf_r;       // non static Dialog panel
     public GameObject SellToPanelPf_r;       // non static Dialog panel
-    //public GameObject ContentPanelPf_r;
+    public GameObject ContentPanelPf_r;
     public GameObject BuyButtonPf_r;            // non static button
     public GameObject SellButtonPf_r;            // non static button
     public GameObject IncPriceButtonPF_r;       // prefab for Buy button
@@ -50,6 +50,7 @@ public class StartDialogScene : MonoBehaviour {
         
         BuyFromPanelPF = BuyFromPanelPf_r;
         SellToPanelPF = SellToPanelPf_r;
+        ContentPanelPF = ContentPanelPf_r;
         BuyButtonPF = BuyButtonPf_r;
         SellButtonPF = SellButtonPf_r;
         IncPriceButtonPF = IncPriceButtonPF_r;  
@@ -83,23 +84,20 @@ public class StartDialogScene : MonoBehaviour {
             SellToPanel.transform.SetParent(canvas.transform, false);
             inMenu = true;
 
+            ContentPanel = SellToPanel.GetComponent<PopulateContent>().ObjectPanel;
+
 
             int i = 0;
             foreach (Item it in Inventory._Items)
             {
                 SellButton = Instantiate(SellButtonPF) as GameObject;//creates button on the dialog panel
-                SellButton.transform.SetParent(SellToPanel.transform, false);//sets position
-                SellButton.transform.Translate(new Vector3(0, i * -60, 0));//spaces buttons
-                SellButton.GetComponentInChildren<Text>().text = "Sell " + it.name;//sets the text that is inside the button
+                SellButton.transform.SetParent(ContentPanel.transform, false);//sets position
 
-                OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel
-                OfferField.transform.SetParent(SellButton.transform, false);//parents and sets position
+                SellButton.GetComponent<SellButtonObjects>().namelabel.text = it.name;
+                SellButton.GetComponent<SellButtonObjects>().quantity.text = it.amount.ToString();
+                SellButton.GetComponent<SellButtonObjects>().OfferField.text = it.supplyPrice.ToString();
 
-                IncPriceButton = Instantiate(IncPriceButtonPF) as GameObject;//creates button on the dialog panel
-                IncPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
 
-                DecPriceButton = Instantiate(DecPriceButtonPF) as GameObject;//creates button on the dialog panel
-                DecPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
                 i++;
             }
         }
