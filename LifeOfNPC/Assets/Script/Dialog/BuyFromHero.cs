@@ -57,7 +57,7 @@ public class BuyFromHero : MonoBehaviour {
             if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)
             {
                 CreateHero.Hero.GetComponentInChildren<Hero>().patience--;
-                StartDialogScene.CloseDialogPanel();
+                StartDialogScene.CloseBuyFromPanel();
             }
         }
 
@@ -71,7 +71,7 @@ public class BuyFromHero : MonoBehaviour {
             CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory.RemoveAt(Itemindex);//remove item from hero inventory
             CreateHero.Hero.GetComponentInChildren<Hero>().money += OfferedPrice;//add money to hero
             Debug.Log("Money:" + CreateHero.Hero.GetComponentInChildren<Hero>().money);
-            StartDialogScene.CloseDialogPanel();
+            StartDialogScene.CloseBuyFromPanel();
             StartDialogScene.BuyHeroPanel();
         }
     }

@@ -23,7 +23,8 @@ public class DialogDebug : MonoBehaviour {
 
             if (GUI.Button(new Rect(10, 385, 100, 30), "Back"))
             {
-                StartDialogScene.CloseDialogPanel();
+                StartDialogScene.CloseBuyFromPanel();
+                StartDialogScene.CloseSellToPanel();
             }
         }
 
