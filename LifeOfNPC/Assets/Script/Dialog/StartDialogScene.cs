@@ -47,7 +47,6 @@ public class StartDialogScene : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        
         BuyFromPanelPF = BuyFromPanelPf_r;
         SellToPanelPF = SellToPanelPf_r;
         ContentPanelPF = ContentPanelPf_r;
@@ -58,7 +57,6 @@ public class StartDialogScene : MonoBehaviour {
         OfferFieldPF = OfferFieldPF_r;
         canvas = canvas_r;
         inMenu = false;
-
     }
 
     void Update()
@@ -73,6 +71,16 @@ public class StartDialogScene : MonoBehaviour {
         //CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponentInChildren<Hero>().lines[CreateHero.Hero.GetComponentInChildren<Hero>().dialogIndex];//changes heros dialog
     }
 
+	// start the day phase
+	public void StartDayPhase(){
+		this.GetComponent<DialogDebug> ().day = true;
+	}
+
+	// end the day phase
+	public void EndDayPhase(){
+		this.GetComponent<DialogDebug> ().day = false;
+		ClearCanvas ();
+	}
 
     #region Sell to hero
     // opens up the sell inventory
@@ -154,4 +162,13 @@ public class StartDialogScene : MonoBehaviour {
         inMenu = false;
         Destroy(SellToPanel);
     }
+
+	// clear the canvas
+	public void ClearCanvas(){
+		foreach (Transform child in canvas.transform) {
+			if(child.name != "Background" || child.name != "EventSystem"){
+				GameObject.Destroy(child.gameObject);
+			}
+		}
+	}
 }
