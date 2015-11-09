@@ -48,6 +48,7 @@ public class SellToHero : MonoBehaviour {
             {
                 CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll buy that elsewhere";
                 transform.GetComponent<Button>().interactable = false;
+                StartDialogScene.NoSale.Add(this.GetComponent<SellButtonObjects>().namelabel.text);
             }
 
             if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)//closes out the sell menu if hero
@@ -74,4 +75,5 @@ public class SellToHero : MonoBehaviour {
             StartDialogScene.SellHeroPanel();
         }
     }
+
 }

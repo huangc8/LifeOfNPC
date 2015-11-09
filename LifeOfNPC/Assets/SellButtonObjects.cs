@@ -8,5 +8,6 @@ public class SellButtonObjects : MonoBehaviour {
     public Text namelabel;
     public Text quantity;
     public Image icon;
+    public Button sellbutton;
 
 }

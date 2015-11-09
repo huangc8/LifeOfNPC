@@ -44,6 +44,7 @@ public class StartDialogScene : MonoBehaviour {
     public GameObject canvas_r;              // non static canvas reference
 
     public bool HaveInventory = false;
+    public static List<string> NoSale;
 
     // Use this for initialization
     void Start() {
@@ -57,6 +58,7 @@ public class StartDialogScene : MonoBehaviour {
         OfferFieldPF = OfferFieldPF_r;
         canvas = canvas_r;
         inMenu = false;
+        NoSale = new List<string>();
     }
 
     void Update()
@@ -104,8 +106,10 @@ public class StartDialogScene : MonoBehaviour {
                 SellButton.GetComponent<SellButtonObjects>().namelabel.text = it.name;
                 SellButton.GetComponent<SellButtonObjects>().quantity.text = it.amount.ToString();
                 SellButton.GetComponent<SellButtonObjects>().OfferField.text = it.supplyPrice.ToString();
-
-
+                if (NoSale.Contains(it.name))
+                    {
+                        SellButton.GetComponent<SellButtonObjects>().sellbutton.interactable = false;
+                    }
                 i++;
             }
         }
