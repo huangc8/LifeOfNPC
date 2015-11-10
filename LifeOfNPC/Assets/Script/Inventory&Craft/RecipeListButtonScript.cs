@@ -13,7 +13,7 @@ public class RecipeListButtonScript : MonoBehaviour {
 
 	// craft button clicked
 	public void CraftClick(){
-		Craft.CloseRecipePanel ();
 		Craft.OpenCraftPanel (NameLabel.text);
+		Craft.CloseRecipePanel ();
 	}
 }

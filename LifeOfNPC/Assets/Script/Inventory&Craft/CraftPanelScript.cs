@@ -19,19 +19,22 @@ public class CraftPanelScript : MonoBehaviour {
 	void Start(){
 		if (recipe != null) {
 			nameLabel.text = recipe.name;
-			if(recipe.materials.Count == 1){
-				materialLabel_1.text = recipe.materials[0];
+			if (recipe.materials.Count == 1) {
+				materialLabel_1.text = recipe.materials [0];
 				materialLabel_2.text = "";
 				materialLabel_3.text = "";
-			}else if(recipe.materials.Count == 2){
-				materialLabel_1.text = recipe.materials[0];
-				materialLabel_2.text = recipe.materials[1];
+			} else if (recipe.materials.Count == 2) {
+				materialLabel_1.text = recipe.materials [0];
+				materialLabel_2.text = recipe.materials [1];
 				materialLabel_3.text = "";
-			}else if (recipe.materials.Count == 3){
-				materialLabel_1.text = recipe.materials[0];
-				materialLabel_2.text = recipe.materials[1];
-				materialLabel_3.text = recipe.materials[2];
+			} else if (recipe.materials.Count == 3) {
+				materialLabel_1.text = recipe.materials [0];
+				materialLabel_2.text = recipe.materials [1];
+				materialLabel_3.text = recipe.materials [2];
 			}
+		} else {
+			recipe = null;
+			materialLabel_1.text = "Experimental";
 		}
 	}
 
@@ -50,11 +53,10 @@ public class CraftPanelScript : MonoBehaviour {
 		}
 
 		if (items.Count > 0) {
-
 			// merge same material
 			for(int i = 0; i < items.Count; i++){
 				for(int j = 1; j < items.Count; j++){
-					if(items[j] != null){
+					if(items[j] != null && items[i] != null && i != j){
 						if(items[i].name == items[j].name){
 							items[i].AddMore(items[j].amount);
 							items[j] = null;
@@ -63,18 +65,11 @@ public class CraftPanelScript : MonoBehaviour {
 				}
 			}
 
-			List<Item> its = new List<Item>();
-			for(int i = 0; i < items.Count; i++){
-				if(items[i] != null){
-					its.Add(items[i]);
-				}
+			while(items.Count < 3){
+				items.Add(null);
 			}
 
-			while(its.Count < 3){
-				its.Add(null);
-			}
-
-			Recipe recipe_p = Craft.CraftItem (its[0], its[1], its[2]);
+			Recipe recipe_p = Craft.CraftItem (items[0], items[1], items[2], recipe);
 
 			if (recipe_p != null) {
 				// create the product

@@ -11,6 +11,15 @@ public class RecipePanelScript : MonoBehaviour {
 		PopulateRecipeButton ();
 	}
 
+	public void ExperimentButtonClick(){
+		Craft.OpenCraftPanel (null);
+		Craft.CloseRecipePanel ();
+	}
+
+	public void CloseButtonClick(){
+		Craft.CloseRecipePanel ();
+	}
+
 	// populate the recipe button
 	public void PopulateRecipeButton(){
 		foreach (Recipe re in Craft._Recipes) {

@@ -75,13 +75,13 @@ public class StartDialogScene : MonoBehaviour {
 
 	// start the day phase
 	public void StartDayPhase(){
+		this.GetComponent<CreateHero> ().StartCreateHero ();
 		this.GetComponent<DialogDebug> ().day = true;
 	}
 
 	// end the day phase
 	public void EndDayPhase(){
 		this.GetComponent<DialogDebug> ().day = false;
-		ClearCanvas ();
 	}
 
     #region Sell to hero
@@ -167,12 +167,5 @@ public class StartDialogScene : MonoBehaviour {
         Destroy(SellToPanel);
     }
 
-	// clear the canvas
-	public void ClearCanvas(){
-		foreach (Transform child in canvas.transform) {
-			if(child.name != "Background" || child.name != "EventSystem"){
-				GameObject.Destroy(child.gameObject);
-			}
-		}
-	}
+
 }

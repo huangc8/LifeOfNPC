@@ -9,19 +9,10 @@ public class DebugScript : MonoBehaviour {
 
 	void Start(){
 		// inventory
-		Inventory.AddItem ("Apple", 3, "An Apple");
-		Inventory.AddItem ("Orange", 1, "An Orange");
 		Inventory.AddItem ("Consecrated Spring Water", 50, "blah");
 		Inventory.AddItem ("Eight-Leaf Clover", 50, "blah");
 
-		// recipe
-		// Banana
-		List<string> ltmp = new List<string> ();
-		ltmp.Add("Apple x 2");
-		ltmp.Add("Apple x 1");
-		ltmp.Add("Orange x 1");
-		Craft.AddRecipe("Banana", ltmp, "A Banana");
-
+		#region Recipe
 		// Elixir of Minor Rejuvenation
 		List<string> ltmp2 = new List<string> ();
 		ltmp2.Add ("Consecrated Spring Water x 1");
@@ -39,5 +30,6 @@ public class DebugScript : MonoBehaviour {
 		ltmp4.Add ("Consecrated Spring Water x 5");
 		ltmp4.Add ("Eight-Leaf Clover x 8");
 		Craft.AddRecipe ("Elixir of Major Rejuvenation", ltmp4, "A potion");
+		#endregion
 	}
 }

@@ -19,8 +19,8 @@ public class Craft : MonoBehaviour {
 	public GameObject CraftPanelPf_r;			// none static craft panel
 	public GameObject RecipePanelPf_r;			// none static recipe panel
 	public GameObject canvas_r;					// none static canvas reference
+	#endregion
 
-	
 	// Use this for initialization
 	void Start () {
 		_Recipes = new List<Recipe> ();
@@ -28,41 +28,48 @@ public class Craft : MonoBehaviour {
 		RecipePanelPf = RecipePanelPf_r;
 		canvas = canvas_r;
 	}
-	#endregion
 
 	#region Craft
 	// Craft an Item
-	public static Recipe CraftItem(Item material_1, Item material_2, Item material_3){
+	public static Recipe CraftItem(Item material_1, Item material_2, Item material_3, Recipe rp){
 
 		// make list
 		List<string> ltmp = new List<string> ();
+		if (material_1 != null) {
+			ltmp.Add (material_1.name + " x " + material_1.amount);
+		}
+		if (material_2 != null) {
+			ltmp.Add (material_2.name + " x " + material_2.amount);
+		}
 		if (material_3 != null) {
-			ltmp.Add (material_1.name + " x " + material_1.amount);
-			ltmp.Add (material_2.name + " x " + material_2.amount);
 			ltmp.Add (material_3.name + " x " + material_3.amount);
-		} else {
-			ltmp.Add (material_1.name + " x " + material_1.amount);
-			ltmp.Add (material_2.name + " x " + material_2.amount);
 		}
 
 		// find the recipe
 		Recipe rt = null;
-		foreach (Recipe r in _Recipes) {
-			if(r.checkRecipe(ltmp)){
-				rt = r;
+		if (rp != null) {
+			if (rp.checkRecipe (ltmp)) {
+				rt = rp;
+			}
+		} else {
+			foreach (Recipe r in _Recipes) {
+				if (r.checkRecipe (ltmp)) {
+					rt = r;
+				}
 			}
 		}
 
 		// craft or return null
 		if (rt != null) {
 			// remove materials
-			if(material_3 != null){
+			if (material_1 != null) {
 				Inventory.RemoveItem (material_1.name, material_1.amount);
+			}
+			if (material_2 != null) {
 				Inventory.RemoveItem (material_2.name, material_2.amount);
+			}
+			if (material_3 != null) {
 				Inventory.RemoveItem (material_3.name, material_3.amount);
-			}else{
-				Inventory.RemoveItem (material_1.name, material_1.amount);
-				Inventory.RemoveItem (material_2.name, material_2.amount);
 			}
 			// add crafted item
 			Inventory.AddItem (rt.name, 1, rt.description);
@@ -90,7 +97,10 @@ public class Craft : MonoBehaviour {
 
 	public static void OpenCraftPanel(string name){
 		if (CraftPanel == null) {
-			Recipe recipe = GetRecipe(name);
+			Recipe recipe = null;
+			if(name != null){
+				recipe = GetRecipe(name);
+			}
 			CraftPanel = Instantiate (CraftPanelPf) as GameObject;
 			CraftPanel.GetComponent<CraftPanelScript>().recipe = recipe;
 			CraftPanel.transform.SetParent (canvas.transform, false);
@@ -143,22 +153,22 @@ public class Recipe : IComparable<Item> {
 
 	// check if this is the recipe
 	public bool checkRecipe(List<string> given){
+		if (given.Count == materials.Count){
+			foreach (string g in given) {
+				bool check = false;
+				foreach (string m in materials) {
+					if (g == m) {
+						check = true;
+					}
+				}
 
-		bool found = true;
-		foreach (string g in given) {
-			bool check = false;
-			foreach (string m in materials) {
-				if(g == m){
-					check = true;
+				if (!check) {
+					return false;
 				}
 			}
-
-			if(!check){
-				found = false;
-				break;
-			}
+			return true;
 		}
-		return found;
+		return false;
 	}
 
 	// compareTo method

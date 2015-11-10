@@ -18,7 +18,7 @@ public class CreateHero : MonoBehaviour {
     public GameObject canvas_r;              // non static canvas reference
 
     // Use this for initialization
-    void Start () {
+    public void StartCreateHero () {
 
         HeroPF = HeroPf_r;
         canvas = canvas_r;
@@ -32,9 +32,4 @@ public class CreateHero : MonoBehaviour {
         HeroDialogBox.text = Hero.GetComponentInChildren<Hero>().dialog;//prints text to heros text box
 
     }
-
-    // Update is called once per frame
-    void Update () {
-	
-	}
 }

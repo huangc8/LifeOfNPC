@@ -78,13 +78,26 @@ public class GameMaster : MonoBehaviour {
 
 	public void ChangePhase(){
 		if (currentPhase == 0) {
-			currentPhase = 1;
 			EndDayPhase ();
-			OpenNightMenu ();
-		} else {
+			ClearCanvas();
 			currentPhase = 1;
+			OpenNightMenu ();
+			Background.sprite = Resources.Load<Sprite>("Sprite/backgroundCraftroom");
+		} else {
 			CloseNightMenu();
+			ClearCanvas();
+			currentPhase = 0;
 			StartDayPhase();
+			Background.sprite = Resources.Load<Sprite>("Sprite/backgroundStorefront");
+		}
+	}
+
+	// clear the canvas
+	public void ClearCanvas(){
+		foreach (Transform child in canvas.transform) {
+			if(child.name != "Background" && child.name != "EventSystem"){
+				GameObject.Destroy(child.gameObject);
+			}
 		}
 	}
 	#endregion
