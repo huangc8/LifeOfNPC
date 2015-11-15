@@ -13,9 +13,11 @@ public class DialogDebug : MonoBehaviour {
 
 		if (day) {
 			if (GUI.Button (new Rect (10, 270, 100, 30), "Next Dialog")) {
-				CreateHero.Hero.GetComponent<Hero> ().dialogIndex++;
-			}
-			if (CreateHero.Hero.GetComponent<Hero> ().dialogIndex >= 4) { 
+                Debug.Log(CreateHero.Hero.GetComponent<Hero>().lines[0].next);
+                Debug.Log(CreateHero.Hero.GetComponent<Hero>().lines[1].next);
+                CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
+            }
+			if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.next >= 4) { 
 				if (GUI.Button (new Rect (10, 310, 100, 30), "Sell to Hero")) {
 					StartDialogScene.SellHeroPanel ();
 				}

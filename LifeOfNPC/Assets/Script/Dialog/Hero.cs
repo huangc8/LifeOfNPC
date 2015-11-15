@@ -17,18 +17,17 @@ public class Hero : MonoBehaviour {
     public int qii;//quality of inventory items
     public float willingness;//willingness to sell items to store owner
     public List<Item> H_Inventory;//heros inventory
-    public string[] lines;
+    public List<DialogTree.DialogTreeNode> lines;
+    public DialogTree.DialogTreeNode CurrentNode;
     public string dialog;
     public int patience;
 
     //for determining dialog
     public int HeroClass;//whether hero is a wizard, warrior, or ranger
     public int purpose;
-    public int dialogIndex;
-    public string[] dialogScript;
 
 
-    public TextAsset BuyingDialog;//text file asset that contains dialog
+    public FileInfo BuyingDialog;//text file asset that contains dialog
 
     //constructor
     public Hero()
@@ -39,7 +38,7 @@ public class Hero : MonoBehaviour {
         qii = UnityEngine.Random.Range(1, 3);
         H_Inventory = new List<Item>();
         patience = 0;
-        dialogIndex = 0;
+        lines = new List<DialogTree.DialogTreeNode>();
         
 
         HeroClass = UnityEngine.Random.Range(1, 3);
@@ -49,19 +48,19 @@ public class Hero : MonoBehaviour {
         {
             case 1:
                 //wizard
-                BuyingDialog = Resources.Load("StockWizardDialog") as TextAsset;//text file that is loaded from resourses
+                BuyingDialog = new FileInfo ("Assets/Resources/StockWizardDialog.txt");//text file that is loaded from resourses
                 Debug.Log("Your a wizard Harry");
                 break;
 
             case 2:
                 //warrior
-                BuyingDialog = Resources.Load("StockWarriorDialog") as TextAsset;//text file that is loaded from resourses
+                BuyingDialog = new FileInfo("Assets/Resources/StockWizardDialog.txt"); ;//text file that is loaded from resourses
                 Debug.Log("I am a warrior");
                 break;
 
             case 3:
                 //ranger
-                BuyingDialog = Resources.Load("StockRangerDialog") as TextAsset;//text file that is loaded from resourses
+                BuyingDialog = new FileInfo("Assets/Resources/StockWizardDialog.txt"); ;//text file that is loaded from resourses
                 Debug.Log("I am a ranger");
                 break;
 
@@ -70,33 +69,22 @@ public class Hero : MonoBehaviour {
 
         }
 
-        
-        char delimiters = '#';
-        dialogScript = BuyingDialog.text.Split(delimiters);//separates dialog into individual scripts
-        delimiters = '|';
-        lines = dialogScript[1].Split(delimiters);
-        dialog = "";
-        
+        DialogTree.CreateTree(BuyingDialog, lines);
+        CurrentNode = lines[0];
+        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
 
 
         FillInventory(qii);//fill hero inventory based on quality of inventory variable
 
     }//ends hero constructor
 
+
     void Update()
     {
-        if (dialogIndex <= 3)
-        {
-            CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponentInChildren<Hero>().lines[dialogIndex];//changes heros dialog
-        }
-        else
-        {
-            CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponentInChildren<Hero>().dialog;
-        }
+       CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
     }
 
-
-
+    
     public void printInventory()
     {
         foreach(Item it in H_Inventory)

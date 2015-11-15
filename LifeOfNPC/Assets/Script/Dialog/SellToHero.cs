@@ -50,13 +50,6 @@ public class SellToHero : MonoBehaviour {
                 transform.GetComponent<Button>().interactable = false;
                 StartDialogScene.NoSale.Add(this.GetComponent<SellButtonObjects>().namelabel.text);
             }
-
-            if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)//closes out the sell menu if hero
-                                                                                                                                            //runs out of patience
-            {
-                CreateHero.Hero.GetComponentInChildren<Hero>().patience--;
-                StartDialogScene.CloseSellToPanel();
-            }
         }
 
         else
