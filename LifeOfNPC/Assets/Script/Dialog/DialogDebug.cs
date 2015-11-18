@@ -2,11 +2,19 @@ using UnityEngine;
 using System.Collections;
 
 public class DialogDebug : MonoBehaviour {
-
+	
+	public GameObject sellPanel;
+	public GameObject sellPanelPf;
 	public bool day = false;
 
     void OnGUI()
     {
+
+		if (GUI.Button (new Rect (10, 150, 100, 30), "Sell Panel")) {
+			sellPanel = Instantiate(sellPanelPf) as GameObject;
+			sellPanel.transform.SetParent(this.GetComponent<GameMaster>().canvas.transform, false);
+		}
+		
 		if (GUI.Button (new Rect (10, 180, 100, 30), "Next Phase")) {
 			this.GetComponent<GameMaster>().ChangePhase();
 		}

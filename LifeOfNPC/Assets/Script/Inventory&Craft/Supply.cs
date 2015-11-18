@@ -7,35 +7,51 @@ public class Supply : MonoBehaviour {
 	#region Data
 	public GameObject canvas;				// the canvas
 	public GameObject SupplyPanel;			// the supply panel
-	public ResultPanelScript Result;		// the result panel
 	public List<Item> supplyList;			// the supply list with all goods that player can buy
-
 	public GameObject SupplyPanelPf;		// supply panel pf
-	public GameObject SupplyButtonPf;		// supply button pf
+	public GameObject SupplyItemButtonPf;	// supply item button pf
+	public GameObject SupplyRecipeButtonPf;	// supply recipe button pf
 
 	public int sum = 0;						// the sum of money
 	#endregion
 
-	// Use this for initialization
-	public void DebugPart () {
-		supplyList = new List<Item> ();
-		supplyList.Add (new Item ("Apple", 0, "An Apple"));
-		supplyList.Add (new Item ("Orange", 0, "A Orange"));
-		supplyList.Add (new Item ("Banana", 0, "A Banana"));
-		supplyList.Add (new Item ("Watermellon", 0, "A Watermellon"));
-	}
-
 	#region Result
 	// increase the sum
-	public void IncreaseSum(int amount){
-		Result.sum += amount;
-		Result.UpdatePanel ();
+	public void IncreaseSum(int cost){
+		sum += cost;
+		SupplyPanel.GetComponent<SupplyPanelScript> ().UpdateTotal (sum);
 	}
 
 	// decrease the sum
-	public void DecreaseSum(int amount){
-		Result.sum -= amount;
-		Result.UpdatePanel ();
+	public void DecreaseSum(int cost){
+		sum -= cost;
+		SupplyPanel.GetComponent<SupplyPanelScript> ().UpdateTotal (sum);
+	}
+
+	// confirm order
+	public void Confirm(){
+		CloseSupplyPanel ();
+	}
+
+	// check for additional
+	public int getAdditional(string name){
+		foreach (Item it in supplyList) {
+			if(it.name == name){
+				return it.amount;
+			}
+		}
+		return 0;
+	}
+
+	public void UpdateRecipeButtons(){
+		GameObject contentPanel = SupplyPanel.GetComponent<SupplyPanelScript> ().RecipeContentPanel;
+		foreach (Transform gb in contentPanel.transform) {
+			if(gb.GetComponent<SupplyRecipeButtonScript>() != null){
+				gb.GetComponent<SupplyRecipeButtonScript>().UpdateColor();
+			}else if (gb.GetComponent<SupplyRecipePanelScript>() != null){
+				gb.GetComponent<SupplyRecipePanelScript>().materialColorCheck();
+			}
+		}
 	}
 	#endregion
 
@@ -46,41 +62,53 @@ public class Supply : MonoBehaviour {
 			SupplyPanel = Instantiate (SupplyPanelPf) as GameObject;
 			SupplyPanel.transform.SetParent (canvas.transform, false);
 			SupplyPanel.GetComponent<SupplyPanelScript>()._Supply = this;
-			Result = SupplyPanel.GetComponent<SupplyPanelScript>().ResultPanel.GetComponent<ResultPanelScript>();
+			SupplyPanel.GetComponent<SupplyPanelScript>().TotalLabel.text = "Total: " + sum.ToString();
 		}
-		Result.sum = sum;
-		Result.UpdatePanel ();
-		PopulateSupplyButton ();
+		PopulateSupplyItemButton ();
+		PopulateSupplyRecipeButton ();
 	}
 
 	// populate the buttons
-	public void PopulateSupplyButton(){
+	public void PopulateSupplyItemButton(){
 
-		GameObject contentPanel = SupplyPanel.GetComponent<SupplyPanelScript> ().ContentPanel;
+		GameObject contentPanel = SupplyPanel.GetComponent<SupplyPanelScript> ().ItemConstentPanel;
 
 		for (int i = 0; i < supplyList.Count; i++) {
-			GameObject newButton = Instantiate(SupplyButtonPf) as GameObject;
+			GameObject newButton = Instantiate(SupplyItemButtonPf) as GameObject;
 			SupplyButtonScript sbs = newButton.GetComponent<SupplyButtonScript>();
 			sbs.nameLabel.text = supplyList[i].name;
 			sbs.quantity = supplyList[i].amount;
 			sbs.quantityLabel.text = sbs.quantity.ToString();
 			sbs.index = i;
-			sbs.price = 10;
+			sbs.cost = supplyList[i].supplyPrice;
+			sbs.costLabel.text = "$" + sbs.cost.ToString();
+			sbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + supplyList[i].name);
 			sbs._Supply = this;
+			newButton.transform.SetParent(contentPanel.transform, false);
+		}
+	}
+
+	// populate supply recipe buttons
+	public void PopulateSupplyRecipeButton(){
+
+		GameObject contentPanel = SupplyPanel.GetComponent<SupplyPanelScript> ().RecipeContentPanel;
+
+		for (int i = 0; i < Craft._Recipes.Count; i++) {
+			GameObject newButton = Instantiate(SupplyRecipeButtonPf) as GameObject;
+			SupplyRecipeButtonScript srbs = newButton.GetComponent<SupplyRecipeButtonScript>();
+			srbs.index = i;
+			srbs.nameLabel.text = Craft._Recipes[i].name;
+			srbs._Supply = this;
+			srbs.UpdateColor();
 			newButton.transform.SetParent(contentPanel.transform, false);
 		}
 	}
 
 	// Close the supply Panel
 	public void CloseSupplyPanel(){
-		GameObject contents = SupplyPanel.GetComponent<SupplyPanelScript> ().ContentPanel;
-		foreach (Transform child in contents.transform) {
-			SupplyButtonScript sbs = child.GetComponent<SupplyButtonScript>();
-			supplyList[sbs.index].amount = sbs.quantity;
-		}
 		Destroy (SupplyPanel);
-		sum = Result.sum;
 		this.GetComponent<GameMaster> ().OpenNightMenu ();
 	}
 	#endregion
+
 }

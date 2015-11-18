@@ -21,6 +21,15 @@ public class Item : MonoBehaviour {
 		this.amount = amount;
 		this.type = 0;
 		this.description = description;
+		this.supplyPrice = 10;
+		this.sellPrice = 0;
+	}
+
+	// copy constructor
+	public Item (Item it){
+		this.name = it.name;
+		this.amount = it.amount;
+		this.description = it.description;
 	}
 
 	#region Display

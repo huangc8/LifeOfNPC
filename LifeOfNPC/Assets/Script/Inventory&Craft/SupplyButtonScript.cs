@@ -10,10 +10,11 @@ public class SupplyButtonScript : MonoBehaviour {
 
 	public int quantity;
 	public int index;
-	public int price;
+	public int cost;
 
 	public Text nameLabel;
 	public Text quantityLabel;
+	public Text costLabel;
 	public Image icon;
 	
 	public Button upButton;
@@ -25,7 +26,9 @@ public class SupplyButtonScript : MonoBehaviour {
 	public void IncreaseQuantity(){
 		quantity++;
 		quantityLabel.text = quantity.ToString ();
-		_Supply.IncreaseSum (price);
+		_Supply.IncreaseSum (cost);
+		_Supply.supplyList [index].amount++;
+		_Supply.UpdateRecipeButtons ();
 	}
 
 	// decrease the buying quantity
@@ -33,7 +36,9 @@ public class SupplyButtonScript : MonoBehaviour {
 		if (quantity > 0) {
 			quantity--;
 			quantityLabel.text = quantity.ToString ();
-			_Supply.DecreaseSum(price);
+			_Supply.DecreaseSum(cost);
+			_Supply.supplyList [index].amount--;
+			_Supply.UpdateRecipeButtons ();
 		}
 	}
 	#endregion

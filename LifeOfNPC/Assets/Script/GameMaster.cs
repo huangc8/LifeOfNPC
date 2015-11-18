@@ -20,15 +20,11 @@ public class GameMaster : MonoBehaviour {
 
 	// Use this for Debug
 	void Start () {
-
-
-
 		// Debug
 		gold = 30;
 		currentDay = 1;
 		currentPhase = 1;
 		ChangePhase ();
-		this.GetComponent<Supply> ().DebugPart ();
 	}
 
 	#region Player functions
