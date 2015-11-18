@@ -35,20 +35,21 @@ public class BuyFromHero : MonoBehaviour {
         {
             if (attempt == 5)//on first attempt hero offers their initial price
             {
-                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "How about " + InitialThresholdPrice;//price the hero offers
+                //CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "How about " + InitialThresholdPrice;//price the hero offers
+                CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
                 attempt--;
             }
 
             else if (attempt != 0)//increase Price threshold 
             {
                 NewThresholdPrice = NewThresholdPrice - ((NewThresholdPrice - OfferedPrice) / 4);
-                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "Ok how about " + NewThresholdPrice;//price the hero offers
+                CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];//price the hero offers
                 attempt--;
             }
 
             else//if the number of attempts is reached
             {
-                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll sell that elsewhere";
+                //CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll sell that elsewhere";
                 transform.GetComponent<Button>().interactable = false;
 
             }
@@ -57,7 +58,7 @@ public class BuyFromHero : MonoBehaviour {
 
         else
         {
-            CreateHero.Hero.GetComponentInChildren<Hero>().dialog = OfferedPrice + " sounds fair enough";
+            CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, true)];
             Debug.Log(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex].name);
             Inventory.AddItem(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex]);//moves item from hero inventory to players inventory
 

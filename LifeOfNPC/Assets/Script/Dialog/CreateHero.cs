@@ -32,4 +32,9 @@ public class CreateHero : MonoBehaviour {
         HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
 
     }
+
+    public void DismissHero()
+    {
+        Destroy(Hero);//should remove hero object
+    }
 }

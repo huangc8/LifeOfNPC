@@ -1,7 +1,7 @@
 1020000-1: “Shopkeeper?  Are you in?”  
 1030000-2: “Greetings, customer!  What can I do for you?”  
 1040000-3: “I’d like [required items here].”  
-1050000-4: “Well, let’s see what we have for you!” 
+1080000-4: “Well, let’s see what we have for you!” 
 2060700-5: “Do you have any materials you want to sell me?” 
 1040000-6: [Failure case] “I’m afraid not.” 
 1080000-7: [Success case] “Yes, actually.”  

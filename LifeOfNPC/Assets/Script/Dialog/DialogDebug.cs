@@ -7,14 +7,21 @@ public class DialogDebug : MonoBehaviour {
 
     void OnGUI()
     {
-		if (GUI.Button (new Rect (10, 230, 100, 30), "Next Phase")) {
+		if (GUI.Button (new Rect (10, 180, 100, 30), "Next Phase")) {
 			this.GetComponent<GameMaster>().ChangePhase();
 		}
 
 		if (day) {
-			if (GUI.Button (new Rect (10, 270, 100, 30), "Next Dialog")) {
-                Debug.Log(CreateHero.Hero.GetComponent<Hero>().lines[0].next);
-                Debug.Log(CreateHero.Hero.GetComponent<Hero>().lines[1].next);
+            if (GUI.Button(new Rect(10, 200, 100, 30), "Next Hero"))
+            {
+                this.GetComponent<CreateHero>().StartCreateHero();
+            }
+
+            if (GUI.Button(new Rect(10, 230, 100, 30), "Dismiss Hero"))
+            {
+                this.GetComponent<CreateHero>().DismissHero();
+            }
+            if (GUI.Button (new Rect (10, 270, 100, 30), "Next Dialog")) {
                 CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
             }
 			if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.next >= 4) { 
