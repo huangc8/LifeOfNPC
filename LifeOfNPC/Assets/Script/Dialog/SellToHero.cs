@@ -33,35 +33,29 @@ public class SellToHero : MonoBehaviour {
             
             if (attempt == 5)//on first attempt hero offers their initial price
             {
-                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "How about " + InitialThresholdPrice;//price the hero offers
+                //CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "How about " + InitialThresholdPrice;//price the hero offers
+                CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
                 attempt--;
             }
 
             else if(attempt != 0)//increase Price threshold 
             {
                 NewThresholdPrice = NewThresholdPrice + ((OfferedPrice - NewThresholdPrice)/4);
-                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "Ok how about " + NewThresholdPrice;//price the hero offers
+                CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];//price the hero offers
                 attempt--;
             }
 
             else//if the nmber of attempts is reached
             {
-                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll buy that elsewhere";
+                //CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll buy that elsewhere";
                 transform.GetComponent<Button>().interactable = false;
                 StartDialogScene.NoSale.Add(this.GetComponent<SellButtonObjects>().namelabel.text);
-            }
-
-            if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)//closes out the sell menu if hero
-                                                                                                                                            //runs out of patience
-            {
-                CreateHero.Hero.GetComponentInChildren<Hero>().patience--;
-                StartDialogScene.CloseSellToPanel();
             }
         }
 
         else
         {
-            CreateHero.Hero.GetComponentInChildren<Hero>().dialog = OfferedPrice + " sounds fair enough";
+            CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, true)];
             string item = transform.GetComponentInChildren<Text>().text;//the text in the button
             
             string itemName = item.Substring(item.IndexOf(" ")+1);//should get the item name from the button

@@ -16,10 +16,10 @@ public class BuyFromHero : MonoBehaviour {
 
     void Start()
     {
-        item = CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex];
+        item = CreateHero.Hero.GetComponent<Hero>().H_Inventory[Itemindex];
         Debug.Log(item.supplyPrice);
         float itemprice = 100;//will be the price of the item
-        InitialThresholdPrice = ((100 + CreateHero.Hero.GetComponentInChildren<Hero>().thriftiness) / 100) * itemprice;//sets the initial price hero will buy at
+        InitialThresholdPrice = ((100 + CreateHero.Hero.GetComponent<Hero>().thriftiness) / 100) * itemprice;//sets the initial price hero will buy at
         Debug.Log("Current Threshold Price:" + InitialThresholdPrice);
         attempt = 5;
         NewThresholdPrice = InitialThresholdPrice;
@@ -35,36 +35,30 @@ public class BuyFromHero : MonoBehaviour {
         {
             if (attempt == 5)//on first attempt hero offers their initial price
             {
-                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "How about " + InitialThresholdPrice;//price the hero offers
+                //CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "How about " + InitialThresholdPrice;//price the hero offers
+                CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
                 attempt--;
             }
 
             else if (attempt != 0)//increase Price threshold 
             {
                 NewThresholdPrice = NewThresholdPrice - ((NewThresholdPrice - OfferedPrice) / 4);
-                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "Ok how about " + NewThresholdPrice;//price the hero offers
+                CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];//price the hero offers
                 attempt--;
             }
 
             else//if the number of attempts is reached
             {
-                CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll sell that elsewhere";
+                //CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll sell that elsewhere";
                 transform.GetComponent<Button>().interactable = false;
 
             }
 
-
-            if (CreateHero.Hero.GetComponentInChildren<Hero>().patience == CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1)
-            {
-                CreateHero.Hero.GetComponentInChildren<Hero>().patience--;
-                StartDialogScene.CloseBuyFromPanel();
-            }
         }
 
         else
         {
-            CreateHero.Hero.GetComponentInChildren<Hero>().dialog = OfferedPrice + " sounds fair enough";
-            CreateHero.Hero.GetComponentInChildren<Hero>().patience = CreateHero.Hero.GetComponentInChildren<Hero>().lines.Length - 1;
+            CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, true)];
             Debug.Log(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex].name);
             Inventory.AddItem(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex]);//moves item from hero inventory to players inventory
 

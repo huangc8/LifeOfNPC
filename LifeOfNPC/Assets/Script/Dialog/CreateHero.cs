@@ -29,7 +29,12 @@ public class CreateHero : MonoBehaviour {
         Hero.AddComponent<Hero>();//adds hero component upon creation
 
         HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
-        HeroDialogBox.text = Hero.GetComponentInChildren<Hero>().dialog;//prints text to heros text box
+        HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
 
+    }
+
+    public void DismissHero()
+    {
+        Destroy(Hero);//should remove hero object
     }
 }
