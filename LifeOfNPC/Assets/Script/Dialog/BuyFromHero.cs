@@ -21,6 +21,7 @@ public class BuyFromHero : MonoBehaviour {
         float itemprice = 100;//will be the price of the item
         InitialThresholdPrice = ((100 + CreateHero.Hero.GetComponent<Hero>().thriftiness) / 100) * itemprice;//sets the initial price hero will buy at
         Debug.Log("Current Threshold Price:" + InitialThresholdPrice);
+        CreateHero.Hero.GetComponent<Hero>().OfferPrice = (int)InitialThresholdPrice;
         attempt = 5;
         NewThresholdPrice = InitialThresholdPrice;
 
@@ -42,7 +43,7 @@ public class BuyFromHero : MonoBehaviour {
 
             else if (attempt != 0)//increase Price threshold 
             {
-                NewThresholdPrice = NewThresholdPrice - ((NewThresholdPrice - OfferedPrice) / 4);
+                CreateHero.Hero.GetComponent<Hero>().OfferPrice = (int)(CreateHero.Hero.GetComponent<Hero>().OfferPrice - ((NewThresholdPrice - OfferedPrice) / 4));
                 CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];//price the hero offers
                 attempt--;
             }
