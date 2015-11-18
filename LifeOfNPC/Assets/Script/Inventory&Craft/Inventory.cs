@@ -37,7 +37,6 @@ public class Inventory : MonoBehaviour {
 	#region functions
 	// Add an Item
 	public static void AddItem(string name, int addAmount, string description){
-		
 		// increase exisitng item amount
 		bool found = false;
 		foreach(Item it in _Items){
@@ -103,6 +102,28 @@ public class Inventory : MonoBehaviour {
 			_RemoveIndex.Clear();
 		}
 	}// end of RemoveUpdate
+
+	// get the item amount
+	public static int getItemAmount(string name){
+		// increase exisitng item amount
+		foreach(Item it in _Items){
+			if(it.name == name){
+				return it.amount;
+			}
+		}
+		return 0;
+	}
+
+	// get the item
+	public static Item getItem(string name){
+		// increase exisitng item amount
+		foreach(Item it in _Items){
+			if(it.name == name){
+				return it;
+			}
+		}
+		return null;
+	}
 	#endregion
 
 	#region On Screen Inventory

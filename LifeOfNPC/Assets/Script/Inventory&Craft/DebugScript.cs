@@ -9,8 +9,8 @@ public class DebugScript : MonoBehaviour {
 
 	void Start(){
 		// inventory
-		Inventory.AddItem ("Consecrated Spring Water", 50, "blah");
-		Inventory.AddItem ("Eight-Leaf Clover", 50, "blah");
+		Inventory.AddItem ("Consecrated Spring Water", 2, "blah");
+		Inventory.AddItem ("Eight-Leaf Clover", 3, "blah");
 
 		#region Recipe
 		// Elixir of Minor Rejuvenation
@@ -30,6 +30,13 @@ public class DebugScript : MonoBehaviour {
 		ltmp4.Add ("Consecrated Spring Water x 5");
 		ltmp4.Add ("Eight-Leaf Clover x 8");
 		Craft.AddRecipe ("Elixir of Major Rejuvenation", ltmp4, "A potion");
+
+		Supply _sup = this.GetComponent<Supply>();
+
+		_sup.supplyList = new List<Item> ();
+		_sup.supplyList.Add (new Item ("Consecrated Spring Water", 0, "blah"));
+		_sup.supplyList.Add (new Item ("Eight-Leaf Clover", 0, "blah"));
+
 		#endregion
 	}
 }

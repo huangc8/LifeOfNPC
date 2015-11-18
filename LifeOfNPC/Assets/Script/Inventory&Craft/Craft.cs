@@ -13,7 +13,7 @@ public class Craft : MonoBehaviour {
 	public static GameObject CraftPanel;		// Craft Panel object
 	public static GameObject RecipePanel;		// recipe panel
 	public static GameObject canvas;			// the Canvas object
-
+	public static GameMaster _GameMaster;		// the game master reference
 	public static GameObject CraftPanelPf;		// prefab for craft panel
 	public static GameObject RecipePanelPf;		// prefab for recipe panel
 	public GameObject CraftPanelPf_r;			// none static craft panel
@@ -27,6 +27,7 @@ public class Craft : MonoBehaviour {
 		CraftPanelPf = CraftPanelPf_r;
 		RecipePanelPf = RecipePanelPf_r;
 		canvas = canvas_r;
+		_GameMaster = this.GetComponent<GameMaster> ();
 	}
 
 	#region Craft
@@ -82,27 +83,11 @@ public class Craft : MonoBehaviour {
 	#endregion
 
 	#region On Screen Craft
-	public static void OpenRecipePanel(){
-		if (RecipePanel == null) {
-			RecipePanel = Instantiate (RecipePanelPf) as GameObject;
-			RecipePanel.transform.SetParent(canvas.transform, false);
-		}
-	}
 
-	public static void CloseRecipePanel(){
-		if (RecipePanel != null) {
-			Destroy (RecipePanel);
-		}
-	}
-
-	public static void OpenCraftPanel(string name){
+	public static void OpenCraftPanel(){
 		if (CraftPanel == null) {
-			Recipe recipe = null;
-			if(name != null){
-				recipe = GetRecipe(name);
-			}
 			CraftPanel = Instantiate (CraftPanelPf) as GameObject;
-			CraftPanel.GetComponent<CraftPanelScript>().recipe = recipe;
+			CraftPanel.GetComponent<CraftPanelScript>().OpenCraftPanel();
 			CraftPanel.transform.SetParent (canvas.transform, false);
 		}
 	}
@@ -112,6 +97,7 @@ public class Craft : MonoBehaviour {
 		if (CraftPanel != null) {
 			Destroy (CraftPanel);
 		}
+		_GameMaster.OpenNightMenu ();
 	}
 	#endregion
 
@@ -134,6 +120,7 @@ public class Craft : MonoBehaviour {
 		}
 		return null;
 	}
+	
 	#endregion
 }
 
@@ -169,6 +156,36 @@ public class Recipe : IComparable<Item> {
 			return true;
 		}
 		return false;
+	}
+
+	// determine color -> 0 - green, 1 - yellow, 2 - red
+	public int checkColor(){
+		int fulfill = 0;
+		for (int i = 0; i < this.materials.Count; i++) {
+			string[] ss = this.materials[i].Split(new string[] {" x "}, StringSplitOptions.None);
+			int required = int.Parse(ss[1]);
+			if(required <= Inventory.getItemAmount(ss[0])){
+				fulfill++;
+			}
+		}
+		if (fulfill == this.materials.Count) {
+			return 0;
+		} else if (fulfill > this.materials.Count / 2) {
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+
+	// get the material name of given index
+	public string getName(int index){
+		string[] ss = this.materials[index].Split(new string[] {" x "}, StringSplitOptions.None);
+		return ss [0];
+	}
+
+	public int getAmount(int index){
+		string[] ss = this.materials[index].Split(new string[] {" x "}, StringSplitOptions.None);
+		return int.Parse(ss [1]);
 	}
 
 	// compareTo method

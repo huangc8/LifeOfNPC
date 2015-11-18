@@ -5,36 +5,168 @@ using System.Collections;
 
 public class CraftPanelScript : MonoBehaviour {
 
-	public Text nameLabel;					// name of product
-	public Text materialLabel_1;			// name of material_1
-	public Text materialLabel_2;			// name of material_2
-	public Text materialLabel_3;			// name of material_3
+	// recipe section
 	public Recipe recipe;					// the recipe
-	public GameObject material_1;			// material 1
-	public GameObject material_2;			// materail 2
-	public GameObject material_3;			// material 3
+	public Text recipeLabel;				// the recipe label
+	public GameObject RecipePanel;			// the recipe panel
+	public GameObject contentPanel;			// the content panel
+	public GameObject RecipeButtonPf;		// recipe buttons pf
+
+	// craft section
+	private bool experimental;				// the experimental flag
+	public List<GameObject> materials;		// the material boxes
+	public List<Text> materialNums;			// the material number label
 	public GameObject product;				// the product
+	public Button craftButton;				// the craft button
 	public GameObject inventoryItemPF;		// the inventory item object
 
-	void Start(){
-		if (recipe != null) {
-			nameLabel.text = recipe.name;
-			if (recipe.materials.Count == 1) {
-				materialLabel_1.text = recipe.materials [0];
-				materialLabel_2.text = "";
-				materialLabel_3.text = "";
-			} else if (recipe.materials.Count == 2) {
-				materialLabel_1.text = recipe.materials [0];
-				materialLabel_2.text = recipe.materials [1];
-				materialLabel_3.text = "";
-			} else if (recipe.materials.Count == 3) {
-				materialLabel_1.text = recipe.materials [0];
-				materialLabel_2.text = recipe.materials [1];
-				materialLabel_3.text = recipe.materials [2];
-			}
+	// product detail section
+	public GameObject detailPanel;
+	public Image detailIcon;
+	public Text detailNameLabel;
+	public Text detailDescription;
+
+	// experimental section
+	public GameObject ExperimentalPanel;
+	public GameObject ExperimentalPanelPf;		// the inventoryPanel
+
+	// open the craft panel
+	public void OpenCraftPanel(){
+		PopulateRecipeButton ();
+		detailPanel.SetActive (false);
+	}
+
+	// close the craft panel
+	public void CloseCraftPanel(){
+		Craft.CloseCraftPanel ();
+	}
+
+	public void OpenExperimental(){
+		RecipePanel.SetActive (false);
+		ExperimentalPanel = Instantiate (ExperimentalPanelPf) as GameObject;
+		ExperimentalPanel.transform.SetParent (this.transform, false);
+	}
+
+	public void CloseExperimental(){
+		RecipePanel.SetActive (true);
+		Destroy (ExperimentalPanel);
+	}
+
+	// populate the recipe panel
+	public void PopulateRecipeButton(){
+		int index = 0;
+		foreach (Recipe re in Craft._Recipes) {
+			GameObject newButton = Instantiate(RecipeButtonPf) as GameObject;
+			RecipeListButtonScript rlbs = newButton.GetComponent<RecipeListButtonScript>();
+			rlbs._CraftPanelScript = this;
+			rlbs.NameLabel.text = re.name;
+			rlbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + re.name);
+			rlbs.index = index;
+			rlbs.contentPanel = contentPanel;
+			rlbs.UpdateColor();
+			newButton.transform.SetParent(contentPanel.transform, false);
+			index++;
+		}
+	}
+
+	public void ResetExperimental(){
+		CleanUpCraftPanel ();
+		Destroy (ExperimentalPanel);
+		ExperimentalPanel = Instantiate (ExperimentalPanelPf) as GameObject;
+		ExperimentalPanel.transform.SetParent (this.transform, false);
+	}
+
+	public void ExperimentalButtonClick(){
+		if (ExperimentalPanel != null) {
+			CloseExperimental();
+			CleanUpCraftPanel();
+			experimental = false;
 		} else {
-			recipe = null;
-			materialLabel_1.text = "Experimental";
+			OpenExperimental();
+			experimental = true;
+		}
+	}
+
+	// put materials into boxes
+	public void SetUpCraftPanel(int index){
+		recipe = Craft._Recipes [index];
+		for (int i = 0; i < materials.Count; i++) {
+			if(i < recipe.materials.Count){
+				GameObject newItem = Instantiate (inventoryItemPF) as GameObject;
+				Item it = new Item(recipe.getName(i), recipe.getAmount(i), recipe.description);
+				newItem.GetComponent<Item> ().DisplayItem(it);
+				newItem.GetComponent<Item> ().GetComponentInChildren<Text> ().enabled = false;
+				newItem.GetComponent<ClickandDrag> ().enabled = false;
+				materials[i].GetComponent<MaterialBoxScript>().material = newItem.GetComponent<Item>();
+				newItem.transform.SetParent (materials[i].transform, false);
+				UpdateText();
+			}else{
+				materialNums[i].text = "??/??";
+			}
+		}
+		GameObject resultItem = Instantiate (inventoryItemPF) as GameObject;
+		resultItem.GetComponent<Item> ().DisplayItem (new Item (recipe.name, 1, recipe.description));
+		resultItem.GetComponent<Item> ().GetComponentInChildren<Text> ().enabled = false;
+		resultItem.GetComponent<ClickandDrag> ().enabled = false;
+		resultItem.transform.SetParent (product.transform, false);
+	}
+
+	// put the information into detail panel
+	public void SetUpDetailPanel(int index){
+		recipe = Craft._Recipes [index];
+		detailIcon.sprite = Resources.Load<Sprite>("Sprite/" + recipe.name);
+		detailNameLabel.text = recipe.name;
+		detailDescription.text = recipe.description;
+		detailPanel.SetActive (true);
+	}
+
+	public void CloseDetailPanel(){
+		detailPanel.SetActive (false);	
+	}
+
+	// update color code
+	public void UpdateText(){
+		int enough = 0;
+		for (int i = 0; i < materials.Count; i++) {
+			if(i < recipe.materials.Count){
+				int got = Inventory.getItemAmount (recipe.getName (i));
+				int required = recipe.getAmount (i);
+				materialNums [i].text = got + "/" + required;
+				if(got >= required){
+					materialNums[i].color = Color.green;
+					enough++;
+				}else if (got >= required / 2){
+					materialNums[i].color = Color.yellow;
+				}else{
+					materialNums[i].color = Color.red;
+				}
+			}else{
+				materialNums[i].text = "??/??";
+				materialNums[i].color = Color.black;
+			}
+		}
+		if (enough == recipe.materials.Count) {
+			craftButton.interactable = true;
+		} else {
+			craftButton.interactable = false;
+		}
+
+		foreach (Transform child in contentPanel.transform) {
+			if(child.GetComponent<RecipeListButtonScript>() != null){
+				child.GetComponent<RecipeListButtonScript>().UpdateColor();
+			}
+		}
+	}
+
+	// clean the panel
+	public void CleanUpCraftPanel(){
+		for(int i = 0; i < materials.Count; i++){
+			materials[i].GetComponent<MaterialBoxScript>().DestroyMaterial();
+			materialNums[i].text = "??/??";
+			materialNums[i].color = Color.black;
+		}
+		if (product.transform.childCount > 0) {
+			GameObject.Destroy (product.transform.GetChild (0).gameObject);
 		}
 	}
 
@@ -42,24 +174,25 @@ public class CraftPanelScript : MonoBehaviour {
 	public void CraftButtonClick(){
 		List<Item> items = new List<Item> ();
 
-		if (material_1.GetComponent<MaterialBoxScript> ().GetMaterial () != null) {
-			items.Add (material_1.GetComponent<MaterialBoxScript> ().GetMaterial ());
-		}
-		if (material_2.GetComponent<MaterialBoxScript> ().GetMaterial () != null) {
-			items.Add(material_2.GetComponent<MaterialBoxScript> ().GetMaterial ());
-		}
-		if (material_3.GetComponent<MaterialBoxScript> ().GetMaterial () != null) {
-			items.Add(material_3.GetComponent<MaterialBoxScript> ().GetMaterial ());
+		for (int i = 0; i < materials.Count; i++) {
+			if(materials[i].GetComponent<MaterialBoxScript>().GetMaterial() != null){
+				Item it = materials[i].GetComponent<MaterialBoxScript>().GetMaterial();
+				if(it != null){
+					items.Add(it);
+				}
+			}
 		}
 
 		if (items.Count > 0) {
-			// merge same material
-			for(int i = 0; i < items.Count; i++){
-				for(int j = 1; j < items.Count; j++){
-					if(items[j] != null && items[i] != null && i != j){
-						if(items[i].name == items[j].name){
-							items[i].AddMore(items[j].amount);
-							items[j] = null;
+			if(experimental){
+				// merge same material
+				for(int i = 0; i < items.Count; i++){
+					for(int j = 1; j < items.Count; j++){
+						if(items[j] != null && items[i] != null && i != j){
+							if(items[i].name == items[j].name){
+								items[i].AddMore(items[j].amount);
+								items[j].amount = 0;
+							}
 						}
 					}
 				}
@@ -72,17 +205,23 @@ public class CraftPanelScript : MonoBehaviour {
 			Recipe recipe_p = Craft.CraftItem (items[0], items[1], items[2], recipe);
 
 			if (recipe_p != null) {
-				// create the product
-				GameObject newItem = Instantiate (inventoryItemPF) as GameObject;
-				newItem.GetComponent<Item> ().DisplayItem (new Item (recipe_p.name, 1, recipe_p.description));
-				newItem.transform.SetParent (product.transform, false);
-
-				// remove the materials
-				material_1.GetComponent<MaterialBoxScript> ().DestroyMaterial ();
-				material_2.GetComponent<MaterialBoxScript> ().DestroyMaterial ();
-				material_3.GetComponent<MaterialBoxScript> ().DestroyMaterial ();
+				if(experimental){
+					// create the product
+					GameObject newItem = Instantiate (inventoryItemPF) as GameObject;
+					newItem.GetComponent<Item> ().DisplayItem (new Item (recipe_p.name, 1, recipe_p.description));
+					newItem.transform.SetParent (product.transform, false);
+					for(int i = 0; i < materials.Count; i++){
+						materials[i].GetComponent<MaterialBoxScript>().DestroyMaterial();
+					}
+				}else{
+					UpdateText();
+				}
 			} else {
-				Debug.Log ("don't exist");
+				for (int i = 0; i < materials.Count; i++) {
+					materials[i].GetComponent<MaterialBoxScript>().DestroyMaterial();
+				}
+				ResetExperimental();
+				Debug.Log ("Craft fail");
 			}
 		}
 	}

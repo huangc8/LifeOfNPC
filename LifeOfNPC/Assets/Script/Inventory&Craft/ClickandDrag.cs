@@ -4,16 +4,16 @@ using UnityEngine.EventSystems;
 using System.Collections;
 
 
-public class ClickandDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class ClickandDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
 	public Item it;
+	public InventoryPanelScript _IPS;
 	public Transform originalParent;
 	public GameObject replacement;
 	
 	// On beginning drag
 	public void OnBeginDrag(PointerEventData eventData){
 		if (it != null) {
-
 			// create a replacement placeholder
 			if(this.transform.GetComponent<Item>().amount > 1){
 				replacement = Instantiate(gameObject);
@@ -61,5 +61,9 @@ public class ClickandDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 			}
 			GetComponent<CanvasGroup>().blocksRaycasts = true;
 		}
+	}
+
+	public void OnPointerClick(PointerEventData eventData){
+		_IPS.OpenDetail(this.GetComponent<Item> ());
 	}
 }

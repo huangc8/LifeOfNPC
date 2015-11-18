@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,6 +13,10 @@ public class InventoryPanelScript : MonoBehaviour {
 	public GameObject slotPanel;			// the slot panel
 	public int slotAmount = 32;				// the amount of slots *32
 	public GameObject backButton;			// the close inventory button
+	public GameObject detailPanel;			// the detail panel
+	public Text detailName;					// the detail name
+	public Text detailDescription;			// the detail description
+	public Image detailImage;				// the detail image
 
 	public int currentTab = -2;				// current tab = -1 - all, 0 - item, 1 - armor, 2 - weapon
 
@@ -24,23 +29,16 @@ public class InventoryPanelScript : MonoBehaviour {
 	void Start () {
 		currentTab = -2;
 		slots = new List<GameObject> ();
-		CreatePanels ();
 		PopulateSlots ();
 		PopulateAll ();
 	}
 
 	#region function
-	// Create the UI Panels
-	public void CreatePanels(){
-		inventoryPanel = this.gameObject;
-		slotPanel = inventoryPanel.transform.FindChild ("SlotPanel").gameObject;
-		slotPanel.transform.SetParent (inventoryPanel.transform);
-	}
-
 	// Populate the panels with slots
 	public void PopulateSlots(){
 		for (int i = 0; i < slotAmount; i++) {
 			GameObject newSlot = Instantiate(inventorySlotPf) as GameObject;
+			newSlot.GetComponent<DropBoxScript>()._IPS = this;
 			newSlot.transform.SetParent(slotPanel.transform, false);
 			slots.Add(newSlot);
 		}
@@ -53,6 +51,7 @@ public class InventoryPanelScript : MonoBehaviour {
 				for (int i = 0; i < Inventory._Items.Count; i++) {
 					GameObject newItem = Instantiate (inventoryItemPF) as GameObject;
 					newItem.GetComponent<Item> ().DisplayItem (Inventory._Items [i]);
+					newItem.GetComponent<ClickandDrag>()._IPS = this;
 					newItem.transform.SetParent (slots [i].transform, false);
 				}
 			}
@@ -78,6 +77,7 @@ public class InventoryPanelScript : MonoBehaviour {
 		ClearSlots ();
 		PopulateSpecific (type);
 		currentTab = type;
+		CloseDetail ();
 	}
 
 	// clear the items in slots
@@ -89,12 +89,30 @@ public class InventoryPanelScript : MonoBehaviour {
 			}
 		}
 	}
-	
+
+	public void RefreshSlots(){
+		ClearSlots ();
+		PopulateAll ();
+	}
+
 	// Close the panel
 	public void ClosePanel(){
 		_Inventory.CloseInventoryPanel ();
 		Craft.CloseCraftPanel ();
-		Craft.CloseRecipePanel ();
+	}
+
+	public void OpenDetail(Item it){
+		detailPanel.SetActive (true);
+		detailName.text = it.name;
+		detailDescription.text = it.description;
+		detailImage.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
+	}
+
+	public void CloseDetail(){
+		detailPanel.SetActive (false);
+		detailName.text = null;
+		detailDescription.text = null;
+		detailImage.sprite = null;
 	}
 	#endregion
 }

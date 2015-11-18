@@ -10,8 +10,7 @@ public class NightMenuScript : MonoBehaviour {
 
 	// Potion craft clicked
 	public void PotionCraftClicked(){
-		_Inventory.OpenInventoryPanel();
-		Craft.OpenRecipePanel ();
+		Craft.OpenCraftPanel ();
 		_GameMaster.CloseNightMenu ();
 	}
 
