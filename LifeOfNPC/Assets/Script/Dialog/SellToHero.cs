@@ -11,10 +11,11 @@ public class SellToHero : MonoBehaviour {
     public float InitialThresholdPrice;
     public float NewThresholdPrice;
     public int attempt;
+    public Item item;
 
-    void Start()
+    public void OnStart()
     {
-        float itemprice = 100;//will be the price of the item
+        float itemprice = item.supplyPrice;//will be the price of the item
         InitialThresholdPrice = ((100 - CreateHero.Hero.GetComponentInChildren<Hero>().thriftiness) / 100) * itemprice;//sets the initial price hero will buy at
         Debug.Log("Current Threshold Price:" + InitialThresholdPrice);
         attempt = 5;

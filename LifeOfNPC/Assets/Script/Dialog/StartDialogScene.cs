@@ -94,24 +94,6 @@ public class StartDialogScene : MonoBehaviour {
             SellToPanel.transform.SetParent(canvas.transform, false);
             inMenu = true;
 
-            ContentPanel = SellToPanel.GetComponent<PopulateContent>().ObjectPanel;
-
-
-            int i = 0;
-            foreach (Item it in Inventory._Items)
-            {
-                SellButton = Instantiate(SellButtonPF) as GameObject;//creates button on the dialog panel
-                SellButton.transform.SetParent(ContentPanel.transform, false);//sets position
-
-                SellButton.GetComponent<SellButtonObjects>().namelabel.text = it.name;
-                SellButton.GetComponent<SellButtonObjects>().quantity.text = it.amount.ToString();
-                SellButton.GetComponent<SellButtonObjects>().OfferField.text = it.supplyPrice.ToString();
-                if (NoSale.Contains(it.name))
-                    {
-                        SellButton.GetComponent<SellButtonObjects>().sellbutton.interactable = false;
-                    }
-                i++;
-            }
         }
     }
 

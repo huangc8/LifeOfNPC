@@ -33,6 +33,7 @@ public class SellPanelScript : MonoBehaviour {
 			slbs.QuantityLabel.text = it.amount.ToString();
 			slbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
 			slbs.index = index;
+            newButton.GetComponent<SellToHero>().OnStart();
 			newButton.transform.SetParent(contentPanel.transform, false);
 			index++;
 		}
@@ -70,4 +71,8 @@ public class SellPanelScript : MonoBehaviour {
 			QuantityLabel.text = dealQuantity.ToString ();
 		}
 	}
+    public void confirm()
+    {
+        this.GetComponent<SellToHero>().SelltoHero();
+    }
 }
