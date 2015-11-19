@@ -5,13 +5,13 @@
 2060700-5: “Do you have any materials you want to sell me?” 
 1040000-6: [Failure case] “I’m afraid not.” 
 1080000-7: [Success case] “Yes, actually.”  
-2091100-8: “For [set amount of money within range], I’ll give you these [randomly generated items here].”
+2110900-8: “For $, I’ll give you these [randomly generated items here].”
 1100000-9: [Player accepts offer] “Pleasure doing business with you.” 
 1040000-10: “Of course.”
 1120000-11: [Player denies offer] “I’m afraid I can’t accept that price.”
-2131400-12: [Player sets new price] “For [new price here], I’ll take them.”
+2131400-12: [Player sets new price] “For $, I’ll take them.”
 1040000-13: [Success case] “Alright then.”
-2151700-14: [Failure case] “That’s too high of a price for me.  [set amount of money within range] is my final offer.”
+2151700-14: [Failure case] “That’s too high of a price for me. $ is my final offer.”
 1160000-15: [Player accepts final offer] “Very well then.”  
 1040000-16: “Thank you, Shopkeeper.”
 1180000-17: [Player rejects final offer] “That’s not a price I can accept.”  
@@ -23,7 +23,7 @@
 2242500-23: “I’ll sell them all to you for [price player sets].”
 1040000-24: [Success case] “Certainly.  Thank you, Shopkeeper.”  
 1260000-25: [Failure case] “I can’t pay that price.”
-1270000-26: “I’ll pay [randomly generated price within customer’s thriftiness range], if you insist.”  
+1270000-26: “I’ll pay $, if you insist.”  
 2282900-27: “Then how does [new price player sets] sound?” 
 1040000-28: [Success case] “I’ll accept that, Shopkeeper.” 
 1040000-29: [Failure case] “I’ll have to take my business elsewhere, then.”

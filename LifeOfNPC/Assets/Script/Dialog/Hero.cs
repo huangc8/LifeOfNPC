@@ -21,6 +21,7 @@ public class Hero : MonoBehaviour {
     public DialogTree.DialogTreeNode CurrentNode;
     public string dialog;
     public int patience;
+    public int OfferPrice;
 
     //for determining dialog
     public int HeroClass;//whether hero is a wizard, warrior, or ranger
@@ -81,7 +82,12 @@ public class Hero : MonoBehaviour {
 
     void Update()
     {
-       CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+        //CreateHero.Hero.GetComponent<Hero>().CurrentNode.price = 
+        if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("$"))
+        {
+            CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$")) + OfferPrice + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$") + 1);
+        }
+        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
     }
 
     
