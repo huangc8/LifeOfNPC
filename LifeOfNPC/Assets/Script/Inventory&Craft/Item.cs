@@ -25,6 +25,16 @@ public class Item : MonoBehaviour {
 		this.sellPrice = 0;
 	}
 
+	// constructor with price
+	public Item (string name, int amount, string description, int officalPrice){
+		this.name = name;
+		this.amount = amount;
+		this.type = 0;
+		this.description = description;
+		this.supplyPrice = officalPrice;
+		this.sellPrice = 0;
+	}
+
 	// copy constructor
 	public Item (Item it){
 		this.name = it.name;

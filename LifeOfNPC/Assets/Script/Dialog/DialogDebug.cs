@@ -10,17 +10,17 @@ public class DialogDebug : MonoBehaviour {
     void OnGUI()
     {
 
-		if (GUI.Button (new Rect (10, 150, 100, 30), "Sell Panel")) {
+		if (GUI.Button (new Rect (10, 110, 100, 30), "Sell Panel")) {
 			sellPanel = Instantiate(sellPanelPf) as GameObject;
 			sellPanel.transform.SetParent(this.GetComponent<GameMaster>().canvas.transform, false);
 		}
 		
-		if (GUI.Button (new Rect (10, 180, 100, 30), "Next Phase")) {
+		if (GUI.Button (new Rect (10, 150, 100, 30), "Next Phase")) {
 			this.GetComponent<GameMaster>().ChangePhase();
 		}
 
 		if (day) {
-            if (GUI.Button(new Rect(10, 200, 100, 30), "Next Hero"))
+            if (GUI.Button(new Rect(10, 190, 100, 30), "Next Hero"))
             {
                 this.GetComponent<CreateHero>().StartCreateHero();
             }
