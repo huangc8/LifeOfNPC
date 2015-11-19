@@ -40,7 +40,6 @@ public class SellToHero : MonoBehaviour {
             else if(attempt != 0)//increase Price threshold 
             {
                 CreateHero.Hero.GetComponent<Hero>().OfferPrice = (int)(CreateHero.Hero.GetComponent<Hero>().OfferPrice + ((OfferedPrice - CreateHero.Hero.GetComponent<Hero>().OfferPrice) / 4));
-                Debug.Log("threshold price:"+CreateHero.Hero.GetComponent<Hero>().OfferPrice);
                 CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];//price the hero offers
                 attempt--;
             }
