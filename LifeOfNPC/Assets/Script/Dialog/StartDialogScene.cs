@@ -109,28 +109,6 @@ public class StartDialogScene : MonoBehaviour {
             BuyFromPanel = Instantiate(BuyFromPanelPF) as GameObject;
             BuyFromPanel.transform.SetParent(canvas.transform, false);
             inMenu = true;
-
-            int i = 0;
-            foreach (Item it in CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory)
-            {
-                BuyButton = Instantiate(BuyButtonPF) as GameObject;//creates button on the dialog panel
-                BuyButton.transform.SetParent(BuyFromPanel.transform, false);//parents sets position
-                BuyButton.transform.Translate(new Vector3(0, i * -60, 0));//spaces buttons
-                BuyButton.GetComponentInChildren<Text>().text = "Buy " + it.name;//sets the text that is inside the button
-                BuyButton.GetComponentInChildren<BuyFromHero>().Itemindex = i;
-
-                OfferField = Instantiate(OfferFieldPF) as GameObject;//creates input field on the dialog panel
-                OfferField.transform.SetParent(BuyButton.transform, false);//parents and sets position
-
-                IncPriceButton = Instantiate(IncPriceButtonPF) as GameObject;//creates button on the dialog panel
-                IncPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
-
-                DecPriceButton = Instantiate(DecPriceButtonPF) as GameObject;//creates button on the dialog panel
-                DecPriceButton.transform.SetParent(OfferField.transform, false);//parents sets position
-
-                i++;
-
-            }
         }
     }
 
