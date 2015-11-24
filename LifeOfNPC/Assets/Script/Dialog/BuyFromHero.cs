@@ -14,7 +14,7 @@ public class BuyFromHero : MonoBehaviour {
     public int Itemindex;
     public Item item;
 
-    void Start()
+    public void OnStart()
     {
         item = CreateHero.Hero.GetComponent<Hero>().H_Inventory[Itemindex];
         Debug.Log(item.supplyPrice);
@@ -27,37 +27,30 @@ public class BuyFromHero : MonoBehaviour {
 
     }
 
-    public void BuyfromHero()
+	public void BuyfromHero(int OfferedPrice, int OfferedQuantity)
     {
-        int OfferedPrice = int.Parse(transform.GetComponentInChildren<InputField>().text);//converts text in input field to int
-
-
-        if (OfferedPrice <= NewThresholdPrice * 0.9)
-        {
-            if (attempt == 5)//on first attempt hero offers their initial price
-            {
-                //CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "How about " + InitialThresholdPrice;//price the hero offers
-                CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
-                attempt--;
-            }
-
-            else if (attempt != 0)//increase Price threshold 
-            {
-                CreateHero.Hero.GetComponent<Hero>().OfferPrice = (int)(CreateHero.Hero.GetComponent<Hero>().OfferPrice - ((NewThresholdPrice - OfferedPrice) / 4));
-                CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];//price the hero offers
-                attempt--;
-            }
-
-            else//if the number of attempts is reached
-            {
-                //CreateHero.Hero.GetComponentInChildren<Hero>().dialog = "I think I'll sell that elsewhere";
-                transform.GetComponent<Button>().interactable = false;
-
-            }
-
-        }
-
-        else
+     
+		if (OfferedPrice > CreateHero.Hero.GetComponent<Hero> ().money) {
+			// show dialogue "not enough money for that"
+			
+		}else if (OfferedPrice <= NewThresholdPrice * 0.9 * OfferedQuantity) {//if price is outside of price range do this else accept price
+			
+			if (attempt == 5) {//on first attempt hero offers their initial price
+				//CreateHero.Hero.GetComponent<Hero>().OfferPrice = (int)(CreateHero.Hero.GetComponent<Hero>().OfferPrice + ((CreateHero.Hero.GetComponent<Hero>().OfferPrice + OfferedPrice) / 4));
+				CreateHero.Hero.GetComponent<Hero> ().OfferPriceToQty = (int)NewThresholdPrice * OfferedQuantity;
+				CreateHero.Hero.GetComponent<Hero> ().CurrentNode = CreateHero.Hero.GetComponent<Hero> ().lines [DialogTree.Traverse (CreateHero.Hero.GetComponent<Hero> ().CurrentNode, false)];
+				attempt--;
+			} else if (attempt != 0) {//increase Price threshold
+				OfferedPrice /= OfferedQuantity;
+				NewThresholdPrice = NewThresholdPrice + ((OfferedPrice - NewThresholdPrice) / 4);
+				CreateHero.Hero.GetComponent<Hero> ().OfferPriceToQty = (int)NewThresholdPrice * OfferedQuantity;
+				CreateHero.Hero.GetComponent<Hero> ().CurrentNode = CreateHero.Hero.GetComponent<Hero> ().lines [DialogTree.Traverse (CreateHero.Hero.GetComponent<Hero> ().CurrentNode, false)];
+				attempt--;
+			} else {//if the nmber of attempts is reached
+				transform.GetComponent<Button> ().interactable = false;
+				StartDialogScene.NoSale.Add (item.name);
+			}
+		} else
         {
             CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, true)];
             Debug.Log(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex].name);

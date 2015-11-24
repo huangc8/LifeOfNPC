@@ -21,7 +21,7 @@ public class Item : MonoBehaviour {
 		this.amount = amount;
 		this.type = 0;
 		this.description = description;
-		this.supplyPrice = 10;
+		this.supplyPrice = 100;
 		this.sellPrice = 0;
 	}
 
@@ -31,7 +31,7 @@ public class Item : MonoBehaviour {
 		this.amount = amount;
 		this.type = 0;
 		this.description = description;
-		this.supplyPrice = officalPrice;
+		this.supplyPrice = 100;
 		this.sellPrice = 0;
 	}
 
