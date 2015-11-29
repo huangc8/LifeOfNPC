@@ -16,13 +16,12 @@ public class Item : MonoBehaviour {
 	public int supplyPrice;
 		
 	// constructor
+
 	public Item (string name, int amount, string description){
 		this.name = name;
 		this.amount = amount;
 		this.type = 0;
 		this.description = description;
-		this.supplyPrice = 100;
-		this.sellPrice = 0;
 	}
 
 	// constructor with price
@@ -31,8 +30,8 @@ public class Item : MonoBehaviour {
 		this.amount = amount;
 		this.type = 0;
 		this.description = description;
-		this.supplyPrice = 100;
-		this.sellPrice = 0;
+		this.supplyPrice = officalPrice;
+		this.sellPrice = officalPrice;
 	}
 
 	// copy constructor

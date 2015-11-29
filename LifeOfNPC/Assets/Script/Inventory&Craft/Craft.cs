@@ -14,6 +14,7 @@ public class Craft : MonoBehaviour {
 	public static GameObject RecipePanel;		// recipe panel
 	public static GameObject canvas;			// the Canvas object
 	public static GameMaster _GameMaster;		// the game master reference
+	public static DataBase _DataBase;			// the database reference
 	public static GameObject CraftPanelPf;		// prefab for craft panel
 	public static GameObject RecipePanelPf;		// prefab for recipe panel
 	public GameObject CraftPanelPf_r;			// none static craft panel
@@ -28,6 +29,7 @@ public class Craft : MonoBehaviour {
 		RecipePanelPf = RecipePanelPf_r;
 		canvas = canvas_r;
 		_GameMaster = this.GetComponent<GameMaster> ();
+		_DataBase = this.GetComponent<DataBase> ();
 	}
 
 	#region Craft
@@ -108,6 +110,10 @@ public class Craft : MonoBehaviour {
 		if (GetRecipe(name) == null) {
 			_Recipes.Add(new Recipe(name, materials, description));
 		}
+	}
+
+	public static void AddRecipe(string name){
+		_DataBase.addRecipe (name);
 	}
 
 	// Get a Recipe

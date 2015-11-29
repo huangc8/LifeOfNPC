@@ -61,16 +61,8 @@ public class StartDialogScene : MonoBehaviour {
         NoSale = new List<string>();
     }
 
-    void Update()
-    {
-        if (!HaveInventory)
-        {
-            HaveInventory = true;
-            Inventory.AddItem("Orange", 1, "An Orange");
-            Inventory.AddItem("Banana", 1, "A Banana");
-        }
-
-        //CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponentInChildren<Hero>().lines[CreateHero.Hero.GetComponentInChildren<Hero>().dialogIndex];//changes heros dialog
+    void Update(){
+       
     }
 
 	// start the day phase

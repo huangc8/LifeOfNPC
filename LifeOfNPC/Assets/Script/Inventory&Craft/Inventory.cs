@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour {
 	public static GameObject InventoryPanel;	// Inventory Panel object
 	public static GameObject canvas;			// the Canvas object
 	public static GameObject SetPricePanel;		// the set price panel
+	public static DataBase _DataBase;			// the database
 
 	// Prefabs
 	public static GameObject InventoryPanelPf;	// prefab for inventory panel
@@ -29,12 +30,33 @@ public class Inventory : MonoBehaviour {
 	void Start () {
 		_Items = new List<Item>();
 		_RemoveIndex = new List<int> ();
+		_DataBase = this.GetComponent<DataBase> ();
 		InventoryPanelPf = InventoryPanelPf_r;
 		SetPricePanelPf = SetPricePanelPf_r;
 		canvas = canvas_r;
 	}
 
 	#region functions
+	// add item with data
+	public static void AddItem(string name, int addAmount){
+		// increase exisitng item amount
+		bool found = false;
+		foreach(Item it in _Items){
+			if(it.name == name){
+				it.AddMore(addAmount);
+				found = true;
+				break;
+			}
+		}
+		
+		// add a new item
+		if (found == false) {
+			string description = _DataBase.getDescription(name);
+			int officalPrice = _DataBase.getOfficalPrice(name);
+			AddItem(new Item(name, addAmount, description, officalPrice));
+		}
+	}
+	
 	// Add an Item
 	public static void AddItem(string name, int addAmount, string description){
 		// increase exisitng item amount
@@ -49,10 +71,10 @@ public class Inventory : MonoBehaviour {
 		
 		// add a new item
 		if (found == false) {
-			_Items.Add(new Item(name, addAmount, description));
+			_Items.Add(new Item(name, addAmount, description, _DataBase.getOfficalPrice(name)));
 		}
 	}// end of CreateItem
-
+	
 	// Add an Item
 	public static void AddItem(Item item){
 		// increase exisitng item amount
@@ -67,10 +89,10 @@ public class Inventory : MonoBehaviour {
 		
 		// add a new item
 		if (found == false) {
-			_Items.Add(new Item(item.name, item.amount, item.description));
+			_Items.Add(new Item(item.name, item.amount, item.description, item.supplyPrice));
 		}
 	}
-
+	
 	// Remove certain amount of item
 	public static void RemoveItem(string name, int removeAmount){
 		

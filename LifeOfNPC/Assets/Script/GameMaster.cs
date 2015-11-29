@@ -22,7 +22,7 @@ public class GameMaster : MonoBehaviour {
 	void Start () {
 		// Debug
 		gold = 30;
-		currentDay = 1;
+		currentDay = 0;
 		currentPhase = 1;
 		ChangePhase ();
 	}
@@ -113,6 +113,10 @@ public class GameMaster : MonoBehaviour {
 			}
 		}
 		_Supply.supplyList.Clear ();
+
+		// stack the new supplies
+		DataBase _DataBase = this.GetComponent<DataBase> ();
+		_DataBase.stackSupply ();
 	}
 	#endregion
 }
