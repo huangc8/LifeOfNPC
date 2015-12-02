@@ -29,7 +29,7 @@ public class DialogDebug : MonoBehaviour {
                     CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
                 }
             }
-			if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.next >= 4) { 
+			if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.lvl >= 4) { 
 				if (GUI.Button (new Rect (10, 310, 100, 30), "Sell to Hero")) {
 					StartDialogScene.SellHeroPanel ();
 				}

@@ -10,6 +10,7 @@ public class StartDialogScene : MonoBehaviour {
 
     public static Hero CurrentHero;
     public static bool inMenu;
+    public static int timer;
 
     public static GameObject BuyFromPanel;
     public static GameObject SellToPanel;
@@ -59,10 +60,18 @@ public class StartDialogScene : MonoBehaviour {
         canvas = canvas_r;
         inMenu = false;
         NoSale = new List<string>();
+        timer = 1;
     }
 
     void Update(){
-       
+
+        //advances dialog until branch is found
+        if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.numbranches == 1 && timer%180==0)
+        {
+            CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
+            timer = 1;
+        }
+        timer++;
     }
 
 	// start the day phase
