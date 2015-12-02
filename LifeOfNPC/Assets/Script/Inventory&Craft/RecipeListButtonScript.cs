@@ -15,6 +15,7 @@ public class RecipeListButtonScript : MonoBehaviour {
 
 	public void RecipeButtonClick(){
 		if (RecipeListPanel == null) {
+			_CraftPanelScript.CloseAllRecipePanel();
 			RecipeListPanel = Instantiate (RecipeListPanelPf) as GameObject;
 			RecipeListPanelScript rlps = RecipeListPanel.GetComponent<RecipeListPanelScript> ();
 			Recipe re = Craft._Recipes [index];
@@ -35,6 +36,14 @@ public class RecipeListButtonScript : MonoBehaviour {
 			Destroy(RecipeListPanel);
 			_CraftPanelScript.CleanUpCraftPanel();
 			_CraftPanelScript.CloseDetailPanel();
+		}
+	}
+
+	public void ClosePanel(){
+		if (RecipeListPanel != null) {
+			Destroy (RecipeListPanel);
+			_CraftPanelScript.CleanUpCraftPanel ();
+			_CraftPanelScript.CloseDetailPanel ();
 		}
 	}
 

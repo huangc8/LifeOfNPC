@@ -83,6 +83,7 @@ public class CraftPanelScript : MonoBehaviour {
 			CleanUpCraftPanel();
 			experimental = false;
 		} else {
+			CloseAllRecipePanel();
 			OpenExperimental();
 			experimental = true;
 		}
@@ -121,8 +122,17 @@ public class CraftPanelScript : MonoBehaviour {
 		detailPanel.SetActive (true);
 	}
 
+	// close the detail panel
 	public void CloseDetailPanel(){
 		detailPanel.SetActive (false);	
+	}
+
+	public void CloseAllRecipePanel(){
+		foreach (Transform child in contentPanel.transform) {
+			if(child.GetComponent<RecipeListButtonScript>() != null){
+				child.GetComponent<RecipeListButtonScript>().ClosePanel();
+			}
+		}
 	}
 
 	// update color code
