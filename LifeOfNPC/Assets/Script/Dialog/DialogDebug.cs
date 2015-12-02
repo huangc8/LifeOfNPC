@@ -9,10 +9,6 @@ public class DialogDebug : MonoBehaviour {
 
     void OnGUI()
     {
-		if (GUI.Button (new Rect (10, 150, 100, 30), "Next Phase")) {
-			this.GetComponent<GameMaster>().ChangePhase();
-		}
-
         if (day)
         {
             if (GUI.Button(new Rect(10, 190, 100, 30), "Next Hero"))
