@@ -11,6 +11,7 @@ public class DialogTree : MonoBehaviour
     public class DialogTreeNode
     {
         public int next;
+        public int lvl;
         public int success;
         public int fail;
         public int numbranches;
@@ -25,10 +26,12 @@ public class DialogTree : MonoBehaviour
         StreamReader reader = file.OpenText();//opens text file
         string ReadLine = reader.ReadLine();//reads in first line of text file
         //string Tempstring;
-
+        int counter = 1;
         while (ReadLine != null)
         {
             DialogTreeNode node = new DialogTreeNode();
+            node.lvl = counter;
+            counter++;
             node.numbranches = int.Parse(ReadLine.Substring(0, 1));//gets number of branches
             if (node.numbranches > 1)//if more than 1 branch
             {
