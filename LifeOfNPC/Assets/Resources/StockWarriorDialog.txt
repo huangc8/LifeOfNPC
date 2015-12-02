@@ -1,29 +1,27 @@
 1020000-1: “Shopkeeper?  Are you in?”  
 1030000-2: “Greetings, customer!  What can I do for you?”  
 1040000-3: “I’d like [required items here].”  
-1080000-4: “Well, let’s see what we have for you!” 
-2060700-5: “Do you have any materials you want to sell me?” 
-1040000-6: [Failure case] “I’m afraid not.” 
-1080000-7: [Success case] “Yes, actually.”  
-2110900-8: “For $, I’ll give you these [randomly generated items here].”
-1100000-9: [Player accepts offer] “Pleasure doing business with you.” 
-1040000-10: “Of course.”
-1120000-11: [Player denies offer] “I’m afraid I can’t accept that price.”
-2131400-12: [Player sets new price] “For $, I’ll take them.”
-1040000-13: [Success case] “Alright then.”
-2151700-14: [Failure case] “That’s too high of a price for me. $ is my final offer.”
-1160000-15: [Player accepts final offer] “Very well then.”  
-1040000-16: “Thank you, Shopkeeper.”
-1180000-17: [Player rejects final offer] “That’s not a price I can accept.”  
-1040000-18: “I guess I won’t be selling you anything, then.”  
-1200000-19: “I want [items customer wants] please.”
-2212200-20: “Here are [insert items here].  What do you think?” 
+2050600-4: “Well, let’s see what we have for you!” 
+2080600-5: “For $, I’ll buy these [items here].”
+1070000-6: [Player accepts offer] “Pleasure doing business with you.” 
+1040000-7: “Of course.”
+1090000-8: [Hero denies offer] “I’m afraid I can’t accept that price.”
+2111000-9: [Hero sets new price] “For $, I’ll buy them.”
+1040000-10: [Success case] “Alright then.”
+2141200-11: [Failure case] “That’s too high of a price for me. $ is my final offer.”
+1130000-12: [Hero accepts final offer] “Very well then.”  
+1040000-13: “Thank you, Shopkeeper.”
+1150000-14: [Player rejects final offer] “That’s not a price I can accept.”  
+1040000-15: “I guess I won’t be buying any, then.” 
+1170000-16: “Shopkeeper?  Are you in?”  
+1180000-17: “Greetings, customer!  What can I do for you?” 
+1190000-18: “I want [items customer wants] please.”
+2212000-19: “Here are [insert items here].  What do you think?” 
 1040000-21: [Success case] “Yes, I’d like those.” 
 1230000-22: [Failure case] “No, thank you.” 
-2242500-23: “I’ll sell them all to you for [price player sets].”
+2252400-23: “I’ll sell them all to you for [price player sets].”
 1040000-24: [Success case] “Certainly.  Thank you, Shopkeeper.”  
-1260000-25: [Failure case] “I can’t pay that price.”
-1270000-26: “I’ll pay $, if you insist.”  
-2282900-27: “Then how does [new price player sets] sound?” 
+1260000-25: [Failure case] “I can’t pay that price. I’ll pay $, if you insist.”
+2292800-27: “Then how does [new price player sets] sound?” 
 1040000-28: [Success case] “I’ll accept that, Shopkeeper.” 
 1040000-29: [Failure case] “I’ll have to take my business elsewhere, then.”
