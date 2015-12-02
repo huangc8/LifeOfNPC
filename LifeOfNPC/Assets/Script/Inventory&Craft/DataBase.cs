@@ -420,6 +420,240 @@ public class DataBase : MonoBehaviour {
 					"grind getting these things, but they're a useful material for armor.  If only everything " +
 					"about them wasn't such a pain in the...";
 			break;
+
+		// =================== product ===================== 
+		case "Elixir of Minor Rejuvenation":
+			return "Not the best of potions to fix you up, but definitely the cheapest.  Guaranteed to restore " +
+				"25 HP per bottle!  As for what HP even stands for... Well, the apothecaries will reach a " +
+				"consensus on that when platypi fly.";
+			break;
+		case "Elixir of Rejuvenation":
+			return "Your standard HP-restoring potion, guaranteed to restore 100 HP per bottle!  The cherry flavor " +
+				"comes free of charge.";
+			break;
+		case "Elixir of Major Rejuvenation":
+			return "The elite of the elites of HP-restoring potions, guaranteed to restore 500 HP per bottle!  Each " +
+				"drop is individually blessed by fairies to ensure your maximum satisfaction.";
+			break;
+		case "Unguent of Minor Invigoration":
+			return "Magic Points, Mana Points, Mystic Points... Does the name even matter?  Whatever you call it, this " +
+				"potions lets you sling spells for an extra 25 MP, and even has a pleasant fizzy aftertaste!  Just don't " +
+				"drink too many at once; the last time a wizard tried casting spells while he had the hiccups... Well, it " +
+				"was very unpleasant.";
+			break;
+		case "Unguent of Invigoration":
+			return "Your basic MP potion that restores 100 MP, best suited for the adventurer beginning to make a name for " +
+				"themself.  Hopefully it's not too embarrassing of a name, like Vomit, or Ryuugatatsumaru, or Steve.";
+			break;
+		case "Unguent of Major Invigoration":
+			return "This product's meant for serious spellcasters.  If you're still working on your birthday party animal " +
+				"conjurations, this potion isn't for you.  But if you're a true sorcerer - more of a living artillery cannon " +
+				"than a man - then this potion will restore 500 MP, so you'll never have to worry about being out of firepower.";
+			break;
+		case "Tonic of Minor Restoration":
+			return "You might think that they're just a mild inconvenience, but status ailments can make the difference between " +
+				"victory and defeat.  That's why you need a tonic to clear yourself of any kind of status ailment, including but " +
+				"not limited to: BRN, PAR, FRZ, PSN, SLP, CHM, STN, FLI, AGR, EGG, TEM, TMI, IMO, OMG, TFW, and KEK.  This tonic " +
+				"nly clears PAR and PSN, though.  Hey, there's a reason this is cheap, you know?";
+			break;
+		case "Tonic of Restoration":
+			return "A more multipurpose tonic for a more multipurpose Adventurer... Well, a more affluent one, at any rate.  " +
+				"Unlike a Tonic of Minor Restoration, this potion cures BRN, FRZ, SLP, CHM, and AGR.  If you can't get the afflicted " +
+				"to drink it, then throwing it at them should work just fine.  For any resultant lacerations from broken glass, we " +
+				"recommend an Elixir of Rejuvenation!";
+			break;
+		case "Tonic of Major Restoration":
+			return "With this tonic, you won't need to worry about searching out the correct antidote any longer!  That's right; this " +
+				"tonic remedies ALL status ailments (but not the beneficial ALL status, no need to worry there).  That means you don't " +
+				"even need to know those strange abbreviations stand for anymore!  Just quaff a Tonic of Major Restoration, and all of " +
+				"your worries will disappear!";
+			break;
+		case "Paralytic Poison":
+			return "A paralytic poison is a poison that is paralytic. WOO!... is not what people will say after taking some into their bloodstream.  " +
+				"They won't be saying much of anything, given that even their lips will be paralyzed.  Too strong a dose, and their heartbeat will " +
+				"stop and they'll die.  Feel free to overdose monsters, though!  We've taken special care to ensure full effectiveness, even when applied " +
+				"to weapons, so just make sure you don't prick yourself...";
+			break;
+		case "Combustive Poison":
+			return "Some toxins are meant to incapacitate.  Others induce pleasure, or delusion.  But this particular tincture?  No.  This poison is meant to " +
+				"hurt, to agonize, to excruciate.  Those afflicted swell uncontrollably, sweat profusely, and their flesh will feel as if it is melting off their " +
+				"bones, leaving only unbearably agony in its wake.  Despite the name, it's completely flame-retardant.";
+			break;
+		case "God-Felling Venom":
+			return "The most toxic toxin in terms of toxicity to ever toxify a target.  Its mere odor scours at your nostrils, its emanations permanently scar the " +
+				"eyes, and its ingestion brings death, agonizing and inexorable.  As the name suggests, deicide is but a matter of course for a poisonous poison that " +
+				"poisons people such as this.  Deicide is still a crime, however.  Neither the producers of God-Felling Venom or its sellers and distributors are to be " +
+				"held liable for any deicide that may occur.";
+			break;
+		case "Everflowing Panacea":
+			return "For those nights at the bar where you need an extra dose of liquid carbs to keep you company, or those lonely nights alone where you need a friend to " +
+				"help you forget your sorrows, or those lonely afternoons without friends, or any time you're lonely at all, we're here for you to put an arm around your shoulder " +
+				"and hold you tight for as long as we want.  Side effects include euphoria, a pleasant warm sensation in the pit of the stomach, complete enmotional and chemical " +
+				"dependence, glossier skin, increased confidence, and slight weight gain.";
+			break;
+		case "Trusty Sword":
+			return "A simple yet sturdy blade, suitable for the start of a grand adventure.  For those who weren't lucky enough to inherit their father's sword, or retrieve an ancient " +
+				"sword from a dilapidated shrine, or meet a mysterious girl who transforms into a legendary sword, this sword is the sword for you!  Until it's time for you to wield the " +
+				"true magic sword that you were always meant to, this mundane yet reliable sword will do.";
+			break;
+		case "Treebirthed Sword":
+			return "This shining sword is perfect for the eco-friendly adventurer!  Specially grown from a sacred tree, this magnificent blade channels the energy of the sun into devastating " +
+				"strikes certain to slay any foe.  Best of all, there are zero harmful emissions!  Protect the planet while you protect the kingdom with the Treebirthed Sword!";
+			break;
+		case "Lakeborn Sword":
+			return "The greatest of holy blades that graces our land; it shines with the light of humanity's hopes and dreams.  A sword guaranteed to never break and capable of slaying an army " +
+				"with one swing - provided you have the MP available for its Limit Break Mode.  That said, make sure you don't fall into any lakes while you've got this sword; it wasn't exactly " +
+				"acquired... willingly.";
+			break;
+		case "Wooden Shield":
+			return "A simple wooden shield perfect for the defensively-minded novice Adventurer.  As required by industry standards, this shield is electricity-resistant, so you'll have no need to " +
+				"be shocked by any sudden ectrifying encounters.  So much as look at a torch and your chances will go up in flames, though, so be cautious.  Of course, you can always buy another shield " +
+					"if something happens to this one!";  
+			break;
+		case "Holy Shield":
+			return "Unlike cheaper shields, there's no need to worry about this one spontaneously combusting, or nonspontaneously combusting for that matter.  This sacred shield not only protects against " +
+				"all manner of blows, but it even conduct electricity!  Too well, in fact; anyone attempting to block an electrical attack with this shield will get quite the... discharge.";
+			break;
+		case "Divine Aegis":
+			return "The mightiest of shields, and completely impervious to all manner of damage.  Its construction from unspeakably rare metals provides unparalleled protection from flame and force, and the " +
+				"numerous divine blessings imbued into its surface prevent electrical attacks from damaging the user.  Well, that or the coating of cerberus enamel.";
+			break;
+		case "Emblem of Power":
+			return "Looking to add a bit more power to your punches?  Want to get stronger without going to the gym?  If so, then the Emblem of Power is the perfect fit for you!  This inexpensive amulet adds " +
+				"+15 STR, ensuring each of your strikes will knock your enemies clean out of the park - or at least off their feet.  Emblems of Courage and Wisdom sold separately.";
+			break;
+		case "Emblem of Endurance":
+			return "For Adventurers interested in better taking a hit, we have the Emblem of Endurance.  This amulet gives you +15 to END, making taking it easier than ever, if u ket what I mean.";
+			break;
+		case "Emblem of Acuity":
+			return "Tired of everyone laughing at jokes you don't understand?  Sick of being the only one in the " +
+				"party to talk slowly and haltingy without a proper grasp of grammatical conventions?  Then the " +
+				"Emblem of Acuity is the item for you!  This lovely blue magical amulet grants +50 WIS, " +
+				"transforming the town dullard into the town teacher!  Oh, and it also boosts MP regeneration.";
+			break;
+		case "Emblem of Vitality":
+			return "The Emblem of Vitality is vital for any Adventurer looking to last just that extra moment " +
+				"longer in the Dungeon.  It grants +200 to HP, ensuring that you have time for one extra Tonic " +
+				"of Rejuvenation (sold separately), one last invocation of your Staff of Blasting (also sold " +
+				"separately), or one final dramatic swing of your Lakeborn Sword (buy 1, get one amulet of your " +
+				"choice free!).";
+			break;
+		case "Emblem of Superiority":
+			return "This mighty amulet is perfect for the sorcerer determined to excel in all matters.  The Emblem " +
+				"of Superiority grants +300 to HP, MP, WIS, END, STR, AGI, CHA, FOR, WIL, REF, CON, LSD, PSI, PCP, " +
+				"TSA, and TMI, ensuring your undeniable superiority over everyone else.  If the side-effects don't " +
+				"give you a god complex and inflated ego, then the sheer power at your disposal will!";
+			break;
+		case "Staff of Blasting":
+			return "A basic offensive staff meant for a novice Adventurer.  For when your Fighter or Monk can't " +
+				"punch an obstacle out of the way and your Ranger or Thief can't budge it, just use your Staff " +
+				"of Blasting to obliterate it!  There's no need for finesse with this baby in your hands!";
+			break;
+		case "Staff of Healing":
+			return "As fun as spellslinging can be, it's not all lightning bolts and fireballs.  For when you " +
+				"need to heal a party member and your cleric and priest are all out of prayers, this staff is here!" +
+				"For only 50 MP, you can heal up to 200 HP on a single Adventurer!  That's not all it can do, " +
+				"though.  You'll find certain undead enemies won't enjoy being reunited with their mortal flesh; " +
+				"and in the worse case scenario, you can always inflict a light wound or two!  " +
+				"I hear <<Blunt>> damage works fairly well against Skeleton Dudes...";
+			break;
+		case "Staff of Indomitability":
+			return "If your arms are too scrawny to hold a shield and your BRA's too low to wear an amulet, " +
+				"then this staff is the staff for you!  The Staff of Indomitability renders its wielder an " +
+				"impregnable bulwark of stalwart defense, ensuring damage is little more than a scratch.  " +
+				"Well, except for <<Piercing>> attacks... but what are the chances that you'll run into those?";
+			break;
+		case "Staff of Omnipotence":
+			return "The greatest of all magical staffs, meant only for the greatest of Wizards and Sorcerers.  " +
+				"This magnificent tool boosts MP by +1500 and WIS by +500, ensuring that its wielder will never " +
+				"run short of power and spells.  Whosoever wields this almight staff could easily be considered " +
+				"a god - but in that case, should watch out for poison... ";
+			break;
+		case "Monk's Robes":
+			return "Simple yet effective robes that increase MP by +100 and WIS by +20.  While the clothes may " +
+				"make the man, it's up to the man to outgrow the clothes.  That said, they are one size fits all," +
+				"so for the more vertically challenged, that could be rather difficult...";
+			break;
+		case "Archmage's Raiment":
+			return "Robes suitable for a more knowledgable Wizard that grant +200 to MP and +50 to WIS.  " +
+				"Unlike basic robes, the Archmage's Raiment possesses a modicum of protection against heat" +
+				"and flame, allowing its wearer to travel to more arid locales.  Just make sure you don't" +
+				"get it wet, though; the smell of the wet fur lining takes ages to dissipate.";
+			break;
+		case "Saint's Shroud":
+			return "Lovely robes capable of withstanding not only extreme climes both sweltering and frigid, " +
+				"but also imbued with a potent enchantment permitting for underwater breathing.  " +
+				"These magnificent robes grant +400 MP and +100 WIS, and have multiple color and style " +
+				"modes as well!";
+			break;
+		case "Page's Armor":
+			return "Simple armor befitting a beginning knight lacking a traditional set of the family armor.  " +
+				"This armor provides +150 to END, allowing for plenty of mistakes as its wearer grows into a " +
+				"splendid knight.  It lacks excretory capabilities, however, so make sure that you don't " +
+				"drink too many potions...";
+			break;
+		case "Squire's Armor":
+			return "Well-made armor suitable for a knight's graduation to a greater rank.  Not only does it " +
+				"grant +300 to END, but it also shines with a lovely iridescent luster when clean!";
+			break;
+		case "Paladin's Armor":
+			return "Splendid armor befitting the most decorated and valorous of knights.  The Paladin's Armor" +
+				"grants not only +1000 to END, but also +300 to HP.  Furthermore, it's even self-cleaning!" +
+				"Stains tend to flicker clean out of existence - along with the occasional coat of arms and" +
+				"doublet.";
+			break;
+		case "Ursinine Armor":
+			return "Wild armor suitable for a wild and boisterous Adventurer.  Rather than continuously " +
+				"forged steel, only the hide of slain beasts serves as your protection!  Rekindle your " +
+				"inner beast, and gain +500 END and +300 STR!";
+			break;
+		case "Short Bow":
+			return "A short bow, meant for a short Adventurer who's only spent a short amount of time in " +
+				"The Dungeon.  It's got a short range, but its power is nothing to scoff at.  Arrows sold " +
+				"separately.";
+			break;
+		case "Cross Bow":
+			return "A partially automated bow built by the Church in their quest to cleanse the land of all " +
+				"those they deem unholy.  Despite the odd shape, it's devastatingly effective, and capable " +
+				"tearing through living and undead enemies with ease.";
+			break;
+		case "Elongated Bow":
+			return "A lengthy bow meant for a lengthy individual.  Rather than fighting at mid- or close range, " +
+				"the Elongated Bow is best suited for snipers and Archers who prefer to engage from a distance.  " +
+				"This resilient bow can fire up to 400 feet when fully drawn, and even grants +150 DEX when " +
+				"equipped.";
+			break;
+		case "Heroic Bow":
+			return "The legendary bow used by the great hero of the kingdom himself... Well, an accurate model" +
+				"of it.  This golden bow can fire three arrows at the same without any loss in power or accuracy," +
+				"and is guaranteed to slay any enemy it is used against - or the mind of any physicist or" +
+				"engineer that sees it.";
+			break;
+		case "Explosive Bombs":
+			return "As you might expect, an Explosive Bomb is a bomb that explodes.  Rather than poison or " +
+				"smoke, pure destructive power is the emphasis for these devastating items.  They're sold " +
+				"in packs of ten, and best stored in our special Bomb Bag (sold separately).  While you can" +
+				"store them otherwise, we can't be held liable for any mishaps bound to happen...";
+			break;
+		case "Poisonous Arrows":
+			return "These arrows come laced with deadly poison to sicken your enemies, saving you the " +
+				"trouble of doing so yourself.  Of course, while you can't poison yourself dosing the " +
+				"arrows, caution is still required in handling them.  As the adage goes: You poison " +
+					"yourself like an idiot, you buy it.";
+			break;
+		case "Fiery Arrows":
+			return "Arrows specially doused in accelerants that ignite when fired through air friction.  " +
+				"Our special blend of ingredients prevents them from burning too quickly before they reach " +
+				"their target or failing to ignite, so detonating faraway crates of explosives or adding an " +
+				"extra banf to your blasts is easier than ever before!  Just make sure you keep them in a " +
+				"fireproof quiver.";
+			break;
+		case "The Absolute Annihilator of the Ancient Archdeity":
+			return "The greatest artifact of our time, the most sacrosanct and mysterious relic left of an " +
+				"ancient civilization of unspeakable wisdom and power who spanned the world, the most mighty " +
+				"of all devices of mystical power... and we have no idea what it does.  It's very impressive " +
+				"looking, though!";
+			break;
 		}
 		return "";
 	}

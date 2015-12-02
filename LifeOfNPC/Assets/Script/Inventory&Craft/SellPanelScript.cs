@@ -30,20 +30,22 @@ public class SellPanelScript : MonoBehaviour {
 	public void PopulateSellList(){
 		int index = 0;
 		foreach (Item it in Inventory._Items) {
-			GameObject newButton = Instantiate(SellListButtonPf) as GameObject;
-			SellListButtonScript slbs = newButton.GetComponent<SellListButtonScript>();
-			slbs._SPS = this;
-			slbs.NameLabel.text = it.name;
-			slbs.PriceLabel.text = "$" + it.sellPrice.ToString();
-			slbs.QuantityLabel.text = it.amount.ToString();
-			slbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
-			slbs.index = index;
-			slbs.updateInfo(it.sellPrice, 1);
-			newButton.GetComponent<SellToHero>().item = it;
-			newButton.GetComponent<SellToHero>().OnStart();
-			newButton.transform.SetParent(contentPanel.transform, false);
-			itemList.Add(newButton);
-			index++;
+			if(it.type != 0){
+				GameObject newButton = Instantiate(SellListButtonPf) as GameObject;
+				SellListButtonScript slbs = newButton.GetComponent<SellListButtonScript>();
+				slbs._SPS = this;
+				slbs.NameLabel.text = it.name;
+				slbs.PriceLabel.text = "$" + it.sellPrice.ToString();
+				slbs.QuantityLabel.text = it.amount.ToString();
+				slbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
+				slbs.index = index;
+				slbs.updateInfo(it.sellPrice, 1);
+				newButton.GetComponent<SellToHero>().item = it;
+				newButton.GetComponent<SellToHero>().OnStart();
+				newButton.transform.SetParent(contentPanel.transform, false);
+				itemList.Add(newButton);
+				index++;
+			}
 		}
 	}
 
