@@ -64,7 +64,6 @@ public class StartDialogScene : MonoBehaviour {
     }
 
     void Update(){
-<<<<<<< HEAD
 		if (CreateHero.Hero != null) {
 			//advances dialog until branch is found
 			if (CreateHero.Hero.GetComponent<Hero> ().CurrentNode.numbranches == 1 && timer % 180 == 0) {
@@ -73,22 +72,6 @@ public class StartDialogScene : MonoBehaviour {
 			}
 			timer++;
 		}
-=======
-
-        if (CreateHero.Hero != null)
-        {
-            if (CreateHero.Hero.GetComponent("Hero") != null)
-            {
-                //advances dialog until branch is found
-                if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.numbranches == 1 && timer % 180 == 0)
-                {
-                    CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
-                    timer = 1;
-                }
-                timer++;
-            }
-        }
->>>>>>> d0b20a07350a8175447fe2d56dcdfa320781a557
     }
 
 	// start the day phase
