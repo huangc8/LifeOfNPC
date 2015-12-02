@@ -29,7 +29,7 @@ public class Hero : MonoBehaviour {
     public int purpose;
 
 
-    public FileInfo BuyingDialog;//text file asset that contains dialog
+    public StreamReader Dialog;//text file asset that contains dialog
 
     //constructor
     public Hero()
@@ -50,19 +50,25 @@ public class Hero : MonoBehaviour {
         {
             case 1:
                 //wizard
-                BuyingDialog = new FileInfo ("Assets/Resources/StockWizardDialog.txt");//text file that is loaded from resourses
+                Dialog = new StreamReader ("Assets/Resources/StockWizardDialog.txt");//text file that is loaded from resourses
+                DialogTree.CreateTree(Dialog, lines);
+                Dialog.Close();
                 Debug.Log("Your a wizard Harry");
                 break;
 
             case 2:
                 //warrior
-                BuyingDialog = new FileInfo("Assets/Resources/StockWizardDialog.txt"); ;//text file that is loaded from resourses
+                Dialog = new StreamReader("Assets/Resources/StockWarriorDialog.txt"); ;//text file that is loaded from resourses
+                DialogTree.CreateTree(Dialog, lines);
+                Dialog.Close();
                 Debug.Log("I am a warrior");
                 break;
 
             case 3:
                 //ranger
-                BuyingDialog = new FileInfo("Assets/Resources/StockWizardDialog.txt"); ;//text file that is loaded from resourses
+                Dialog = new StreamReader("Assets/Resources/StockRangerDialog.txt"); ;//text file that is loaded from resourses
+                DialogTree.CreateTree(Dialog, lines);
+                Dialog.Close();
                 Debug.Log("I am a ranger");
                 break;
 
@@ -71,7 +77,7 @@ public class Hero : MonoBehaviour {
 
         }
 
-        DialogTree.CreateTree(BuyingDialog, lines);
+        //DialogTree.CreateTree(Dialog, lines);
         CurrentNode = lines[0];
         CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
 

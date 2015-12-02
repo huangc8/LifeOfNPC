@@ -21,10 +21,10 @@ public class DialogTree : MonoBehaviour
         public string line;
     }
 
-    public static void CreateTree(FileInfo file, List<DialogTreeNode> HeroDialogTree)
+    public static void CreateTree(StreamReader file, List<DialogTreeNode> HeroDialogTree)
     {
-        StreamReader reader = file.OpenText();//opens text file
-        string ReadLine = reader.ReadLine();//reads in first line of text file
+        
+        string ReadLine = file.ReadLine();//reads in first line of text file
         //string Tempstring;
         int counter = 1;
         while (ReadLine != null)
@@ -49,7 +49,7 @@ public class DialogTree : MonoBehaviour
 
             HeroDialogTree.Add(node);//adds node to dialog "tree"
 
-            ReadLine = reader.ReadLine();//reads in next line of text file
+            ReadLine = file.ReadLine();//reads in next line of text file
         }
 
     }
