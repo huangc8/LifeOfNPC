@@ -43,6 +43,7 @@ public class CraftPanelScript : MonoBehaviour {
 
 	public void OpenExperimental(){
 		RecipePanel.SetActive (false);
+		CleanUpCraftPanel ();
 		ExperimentalPanel = Instantiate (ExperimentalPanelPf) as GameObject;
 		ExperimentalPanel.transform.SetParent (this.transform, false);
 	}

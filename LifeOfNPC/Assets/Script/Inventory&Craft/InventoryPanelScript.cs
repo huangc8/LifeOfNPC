@@ -18,7 +18,7 @@ public class InventoryPanelScript : MonoBehaviour {
 	public Text detailDescription;			// the detail description
 	public Image detailImage;				// the detail image
 
-	public int currentTab = -2;				// current tab = -1 - all, 0 - item, 1 - armor, 2 - weapon
+	public int currentTab = -2;				// current tab = 0 - material, 1 - armor, 2 - weapon, 3 - potion
 
 	// Prefabs
 	public GameObject inventorySlotPf;		// the inventory slot object
@@ -62,11 +62,13 @@ public class InventoryPanelScript : MonoBehaviour {
 	// populate specific item list
 	public void PopulateSpecific(int type){
 		if (Inventory._Items != null) {
+			int slotindex = 0;
 			for (int i = 0; i < Inventory._Items.Count; i++) {
 				if(Inventory._Items[i].type == type){
-				GameObject newItem = Instantiate (inventoryItemPF) as GameObject;
-				newItem.GetComponent<Item> ().DisplayItem (Inventory._Items [i]);
-					newItem.transform.SetParent (slots [i].transform, false);
+					GameObject newItem = Instantiate (inventoryItemPF) as GameObject;
+					newItem.GetComponent<Item> ().DisplayItem (Inventory._Items [i]);
+					newItem.transform.SetParent (slots [slotindex].transform, false);
+					slotindex++;
 				}
 			}
 		}

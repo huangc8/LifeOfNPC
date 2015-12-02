@@ -53,12 +53,13 @@ public class Inventory : MonoBehaviour {
 		if (found == false) {
 			string description = _DataBase.getDescription(name);
 			int officalPrice = _DataBase.getOfficalPrice(name);
-			AddItem(new Item(name, addAmount, description, officalPrice));
+			int type = 0;
+			AddItem(new Item(name, addAmount, description, officalPrice, type));
 		}
 	}
 	
 	// Add an Item
-	public static void AddItem(string name, int addAmount, string description){
+	public static void AddItem(string name, int addAmount, string description, int type){
 		// increase exisitng item amount
 		bool found = false;
 		foreach(Item it in _Items){
@@ -71,7 +72,7 @@ public class Inventory : MonoBehaviour {
 		
 		// add a new item
 		if (found == false) {
-			_Items.Add(new Item(name, addAmount, description, _DataBase.getOfficalPrice(name)));
+			_Items.Add(new Item(name, addAmount, description, _DataBase.getOfficalPrice(name),type));
 		}
 	}// end of CreateItem
 	
@@ -89,7 +90,7 @@ public class Inventory : MonoBehaviour {
 		
 		// add a new item
 		if (found == false) {
-			_Items.Add(new Item(item.name, item.amount, item.description, item.supplyPrice));
+			_Items.Add(new Item(item.name, item.amount, item.description, item.supplyPrice, item.type));
 		}
 	}
 	
