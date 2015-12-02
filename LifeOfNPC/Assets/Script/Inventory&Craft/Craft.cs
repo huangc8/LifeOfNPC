@@ -74,8 +74,9 @@ public class Craft : MonoBehaviour {
 			if (material_3 != null) {
 				Inventory.RemoveItem (material_3.name, material_3.amount);
 			}
+
 			// add crafted item
-			Inventory.AddItem (rt.name, 1, rt.description);
+			Inventory.AddItem (rt.name, 1, rt.description, rt.type);
 			return rt;
 		} else {
 			Debug.Log("No such recipe");
@@ -105,10 +106,10 @@ public class Craft : MonoBehaviour {
 
 	#region Recipe
 	// Add a Recipe
-	public static void AddRecipe(string name, List<string> materials, string description){
+	public static void AddRecipe(string name, List<string> materials, string description, int type){
 		// add a new recipe if don't exist
 		if (GetRecipe(name) == null) {
-			_Recipes.Add(new Recipe(name, materials, description));
+			_Recipes.Add(new Recipe(name, materials, description, type));
 		}
 	}
 
@@ -136,12 +137,14 @@ public class Recipe : IComparable<Item> {
 	public string name;
 	public List<string> materials;
 	public string description;
+	public int type;
 	
 	// constructor
-	public Recipe (string name, List<string> materials, string description){
+	public Recipe (string name, List<string> materials, string description, int type){
 		this.name = name;
 		this.materials = materials;
 		this.description = description;
+		this.type = type;
 	}
 
 	// check if this is the recipe

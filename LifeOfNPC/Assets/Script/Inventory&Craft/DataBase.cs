@@ -11,210 +11,253 @@ public class DataBase : MonoBehaviour {
 	}
 
 	public void addRecipe(string name){
-
 		List<string> ltmp = new List<string> ();
+		int type = 0; // material - 0, armor - 1, weapon - 2, potion - 3 
 		switch (name) {
 		case "Elixir of Minor Rejuvenation":
 			ltmp.Add("Consecrated Spring Water x 1");
 			ltmp.Add("Eight-Leaf Clover x 2");
+			type = 3;
 			break;
 		case "Elixir of Rejuvenation":
 			ltmp.Add("Consecrated Spring Water x 3");
 			ltmp.Add("Eight-Leaf Clover x 5");
+			type = 3;
 			break;
 		case "Elixir of Major Rejuvenation":
 			ltmp.Add("Consecrated Spring Water x 5");
 			ltmp.Add("Eight-Leaf Clover x 8");
 			ltmp.Add("Powdered Fairy Wing x 2");
+			type = 3;
 			break;
 		case "Unguent of Minor Invigoration":
 			ltmp.Add("Consecrated Spring Water x 1");
 			ltmp.Add("Azure Slime Jelly x 2");
+			type = 3;
 			break;
 		case "Unguent of Invigoration":
 			ltmp.Add("Consecrated Spring Water x 3");
 			ltmp.Add("Azure Slime Jelly x 4");
+			type = 3;
 			break;
 		case "Unguent of Major Invigoration":
 			ltmp.Add("Consecrated Spring Water x 7");
 			ltmp.Add("Azure Slime Jelly x 7");
+			type = 3;
 			break;
 		case "Tonic of Minor Restoration":
 			ltmp.Add("Crimson Slime Jelly x 2");
 			ltmp.Add("Azure Slime Jelly x 2");
+			type = 3;
 			break;
 		case "Tonic of Restoration":
 			ltmp.Add("Crimson Slime Jelly x 4");
 			ltmp.Add("Azure Slime Jelly x 4");
+			type = 3;
 			break;
 		case "Tonic of Major Restoration":
 			ltmp.Add("Crimson Slime Jelly x 7");
 			ltmp.Add("Azure Slime Jelly x 7");
+			type = 3;
 			break;
 		case "Paralytic Poison":
 			ltmp.Add("Ectoplasmic Ooze x 2");
 			ltmp.Add("Azure Slime Jelly x 3");
+			type = 3;
 			break;
 		case "Combustive Poison":
 			ltmp.Add("Ectoplasmic Ooze x 2");
 			ltmp.Add("Crimson Slime Jelly x 3");
+			type = 3;
 			break;
 		case "God-Felling Venom":
 			ltmp.Add("Manticore Quill x 3");
 			ltmp.Add("Fermented Yeti Blood x 4");
 			ltmp.Add("Golden Slime Jelly x 1");
+			type = 3;
 			break;
 		case "Everflowing Panacea":
 			ltmp.Add("Consecrated Spring Water x 4");
 			ltmp.Add("Crimson Slime Jelly x 2");
 			ltmp.Add("Azure Slime Jelly x 2");
+			type = 3;
 			break;
 		case "Trusty Sword":
 			ltmp.Add("Consecrated Spring Water x 1");
 			ltmp.Add("Sacred Yew Sapling x 1");
 			ltmp.Add("Meteoric Iron x 2");
+			type = 2;
 			break;
 		case "Treebirthed Sword":
 			ltmp.Add("Luminescent Scale x 1");
 			ltmp.Add("Sacred Yew Sapling x 2");
 			ltmp.Add("Meteoric Iron x 4");
+			type = 2;
 			break;
 		case "Lakeborn Sword":
 			ltmp.Add("Luminescent Scale x 3");
 			ltmp.Add("Minotaur's Horn x 3");
 			ltmp.Add("Mythreal Ore x 2");
+			type = 2;
 			break;
 		case "Wooden Shield":
 			ltmp.Add("Consecrated Spring Water x 1");
 			ltmp.Add ("Sacred Yew Sapling x 3");
 			ltmp.Add("Arachne Gossamer x 2");
+			type = 1;
 			break;
 		case "Holy Shield":
 			ltmp.Add("Consecrated Spring Water x 3");
 			ltmp.Add("Werewolf Hide x 2");
 			ltmp.Add("Meteoric Iron x 2");
+			type = 1;
 			break;
 		case "Divine Aegis":
 			ltmp.Add("Cerberus Fang x 3");
 			ltmp.Add("Meteoric Iron x 4");
 			ltmp.Add("Mythreal Ore  x 2");
+			type = 1;
 			break;
 		case "Emblem of Power":
 			ltmp.Add("Albino Goblin's Eye x 2");
 			ltmp.Add("Sacred Yew Sapling x 3");
 			ltmp.Add("Crimson Slime Jelly x 1");
+			type = 1;
 			break;
 		case "Emblem of Endurance":
 			ltmp.Add("Albino Goblin's Eye x 2");
 			ltmp.Add("Sacred Yew Sapling x 3");
 			ltmp.Add("Azure Slime Jelly x 1");
+			type = 1;
 			break;
 		case "Emblem of Acuity":
 			ltmp.Add("Albino Goblin's Eye x 2");
 			ltmp.Add("Meteoric Iron x 2");
 			ltmp.Add("Azure Slime Jelly x 1");
+			type = 1;
 			break;
 		case "Emblem of Vitality":
 			ltmp.Add("Albino Goblin's Eye x 2");
 			ltmp.Add("Meteoric Iron x 2");
 			ltmp.Add("Crimson Slime Jelly x 1");
+			type = 1;
 			break;
 		case "Emblem of Superiority":
 			ltmp.Add("Albino Goblin's Eye x 3");
 			ltmp.Add("Meteoric Iron x 4");
 			ltmp.Add("Ancient Phylactery x 1");
+			type = 1;
 			break;
 		case "Staff of Blasting":
 			ltmp.Add("Sacred Yew Sapling x 2");
 			ltmp.Add("Crimson Slime Jelly x 4");
 			ltmp.Add("Albino Goblin's Eye x 2");
+			type = 2;
 			break;
 		case "Staff of Healing":
 			ltmp.Add("Sacred Yew Sapling x 2");
 			ltmp.Add("Consecrated Spring Water x 3");
 			ltmp.Add("Luminescent Scale x 3");
+			type = 2;
 			break;
 		case "Staff of Indomitability":
 			ltmp.Add("Sacred Yew Sapling x 2");
 			ltmp.Add("Cerberus Fang x 3");
 			ltmp.Add("Luminescent Scale x 3");
+			type = 2;
 			break;
 		case "Staff of Omnipotence":
 			ltmp.Add("Sacred Yew Sapling x 5");
 			ltmp.Add("Golden Slime Jelly x 1");
 			ltmp.Add("Elder Dragon's Heart x 1");
+			type = 1;
 			break;
 		case "Monk's Robes":
 			ltmp.Add("Arachne Gossamer x 3");
 			ltmp.Add("Azure Slime Jelly x 1");
+			type = 1;
 			break;
 		case "Archmage's Raiment":
 			ltmp.Add("Arachne Gossamer x 5");
 			ltmp.Add("Crimson Slime Jelly x 3");
 			ltmp.Add("Werewolf Hide x 2");
+			type = 1;
 			break;
 		case "Saint's Shroud":
 			ltmp.Add("Arachne Gossamer x 7");
 			ltmp.Add("Luminescent Scale x 5");
 			ltmp.Add("Golden Slime Jelly x 1");
+			type = 1;
 			break;
 		case "Page's Armor":
 			ltmp.Add("Dire Bear Derriere x 4");
 			ltmp.Add("Meteoric Iron x 2");
+			type = 1;
 			break;
 		case "Squire's Armor":
 			ltmp.Add("Dire Bear Derriere x 6");
 			ltmp.Add("Meteoric Iron x 3");
+			type = 1;
 			break;
 		case "Paladin's Armor":
 			ltmp.Add("Meteoric Iron x 6");
 			ltmp.Add("Luminescent Scale x 6");
 			ltmp.Add("Mythreal Ore x 1");
+			type = 1;
 			break;
 		case "Ursinine Armor":
 			ltmp.Add("Dire Bear Derriere x 20");
+			type = 1;
 			break;
 		case "Short Bow":
 			ltmp.Add("Sacred Yew Sapling x 3");
 			ltmp.Add("Arachne Gossamer x 2");
+			type = 2;
 			break;
 		case "Cross Bow":
 			ltmp.Add("Sacred Yew Sapling x 4");
 			ltmp.Add("Meteoric Iron x 2");
 			ltmp.Add("Consecrated Spring Water x 5");
+			type = 2;
 			break;
 		case "Elongated Bow":
 			ltmp.Add("Sacred Yew Sapling x 5");
 			ltmp.Add("Arachne Gossamer x 3");
 			ltmp.Add("Minotaur's Horn x 3");
+			type = 2;
 			break;
 		case "Heroic Bow":
 			ltmp.Add("Sacred Yew Sapling x 6");
 			ltmp.Add("Arachne Gossamer x 4");
 			ltmp.Add("Golden Slime Jelly x 3");
+			type = 2;
 			break;
 		case "Explosive Bombs":
 			ltmp.Add("Salamander Oil x 3");
 			ltmp.Add("Crimson Slime Jelly x 3");
 			ltmp.Add("Kobold Tears x 1");
+			type = 2;
 			break;
 		case "Poisonous Arrows":
 			ltmp.Add("Sacred Yew Sapling x 2");
 			ltmp.Add("Ectoplasmic Ooze x 3");
 			ltmp.Add("Manticore Quill x 4");
+			type = 2;
 			break;
 		case "Fiery Arrows":
 			ltmp.Add("Sacred Yew Sapling x 3");
 			ltmp.Add("Salamander Oil x 2");
 			ltmp.Add("Crimson Slime Jelly x 2");
+			type = 2;
 			break;
 		case "The Absolute Annihilator of the Ancient Archdeity":
 			ltmp.Add("Elder Dragon's Heart x 3");
 			ltmp.Add("Ancient Phylactery x 3");
 			ltmp.Add("Mythreal Ore x 3");
+			type = 3;
 			break;
 		}
-		Craft.AddRecipe (name, ltmp, getDescription(name));
+		Craft.AddRecipe (name, ltmp, getDescription(name), type);
 	}
 
 	public string getDescription(string name){
@@ -453,6 +496,8 @@ public class DataBase : MonoBehaviour {
 			return 200;
 			break;
 
+		// =================== product ====================
+
 		case "Elixir of Minor Rejuvenation":
 			return 500;
 			break;
@@ -592,13 +637,33 @@ public class DataBase : MonoBehaviour {
 		case 1:
 			tmp.Add("Consecrated Spring Water");
 			tmp.Add("Eight-Leaf Clover");
+			tmp.Add("Salamander Oil");
+			tmp.Add("Cerberus Fang");
+			tmp.Add("Powdered Fairy Wing");
+			tmp.Add("Werewolf Hide");
+			tmp.Add("Fermented Yeti Blood");
+			tmp.Add("Sacred Yew Sapling");
+			tmp.Add("Luminescent Scale");
+			tmp.Add("Meteoric Iron");
+			tmp.Add("Kobold Tears");
+			tmp.Add("Elder Dragon's Heart");
+			tmp.Add("Minotaur's Horn");
+			tmp.Add("Ectoplasmic Ooze");
+			tmp.Add("Ancient Phylactery");
+			tmp.Add("Mythreal Ore");
+			tmp.Add("Manticore Quill");
+			tmp.Add("Crimson Slime Jelly");
+			tmp.Add("Azure Slime Jelly");
+			tmp.Add("Golden Slime Jelly");
+			tmp.Add("Arachne Gossamer");
+			tmp.Add("Dire Bear Derriere");
 			break;
 		}
 
 		// add to supply
 		_Supply.supplyList = new List<Item> ();
 		for (int i = 0; i < tmp.Count; i++) {
-			_Supply.supplyList.Add (new Item (tmp[i], 0, "", getOfficalPrice(tmp[i])));
+			_Supply.supplyList.Add (new Item (tmp[i], 0, "", getOfficalPrice(tmp[i]), 0));
 		}
 	}
 }

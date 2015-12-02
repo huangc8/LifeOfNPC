@@ -10,7 +10,7 @@ public class Item : MonoBehaviour {
 	// Item Class
 	public string name;
 	public int amount;
-	public int type;					// item - 0, armor - 1, weapon - 2 
+	public int type;					// item - 0, armor - 1, weapon - 2, potion - 3 
 	public string description;
 	public int sellPrice;
 	public int supplyPrice;
@@ -25,13 +25,14 @@ public class Item : MonoBehaviour {
 	}
 
 	// constructor with price
-	public Item (string name, int amount, string description, int officalPrice){
+	public Item (string name, int amount, string description, int officalPrice, int type){
 		this.name = name;
 		this.amount = amount;
 		this.type = 0;
 		this.description = description;
 		this.supplyPrice = officalPrice;
 		this.sellPrice = officalPrice;
+		this.type = type;
 	}
 
 	// copy constructor
