@@ -6,11 +6,13 @@ public class GameMaster : MonoBehaviour {
 
 	#region Data
 	public static GameObject _GameMaster;
+	public static GameObject NightMenu;
+	public static GameObject DayPanel;
+	public static int currentPhase;
 	public GameObject canvas;
-	public GameObject NightMenu;
 	public GameObject NightMenuPf;
+	public GameObject DayPanelPf;
 	public Image Background;
-	public int currentPhase;
 	#endregion
 
 	#region Player Data
@@ -32,11 +34,22 @@ public class GameMaster : MonoBehaviour {
 	// add gold
 	public static void AddGold(int quantity){
 		gold += quantity;
+		UpdateGoldDisplay ();
 	}
 
 	// reduce gold
 	public static void ReduceGold(int quantity){
 		gold -= quantity;
+		UpdateGoldDisplay ();
+	}
+
+	// update gold display
+	public static void UpdateGoldDisplay(){
+		if (currentPhase == 0) {
+			DayPanel.GetComponent<DayPanelScript> ().GoldLabel.text = gold.ToString();
+		} else {
+
+		}
 	}
 
 	// add days
@@ -65,10 +78,15 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	public void StartDayPhase(){
+		DayPanel = Instantiate (DayPanelPf) as GameObject;
+		DayPanel.GetComponent<DayPanelScript> ()._GameMaster = this;
+		DayPanel.transform.SetParent (canvas.transform, false);
+		UpdateGoldDisplay ();
 		this.GetComponent<StartDialogScene> ().StartDayPhase ();
 	}
 
 	public void EndDayPhase(){
+		Destroy (DayPanel);
 		this.GetComponent<StartDialogScene> ().EndDayPhase ();
 	}
 
