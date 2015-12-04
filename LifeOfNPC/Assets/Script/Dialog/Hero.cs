@@ -23,6 +23,7 @@ public class Hero : MonoBehaviour {
     public int patience;
     public int OfferPrice;
 	public int OfferPriceToQty;
+    public Item ItemBeingSold;
 
     //for determining dialog
     public int HeroClass;//whether hero is a wizard, warrior, or ranger
@@ -51,24 +52,24 @@ public class Hero : MonoBehaviour {
             case 1:
                 //wizard
                 Dialog = new StreamReader ("Assets/Resources/StockWizardDialog.txt");//text file that is loaded from resourses
-                DialogTree.CreateTree(Dialog, lines);
-                Dialog.Close();
+                DialogTree.CreateTree(Dialog, lines);//fills dialog tree
+                Dialog.Close();//closes streamreader
                 Debug.Log("Your a wizard Harry");
                 break;
 
             case 2:
                 //warrior
                 Dialog = new StreamReader("Assets/Resources/StockWarriorDialog.txt"); ;//text file that is loaded from resourses
-                DialogTree.CreateTree(Dialog, lines);
-                Dialog.Close();
+                DialogTree.CreateTree(Dialog, lines);//fills dialog tree
+                Dialog.Close();//closes stream reader
                 Debug.Log("I am a warrior");
                 break;
 
             case 3:
                 //ranger
                 Dialog = new StreamReader("Assets/Resources/StockRangerDialog.txt"); ;//text file that is loaded from resourses
-                DialogTree.CreateTree(Dialog, lines);
-                Dialog.Close();
+                DialogTree.CreateTree(Dialog, lines);//fills dialog tree
+                Dialog.Close();//closes stream reader
                 Debug.Log("I am a ranger");
                 break;
 
@@ -89,10 +90,21 @@ public class Hero : MonoBehaviour {
     void Update()
     {
         //CreateHero.Hero.GetComponent<Hero>().CurrentNode.price = 
-        if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("$"))
+        if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("$"))//check for insert money
         {
             CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$")) + OfferPriceToQty + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$") + 1);
         }
+
+        if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("*"))//check for insert specific item
+        {
+            CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("*")) + OfferPriceToQty + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("*") + 1);
+        }
+
+        if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("#"))//check for insert item being sold
+        {
+            CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("#")) + ItemBeingSold.name + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("#") + 1);
+        }
+
         CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
     }
 
