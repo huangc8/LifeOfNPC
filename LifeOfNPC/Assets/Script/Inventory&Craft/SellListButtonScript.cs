@@ -20,6 +20,8 @@ public class SellListButtonScript : MonoBehaviour {
 	}
 
 	public void ItemSelected(){
+		Button bt = this.GetComponent<Button> ();
+		bt.image.sprite = bt.spriteState.highlightedSprite;
 		if (sell) {
 			_SPS.ItemSelected (index, price, quantity);
 		}

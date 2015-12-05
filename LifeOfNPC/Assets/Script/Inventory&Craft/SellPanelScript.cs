@@ -43,6 +43,7 @@ public class SellPanelScript : MonoBehaviour {
 				newButton.GetComponent<SellToHero>().item = it;
 				newButton.GetComponent<SellToHero>().OnStart();
 				newButton.transform.SetParent(contentPanel.transform, false);
+
 				itemList.Add(newButton);
 				index++;
 			}
