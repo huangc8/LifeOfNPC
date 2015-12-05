@@ -11,6 +11,8 @@ public class StartDialogScene : MonoBehaviour {
     public static Hero CurrentHero;
     public static bool inMenu;
     public static int timer;
+    public static int NumHeroesToday;
+    public static List<Hero> SpecialHeroes;
 
     public static GameObject BuyFromPanel;
     public static GameObject SellToPanel;
@@ -61,6 +63,8 @@ public class StartDialogScene : MonoBehaviour {
         inMenu = false;
         NoSale = new List<string>();
         timer = 1;
+        NumHeroesToday = UnityEngine.Random.Range(1, 6);
+        SpecialHeroes = new List<Hero>();
     }
 
     void Update(){
