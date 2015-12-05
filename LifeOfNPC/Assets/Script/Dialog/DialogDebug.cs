@@ -34,7 +34,7 @@ public class DialogDebug : MonoBehaviour {
                     {
                         this.GetComponent<CreateHero>().DismissHero();
                         StartDialogScene.NumHeroesToday--;//decrease number of heroes in line
-                    Debug.Log(StartDialogScene.NumHeroesToday);
+                        Debug.Log(StartDialogScene.NumHeroesToday);
                         this.GetComponent<CreateHero>().StartCreateHero();
                     }
 
