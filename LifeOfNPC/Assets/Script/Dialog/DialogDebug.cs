@@ -10,7 +10,6 @@ public class DialogDebug : MonoBehaviour {
 
     void OnGUI()
     {
-<<<<<<< HEAD
         hero = CreateHero.Hero;
 
 		if (GUI.Button (new Rect (10, 150, 100, 30), "Next Phase")) {
@@ -23,8 +22,6 @@ public class DialogDebug : MonoBehaviour {
             StartDialogScene.NumHeroesToday = UnityEngine.Random.Range(1, 6);
         }
 
-=======
->>>>>>> 9b3aeb82c1e0c2cb8a3a29248bb4fbd1a19ada51
         if (day)
         {
             /*if (GUI.Button(new Rect(10, 190, 100, 30), "Next Hero") && CreateHero.Hero == null)
