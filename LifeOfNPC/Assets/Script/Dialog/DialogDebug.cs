@@ -12,10 +12,6 @@ public class DialogDebug : MonoBehaviour {
     {
         hero = CreateHero.Hero;
 
-		if (GUI.Button (new Rect (10, 150, 100, 30), "Next Phase")) {
-			this.GetComponent<GameMaster>().ChangePhase();
-		}
-
         if(StartDialogScene.NumHeroesToday == 0)
         {
             this.GetComponent<GameMaster>().ChangePhase();

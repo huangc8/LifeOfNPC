@@ -7,6 +7,7 @@ public class SellPanelScript : MonoBehaviour {
 
 	public GameObject contentPanel;
 	public GameObject SellListButtonPf;
+	public GameObject SellListLabelPf;
 	public Image icon;
 	public Text PriceLabel;
 	public Text QuantityLabel;
@@ -14,11 +15,13 @@ public class SellPanelScript : MonoBehaviour {
 	public int dealQuantity;
 	public List<GameObject> itemList;
 	public int currentIndex;
+	public int currentItemIndex;
 
 	void Start(){
 		itemList = new List<GameObject> ();
 		PopulateSellList ();
 		currentIndex = 0;
+		currentItemIndex = 0;
 		dealPrice = 0;
 		dealQuantity = 1;
 	}
@@ -28,36 +31,102 @@ public class SellPanelScript : MonoBehaviour {
 	}
 
 	public void PopulateSellList(){
-		int index = 0;
+		int listIndex = 0;
+		int itemIndex = 0;
+
+		// potions
+		GameObject newLabel = Instantiate (SellListLabelPf) as GameObject;
+		newLabel.GetComponentInChildren<Text> ().text = "Potions";
+		newLabel.transform.SetParent (contentPanel.transform, false);
 		foreach (Item it in Inventory._Items) {
-			if(it.type != 0){
+			if(it.type == 3){
 				GameObject newButton = Instantiate(SellListButtonPf) as GameObject;
 				SellListButtonScript slbs = newButton.GetComponent<SellListButtonScript>();
 				slbs._SPS = this;
 				slbs.NameLabel.text = it.name;
 				slbs.PriceLabel.text = "$" + it.sellPrice.ToString();
 				slbs.QuantityLabel.text = it.amount.ToString();
-				slbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
-				slbs.index = index;
+				//slbs.icon.sprite = 
+				slbs.listIndex = listIndex;
+				slbs.itemIndex = itemIndex;
 				slbs.updateInfo(it.sellPrice, 1);
 				newButton.GetComponent<SellToHero>().item = it;
 				newButton.GetComponent<SellToHero>().OnStart();
 				newButton.transform.SetParent(contentPanel.transform, false);
+
 				itemList.Add(newButton);
-				index++;
+				listIndex++;
 			}
+			itemIndex++;
+		}
+
+		itemIndex = 0;
+
+		// armor
+		GameObject newLabel2 = Instantiate (SellListLabelPf) as GameObject;
+		newLabel2.GetComponentInChildren<Text> ().text = "Armor";
+		newLabel2.transform.SetParent (contentPanel.transform, false);
+		foreach (Item it in Inventory._Items) {
+			if(it.type == 1){
+				GameObject newButton = Instantiate(SellListButtonPf) as GameObject;
+				SellListButtonScript slbs = newButton.GetComponent<SellListButtonScript>();
+				slbs._SPS = this;
+				slbs.NameLabel.text = it.name;
+				slbs.PriceLabel.text = "$" + it.sellPrice.ToString();
+				slbs.QuantityLabel.text = it.amount.ToString();
+				//slbs.icon.sprite = 
+				slbs.listIndex = listIndex;
+				slbs.itemIndex = itemIndex;
+				slbs.updateInfo(it.sellPrice, 1);
+				newButton.GetComponent<SellToHero>().item = it;
+				newButton.GetComponent<SellToHero>().OnStart();
+				newButton.transform.SetParent(contentPanel.transform, false);
+				
+				itemList.Add(newButton);
+				listIndex++;
+			}
+			itemIndex++;
+		}
+
+		itemIndex = 0;
+
+		// weapon
+		GameObject newLabel3 = Instantiate (SellListLabelPf) as GameObject;
+		newLabel3.GetComponentInChildren<Text> ().text = "Weapon";
+		newLabel3.transform.SetParent (contentPanel.transform, false);
+		foreach (Item it in Inventory._Items) {
+			if(it.type == 2){
+				GameObject newButton = Instantiate(SellListButtonPf) as GameObject;
+				SellListButtonScript slbs = newButton.GetComponent<SellListButtonScript>();
+				slbs._SPS = this;
+				slbs.NameLabel.text = it.name;
+				slbs.PriceLabel.text = "$" + it.sellPrice.ToString();
+				slbs.QuantityLabel.text = it.amount.ToString();
+				//slbs.icon.sprite = 
+				slbs.listIndex = listIndex;
+				slbs.itemIndex = itemIndex;
+				slbs.updateInfo(it.sellPrice, 1);
+				newButton.GetComponent<SellToHero>().item = it;
+				newButton.GetComponent<SellToHero>().OnStart();
+				newButton.transform.SetParent(contentPanel.transform, false);
+				
+				itemList.Add(newButton);
+				listIndex++;
+			}
+			itemIndex++;
 		}
 	}
 
-	public void ItemSelected(int index, int price, int quantity){
+	public void ItemSelected(int itemIndex, int listIndex, int price, int quantity){
 		itemList [currentIndex].GetComponent<SellListButtonScript> ().updateInfo (dealPrice, dealQuantity);
-		Item it = Inventory._Items [index];
+		Item it = Inventory._Items [itemIndex];
 		icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
 		dealPrice = price;
 		PriceLabel.text = "$" + dealPrice.ToString();
 		dealQuantity = quantity;
 		QuantityLabel.text = dealQuantity.ToString();
-		currentIndex = index;
+		currentIndex = listIndex;
+		currentItemIndex = itemIndex;
 	}
 
 	public void IncreasePrice(){
@@ -73,7 +142,7 @@ public class SellPanelScript : MonoBehaviour {
 	}
 
 	public void IncreaseQuantity(){
-		if (dealQuantity + 1 <= Inventory._Items [currentIndex].amount) {
+		if (dealQuantity + 1 <= Inventory._Items [currentItemIndex].amount) {
 			dealQuantity += 1;
 			QuantityLabel.text = dealQuantity.ToString ();
 		}
