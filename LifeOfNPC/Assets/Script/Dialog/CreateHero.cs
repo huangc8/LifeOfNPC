@@ -188,8 +188,8 @@ public class CreateHero : MonoBehaviour {
                     }
                     i++;
                 }
-            Debug.Log("encounter number" + StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber);
-            Debug.Log("total number encounters" + StartDialogScene.SpecialHeroes[SHeroIndex].NumberOfEncounters);
+            //Debug.Log("encounter number" + StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber);
+            //Debug.Log("total number encounters" + StartDialogScene.SpecialHeroes[SHeroIndex].NumberOfEncounters);
         }
         Debug.Log(InList);
         
