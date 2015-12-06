@@ -8,10 +8,12 @@ public class GameMaster : MonoBehaviour {
 	public static GameObject _GameMaster;
 	public static GameObject NightMenu;
 	public static GameObject DayPanel;
+	public static GameObject NightPanel;
 	public static int currentPhase;
 	public GameObject canvas;
 	public GameObject NightMenuPf;
 	public GameObject DayPanelPf;
+	public GameObject NightPanelPf;
 	public Image Background;
 	#endregion
 
@@ -48,7 +50,16 @@ public class GameMaster : MonoBehaviour {
 		if (currentPhase == 0) {
 			DayPanel.GetComponent<DayPanelScript> ().GoldLabel.text = gold.ToString();
 		} else {
+			NightPanel.GetComponent<NightPanelScript>().GoldLabel.text = gold.ToString();
 
+		}
+	}
+
+	public static void UpdateDateDisplay(){
+		if (currentPhase == 0) {
+			DayPanel.GetComponent<DayPanelScript>().DayLabel.text = "Day " + currentDay.ToString();
+		} else {
+			NightPanel.GetComponent<NightPanelScript>().DayLabel.text = "Day " + currentDay.ToString();
 		}
 	}
 
@@ -61,35 +72,43 @@ public class GameMaster : MonoBehaviour {
 	#endregion
 
 	#region OpenMenu
-	// open the night menu
+	// start night phase
 	public void OpenNightMenu(){
 		if (NightMenu == null) {
 			NightMenu = Instantiate (NightMenuPf) as GameObject;
-			NightMenu.GetComponent<NightMenuScript>()._Supply = this.GetComponent<Supply>();
 			NightMenu.GetComponent<NightMenuScript>()._GameMaster = this;
 			NightMenu.GetComponent<NightMenuScript>()._Inventory = this.GetComponent<Inventory>();
 			NightMenu.transform.SetParent (canvas.transform, false);
 		}
+		if (NightPanel == null) {
+			NightPanel = Instantiate (NightPanelPf) as GameObject;
+			NightPanel.GetComponent<NightPanelScript>()._GameMaster = this;
+			NightPanel.GetComponent<NightPanelScript>()._Inventory = this.GetComponent<Inventory>();
+			NightPanel.GetComponent<NightPanelScript>()._Supply = this.GetComponent<Supply>();
+			NightPanel.transform.SetParent(canvas.transform, false);
+		}
 	}
 
-	// close the night menu
+	// end night phase
 	public void CloseNightMenu(){
 		Destroy (NightMenu);
 	}
 
+	// start day phase
 	public void StartDayPhase(){
 		DayPanel = Instantiate (DayPanelPf) as GameObject;
 		DayPanel.GetComponent<DayPanelScript> ()._GameMaster = this;
 		DayPanel.transform.SetParent (canvas.transform, false);
-		UpdateGoldDisplay ();
 		this.GetComponent<StartDialogScene> ().StartDayPhase ();
 	}
 
+	// end day phase
 	public void EndDayPhase(){
 		Destroy (DayPanel);
 		this.GetComponent<StartDialogScene> ().EndDayPhase ();
 	}
 
+	// change phase
 	public void ChangePhase(){
 		if (currentPhase == 0) {
 			EndDayPhase ();
@@ -103,7 +122,10 @@ public class GameMaster : MonoBehaviour {
 			currentPhase = 0;
 			StartDayPhase();
 			Background.sprite = Resources.Load<Sprite>("Sprite/backgroundStorefront");
+			currentDay++;
 		}
+		UpdateGoldDisplay ();
+		UpdateDateDisplay ();
 	}
 
 	// clear the canvas
