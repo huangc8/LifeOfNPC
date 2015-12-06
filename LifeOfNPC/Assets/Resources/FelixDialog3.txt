@@ -1,0 +1,50 @@
+1 - F: “Yo, Shopkeeper.”  
+1 - S: “Ah, Felix.  What would you like to buy?”  
+2 - F: “Not calling me something random?  That’s a change.”  
+2 - S: “I always work to accommodate my customers.”  
+2 - F: “Uh huh.  Anyways, I’m looking for a new bow; something better than the last one, given that it broke.  Some armor too, but keep it cheap and keep it light.  And if there’s anything else of use, I’ll take that as well.”
+3 - S: “Well, let’s see what I can do for you.” 
+3a1 - S: “I’m pretty sure I know the answer to this, but do you have any materials you might be willing to sell me?” 
+3a1 - F: “My pockets aren’t very deep, Shopkeeper.  I don’t have room for every random scrap of fur I see in the Dungeon.”  
+3b1 - F: “Like I said, bow, armor, other stuff.  You know the deal.”
+3b2 - [Player selects which items to offer the customer] 
+3b2 - S: “Do [insert items here] work for you?” 
+3b3a - F: [Success case] “They’ll do. Cost?” 
+3b3b - F: [Failure case] “Pfft, no.” 
+3b4 - [Player sets price of items]
+3b4 - S: “[price player sets].”
+3b5a - F: [Success case] “Fine.  Here you go, Shopkeeper.”  
+3b5b - F: [Failure case] “Like I’d pay that much.”
+3b5b - F: “Try [randomly generated price within customer’s thriftiness range].”  
+3b6 - [Player sets price of items]
+3b6 - S: “[new price player sets].  Take it or leave it.” 
+3b7a - F: [Success case] “Tch, fine.  Here’s the money.” 
+3b7b - F: [Failure case] “Nope.  Deal’s off.”
+3c - S: “Your bow broke?  Sounds like a hard fight.” 
+3c - F: “I got caught off guard while fighting a boss some idiot ranger girl set off on the 40th floor.  Seriously, didn’t she know to get of its horns first so that projectiles work on it?”   
+3c - S: “Sounds like you were lucky to get out of there alive.”  
+3c - F: “Lucky, huh?  No, she was the lucky one.”  
+3c - S: “What makes you say that?”
+3c - F: “Because she didn’t die, even when I showed up.” 
+3c - S: “Even when you showed up?  This has to do with you not forming a party, doesn’t it?” 
+3c - F: “And so what if it does?  I’ve said it before, and I’ve said it again!  I’m not joining a party!” 
+3c - S: “You can’t keep going through the Dungeon alone Felix, no matter how skilled you are.  One day your luck will run out.”  
+3c - F: “No it won’t.  And that’s the problem.” 
+3c - S: “What do you mean?” 
+3c - F: “You know the phrase ‘born lucky’?  That’s me.  I’ve been freakishly lucky every since I was born.  Every raffle ticket is a grand prize winner, every chest has the rarest treasures, every monster drops the best possible items.”
+3c - S: “So what’s the catch?” 
+3c - F: “It’s only me that’s lucky.  If a barn collapses on top of me, I’ll be the only one that’s uninjured.  If a fire rips through a village, my house will be the only one that’s fine.  And if I get caught in a room full of monsters with my party - then I’m the only one who survives.  So I can’t party with other people.  I can’t work with other people.  I can’t be near other people.  Because every time I do, they suffer.  Every time I do, they die.”  
+3c - S: “Am I dead?” 
+3c - F: “What?” 
+3c - S: “Are your ears clogged?  Am I dead?” 
+3c - F: “Well, no, but-”
+3c - S: “Have I been horribly injured, or robbed, or otherwise harmed recently?”
+3c - F: “I don’t know, I’m not here all the time, but it doesn’t look like it, but that doesn’t prove-”
+3c - S: “Then you can be near other people.  You don’t have to torture yourself, Felix.” 
+3c - F: “What are you talking about!  I killed those people!  Shana, Rilian, Wercell - I killed them all!  It was my fault!” 
+3c - S: “No.  You didn’t kill them.  They died.  And one more thing.  You say that you’re the only one that’s lucky, but I’m lucky too.  After all, every customer I get is good luck.”  
+3c - F: “Every customer you... What kind of stupidity is that!?  Just because something hasn’t happened yet doesn’t mean it won’t!”  
+3c - S: “And just because something happened once before doesn’t mean it’ll happen again!  I promise you, Felic Kyculun, that no harm will come to me while you shop here.  You aren’t bad luck, and I’ll prove it to you.” 
+3c - F: “Why don’t you understand!?  Ugh, just finish the transaction already.”
+4a - [Successful transaction] “Ugh.  You tick me off to the very depths of my being!”  
+4b - [Failed transaction] “I’m not harming anyone else.  Goodbye, Shopkeeper.”  

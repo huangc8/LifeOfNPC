@@ -1,0 +1,45 @@
+1 - Q: “Once again, greetings Shopkeeper!  The Greatest Adventurer in the World is here to purchase your wares!”  
+1 - S: “Quartz, good to see you!  How goes things with the party?  Did you have enough potions?”  
+2 - Q: “Funny you should mention that.  Things were going extraordinarily easy; too easy, really.  We got surrounded by a horde of monsters, and if it wasn’t for those potions we’d have been done for.”  
+2 - S: “I’m glad that my products could be of use!”  
+2 - Q: “And so am I!  However, my last sword quite unfortunately broke while I faced a dragon.  And that is why I am here, Shopkeeper!.  For a weapon!  For restorative items!  And you know what?  Surprise me.  If there’s anything else that could be of use to the Greatest Adventurer in the World, I’ll take it!”
+3 - S: “Well, let’s see what we have for you!” 
+3a1 - S: “Have any materials you might sell, Quartz?” 
+3a1 - Q: “That I do, Shopkeeper, that I do!”  
+3a2 - Q: “I’ll give you [randomly generated items here] for only [set amount of money within range].”
+3a3a - S: [Player accepts offer] “I’ll take that offer, Quartz.  Much appreciated!” 
+3a3a - Q: “Certainly, Shopkeeper!”
+3a3b - S: [Player denies offer] “That’s a bit too rough on me, Quartz.”
+3a3b - S: [Player sets new price] “How about [new price here]?”
+3a3c - Q: [Success case] “Very well then, Shopkeeper.  Let it not be said that the Greatest Adventurer in the World is not generous!”
+3a3d - Q: [Failure case] “I’m afraid that won’t do, Shopkeeper.  [set amount of money within range] is my final offer.”
+3a3e - S: [Player accepts final offer] “If you insist then, Quartz.”  
+3a3e - Q: “A pleasure doing business with you, Shopkeeper!”
+3a3f - S: [Player rejects final offer] “Sorry Quartz, but I can’t accept that.”  
+3a3f - Q: “I’m afraid that’s that then, Shopkeeper.”  
+3b1 - Q: “I’m looking for a Lakeborn Sword, if you happen to have one in stock.  Some Elixirs of Rejuvenation, Unguents of Invigoration, and Tonics of Restoration as well, and anything else you think is useful.”
+3b2 - [Player selects which items to offer the customer] 
+3b2 - S: “Alright Quartz, what do you think of [insert items here]?” 
+3b3a - Q: [Success case] “Excellent, Shopkeeper!  Ring them up at once!” 
+3b3b - Q: [Failure case] “I said to surprise me, but not with that...” 
+3b4 - [Player sets price of items]
+3b4 - S: “I’ll sell them all to you for [price player sets].”
+3b5a - Q: [Success case] “Such a price is nothing for the Greatest Adventurer in the World!  I accept your offer, Shopkeeper!”  
+3b5b - Q: [Failure case] “That price will not do, Shopkeeper!”
+3b5b - Q: “I’ll you must insist, I’ll pay [randomly generated price within customer’s thriftiness range].”  
+3b6 - [Player sets price of items]
+3b6 - S: “I see.  In that case, how does [new price player sets] sound?” 
+3b7a - Q: [Success case] “Very well then, Shopkeeper!  I accept your offer!” 
+3b7b - Q: [Failure case] “That price will simply not do!  The Greatest Adventurer in the World will have to seek his goods in another store!”
+3c - S: “So, how are things with the party?  That paladin still giving you trouble?” 
+3c - Q: “Tarkin?  He’ll still insufferable, and always bragging every time he blocks an attack or parries a blow!  Still, he’s reliable, even if a bit flamboyant.  Kaysel’s still doing all sorts of weird experiments, but he’s actually able to talk to people for more than five minutes without giving them some sort of horrible disfigurement!”   
+3c - S: “And what about that cleric?  Aurora, was it?”  
+3c - Q: “Her name is Amara, Shopkeeper!  And well, you see... The truth is... we’re married!”  
+3c - S: “You are?  Congratulations!  How did that happen?” 
+3c - Q: “It started way back when I was thinking about getting a new sword.  My old one gave out on me at the worst possible time, and monsters swarmed in.  I don’t remember much of what happened next; one moment, three Orcs were about to kill her, the next, I’d torn them all to pieces.  There were still far too many of them to face, however, and even running away was a challenge.  If we hadn’t had enough healing potions, things could have gone very badly.”  
+3c - S: “So she warmed up to you after that?” 
+3c - Q: “It turns out that she liked me too!  O-Of course, that would only be natural for the Greatest Adventurer in the World.  We got married and things have gone wonderfully ever since.  She’s still a bit of a worrywart, but I humor her anyways.”
+3c - S: “I’m glad you’re doing well, Quartz.”
+3c - Q: “So am I, Shopkeeper.  So am I.”
+4a - [Successful transaction] “I’ll take my leave now, Shopkeeper!  The Greatest Adventurer in the World thanks you for your services!”  
+4b - [Failed transaction] “Perhaps we’ll reach an accord some other time, Shopkeeper.”  

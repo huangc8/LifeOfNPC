@@ -1,6 +1,6 @@
 1020000-1: “Shopkeeper?  Are you in?”  
 1030000-2: “Greetings, customer!  What can I do for you?”  
-1040000-3: “I’d like [required items here].”  
+1040000-3: “I’d like to see what you have in stock.”  
 2050600-4: “Well, let’s see what we have for you!” 
 2080600-5: “For $, I’ll buy these #.”
 1070000-6: [Player accepts offer] “Pleasure doing business with you.” 

@@ -1,0 +1,34 @@
+1 - R: “Is this the Item and Treasure Emporium?”  
+1 - S: “That it is, madam, that it is!  What can I do for you, Miss... ?”  
+2 - R: “Riella Crenshaw.  I’ve decided to go into the Dungeon, but I don’t have any tools or weapons or such.”  
+2 - S: “That’s why I’m here, Riella.  Got an idea of what you want?”  
+2 - R: “Well, I do have some skill with magic... I’ll look at those sorts of goods, I suppose.”
+3 - S: “Well, let’s see what we have for you!” 
+3a1 - S: “On another note, do you have any materials you might be willing to sell me?” 
+3a1 - R: “I’m afraid not, Shopkeeper.”  
+3b1 - R: “Items that wizards would use are fine.  Just find what would be a good fit.”
+3b2 - [Player selects which items to offer the customer] 
+3b2 - S: “Riella, what do you think of [insert items here]?” 
+3b3a - R: [Success case] “They look good to me.  What’s the price?” 
+3b3b - R: [Failure case] “Hmm... I don’t think that’s quite what I’m looking for.” 
+3b4 - [Player sets price of items]
+3b4 - S: “I’ll sell them all to you for [price player sets].”
+3b5a - R: [Success case] “That’s acceptable.  Here is the payment, Shopkeeper.”  
+3b5b - R: [Failure case] “I’m afraid I can’t pay that much, Shopkeeper.”
+3b5b - R: “Would you accept [randomly generated price within customer’s thriftiness range] as payment?”  
+3b6 - [Player sets price of items]
+3b6 - S: “I see.  In that case, how does [new price player sets] sound?” 
+3b7a - R: [Success case] “Very well then.  Here is the payment, Shopkeeper.” 
+3b7b - R: [Failure case] “How disappointing.  I’ll have to go to another store...”
+3c - S: “Heading to the Dungeon for the first time, are we?” 
+3c - R: “Yes, that’s correct.  It’s somewhat intimidating, but with some good equipment I should be able to at least clear the first levels.”   
+3c - S: “Why do you want to clear the Dungeon, Riella?”  
+3c - R: “It’s a bit embarrassing of a reason, really.”  
+3c - S: “I’ve heard all sorts of stories from all sorts of adventurers.  Believe me, I won’t be fazed.” 
+3c - R: “Oh, alright then.  My parents always wanted me to be a banker.  They said it was safe, that it was dependable.  Of course, I hated that idea; bankers are such horrible droll people after all, and being robbed isn’t something I want in my daily schedule.”  
+3c - S: “And they all have to wear those dull suits day in and day out.” 
+3c - R: “Exactly!  And the glasses, and those bland hair buns!  Definitely not the job I wanted to do.  But I couldn’t decide on what I really wanted to do, and now I’m here, hoping that this goes well.”
+3c - S: “Well, I’ll do the best that I can to ensure you get the right goods, Riella.”
+3c - R: “Thank you, Shopkeeper.”
+4a - [Successful transaction] “Thank you for the items, Shopkeeper.”  
+4b - [Failed transaction] “I guess this wasn’t the right store to go to after all.”  

@@ -34,12 +34,18 @@ public class DialogDebug : MonoBehaviour {
                     {
                         this.GetComponent<CreateHero>().DismissHero();
                         StartDialogScene.NumHeroesToday--;//decrease number of heroes in line
-                        Debug.Log(StartDialogScene.NumHeroesToday);
+                        //Debug.Log(StartDialogScene.NumHeroesToday);
                         this.GetComponent<CreateHero>().StartCreateHero();
                     }
 
-                    if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.lvl >= 4)
-                    {
+            if (CreateHero.Hero != null)
+            {
+
+                if (CreateHero.Hero.GetComponent<Hero>().name == null)
+                {
+                    if (CreateHero.Hero.GetComponent<Hero>().CurrentNode != null) {
+                        if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.lvl >= 4)
+                        {
                             if (GUI.Button(new Rect(10, 310, 100, 30), "Sell to Hero"))
                             {
                                 StartDialogScene.SellHeroPanel();
@@ -58,4 +64,29 @@ public class DialogDebug : MonoBehaviour {
                         }
                     }
                 }
+
+                else
+                {
+                    if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.lvl >= 4)
+                    {
+                        if (GUI.Button(new Rect(10, 310, 100, 30), "Sell to Hero"))
+                        {
+                            StartDialogScene.SellHeroPanel();
+                        }
+
+                        if (GUI.Button(new Rect(10, 345, 100, 30), "Buy from Hero"))
+                        {
+                            StartDialogScene.BuyHeroPanel();
+                        }
+
+                        if (GUI.Button(new Rect(10, 385, 100, 30), "Back"))
+                        {
+                            StartDialogScene.CloseBuyFromPanel();
+                            StartDialogScene.CloseSellToPanel();
+                        }
+                    }
+                }
             }
+          }
+         }
+        }

@@ -1,0 +1,43 @@
+1020000-1: “Greetings, Shopkeeper!  It is I, Quartz Phoenixtail, the Greatest Adventurer in the World!”  
+1020000-1: “Hello again, Quartz!  Still, a bit loud, aren’t you?”  
+1020000-1: “Ahh... Um... Sorry about that, eheheh.”  
+1020000-1: “Hahaha, that’s alright.  So what can I do for the Greatest Adventurer in the World this time?”  
+1020000-1: “I’ve joined with a party, actually!  We’ve cleared the first few levels of the Dungeon, and we’re planning on heading even deeper!  That’s why I’m here, actually; they sent me to pick up some recovery items, but...”
+1020000-1: “Something wrong?”  
+1020000-1: “It’s my sword, you know?  The Trusty Sword was really useful for a while, but I want to get something better, something more fitting for the Greatest Adventurer in the World!  Still, the potions though... I mean, I probably have enough if I skimp on a few, but...”
+1020000-1: “Well, let’s see what we have for you!” 
+1020000-1: “Say, you have any materials you want to sell me?” 
+1020000-1: “Huh?  I guess; I found a couple of things.”  
+1020000-1: “For [set amount of money within range], I’ll give you these [randomly generated items here].”
+1020000-1: [Player accepts offer] “Pleasure doing business with you, Quartz.” 
+1020000-1: “No, the pleasure was mine.”
+1020000-1: [Player denies offer] “I’m afraid I can’t accept that price.”
+1020000-1: [Player sets new price] “I’ll take those off your hands for [new price here].”
+1020000-1: [Success case] “That’s fine with me, Shopkeeper.  The Greatest Adventurer in the World is magnanimous, after all!”
+1020000-1: [Failure case] “I won’t accept that, Shopkeeper.  [set amount of money within range] is my final offer.”
+1020000-1: [Player accepts final offer] “You drive a hard bargain, Quartz.”  
+1020000-1: “Well, as the Greatest Adventurer in the World, I can’t afford to be shortchanged!”
+1020000-1: [Player rejects final offer] “Unfortunately, I can’t accept that.”  
+1020000-1: “I guess I won’t be selling you anything, then.”  
+1020000-1: “The list says I need three Elixirs of Minor Rejuvenation, three Unguents of Minor Invigoration and two tonics of Minor Restoration... But I’ve got enough for the Treebirthed Sword and a bit less potions, too... Agh, I can’t decide!  What do you recommend, Shopkeeper?”
+1020000-1: [Player selects which items to offer the customer] 
+1020000-1: “I think you should have [insert items here].  What do you think?” 
+1020000-1: [Success case] “Yeah, I think you’re right.” 
+1020000-1: [Failure case] “Those aren’t the items that I’m looking for...” 
+1020000-1: [Player sets price of items]
+1020000-1: “I’ll sell them all to you for [price player sets].”
+1020000-1: [Success case] “The Greatest Adventurer in the World will accept your offer!  You have my thanks, Shopkeeper!”  
+1020000-1: [Failure case] “I won’t pay that much for these goods!”
+1020000-1: “I’ll pay [randomly generated price within customer’s thriftiness range], if you insist.”  
+1020000-1: [Player sets price of items]
+1020000-1: “Then how does [new price player sets] sound?” 
+1020000-1: [Success case] “Very well then, Shopkeeper.  This deal is amenable to me.” 
+1020000-1: [Failure case] “I refuse to pay such an amount; I’ll have to seek my business elsewhere!”
+1020000-1: “A party, huh?  How’s working in a team treating you?” 
+1020000-1: “Excellently, of course!  How could things go badly for the Greatest Adventurer in the World?” 
+1020000-1: “Hahaha!  So, what are the others like?”  
+1020000-1: “Well, Kaysel’s the wizard of the party.  He’s pretty strange, and he even made my hair glow in the dark with one of his spells!  It was really annoying at first, but it saved us all when that idiot Tarkin set off a Curse of Darkness.  Ugh, Tarkin; what a buffoon!  Always laughing at me when I tell people about how I’m the Greatest Adventurer in the World!  He thinks he’s so impressive with his greatshield, always showing off to Amara-”  
+1020000-1: “Oh?  Who’s this Amara?” 
+1020000-1: “Ah, umm... She’s the cleric of the party.  She’s the one who sent me here to buy the potions that we needed.  Honestly, she’s such a worrywart sometimes; we’ve been doing great so far, so we really don’t need to get so many potions... It was one time that I got enveloped by slimes!  Still, that’s just one of the things that’s cute about her- Ahh, what are you making me say!  Back to my sword, I mean my potions!”  
+1020000-1: [Successful transaction] “Thanks again, Shopkeeper!  I’ll definitely be prepared for the next levels of the Dungeon now!”  
+1020000-1: [Failed transaction] “How disappointing.  The Greatest Adventurer in the World will have to take his business elsewhere.”  

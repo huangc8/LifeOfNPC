@@ -51,6 +51,7 @@ public class StartDialogScene : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        
         BuyFromPanelPF = BuyFromPanelPf_r;
         SellToPanelPF = SellToPanelPf_r;
         ContentPanelPF = ContentPanelPf_r;
@@ -65,10 +66,11 @@ public class StartDialogScene : MonoBehaviour {
         timer = 1;
         NumHeroesToday = UnityEngine.Random.Range(1, 6);
         SpecialHeroes = new List<Hero>();
+        
     }
 
     void Update(){
-		if (CreateHero.Hero != null) {
+		if (CreateHero.Hero != null && CreateHero.Hero.GetComponent<Hero>().CurrentNode != null) {
 			//advances dialog until branch is found
 			if (CreateHero.Hero.GetComponent<Hero> ().CurrentNode.numbranches == 1 && timer % 180 == 0) {
 				CreateHero.Hero.GetComponent<Hero> ().CurrentNode = CreateHero.Hero.GetComponent<Hero> ().lines [DialogTree.Traverse (CreateHero.Hero.GetComponent<Hero> ().CurrentNode, false)];
@@ -80,8 +82,8 @@ public class StartDialogScene : MonoBehaviour {
 
 	// start the day phase
 	public void StartDayPhase(){
-		this.GetComponent<CreateHero> ().StartCreateHero ();
-		this.GetComponent<DialogDebug> ().day = true;
+        this.GetComponent<CreateHero>().StartCreateHero();
+        this.GetComponent<DialogDebug> ().day = true;
 	}
 
 	// end the day phase

@@ -1,0 +1,40 @@
+1 - R: “Hello again, Shopkeeper.”  
+1 - S: “Ah, Riella!  How’s life as a wizard treating you?”  
+2 - R: “Hmm... That’s the thing, actually.”  
+2 - S: “Oh?”  
+2 - R: “Things went alright at first, but then I kept running into some problems, and I think I’m going to have to change again.  I want to be a ranger now.”
+3 - S: “Well, let’s see what we have for you!” 
+3a1 - S: “On another note, do you have any materials you might be willing to sell me?” 
+3a1 - R: “I do, Shopkeeper.”  
+3a2 - R: “I have [randomly generated items here].  Does [set amount of money within range] sound acceptable?”
+3a3a - S: [Player accepts offer] “I’ll accept, Riella.  Thanks for the business!” 
+3a3a - R: “It was no trouble at all, Shopkeeper.”
+3a3b - S: [Player denies offer] “Sorry Riella, but that’s more than I’m willing to pay.”
+3a3b - S: [Player sets new price] “How about [new price here]?”
+3a3c - R: [Success case] “I can accept that, Shopkeeper.”
+3a3d - R: [Failure case] “This time I’m the one who can’t accept the price, Shopkeeper.  [set amount of money within range] is my final offer.”
+3a3e - S: [Player accepts final offer] “Very well then, Riella.”  
+3a3e - R: “I’m glad we came to an accord, Shopkeeper.”
+3a3f - S: [Player rejects final offer] “That’s still not a price I’m willing to pay, Riella.”  
+3a3f - R: “I suppose that will be all then, Shopkeeper.”  
+3b1 - R: “Items that rangers would use are fine.  Just find what would be a good fit.”
+3b2 - [Player selects which items to offer the customer] 
+3b2 - S: “Riella, what do you think of [insert items here]?” 
+3b3a - R: [Success case] “They look good to me.  What’s the price?” 
+3b3b - R: [Failure case] “Hmm... I don’t think that’s quite what I’m looking for.” 
+3b4 - [Player sets price of items]
+3b4 - S: “I’ll sell them all to you for [price player sets].”
+3b5a - R: [Success case] “That’s acceptable.  Here is the payment, Shopkeeper.”  
+3b5b - R: [Failure case] “I’m afraid I can’t pay that much, Shopkeeper.”
+3b5b - R: “Would you accept [randomly generated price within customer’s thriftiness range] as payment?”  
+3b6 - [Player sets price of items]
+3b6 - S: “I see.  In that case, how does [new price player sets] sound?” 
+3b7a - R: [Success case] “Very well then.  Here is the payment, Shopkeeper.” 
+3b7b - R: [Failure case] “How disappointing.  I’ll have to go to another store...”
+3c - S: “So what went wrong with being a wizard?” 
+3c - R: “Things were fine at first.  I’d shoot a Fireball or a Chain Lightning and the enemies would all die before they even got close to me.  But then I started running into tougher enemies, and some even dodged my spells, and then there were those magic-consuming Slimes, and... I don’t even want to remember it.”   
+3c - S: “I see.  So why do you want to be a ranger now?”  
+3c - R: “With a good bow and some arrows, I’ll be able to shoot clean through those pesky magic-resistant enemies, and I don’t even need to get close to those disgusting Slimes!  I’ll poison them, riddle them with arrows, and laugh as they feebly struggle to their grave!”  
+3c - S: “Well, I hope it works out for you.”
+4a - [Successful transaction] “Thank you once again, Shopkeeper.”  
+4b - [Failed transaction] “I guess you couldn’t have everything, Shopkeeper.”  
