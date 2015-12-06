@@ -8,7 +8,8 @@ public class SellListButtonScript : MonoBehaviour {
 	public Text PriceLabel;
 	public Text QuantityLabel;
 	public Image icon;
-	public int index;
+	public int listIndex;
+	public int itemIndex;
 	public bool sell = true;
 
 	public int price;
@@ -23,7 +24,7 @@ public class SellListButtonScript : MonoBehaviour {
 		Button bt = this.GetComponent<Button> ();
 		bt.image.sprite = bt.spriteState.highlightedSprite;
 		if (sell) {
-			_SPS.ItemSelected (index, price, quantity);
+			_SPS.ItemSelected (itemIndex, listIndex, price, quantity);
 		}
 	}
 }
