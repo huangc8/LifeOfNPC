@@ -28,23 +28,24 @@ public class CreateHero : MonoBehaviour {
         Hero = Instantiate(HeroPF) as GameObject;
         Hero.transform.SetParent(canvas.transform, false);
 
-        int SpecialHeroAppeared = UnityEngine.Random.Range(0, 6);
-
-        if (SpecialHeroAppeared != 7)// change to gamemaster.currentday
+        if(GameMaster.currentDay == 3 || GameMaster.currentDay == 5 || GameMaster.currentDay == 10 || GameMaster.currentDay == 15 || GameMaster.currentDay == 19 ||
+            GameMaster.currentDay == 22 || GameMaster.currentDay == 26 || GameMaster.currentDay == 30 || GameMaster.currentDay == 34 || GameMaster.currentDay == 39 ||
+            GameMaster.currentDay == 42 || GameMaster.currentDay == 46)
         {
             Hero.AddComponent<Hero>();//adds hero component upon creation
 
-            CreateGenericHero();//only this is new
+            LoadSpecialHero();
 
             HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
             HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
         }
 
+
         else
         {
             Hero.AddComponent<Hero>();//adds hero component upon creation
 
-            LoadSpecialHero();
+            CreateGenericHero();//only this is new
 
             HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
             HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
@@ -166,23 +167,10 @@ public class CreateHero : MonoBehaviour {
 
     public void LoadSpecialHero()
     {
-        //randomly choose hero
-        int WhichHero = 0;// UnityEngine.Random.Range(0, 2);
+        if(GameMaster.currentDay == 3 || GameMaster.currentDay == 10 || GameMaster.currentDay == 22 ) { SpecialHeroName = "Quartz"; }
+        if(GameMaster.currentDay == 5 || GameMaster.currentDay == 19 || GameMaster.currentDay == 39 || GameMaster.currentDay == 46) { SpecialHeroName = "Riella"; }
+        if(GameMaster.currentDay == 15 || GameMaster.currentDay == 26 || GameMaster.currentDay == 30 || GameMaster.currentDay == 42) { SpecialHeroName = "Felix"; }
 
-        switch (WhichHero)
-        {
-            case 0:
-                SpecialHeroName = "Quartz";
-                break;
-
-            case 1:
-                SpecialHeroName = "Felix";
-                break;
-
-            case 2:
-                SpecialHeroName = "Riella";
-                break;
-        }
         //if hero exists in list and is not done then load hero from list, else if hero not in list then create hero with special stats
         bool InList = false;
         int SHeroIndex = 0;
@@ -203,10 +191,7 @@ public class CreateHero : MonoBehaviour {
                     }
                     i++;
                 }
-            //Debug.Log("encounter number" + StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber);
-            //Debug.Log("total number encounters" + StartDialogScene.SpecialHeroes[SHeroIndex].NumberOfEncounters);
         }
-        Debug.Log(InList);
         
             if (!InList)//meeting for the first time
             {
@@ -234,8 +219,8 @@ public class CreateHero : MonoBehaviour {
 
                     case "Felix":
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
-                    Hero.GetComponent<Hero>().EncounterNumber = 0;
-                    Hero.GetComponent<Hero>().NumberOfEncounters = 4;
+                        Hero.GetComponent<Hero>().EncounterNumber = 0;
+                        Hero.GetComponent<Hero>().NumberOfEncounters = 4;
                         Hero.GetComponent<Hero>().money = 5280;
                         Hero.GetComponent<Hero>().thriftiness = 40;
                         Hero.GetComponent<Hero>().RequiredItem = "none";
