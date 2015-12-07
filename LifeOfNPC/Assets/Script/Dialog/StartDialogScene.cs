@@ -100,6 +100,7 @@ public class StartDialogScene : MonoBehaviour {
 	// end the day phase
 	public void EndDayPhase(){
         this.GetComponent<StartDialogScene>().SpecialHeroServed = false;
+        this.GetComponent<CreateHero>().DismissHero();
 		this.GetComponent<DialogDebug> ().day = false;
 	}
 

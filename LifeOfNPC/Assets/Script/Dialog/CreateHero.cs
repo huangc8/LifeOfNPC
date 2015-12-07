@@ -68,62 +68,66 @@ public class CreateHero : MonoBehaviour {
 
     public void DismissHero()
     {
-        if (Hero.GetComponent<Hero>().name == null)
+        if (Hero != null)
         {
-            Destroy(Hero);//should remove hero object
-        }
-
-        else {
-            if(Hero.GetComponent<Hero>().name == "Quartz" && Hero.GetComponent<Hero>().NumberOfEncounters == 1)
+            if (Hero.GetComponent<Hero>().name == null)
             {
-                bool potion1 = false, potion2 = false, potion3 = false;
-                foreach(Item it in Hero.GetComponent<Hero>().H_Inventory)
-                {
-                    if(it.name == "Elixirs of Minor Rejuvenation") { potion1 = true; }
-                    if (it.name == "Unguents of Minor Invigoration") { potion2 = true; }
-                    if (it.name == "tonics of Minor Restoration") { potion3 = true; }
-                }
-                if(potion1 && potion2 && potion3) { Hero.GetComponent<Hero>().Encounter2Success = true; }
-            }
-            Hero.GetComponent<Hero>().NumberOfEncounters++;//increases the number of times encountered
-
-            if (StartDialogScene.SpecialHeroes.Count == 0)//if first hero encountered
-            {
-                Hero.GetComponent<Hero>().EncounterNumber++;
-                StartDialogScene.SpecialHeroes.Add(Hero.GetComponent<Hero>());//add the hero component to the list
+                Destroy(Hero);//should remove hero object
             }
 
             else
             {
-                bool InList = false;
-                int SHeroIndex = 0;
-                int index = 0;
-                foreach (Hero SHero in StartDialogScene.SpecialHeroes)
+                if (Hero.GetComponent<Hero>().name == "Quartz" && Hero.GetComponent<Hero>().NumberOfEncounters == 1)
                 {
-                    if (SHero.name == Hero.GetComponent<Hero>().name)
+                    bool potion1 = false, potion2 = false, potion3 = false;
+                    foreach (Item it in Hero.GetComponent<Hero>().H_Inventory)
                     {
-                        InList = true;
-                        SHeroIndex = index;
+                        if (it.name == "Elixirs of Minor Rejuvenation") { potion1 = true; }
+                        if (it.name == "Unguents of Minor Invigoration") { potion2 = true; }
+                        if (it.name == "tonics of Minor Restoration") { potion3 = true; }
                     }
-                    index++;
+                    if (potion1 && potion2 && potion3) { Hero.GetComponent<Hero>().Encounter2Success = true; }
                 }
+                Hero.GetComponent<Hero>().NumberOfEncounters++;//increases the number of times encountered
 
-                Hero.GetComponent<Hero>().EncounterNumber++;//increases number of times hero has been encountered
-
-                if (InList)//if hero is in list
+                if (StartDialogScene.SpecialHeroes.Count == 0)//if first hero encountered
                 {
-                    StartDialogScene.SpecialHeroes.RemoveAt(SHeroIndex);//remove old hero component
-                    StartDialogScene.SpecialHeroes.Add(Hero.GetComponent<Hero>());//add new hero component to the list
+                    Hero.GetComponent<Hero>().EncounterNumber++;
+                    StartDialogScene.SpecialHeroes.Add(Hero.GetComponent<Hero>());//add the hero component to the list
                 }
 
-                else//if hero is not in the list already
+                else
                 {
-                    StartDialogScene.SpecialHeroes.Add(Hero.GetComponent<Hero>());//adds the hero component to the list
-                }
+                    bool InList = false;
+                    int SHeroIndex = 0;
+                    int index = 0;
+                    foreach (Hero SHero in StartDialogScene.SpecialHeroes)
+                    {
+                        if (SHero.name == Hero.GetComponent<Hero>().name)
+                        {
+                            InList = true;
+                            SHeroIndex = index;
+                        }
+                        index++;
+                    }
 
+                    Hero.GetComponent<Hero>().EncounterNumber++;//increases number of times hero has been encountered
+
+                    if (InList)//if hero is in list
+                    {
+                        StartDialogScene.SpecialHeroes.RemoveAt(SHeroIndex);//remove old hero component
+                        StartDialogScene.SpecialHeroes.Add(Hero.GetComponent<Hero>());//add new hero component to the list
+                    }
+
+                    else//if hero is not in the list already
+                    {
+                        StartDialogScene.SpecialHeroes.Add(Hero.GetComponent<Hero>());//adds the hero component to the list
+                    }
+
+                }
             }
+            Destroy(Hero);//should remove hero object after it has been saved
         }
-        Destroy(Hero);//should remove hero object after it has been saved
 
     }
 
@@ -243,7 +247,9 @@ public class CreateHero : MonoBehaviour {
                         Dialog = new StreamReader("Assets/Resources/FelixDialog.txt");//text file that is loaded from resourses
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
-                        break;
+                    Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
+                    CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                    break;
 
                     case "Riella":
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
@@ -258,7 +264,9 @@ public class CreateHero : MonoBehaviour {
                         Dialog = new StreamReader("Assets/Resources/RiellaDialog.txt");//text file that is loaded from resourses
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
-                        break;
+                    Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
+                    CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                    break;
                 }
             }
 
