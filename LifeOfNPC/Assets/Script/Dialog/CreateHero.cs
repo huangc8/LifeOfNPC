@@ -94,7 +94,7 @@ public class CreateHero : MonoBehaviour {
                     index++;
                 }
 
-                Hero.GetComponent<Hero>().EncounterNumber++;
+                Hero.GetComponent<Hero>().EncounterNumber++;//increases number of times hero has been encountered
 
                 if (InList)//if hero is in list
                 {
