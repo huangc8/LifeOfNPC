@@ -15,7 +15,6 @@ public class SupplyButtonScript : MonoBehaviour {
 	public Text nameLabel;
 	public Text quantityLabel;
 	public Text costLabel;
-	public Image icon;
 	
 	public Button upButton;
 	public Button downButton;

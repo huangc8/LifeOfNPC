@@ -868,7 +868,7 @@ public class DataBase : MonoBehaviour {
 	public void stackSupply(){
 		List<string> tmp = new List<string>();
 		switch (GameMaster.currentDay) {
-		case 1:
+		default:
 			tmp.Add("Consecrated Spring Water");
 			tmp.Add("Eight-Leaf Clover");
 			tmp.Add("Salamander Oil");

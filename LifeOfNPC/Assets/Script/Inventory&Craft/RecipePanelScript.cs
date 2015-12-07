@@ -25,7 +25,6 @@ public class RecipePanelScript : MonoBehaviour {
 			GameObject newButton = Instantiate(RecipeListButtonPf) as GameObject;
 			RecipeListButtonScript rlb = newButton.GetComponent<RecipeListButtonScript>();
 			rlb.NameLabel.text = re.name;
-			rlb.icon.sprite = Resources.Load<Sprite>("Sprite/" + re.name);
 		}
 	}
 }

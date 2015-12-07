@@ -5,12 +5,17 @@ using System.Collections;
 
 public class CraftPanelScript : MonoBehaviour {
 
+	// overall 
+	public Image bg;						// the background
+	public GameObject experimentButton;		// 
+
 	// recipe section
 	public Recipe recipe;					// the recipe
 	public Text recipeLabel;				// the recipe label
 	public GameObject RecipePanel;			// the recipe panel
 	public GameObject contentPanel;			// the content panel
 	public GameObject RecipeButtonPf;		// recipe buttons pf
+	public GameObject RecipeLabelPf;
 
 	// craft section
 	private bool experimental;				// the experimental flag
@@ -25,6 +30,8 @@ public class CraftPanelScript : MonoBehaviour {
 	public Image detailIcon;
 	public Text detailNameLabel;
 	public Text detailDescription;
+	public GameObject detailContentPanel; 	// the content panel for materials
+	public GameObject detailListButtonPf;	// the list button prefab	
 
 	// experimental section
 	public GameObject ExperimentalPanel;
@@ -43,6 +50,7 @@ public class CraftPanelScript : MonoBehaviour {
 
 	public void OpenExperimental(){
 		RecipePanel.SetActive (false);
+		craftButton.interactable = true;
 		CleanUpCraftPanel ();
 		ExperimentalPanel = Instantiate (ExperimentalPanelPf) as GameObject;
 		ExperimentalPanel.transform.SetParent (this.transform, false);
@@ -55,18 +63,66 @@ public class CraftPanelScript : MonoBehaviour {
 
 	// populate the recipe panel
 	public void PopulateRecipeButton(){
-		int index = 0;
+		int listIndex = 0;
+		int recipeIndex = 0;
+
+		GameObject newLabel = Instantiate (RecipeLabelPf) as GameObject;
+		newLabel.GetComponentInChildren<Text> ().text = "Potions";
+		newLabel.transform.SetParent (contentPanel.transform, false);
 		foreach (Recipe re in Craft._Recipes) {
+			if(re.type == 3){
 			GameObject newButton = Instantiate(RecipeButtonPf) as GameObject;
 			RecipeListButtonScript rlbs = newButton.GetComponent<RecipeListButtonScript>();
 			rlbs._CraftPanelScript = this;
 			rlbs.NameLabel.text = re.name;
-			rlbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + re.name);
-			rlbs.index = index;
+			rlbs.listIndex = listIndex;
+			rlbs.recipeIndex = recipeIndex;
 			rlbs.contentPanel = contentPanel;
 			rlbs.UpdateColor();
 			newButton.transform.SetParent(contentPanel.transform, false);
-			index++;
+			listIndex++;
+			}
+			recipeIndex++;
+		}
+		recipeIndex = 0;
+
+		GameObject newLabel2 = Instantiate (RecipeLabelPf) as GameObject;
+		newLabel2.GetComponentInChildren<Text> ().text = "Armor";
+		newLabel2.transform.SetParent (contentPanel.transform, false);
+		foreach (Recipe re in Craft._Recipes) {
+			if(re.type == 1){
+				GameObject newButton = Instantiate(RecipeButtonPf) as GameObject;
+				RecipeListButtonScript rlbs = newButton.GetComponent<RecipeListButtonScript>();
+				rlbs._CraftPanelScript = this;
+				rlbs.NameLabel.text = re.name;
+				rlbs.listIndex = listIndex;
+				rlbs.recipeIndex = recipeIndex;
+				rlbs.contentPanel = contentPanel;
+				rlbs.UpdateColor();
+				newButton.transform.SetParent(contentPanel.transform, false);
+				listIndex++;
+			}
+			recipeIndex++;
+		}
+		recipeIndex = 0;
+	
+		GameObject newLabel3 = Instantiate (RecipeLabelPf) as GameObject;
+		newLabel3.GetComponentInChildren<Text> ().text = "Weapon";
+		newLabel3.transform.SetParent (contentPanel.transform, false);
+		foreach (Recipe re in Craft._Recipes) {
+			if(re.type == 2){
+				GameObject newButton = Instantiate(RecipeButtonPf) as GameObject;
+				RecipeListButtonScript rlbs = newButton.GetComponent<RecipeListButtonScript>();
+				rlbs._CraftPanelScript = this;
+				rlbs.NameLabel.text = re.name;
+				rlbs.listIndex = listIndex;
+				rlbs.recipeIndex = recipeIndex;
+				rlbs.contentPanel = contentPanel;
+				rlbs.UpdateColor();
+				newButton.transform.SetParent(contentPanel.transform, false);
+				listIndex++;
+			}
+			recipeIndex++;
 		}
 	}
 
@@ -82,10 +138,14 @@ public class CraftPanelScript : MonoBehaviour {
 			CloseExperimental();
 			CleanUpCraftPanel();
 			experimental = false;
+			bg.sprite = Resources.Load<Sprite>("Sprite/uiCraftingPanel");
+			experimentButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprite/uiButtonExperiment");
 		} else {
 			CloseAllRecipePanel();
 			OpenExperimental();
 			experimental = true;
+			bg.sprite = Resources.Load<Sprite>("Sprite/uiExperimentationPanel");
+			experimentButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprite/uiButtonExperimentActive");
 		}
 	}
 
@@ -120,11 +180,22 @@ public class CraftPanelScript : MonoBehaviour {
 		detailNameLabel.text = recipe.name;
 		detailDescription.text = recipe.description;
 		detailPanel.SetActive (true);
+		for (int i = 0; i < recipe.materials.Count; i++) {
+			GameObject newButton = Instantiate(detailListButtonPf) as GameObject;
+			string name = recipe.getName(i);
+			int amount = recipe.getAmount(i);
+			newButton.GetComponentInChildren<Text>().text = name + " (" + amount.ToString() + ")";
+			newButton.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Sprite/" + name);
+			newButton.transform.SetParent(detailContentPanel.transform, false);
+		}
 	}
-
+	
 	// close the detail panel
 	public void CloseDetailPanel(){
-		detailPanel.SetActive (false);	
+		detailPanel.SetActive (false);
+		var children = new List<GameObject>();
+		foreach (Transform child in detailContentPanel.transform) children.Add(child.gameObject);
+		children.ForEach(child => Destroy(child));
 	}
 
 	public void CloseAllRecipePanel(){
@@ -144,16 +215,16 @@ public class CraftPanelScript : MonoBehaviour {
 				int required = recipe.getAmount (i);
 				materialNums [i].text = got + "/" + required;
 				if(got >= required){
-					materialNums[i].color = Color.green;
+					materialNums[i].color = HexToColor("608247");
 					enough++;
 				}else if (got >= required / 2){
-					materialNums[i].color = Color.yellow;
+					materialNums[i].color = HexToColor("dcdd6d");
 				}else{
-					materialNums[i].color = Color.red;
+					materialNums[i].color = HexToColor("824747");
 				}
 			}else{
 				materialNums[i].text = "??/??";
-				materialNums[i].color = Color.black;
+				materialNums[i].color = HexToColor("362F2DFF");
 			}
 		}
 		if (enough == recipe.materials.Count) {
@@ -174,7 +245,7 @@ public class CraftPanelScript : MonoBehaviour {
 		for(int i = 0; i < materials.Count; i++){
 			materials[i].GetComponent<MaterialBoxScript>().DestroyMaterial();
 			materialNums[i].text = "??/??";
-			materialNums[i].color = Color.black;
+			materialNums[i].color = HexToColor("362F2DFF");
 		}
 		if (product.transform.childCount > 0) {
 			GameObject.Destroy (product.transform.GetChild (0).gameObject);
@@ -235,5 +306,13 @@ public class CraftPanelScript : MonoBehaviour {
 				Debug.Log ("Craft fail");
 			}
 		}
+	}
+
+	Color HexToColor(string hex)
+	{
+		byte r = byte.Parse(hex.Substring(0,2), System.Globalization.NumberStyles.HexNumber);
+		byte g = byte.Parse(hex.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
+		byte b = byte.Parse(hex.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
+		return new Color32(r,g,b, 255);
 	}
 }

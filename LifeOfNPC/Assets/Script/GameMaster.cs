@@ -6,6 +6,7 @@ public class GameMaster : MonoBehaviour {
 
 	#region Data
 	public static GameObject _GameMaster;
+	public AudioScript _AudioScript;
 	public static GameObject NightMenu;
 	public static GameObject DayPanel;
 	public static GameObject NightPanel;
@@ -62,13 +63,6 @@ public class GameMaster : MonoBehaviour {
 			NightPanel.GetComponent<NightPanelScript>().DayLabel.text = "Day " + currentDay.ToString();
 		}
 	}
-
-	// add days
-	public void newDay(){
-		currentDay++;
-		ImportSupply ();
-		OpenNightMenu ();
-	}
 	#endregion
 
 	#region OpenMenu
@@ -114,8 +108,10 @@ public class GameMaster : MonoBehaviour {
 			EndDayPhase ();
 			ClearCanvas();
 			currentPhase = 1;
+			ImportSupply();
 			OpenNightMenu ();
 			Background.sprite = Resources.Load<Sprite>("Sprite/backgroundCraftroom");
+			_AudioScript.playNightTheme();
 		} else {
 			CloseNightMenu();
 			ClearCanvas();
@@ -123,6 +119,7 @@ public class GameMaster : MonoBehaviour {
 			StartDayPhase();
 			Background.sprite = Resources.Load<Sprite>("Sprite/backgroundStorefront");
 			currentDay++;
+			_AudioScript.playDayTheme();
 		}
 		UpdateGoldDisplay ();
 		UpdateDateDisplay ();
