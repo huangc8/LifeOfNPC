@@ -28,7 +28,7 @@ public class CreateHero : MonoBehaviour {
         Hero = Instantiate(HeroPF) as GameObject;
         Hero.transform.SetParent(canvas.transform, false);
 
-        int SpecialHeroAppeared = 6;//UnityEngine.Random.Range(0, 6);
+        int SpecialHeroAppeared = UnityEngine.Random.Range(0, 6);
 
         if (SpecialHeroAppeared != 7)// change to gamemaster.currentday
         {
