@@ -21,5 +21,4 @@
 1220000-21: “It was my mother’s idea, haha.  Dad wanted a more traditional name like Cirrus, Chain, or Hoshi, but Mom wouldn’t hear a word of it.” 
 1230000-22: “Well, you certainly won’t be forgotten any time soon.”  
 1240000-23: “Mom said something like that herself.  She always wanted people to know who I was.  So that’s why I need to be the Greatest Adventurer in the World - so I can make her proud.”  
-1020000-24: [Successful transaction] “Thanks again, Shopkeeper!  Take heed of this moment!  For this is the birth of the Greatest Adventurer in the World!”  
-1020000-25: [Failed transaction] “Going to the Dungeon will have to wait... Goodbye, I guess.” 
+1000000-24: [Successful transaction] “Thanks again, Shopkeeper!  Take heed of this moment!  For this is the birth of the Greatest Adventurer in the World!”  

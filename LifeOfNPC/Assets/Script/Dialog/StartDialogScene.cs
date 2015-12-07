@@ -73,8 +73,15 @@ public class StartDialogScene : MonoBehaviour {
 		if (CreateHero.Hero != null && CreateHero.Hero.GetComponent<Hero>().CurrentNode != null) {
 			//advances dialog until branch is found
 			if (CreateHero.Hero.GetComponent<Hero> ().CurrentNode.numbranches == 1 && timer % 180 == 0) {
-				CreateHero.Hero.GetComponent<Hero> ().CurrentNode = CreateHero.Hero.GetComponent<Hero> ().lines [DialogTree.Traverse (CreateHero.Hero.GetComponent<Hero> ().CurrentNode, false)];
-				timer = 1;
+                if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.next != 0)
+                {
+                    CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, false)];
+                    timer = 1;
+                }
+                else
+                {
+                    this.GetComponent<CreateHero>().DismissHero();//dismiss special hero once final line read
+                }
 			}
 			timer++;
 		}

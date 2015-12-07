@@ -1,60 +1,35 @@
-1 - F: “Hello, Shopkeeper.”  
-1 - S: “Felix, hello!  What would you like to buy?”  
-2 - F: “You’re certainly more energetic than before.”  
-2 - S: “Should I not be?.”  
-2 - F: “It’s actually really creepy.” 
-2 - S: “Sorry about that.  What are you getting this time?”
-2 - F: “That’s more like it, Shopkeep.  I need a new sword, a new bow, new armor-.”
-2 - S: “And some other stuff, right?”
-2 - F: “Right.”
-3 - S: “Well Felix, let’s see what I’ve got for you.” 
-3a1 - S: “I may as well ask.  Have any materials for me?” 
-3a1 - F: “Yes.”  
-3a1 - S: “That’s what I thought you’d sa- Wait, did you say yes?”
-3a1 - F: “Are your ears clogged?  Am I mute?”
-3a1 - S: “A-Alright then!  What do you have for me?”
-3a2 - F: “I’ve got [randomly generated items here].  You can have it for [set amount of money within range].”
-3a3a - S: [Player accepts offer] “I’ll take it.  Thanks, Felix.” 
-3a3a - F: “Ugh, just get on with it.”
-3a3b - S: [Player denies offer] “You’re obviously new to this.  That’s too expensive.”
-3a3b - S: [Player sets new price] “I’ll take them for [new price here].”
-3a3c - F: [Success case] “I’ll accept that, Shopkeep.”
-3a3d - F: [Failure case] “Nice try, Shopkeep.  [set amount of money within range] is my final offer.”
-3a3e - S: [Player accepts final offer] “Take your money, Felix.”  
-3a3e - F: “Pleasure doing business with you, Shopkeep.”
-3a3f - S: [Player rejects final offer] “I can’t pay that, Felix.”  
-3a3f - F: “Guess there’s no deal, then.”  
-3b1 - F: “You know what I want by now, Shopkeep.”
-3b2 - [Player selects which items to offer the customer] 
-3b2 - S: “I’ve got [insert items here] for you.” 
-3b3a - F: [Success case] “I’ll take them. Cost?” 
-3b3b - F: [Failure case] “Try again, Shopkeep.” 
-3b4 - [Player sets price of items]
-3b4 - S: “[price player sets].”
-3b5a - F: [Success case] “Alright.  Here you go, Shopkeep.”  
-3b5b - F: [Failure case] “Like I’d pay that much.”
-3b5b - F: “Try [randomly generated price within customer’s thriftiness range].”  
-3b6 - [Player sets price of items]
-3b6 - S: “[new price player sets].  Take it or leave it.” 
-3b7a - F: [Success case] “Tch, fine.  Here’s the money, you skinflint.” 
-3b7b - F: [Failure case] “Sorry, Shopkeep.  Not today.”
-3c - S: “So how are things going?” 
-3c - F: “Hit the 70th floor yesterday.”   
-3c - S: “The 70th floor?  Impressive!”  
-3c - F: “It sounds great, but it was a pain in the behind.  You’d think more people would make it easier, but nope!  Just how many traps can one girl set off?”  
-3c - S: “Oh?  You’re traveling with a girl?”
-3c - F: “It’s nowhere even close to what you’re thinking.” 
-3c - S: “Really now?” 
-3c - F: “Really now.  I just met up with someone at random while I was exploring the Dungeon; Rielle or something.  What kind of crazy person thanks someone who saved their life by kicking them in the face?” 
-3c - S: “She seems like quite the character.”  
-3c - F: “Ugh, you have no idea!  She swans in out of nowhere, copies my style, ‘but I’m a wizard too, so it’s completely original, really’, and sets off every trap in the next five floors!  And she has the gall to complain when I tell her about the best course of action!  Honestly, she’s lucky I was around to save her so many times.” 
-3c - S: “She’s lucky you were around, huh?  Sounds nice to me.” 
-3c - F: “I guess.”
-3c - S: “She ever help you at all?” 
-3c - F: “Not in the slightest!  Well, there was that one time with the Minotaur Dracolich... But she was the one who got us into that fight anyways!”  
-3c - S: “Sounds like you’re having quite a bit of fun in the Dungeon.” 
-3c - F: “Ugh, don’t wear that smile on your face.  It’s creepy.  Besides, it’s not like I’m in a permanent party or anything.  I’m just occasionally working with anyone I happen to meet.” 
-3c - S: “Still, I’m glad that things are looking up for you, Felix.” 
-3c - F: “Yeah, yeah, Shopkeep.  Get back to business.”
-4a - [Successful transaction] “It’s... Uhh... Thanks, I guess.  Bye Shopkeep.”  
-4b - [Failed transaction] “I guess I’ll just have to go without, then, Shopkeeper.  Bye.” 
+1020000-24: “Hello, Shopkeeper.”  
+1030000-24: “Felix, hello!  What would you like to buy?”  
+1040000-24: “You’re certainly more energetic than before.”  
+1050000-24: “Should I not be?.”  
+1060000-24: “It’s actually really creepy.” 
+1070000-24: “Sorry about that.  What are you getting this time?”
+1080000-24: “That’s more like it, Shopkeep.  I need a new sword, a new bow, new armor-.”
+1090000-24: “And some other stuff, right?”
+1100000-24: “Right.”
+2121100-24: “Well Felix, let’s see what I’ve got for you.” 
+1180000-24: [Success case] “I’ll accept that, Shopkeep.”
+2141300-24: [Failure case] “Nice try, Shopkeep.  $ is my final offer.”
+1180000-24: [Success case] “Alright.  Here you go, Shopkeep.”  
+1150000-24: [Failure case] “Like I’d pay that much.”
+2171600-24: “Try $.”  
+1180000-24: [Success case] “Tch, fine.  Here’s the money, you skinflint.” 
+1180000-24: [Failure case] “Sorry, Shopkeep.  Not today.”
+1190000-24: “So how are things going?” 
+1200000-24: “Hit the 70th floor yesterday.”   
+1210000-24: “The 70th floor?  Impressive!”  
+1220000-24: “It sounds great, but it was a pain in the behind.  You’d think more people would make it easier, but nope!  Just how many traps can one girl set off?”  
+1230000-24: “Oh?  You’re traveling with a girl?”
+1240000-24: “It’s nowhere even close to what you’re thinking.” 
+1250000-24: “Really now?” 
+1260000-24: “Really now.  I just met up with someone at random while I was exploring the Dungeon; Rielle or something.  What kind of crazy person thanks someone who saved their life by kicking them in the face?” 
+1270000-24: “She seems like quite the character.”  
+1280000-24: “Ugh, you have no idea!  She swans in out of nowhere, copies my style, ‘but I’m a wizard too, so it’s completely original, really’, and sets off every trap in the next five floors!  And she has the gall to complain when I tell her about the best course of action!  Honestly, she’s lucky I was around to save her so many times.” 
+1290000-24: “She’s lucky you were around, huh?  Sounds nice to me.” 
+1300000-24: “I guess.”
+1310000-24: “She ever help you at all?” 
+1320000-24: “Not in the slightest!  Well, there was that one time with the Minotaur Dracolich... But she was the one who got us into that fight anyways!”  
+1330000-24: “Sounds like you’re having quite a bit of fun in the Dungeon.” 
+1340000-24: “Ugh, don’t wear that smile on your face.  It’s creepy.  Besides, it’s not like I’m in a permanent party or anything.  I’m just occasionally working with anyone I happen to meet.” 
+1350000-24: “Still, I’m glad that things are looking up for you, Felix.” 
+1000000-24: “Yeah, yeah, Shopkeep.  Get back to business.”
