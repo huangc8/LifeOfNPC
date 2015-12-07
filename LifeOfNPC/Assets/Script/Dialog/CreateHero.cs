@@ -75,6 +75,7 @@ public class CreateHero : MonoBehaviour {
 
             if (StartDialogScene.SpecialHeroes.Count == 0)//if first hero encountered
             {
+                Hero.GetComponent<Hero>().EncounterNumber++;
                 StartDialogScene.SpecialHeroes.Add(Hero.GetComponent<Hero>());//add the hero component to the list
             }
 
@@ -93,6 +94,8 @@ public class CreateHero : MonoBehaviour {
                     index++;
                 }
 
+                Hero.GetComponent<Hero>().EncounterNumber++;
+
                 if (InList)//if hero is in list
                 {
                     StartDialogScene.SpecialHeroes.RemoveAt(SHeroIndex);//remove old hero component
@@ -103,6 +106,7 @@ public class CreateHero : MonoBehaviour {
                 {
                     StartDialogScene.SpecialHeroes.Add(Hero.GetComponent<Hero>());//adds the hero component to the list
                 }
+
             }
         }
         Destroy(Hero);//should remove hero object after it has been saved
@@ -213,7 +217,7 @@ public class CreateHero : MonoBehaviour {
                 {
                     case "Quartz":
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
-                        Hero.GetComponent<Hero>().EncounterNumber = 1;
+                        Hero.GetComponent<Hero>().EncounterNumber = 0;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 3;
                         Hero.GetComponent<Hero>().money = 3000;
                         Hero.GetComponent<Hero>().thriftiness = 0;
@@ -230,7 +234,8 @@ public class CreateHero : MonoBehaviour {
 
                     case "Felix":
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
-                        Hero.GetComponent<Hero>().NumberOfEncounters = 4;
+                    Hero.GetComponent<Hero>().EncounterNumber = 0;
+                    Hero.GetComponent<Hero>().NumberOfEncounters = 4;
                         Hero.GetComponent<Hero>().money = 5280;
                         Hero.GetComponent<Hero>().thriftiness = 40;
                         Hero.GetComponent<Hero>().RequiredItem = "none";
@@ -244,6 +249,7 @@ public class CreateHero : MonoBehaviour {
 
                     case "Riella":
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
+                        Hero.GetComponent<Hero>().EncounterNumber = 0;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
                         Hero.GetComponent<Hero>().money = 18060;
                         Hero.GetComponent<Hero>().thriftiness = 10;
@@ -269,6 +275,7 @@ public class CreateHero : MonoBehaviour {
                         if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 1)
                         {
                             Hero.GetComponent<Hero>().name = SpecialHeroName;
+                            Hero.GetComponent<Hero>().EncounterNumber = StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber;
                             Hero.GetComponent<Hero>().NumberOfEncounters = 3;
                             Hero.GetComponent<Hero>().money = 4725;
                             Hero.GetComponent<Hero>().thriftiness = 15;
@@ -285,6 +292,7 @@ public class CreateHero : MonoBehaviour {
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 2 && StartDialogScene.SpecialHeroes[SHeroIndex].Encounter2Success)//if Quartz was sold all the potions
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
+                        Hero.GetComponent<Hero>().EncounterNumber = StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 3;
                         Hero.GetComponent<Hero>().money = 22000;
                         Hero.GetComponent<Hero>().thriftiness = 25;
@@ -302,6 +310,7 @@ public class CreateHero : MonoBehaviour {
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 2 && !StartDialogScene.SpecialHeroes[SHeroIndex].Encounter2Success)//if Quartz was not sold all the potions
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
+                        Hero.GetComponent<Hero>().EncounterNumber = StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 3;
                         Hero.GetComponent<Hero>().money = 22500;
                         Hero.GetComponent<Hero>().thriftiness = 0;
@@ -323,6 +332,7 @@ public class CreateHero : MonoBehaviour {
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 1)
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
+                        Hero.GetComponent<Hero>().EncounterNumber = StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
                         Hero.GetComponent<Hero>().money = 14805;
                         Hero.GetComponent<Hero>().thriftiness = 45;
@@ -339,6 +349,7 @@ public class CreateHero : MonoBehaviour {
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 2)
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
+                        Hero.GetComponent<Hero>().EncounterNumber = StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
                         Hero.GetComponent<Hero>().money = 19200;
                         Hero.GetComponent<Hero>().thriftiness = 50;
@@ -355,6 +366,7 @@ public class CreateHero : MonoBehaviour {
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 3)
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
+                        Hero.GetComponent<Hero>().EncounterNumber = StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
                         Hero.GetComponent<Hero>().money = 66000;
                         Hero.GetComponent<Hero>().thriftiness = 30;
@@ -376,6 +388,7 @@ public class CreateHero : MonoBehaviour {
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 1)
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
+                        Hero.GetComponent<Hero>().EncounterNumber = StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
                         Hero.GetComponent<Hero>().money = 26910;
                         Hero.GetComponent<Hero>().thriftiness = 20;
@@ -392,6 +405,7 @@ public class CreateHero : MonoBehaviour {
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 2)
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
+                        Hero.GetComponent<Hero>().EncounterNumber = StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
                         Hero.GetComponent<Hero>().money = 25000;
                         Hero.GetComponent<Hero>().thriftiness = 20;
@@ -408,6 +422,7 @@ public class CreateHero : MonoBehaviour {
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 3)
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
+                        Hero.GetComponent<Hero>().EncounterNumber = StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
                         Hero.GetComponent<Hero>().money = 85675;
                         Hero.GetComponent<Hero>().thriftiness = 35;
