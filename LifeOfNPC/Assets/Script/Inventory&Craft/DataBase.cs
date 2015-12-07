@@ -900,4 +900,22 @@ public class DataBase : MonoBehaviour {
 			_Supply.supplyList.Add (new Item (tmp[i], 0, "", getOfficalPrice(tmp[i]), 0));
 		}
 	}
+
+	public Item getRandomItem(int quality){
+		string name = "";
+		switch (quality) {
+		case 1:
+			name = "Consecrated Spring Water";
+			return new Item(name, 3, this.getDescription(name), this.getOfficalPrice(name), 0);
+			break;
+		case 2:
+			name = "Eight-Leaf Clover";
+			return new Item(name, 3, this.getDescription(name), this.getOfficalPrice(name), 0);
+			break;
+		case 3:
+			name = "Salamander Oil";
+			return new Item(name, 3, this.getDescription(name), this.getOfficalPrice(name), 0);
+			break;
+		}
+	}
 }
