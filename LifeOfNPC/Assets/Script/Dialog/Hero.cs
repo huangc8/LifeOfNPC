@@ -52,12 +52,7 @@ public class Hero : MonoBehaviour {
             
             if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("$"))//check for insert money
             {
-                CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$")) + OfferPriceToQty + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$") + 1);
-            }
-
-            if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("*"))//check for insert specific item
-            {
-                CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("*")) + OfferPriceToQty + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("*") + 1);
+                CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$")) + CreateHero.Hero.GetComponent<Hero>().OfferPriceToQty + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$") + 1);
             }
 
             if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("#"))//check for insert item being sold
@@ -83,7 +78,7 @@ public class Hero : MonoBehaviour {
         switch (qii)
         {
             case 1:
-                int lowItems = 2;
+                int lowItems = UnityEngine.Random.Range(2, 7);
                 for (int i = 0; i < lowItems; i++)
                 {
                     Debug.Log("low quality");
@@ -93,7 +88,7 @@ public class Hero : MonoBehaviour {
                 break;
 
             case 2:
-                int mediItems = 2;
+                int mediItems = UnityEngine.Random.Range(2, 7);
                 for (int i = 0; i < mediItems; i++)
                 {
                     Debug.Log("medium quality");
@@ -103,7 +98,7 @@ public class Hero : MonoBehaviour {
                 break;
 
             case 3:
-                int highItems = 2;
+                int highItems = UnityEngine.Random.Range(2, 7);
                 for (int i = 0; i < highItems; i++)
                 {
                     Debug.Log("high quality");
