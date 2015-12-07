@@ -75,8 +75,17 @@ public class Craft : MonoBehaviour {
 				Inventory.RemoveItem (material_3.name, material_3.amount);
 			}
 
+			Debug.Log(rt.type);
+
 			// add crafted item
 			Inventory.AddItem (rt.name, 1, rt.description, rt.type);
+			if(rt.type == 1){
+				_GameMaster._AudioScript.playMetalCraft();
+			}else if (rt.type == 2){
+				_GameMaster._AudioScript.playWoodCraft();
+			}else if (rt.type == 3){
+				_GameMaster._AudioScript.playPotionCraft();
+			}
 			return rt;
 		} else {
 			Debug.Log("No such recipe");

@@ -15,11 +15,17 @@ public class NightPanelScript : MonoBehaviour {
 
 	// Supply button clicked
 	public void SupplyButtonClicked(){
-		_Supply.OpenSupplyPanel ();
-		_GameMaster.CloseNightMenu ();
+		if (Inventory.InventoryPanel == null && Inventory.SetPricePanel == null 
+		    && Craft.CraftPanel == null) {
+			_Supply.OpenSupplyPanel ();
+			_GameMaster.CloseNightMenu ();
+		}
 	}
 
 	public void OpenSetPrice(){
-		_Inventory.OpenSetPricePanel ();
+		if (_Supply.SupplyPanel == null && Inventory.InventoryPanel == null
+		    && Craft.CraftPanel == null) {
+			_Inventory.OpenSetPricePanel ();
+		}
 	}
 }

@@ -7,48 +7,36 @@ public class RecipeListButtonScript : MonoBehaviour {
 
 	public CraftPanelScript _CraftPanelScript;
 	public Text NameLabel;
-	public Image icon;
-	public int index;
+	public int listIndex;
+	public int recipeIndex;
 	public GameObject contentPanel;
-	public GameObject RecipeListPanel;
-	public GameObject RecipeListPanelPf;
+	public bool open = false;
 
 	public void RecipeButtonClick(){
-		if (RecipeListPanel == null) {
+		if (!open) {
 			_CraftPanelScript.CloseAllRecipePanel();
-			RecipeListPanel = Instantiate (RecipeListPanelPf) as GameObject;
-			RecipeListPanelScript rlps = RecipeListPanel.GetComponent<RecipeListPanelScript> ();
-			Recipe re = Craft._Recipes [index];
-			for (int i = 0; i < rlps.materialLabels.Count; i++) {
-				if (i < re.materials.Count) {
-					rlps.materialLabels [i].text = re.materials [i];
-				} else {
-					rlps.materialLabels [i].text = null;
-				}
-			}
-			rlps.r = re;
-			rlps.materialColorCheck ();
-			RecipeListPanel.transform.SetParent (contentPanel.transform, false);	
-			RecipeListPanel.transform.SetSiblingIndex (this.transform.GetSiblingIndex()+1);
-			_CraftPanelScript.SetUpCraftPanel(index);
-			_CraftPanelScript.SetUpDetailPanel(index);
+			_CraftPanelScript.SetUpCraftPanel (recipeIndex);
+			_CraftPanelScript.SetUpDetailPanel (recipeIndex);
+			Color c = this.GetComponent<Image>().color;
+			c.a = 0.2f;
+			this.GetComponent<Image>().color = c;
+			open = true;
 		} else {
-			Destroy(RecipeListPanel);
-			_CraftPanelScript.CleanUpCraftPanel();
-			_CraftPanelScript.CloseDetailPanel();
+			ClosePanel();
 		}
 	}
 
 	public void ClosePanel(){
-		if (RecipeListPanel != null) {
-			Destroy (RecipeListPanel);
-			_CraftPanelScript.CleanUpCraftPanel ();
-			_CraftPanelScript.CloseDetailPanel ();
-		}
+		_CraftPanelScript.CleanUpCraftPanel ();
+		_CraftPanelScript.CloseDetailPanel ();
+		Color c = this.GetComponent<Image>().color;
+		c.a = 0;
+		this.GetComponent<Image>().color = c;
+		open = false;
 	}
 
 	public void UpdateColor(){
-		Recipe r = Craft._Recipes [index];
+		Recipe r = Craft._Recipes [recipeIndex];
 		int fulfill = 0;
 		for (int i = 0; i < r.materials.Count; i++) {
 			string[] ss = r.materials[i].Split(new string[] {" x "}, StringSplitOptions.None);
@@ -59,15 +47,19 @@ public class RecipeListButtonScript : MonoBehaviour {
 		}
 		
 		if (fulfill == r.materials.Count) {
-			NameLabel.color = Color.green;
+			NameLabel.color = HexToColor("608247");
 		} else if (fulfill >= r.materials.Count / 2) {
-			NameLabel.color = Color.yellow;
+			NameLabel.color = HexToColor("dcdd6d");
 		} else {
-			NameLabel.color = Color.red;
+			NameLabel.color = HexToColor("824747");
 		}
+	}
 
-		if (RecipeListPanel != null) {
-			RecipeListPanel.GetComponent<RecipeListPanelScript>().materialColorCheck();
-		}
+	Color HexToColor(string hex)
+	{
+		byte r = byte.Parse(hex.Substring(0,2), System.Globalization.NumberStyles.HexNumber);
+		byte g = byte.Parse(hex.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
+		byte b = byte.Parse(hex.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
+		return new Color32(r,g,b, 255);
 	}
 }

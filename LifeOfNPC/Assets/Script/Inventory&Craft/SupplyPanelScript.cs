@@ -15,6 +15,10 @@ public class SupplyPanelScript : MonoBehaviour {
 		_Supply.Confirm ();
 	}
 
+	public void CloseSupplyPanel(){
+		_Supply.CloseSupplyPanel ();
+	}
+
 	// update total text
 	public void UpdateTotal(int newt){
 		TotalLabel.text = "Total: " + newt.ToString();

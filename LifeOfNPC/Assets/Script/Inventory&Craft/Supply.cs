@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -11,6 +12,7 @@ public class Supply : MonoBehaviour {
 	public GameObject SupplyPanelPf;		// supply panel pf
 	public GameObject SupplyItemButtonPf;	// supply item button pf
 	public GameObject SupplyRecipeButtonPf;	// supply recipe button pf
+	public GameObject SupplyRecipeLabelPf;
 
 	public int sum = 0;						// the sum of money
 	#endregion
@@ -53,6 +55,15 @@ public class Supply : MonoBehaviour {
 			}
 		}
 	}
+
+	public void CloseAllPanel(){
+		GameObject contentPanel = SupplyPanel.GetComponent<SupplyPanelScript> ().RecipeContentPanel;
+		foreach (Transform gb in contentPanel.transform) {
+			if(gb.GetComponent<SupplyRecipeButtonScript>() != null){
+				gb.GetComponent<SupplyRecipeButtonScript>().CloseDetailPanel();
+			}
+		}
+	}
 	#endregion
 
 	#region Supply Panel
@@ -62,7 +73,7 @@ public class Supply : MonoBehaviour {
 			SupplyPanel = Instantiate (SupplyPanelPf) as GameObject;
 			SupplyPanel.transform.SetParent (canvas.transform, false);
 			SupplyPanel.GetComponent<SupplyPanelScript>()._Supply = this;
-			SupplyPanel.GetComponent<SupplyPanelScript>().TotalLabel.text = "Total: " + sum.ToString();
+			SupplyPanel.GetComponent<SupplyPanelScript>().TotalLabel.text = "Total Cost: " + sum.ToString();
 		}
 		PopulateSupplyItemButton ();
 		PopulateSupplyRecipeButton ();
@@ -81,8 +92,7 @@ public class Supply : MonoBehaviour {
 			sbs.quantityLabel.text = sbs.quantity.ToString();
 			sbs.index = i;
 			sbs.cost = supplyList[i].supplyPrice;
-			sbs.costLabel.text = "$" + sbs.cost.ToString();
-			sbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + supplyList[i].name);
+			sbs.costLabel.text = sbs.cost.ToString();
 			sbs._Supply = this;
 			newButton.transform.SetParent(contentPanel.transform, false);
 		}
@@ -93,14 +103,57 @@ public class Supply : MonoBehaviour {
 
 		GameObject contentPanel = SupplyPanel.GetComponent<SupplyPanelScript> ().RecipeContentPanel;
 
+
+		int index = 0;
+
+		GameObject newLabel = Instantiate (SupplyRecipeLabelPf) as GameObject;
+		newLabel.GetComponentInChildren<Text> ().text = "Potions";
+		newLabel.transform.SetParent (contentPanel.transform, false);
 		for (int i = 0; i < Craft._Recipes.Count; i++) {
-			GameObject newButton = Instantiate(SupplyRecipeButtonPf) as GameObject;
-			SupplyRecipeButtonScript srbs = newButton.GetComponent<SupplyRecipeButtonScript>();
-			srbs.index = i;
-			srbs.nameLabel.text = Craft._Recipes[i].name;
-			srbs._Supply = this;
-			srbs.UpdateColor();
-			newButton.transform.SetParent(contentPanel.transform, false);
+			if(Craft._Recipes[i].type == 3){
+				GameObject newButton = Instantiate(SupplyRecipeButtonPf) as GameObject;
+				SupplyRecipeButtonScript srbs = newButton.GetComponent<SupplyRecipeButtonScript>();
+				srbs.index = index;
+				srbs.nameLabel.text = Craft._Recipes[i].name;
+				srbs._Supply = this;
+				srbs.UpdateColor();
+				newButton.transform.SetParent(contentPanel.transform, false);
+			}
+			index++;
+		}
+		index = 0;
+
+		GameObject newLabel2 = Instantiate (SupplyRecipeLabelPf) as GameObject;
+		newLabel2.GetComponentInChildren<Text> ().text = "Armor";
+		newLabel2.transform.SetParent (contentPanel.transform, false);
+		for (int i = 0; i < Craft._Recipes.Count; i++) {
+			if(Craft._Recipes[i].type == 1){
+				GameObject newButton = Instantiate(SupplyRecipeButtonPf) as GameObject;
+				SupplyRecipeButtonScript srbs = newButton.GetComponent<SupplyRecipeButtonScript>();
+				srbs.index = index;
+				srbs.nameLabel.text = Craft._Recipes[i].name;
+				srbs._Supply = this;
+				srbs.UpdateColor();
+				newButton.transform.SetParent(contentPanel.transform, false);
+			}
+			index++;
+		}
+		index = 0;
+
+		GameObject newLabel3 = Instantiate (SupplyRecipeLabelPf) as GameObject;
+		newLabel3.GetComponentInChildren<Text> ().text = "Weapon";
+		newLabel3.transform.SetParent (contentPanel.transform, false);
+		for (int i = 0; i < Craft._Recipes.Count; i++) {
+			if(Craft._Recipes[i].type == 2){
+				GameObject newButton = Instantiate(SupplyRecipeButtonPf) as GameObject;
+				SupplyRecipeButtonScript srbs = newButton.GetComponent<SupplyRecipeButtonScript>();
+				srbs.index = index;
+				srbs.nameLabel.text = Craft._Recipes[i].name;
+				srbs._Supply = this;
+				srbs.UpdateColor();
+				newButton.transform.SetParent(contentPanel.transform, false);
+			}
+			index++;
 		}
 	}
 

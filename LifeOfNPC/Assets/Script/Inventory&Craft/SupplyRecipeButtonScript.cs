@@ -12,12 +12,12 @@ public class SupplyRecipeButtonScript : MonoBehaviour {
 
 	public void recipeButtonClick(){
 		if (SupplyRecipePanel == null) {
+			_Supply.CloseAllPanel();
 			SupplyRecipePanel = Instantiate(SupplyRecipePanelPf) as GameObject;
 			SupplyRecipePanelScript rs = SupplyRecipePanel.GetComponent<SupplyRecipePanelScript> ();
-			rs.icon.sprite = Resources.Load<Sprite> ("Sprite/" + nameLabel.text);
 			for(int i = 0; i < rs.materialLabels.Count; i++){
 				if(i < Craft._Recipes[index].materials.Count){
-					rs.materialLabels[i].text = Craft._Recipes[index].materials[i];
+					rs.materialLabels[i].text = "-" + Craft._Recipes[index].materials[i];
 				}else{
 					rs.materialLabels[i].text = null;
 				}
@@ -27,8 +27,20 @@ public class SupplyRecipeButtonScript : MonoBehaviour {
 			rs.materialColorCheck();
 			SupplyRecipePanel.transform.SetParent (this.transform.parent.transform, false);
 			SupplyRecipePanel.transform.SetSiblingIndex (this.transform.GetSiblingIndex()+1);
+			Color c = this.GetComponent<Image>().color;
+			c.a = 0.2f;
+			this.GetComponent<Image>().color = c;
 		} else {
+			CloseDetailPanel();
+		}
+	}
+
+	public void CloseDetailPanel(){
+		if (SupplyRecipePanel != null) {
 			Destroy(SupplyRecipePanel);
+			Color c = this.GetComponent<Image>().color;
+			c.a = 0;
+			this.GetComponent<Image>().color = c;
 		}
 	}
 
@@ -44,11 +56,19 @@ public class SupplyRecipeButtonScript : MonoBehaviour {
 		}
 
 		if (fulfill == r.materials.Count) {
-			nameLabel.color = Color.green;
+			nameLabel.color = HexToColor("608247");
 		} else if (fulfill >= r.materials.Count / 2) {
-			nameLabel.color = Color.yellow;
+			nameLabel.color = HexToColor("dcdd6d");
 		} else {
-			nameLabel.color = Color.red;
+			nameLabel.color = HexToColor("824747");
 		}
+	}
+
+	Color HexToColor(string hex)
+	{
+		byte r = byte.Parse(hex.Substring(0,2), System.Globalization.NumberStyles.HexNumber);
+		byte g = byte.Parse(hex.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
+		byte b = byte.Parse(hex.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
+		return new Color32(r,g,b, 255);
 	}
 }
