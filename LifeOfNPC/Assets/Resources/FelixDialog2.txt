@@ -1,38 +1,25 @@
-1 - F: “Oi, Shopkeeper.  You around?”  
-1 - S: “Oh, it’s you.  What do you want?”  
-2 - F: “My name’s not You; it’s Felix Kyculun.  First Adventurer, and now You?  You must have a really weird taste in names..”  
-2 - S: “Alright, Felix.  What do you want?”  
-2 - F: “I want you to sell me something, duh.”
-2 - S: “What do you want me to sell you, Felix?”
-2 - F: “I’m glad you asked!  Get me a better bow and a better sword and some other stuff.”
-3 - S: “Well, let’s see what other stuff I have for you.” 
-3a1 - S: “I don’t suppose you have any materials you might be willing to sell me?” 
-3a1 - F: “Uhh, selling things is your job, Shopkeeper.  Not mine.”  
-3b1 - F: “Again with this?  Like I said, I want a better bow, a better sword, and some other useful stuff.”
-3b2 - [Player selects which items to offer the customer] 
-3b2 - S: “Do [insert items here] work for you?” 
-3b3a - F: [Success case] “I guess.  How much?” 
-3b3b - F: [Failure case] “Pfft, no.” 
-3b4 - [Player sets price of items]
-3b4 - S: “[price player sets].”
-3b5a - F: [Success case] “Fine.  Here you go, Shopkeeper.”  
-3b5b - F: [Failure case] “Like I’d pay that much.”
-3b5b - F: “Try [randomly generated price within customer’s thriftiness range].”  
-3b6 - [Player sets price of items]
-3b6 - S: “[new price player sets].  Take it or leave it.” 
-3b7a - F: [Success case] “Tch, fine.  Here’s the money.” 
-3b7b - F: [Failure case] “Nope.  Deal’s off.”
-3c - S: “How goes the adventuring, Felix?” 
-3c - F: “Same as usual; perfectly.”   
-3c - S: “Really?  No flaws, no mistakes?”  
-3c - F: “Nope.  I’m too good for that.  In all of the times I’ve been in the Dungeon, I’ve never had a challenge.”  
-3c - S: “That’s impressive.  I take it you’re not just hanging around the upper levels?”
-3c - F: “Pfft, no.  I’ve already cleared floor 30.” 
-3c - S: “With your current equipment?  That’s incredible!” 
-3c - F: “It was a pain in the behind; killing the monsters took forever!” 
-3c - S: “It probably would’ve gone faster if you were in a party.” 
-3c - F: “I don’t work in parties.” 
-3c - S: “Why, because people don’t like you?  You’re too skilled not for people to want to work with you if you cleared the 30th floor with equipment like that.” 
-3c - F: “Because I always win, and I always survive.  Me.  Now can we get back to the buying and the selling?”  
-4a - [Successful transaction] “Thanks, Shopkeeper.  This place is a dump, but the items work at least.”  
-4b - [Failed transaction] “I knew I shouldn’t have expected anything from this place.”  
+1020000-24: “Oi, Shopkeeper.  You around?”  
+1030000-24: “Oh, it’s you.  What do you want?”  
+1040000-24: “My name’s not You; it’s Felix Kyculun.  First Adventurer, and now You?  You must have a really weird taste in names..”  
+1050000-24: Alright, Felix.  What do you want?”  
+1060000-24: “I want you to sell me something, duh.”
+1070000-24: “What do you want me to sell you, Felix?”
+1080000-24: “I’m glad you asked!  Get me a better bow and a better sword and some other stuff.”
+2100900-24: “Well, let’s see what other stuff I have for you.” 
+1140000-24: [Success case] “Fine.  Here you go, Shopkeeper.”  
+1110000-24: [Failure case] “Like I’d pay that much.”
+2131200-24: “Try $.”  
+1140000-24: [Success case] “Tch, fine.  Here’s the money.” 
+1140000-24: [Failure case] “Nope.  Deal’s off.”
+1150000-24: “How goes the adventuring, Felix?” 
+1160000-24: “Same as usual; perfectly.”   
+1170000-24: “Really?  No flaws, no mistakes?”  
+1180000-24: “Nope.  I’m too good for that.  In all of the times I’ve been in the Dungeon, I’ve never had a challenge.”  
+1190000-24: “That’s impressive.  I take it you’re not just hanging around the upper levels?”
+1200000-24: “Pfft, no.  I’ve already cleared floor 30.” 
+1210000-24: “With your current equipment?  That’s incredible!” 
+1220000-24: “It was a pain in the behind; killing the monsters took forever!” 
+1230000-24: “It probably would’ve gone faster if you were in a party.” 
+1240000-24: “I don’t work in parties.” 
+1250000-24: “Why, because people don’t like you?  You’re too skilled not for people to want to work with you if you cleared the 30th floor with equipment like that.” 
+1000000-24: “Because I always win, and I always survive.  Me.  Now can we get back to the buying and the selling?”  

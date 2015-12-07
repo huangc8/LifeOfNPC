@@ -49,7 +49,7 @@ public class Hero : MonoBehaviour {
     {
         if (CreateHero.Hero.GetComponent<Hero>().CurrentNode != null)
         {
-            //CreateHero.Hero.GetComponent<Hero>().CurrentNode.price = 
+            
             if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("$"))//check for insert money
             {
                 CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$")) + OfferPriceToQty + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$") + 1);

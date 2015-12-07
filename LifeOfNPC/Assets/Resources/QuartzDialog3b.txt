@@ -1,32 +1,24 @@
-1 - Q: “Ah, it’s you, Shopkeeper.”  
-1 - S: “Quartz, good to see you!  Wait... What’s the matter?”  
-2 - Q: “Matter?  Hahaha, nothing’s the matter!  What could possibly be the matter!”  
-2 - S: “Are you sure that you’re alright, Quartz?”  
-2 - Q: “Of course I’m not alright!  When I close my eyes, I still see their faces!  I need the strongest stuff you’ve got!”
-2 - S: “Aren’t you a bit young for the drink?”
-2 - Q: “Just shut up and do it!”
-3 - S: “I guess I’ll look at what I have in stock...” 
-3a1 - S: “Quartz... Do you have any materials you want to sell?” 
-3a1 - Q: “No, I already sold them all!  Now get to the goods, Shopkeeper!”  
-3b1 - Q: “You sell Everflowing Panacea, don’t you?  Give me all of it that you can!  I don’t care about the price!”
-3b2 - [Player selects which items to offer the customer] 
-3b2 - S: “Are you sure this is alright, Quartz?  I brought out [insert items here], but...” 
-3b3a - Q: [Success case] “Yes, yes, hurry and ring them up!” 
-3b3b - Q: [Failure case] “That’s no good at all!” 
-3b4 - [Player sets price of items]
-3b4 - S: “I’ll sell them all to you for [price player sets].”
-3b5a - Q: [Success case] “Here’s the money, Shopkeeper.”  
-3b5b - Q: [Failure case] “Tch, I can’t handle that price!”
-3b5b - Q: “Look, I’ve got [randomly generated price within customer’s thriftiness range], alright?”  
-3b6 - [Player sets price of items]
-3b6 - S: “I see.  In that case, how does [new price player sets] sound?” 
-3b7a - Q: [Success case] “I’ll take them all, Shopkeeper.” 
-3b7b - Q: [Failure case] “Ugh... I’ll have to go somewhere else!”
-3c - S: “Say, what happened, Quartz?  You’re not acting like yourself; you haven’t said ‘Greatest Adventurer in the World’ a single time.” 
-3c - Q: “Greatest Adventurer in the World?  Ha, as if I’d ever be something so stupid!”   
-3c - S: “That definitely doesn’t sound like the Quartz Phoenixtail I know.  Just what happened since I last you?”  
-3c - Q: “What happened?  What happened?  I was wrong, that’s what happened.  If only I’d listened to her, if only I hadn’t been so greedy, if only you hadn’t sold me that sword, then maybe they’d still be-!”  
-3c - S: “Calm down, Quartz!” 
-3c - Q: “Just get me the strongest drink that you have, and lots of it.”  
-4a - [Successful transaction] “It’s not enough... I can still hear the screams!”  
-4b - [Failed transaction] “Somewhere else... Somewhere else has to have some!”  
+1020000-1: “Ah, it’s you, Shopkeeper.”  
+1030000-1: “Quartz, good to see you!  Wait... What’s the matter?”  
+1040000-1: “Matter?  Hahaha, nothing’s the matter!  What could possibly be the matter!”  
+1050000-1: “Are you sure that you’re alright, Quartz?”  
+1060000-1: “Of course I’m not alright!  When I close my eyes, I still see their faces!  I need the strongest stuff you’ve got!”
+1070000-1: “Aren’t you a bit young for the drink?”
+1080000-1: “Just shut up and do it!”
+1090000-1: “I guess I’ll look at what I have in stock...” 
+1100000-1: “Quartz... Do you have any materials you want to sell?” 
+1110000-1: “No, I already sold them all!  Now get to the goods, Shopkeeper!”  
+2131200-1: “You sell Everflowing Panacea, don’t you?  Give me all of it that you can!  I don’t care about the price!”
+1020000-1: [Success case] “Yes, yes, hurry and ring them up!” 
+1151400-1: [Failure case] “That’s no good at all!” 
+1020000-1: [Success case] “Here’s the money, Shopkeeper.”  
+1160000-1: [Failure case] “Tch, I can’t handle that price!”
+2181700-1: “Look, I’ve got $, alright?”  
+1190000-1: [Success case] “I’ll take them all, Shopkeeper.” 
+1190000-1: [Failure case] “Ugh... I’ll have to go somewhere else!”
+1200000-1: “Say, what happened, Quartz?  You’re not acting like yourself; you haven’t said ‘Greatest Adventurer in the World’ a single time.” 
+1210000-1: “Greatest Adventurer in the World?  Ha, as if I’d ever be something so stupid!”   
+1220000-1: “That definitely doesn’t sound like the Quartz Phoenixtail I know.  Just what happened since I last you?”  
+1230000-1: “What happened?  What happened?  I was wrong, that’s what happened.  If only I’d listened to her, if only I hadn’t been so greedy, if only you hadn’t sold me that sword, then maybe they’d still be-!”  
+1240000-1: “Calm down, Quartz!” 
+1000000-1: [Successful transaction] “It’s not enough... I can still hear the screams!”   

@@ -1,34 +1,21 @@
-1 - F: “Hello?  Anyone here?”  
-1 - S: “Greetings, adventurer!  What can I do for you?”  
-2 - F: “My name’s not Adventurer; it’s Felix Kyculun.  Seriously, what kind of a name is Adventurer?  You must be a real idiot.”  
-2 - S: “Well then, Felix... What can I do for you?”  
-2 - F: “Uhh, sell me stuff?  Are you new to this, Shopkeeper?”
-2 - S: “I mean, what do you want to buy, Felix?”
-2 - F: “Ohhhhhh!  You should’ve just said that!  I want a bow and a sword and some other stuff.”
-3 - S: “Well, let’s see what we have for you.” 
-3a1 - S: “On another note, do you have any materials you might be willing to sell me?” 
-3a1 - F: “Uhh, selling things is your job, Shopkeeper.  Not mine.”  
-3b1 - F: “You’re asking me what I want again?  Are you a goldfish?  I said, I want a bow, a sword, and some other useful stuff.”
-3b2 - [Player selects which items to offer the customer] 
-3b2 - S: “Do [insert items here] work for you?” 
-3b3a - F: [Success case] “I guess.  How much?” 
-3b3b - F: [Failure case] “Pfft, no.” 
-3b4 - [Player sets price of items]
-3b4 - S: “[price player sets].”
-3b5a - F: [Success case] “Fine.  Here you go, Shopkeeper.”  
-3b5b - F: [Failure case] “Like I’d pay that much.”
-3b5b - F: “Try [randomly generated price within customer’s thriftiness range].”  
-3b6 - [Player sets price of items]
-3b6 - S: “[new price player sets].  Take it or leave it.” 
-3b7a - F: [Success case] “Tch, fine.  Here’s the money.” 
-3b7b - F: [Failure case] “Nope.  Deal’s off.”
-3c - S: “Rather aggravating, aren’t you Felix?” 
-3c - F: “Huh?  Nah, drawing aggro is a tank’s job.”   
-3c - S: “Can’t say I’ve heard that terminology before.”  
-3c - F: “Pfft, how out of it are you?  That’s like, the basics of the basics of party composition.”  
-3c - S: “Oh, you’re in a party then?”
-3c - F: “No.  No one wants to party with me.” 
-3c - S: “Oh?  And why is that?” 
-3c - F: “Because I leave them in the dust.  Now, you gonna sell me some stuff or what?” 
-4a - [Successful transaction] “Thanks, I guess.  Maybe I’ll show up again sometime.”  
-4b - [Failed transaction] “I didn’t expect much from this run-down dump anyways.”  
+1020000-24: “Hello?  Anyone here?”  
+1030000-24: “Greetings, adventurer!  What can I do for you?”  
+1040000-24: “My name’s not Adventurer; it’s Felix Kyculun.  Seriously, what kind of a name is Adventurer?  You must be a real idiot.”  
+1050000-24: “Well then, Felix... What can I do for you?”  
+1060000-24: “Uhh, sell me stuff?  Are you new to this, Shopkeeper?”
+1070000-24: “I mean, what do you want to buy, Felix?”
+1080000-24: “Ohhhhhh!  You should’ve just said that!  I want a bow and a sword and some other stuff.”
+2100900-24: “Well, let’s see what we have for you.” 
+1140000-24: [Success case] “Fine.  Here you go, Shopkeeper.”  
+1110000-24: [Failure case] “Like I’d pay that much.”
+2131200-24: “Try $.”  
+1140000-24: [Success case] “Tch, fine.  Here’s the money.” 
+1140000-24: [Failure case] “Nope.  Deal’s off.”
+1150000-24: “Rather aggravating, aren’t you Felix?” 
+1160000-24: “Huh?  Nah, drawing aggro is a tank’s job.”   
+1170000-24: “Can’t say I’ve heard that terminology before.”  
+1180000-24: “Pfft, how out of it are you?  That’s like, the basics of the basics of party composition.”  
+1190000-24: “Oh, you’re in a party then?”
+1200000-24: “No.  No one wants to party with me.” 
+1210000-24: “Oh?  And why is that?” 
+1000000-24: “Because I leave them in the dust.  Now, you gonna sell me some stuff or what?” 
