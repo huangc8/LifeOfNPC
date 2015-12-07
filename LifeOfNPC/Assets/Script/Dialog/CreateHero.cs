@@ -324,8 +324,8 @@ public class CreateHero : MonoBehaviour {
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
-                        Hero.GetComponent<Hero>().money = 4725;
-                        Hero.GetComponent<Hero>().thriftiness = 15;
+                        Hero.GetComponent<Hero>().money = 14805;
+                        Hero.GetComponent<Hero>().thriftiness = 45;
                         Hero.GetComponent<Hero>().RequiredItem = "none";
                         Hero.GetComponent<Hero>().H_Inventory = new List<Item>();
                         Hero.GetComponent<Hero>().patience = 0;
@@ -340,8 +340,8 @@ public class CreateHero : MonoBehaviour {
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
-                        Hero.GetComponent<Hero>().money = 4725;
-                        Hero.GetComponent<Hero>().thriftiness = 15;
+                        Hero.GetComponent<Hero>().money = 19200;
+                        Hero.GetComponent<Hero>().thriftiness = 50;
                         Hero.GetComponent<Hero>().RequiredItem = "none";
                         Hero.GetComponent<Hero>().H_Inventory = new List<Item>();
                         Hero.GetComponent<Hero>().patience = 0;
@@ -356,8 +356,8 @@ public class CreateHero : MonoBehaviour {
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
-                        Hero.GetComponent<Hero>().money = 4725;
-                        Hero.GetComponent<Hero>().thriftiness = 15;
+                        Hero.GetComponent<Hero>().money = 66000;
+                        Hero.GetComponent<Hero>().thriftiness = 30;
                         Hero.GetComponent<Hero>().RequiredItem = "none";
                         Hero.GetComponent<Hero>().H_Inventory = new List<Item>();
                         Hero.GetComponent<Hero>().patience = 0;
@@ -377,8 +377,8 @@ public class CreateHero : MonoBehaviour {
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
-                        Hero.GetComponent<Hero>().money = 4725;
-                        Hero.GetComponent<Hero>().thriftiness = 15;
+                        Hero.GetComponent<Hero>().money = 26910;
+                        Hero.GetComponent<Hero>().thriftiness = 20;
                         Hero.GetComponent<Hero>().RequiredItem = "none";
                         Hero.GetComponent<Hero>().H_Inventory = new List<Item>();
                         Hero.GetComponent<Hero>().patience = 0;
@@ -393,8 +393,8 @@ public class CreateHero : MonoBehaviour {
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
-                        Hero.GetComponent<Hero>().money = 4725;
-                        Hero.GetComponent<Hero>().thriftiness = 15;
+                        Hero.GetComponent<Hero>().money = 25000;
+                        Hero.GetComponent<Hero>().thriftiness = 20;
                         Hero.GetComponent<Hero>().RequiredItem = "none";
                         Hero.GetComponent<Hero>().H_Inventory = new List<Item>();
                         Hero.GetComponent<Hero>().patience = 0;
@@ -409,8 +409,8 @@ public class CreateHero : MonoBehaviour {
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
                         Hero.GetComponent<Hero>().NumberOfEncounters = 4;
-                        Hero.GetComponent<Hero>().money = 4725;
-                        Hero.GetComponent<Hero>().thriftiness = 15;
+                        Hero.GetComponent<Hero>().money = 85675;
+                        Hero.GetComponent<Hero>().thriftiness = 35;
                         Hero.GetComponent<Hero>().RequiredItem = "none";
                         Hero.GetComponent<Hero>().H_Inventory = new List<Item>();
                         Hero.GetComponent<Hero>().patience = 0;
