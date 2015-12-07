@@ -32,12 +32,25 @@ public class CreateHero : MonoBehaviour {
             GameMaster.currentDay == 22 || GameMaster.currentDay == 26 || GameMaster.currentDay == 30 || GameMaster.currentDay == 34 || GameMaster.currentDay == 39 ||
             GameMaster.currentDay == 42 || GameMaster.currentDay == 46)
         {
-            Hero.AddComponent<Hero>();//adds hero component upon creation
+            if (!this.GetComponent<StartDialogScene>().SpecialHeroServed)//if special hero has not been served yet
+            {
+                this.GetComponent<StartDialogScene>().SpecialHeroServed = true;
+                Hero.AddComponent<Hero>();//adds hero component upon creation
 
-            LoadSpecialHero();
+                LoadSpecialHero();
 
-            HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
-            HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
+                HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
+                HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
+            }
+            else
+            {
+                Hero.AddComponent<Hero>();//adds hero component upon creation
+
+                CreateGenericHero();//only this is new
+
+                HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
+                HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
+            }
         }
 
 

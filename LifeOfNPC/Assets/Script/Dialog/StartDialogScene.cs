@@ -48,6 +48,8 @@ public class StartDialogScene : MonoBehaviour {
 
     public bool HaveInventory = false;
     public static List<string> NoSale;
+    public bool SpecialHeroServed;
+
 
     // Use this for initialization
     void Start() {
@@ -66,6 +68,7 @@ public class StartDialogScene : MonoBehaviour {
         timer = 1;
         NumHeroesToday = UnityEngine.Random.Range(1, 6);
         SpecialHeroes = new List<Hero>();
+        SpecialHeroServed = false;
         
     }
 
@@ -89,12 +92,14 @@ public class StartDialogScene : MonoBehaviour {
 
 	// start the day phase
 	public void StartDayPhase(){
+
         this.GetComponent<CreateHero>().StartCreateHero();
         this.GetComponent<DialogDebug> ().day = true;
 	}
 
 	// end the day phase
 	public void EndDayPhase(){
+        this.GetComponent<StartDialogScene>().SpecialHeroServed = false;
 		this.GetComponent<DialogDebug> ().day = false;
 	}
 
