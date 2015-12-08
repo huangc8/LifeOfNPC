@@ -50,6 +50,20 @@ public class Hero : MonoBehaviour {
     {
         if (CreateHero.Hero.GetComponent<Hero>().CurrentNode != null)
         {
+            if(CreateHero.Hero.GetComponent<Hero>().CurrentNode.lvl >= 4)
+            {
+                foreach (Button button in CreateHero.Hero.GetComponent<Hero>().GetComponentsInChildren<Button>())
+                {
+                    button.interactable = true;
+                }
+            }
+            else
+            {
+                foreach (Button button in CreateHero.Hero.GetComponent<Hero>().GetComponentsInChildren<Button>())
+                {
+                    button.interactable = false;
+                }
+            }
             
             if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("$"))//check for insert money
             {
