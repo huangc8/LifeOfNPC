@@ -4,28 +4,21 @@
 1050000-4: “Hahaha, that’s alright.  So what can I do for the Greatest Adventurer in the World this time?”  
 1060000-5: “I’ve joined with a party, actually!  We’ve cleared the first few levels of the Dungeon, and we’re planning on heading even deeper!  That’s why I’m here, actually; they sent me to pick up some recovery items, but...”
 1070000-6: “Something wrong?”  
-1080000-7: “It’s my sword, you know?  The Trusty Sword was really useful for a while, but I want to get something better, something more fitting for the Greatest Adventurer in the World!  Still, the potions though... I mean, I probably have enough if I skimp on a few, but...”
-2110900-8: “Well, let’s see what we have for you!” 
-1100000-1: [Player accepts offer] “Pleasure doing business with you, Quartz.” 
-1080000-1: “No, the pleasure was mine.”
-1120000-1: [Player denies offer] “I’m afraid I can’t accept that price.”
-2141300-1: [Player sets new price] “I’ll take those off your hands for [new price here].”
-1150000-1: [Success case] “That’s fine with me, Shopkeeper.  The Greatest Adventurer in the World is magnanimous, after all!”
-2171500-1: [Failure case] “I won’t accept that, Shopkeeper.  $ is my final offer.”
-1160000-1: [Player accepts final offer] “You drive a hard bargain, Quartz.”  
-1080000-1: “Well, as the Greatest Adventurer in the World, I can’t afford to be shortchanged!”
-1080000-2: “I guess I won’t be selling you that, then.”  
-1190000-2: “The list says I need three Elixirs of Minor Rejuvenation, three Unguents of Minor Invigoration and two tonics of Minor Restoration... But I’ve got enough for the Treebirthed Sword and a bit less potions, too... Agh, I can’t decide!  What do you recommend, Shopkeeper?”
-1200000-2: “I think you should have [insert items here].  What do you think?” 
-2222100-1: “I’ll sell them to you for [price player sets].”
-1020000-1: [Success case] “The Greatest Adventurer in the World will accept your offer!  You have my thanks, Shopkeeper!”  
-1230000-1: [Failure case] “I won’t pay that much for these goods!”
-2252400-1: “I’ll pay $, if you insist.”  
-1260000-1: [Success case] “Very well then, Shopkeeper.  This deal is amenable to me.” 
-1260000-1: [Failure case] “I refuse to pay such an amount; I’ll have to seek my business elsewhere!”
-1270000-1: “A party, huh?  How’s working in a team treating you?” 
-1280000-1: “Excellently, of course!  How could things go badly for the Greatest Adventurer in the World?” 
-1290000-1: “Hahaha!  So, what are the others like?”  
-1300000-1: “Well, Kaysel’s the wizard of the party.  He’s pretty strange, and he even made my hair glow in the dark with one of his spells!  It was really annoying at first, but it saved us all when that idiot Tarkin set off a Curse of Darkness.  Ugh, Tarkin; what a buffoon!  Always laughing at me when I tell people about how I’m the Greatest Adventurer in the World!  He thinks he’s so impressive with his greatshield, always showing off to Amara-”  
-1310000-1: “Oh?  Who’s this Amara?” 
+1080000-7: “It’s my sword, you know?  This Trusty Sword was really useful for a while, but I want to get something better, something more fitting for the Greatest Adventurer in the World!  Still, the potions though... I mean, I probably have enough if I skimp on a few, but...”
+1090000-2: “The list says I need three Elixirs of Minor Rejuvenation, three Unguents of Minor Invigoration and two tonics of Minor Restoration... But I’ve got enough for the Treebirthed Sword and a bit less potions, too... Agh, I can’t decide!  What do you recommend, Shopkeeper?”
+2111000-8: “Well, let’s see what we have for you!” 
+1170000-1: “That’s fine with me, Shopkeeper.  The Greatest Adventurer in the World is magnanimous, after all!”
+2131200-1: “I won’t accept that, Shopkeeper.  $ is my offer.”
+1170000-1: “The Greatest Adventurer in the World will accept your offer!  You have my thanks, Shopkeeper!”  
+1140000-1: “I won’t pay that much for these goods!”
+2161500-1: “I’ll pay $, if you insist.”  
+1170000-1: “Very well then, Shopkeeper.  This deal is amenable to me.” 
+1170000-1: “I refuse to pay such an amount; I’ll have to seek my business elsewhere!”
+1180000-1: “You drive a hard bargain, Quartz.”  
+1190000-1: “Well, as the Greatest Adventurer in the World, I can’t afford to be shortchanged!”
+1200000-1: “A party, huh?  How’s working in a team treating you?” 
+1210000-1: “Excellently, of course!  How could things go badly for the Greatest Adventurer in the World?” 
+1220000-1: “Hahaha!  So, what are the others like?”  
+1230000-1: “Well, Kaysel’s the wizard of the party.  He’s pretty strange, and he even made my hair glow in the dark with one of his spells!  It was really annoying at first, but it saved us all when that idiot Tarkin set off a Curse of Darkness.  Ugh, Tarkin; what a buffoon!  Always laughing at me when I tell people about how I’m the Greatest Adventurer in the World!  He thinks he’s so impressive with his greatshield, always showing off to Amara-”  
+1240000-1: “Oh?  Who’s this Amara?” 
 1000000-1: “Ah, umm... She’s the cleric of the party.  She’s the one who sent me here to buy the potions that we needed.  Honestly, she’s such a worrywart sometimes; we’ve been doing great so far, so we really don’t need to get so many potions... It was one time that I got enveloped by slimes!  Still, that’s just one of the things that’s cute about her- Ahh, what are you making me say!  Back to my sword, I mean my potions!”  

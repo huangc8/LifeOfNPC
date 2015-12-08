@@ -6,11 +6,11 @@
 1070000-24: “What do you want me to sell you, Felix?”
 1080000-24: “I’m glad you asked!  Get me a better bow and a better sword and some other stuff.”
 2100900-24: “Well, let’s see what other stuff I have for you.” 
-1140000-24: [Success case] “Fine.  Here you go, Shopkeeper.”  
-1110000-24: [Failure case] “Like I’d pay that much.”
+1140000-24: “Fine.  Here you go, Shopkeeper.”  
+1110000-24: “Like I’d pay that much.”
 2131200-24: “Try $.”  
-1140000-24: [Success case] “Tch, fine.  Here’s the money.” 
-1140000-24: [Failure case] “Nope.  Deal’s off.”
+1140000-24: “Tch, fine.  Here’s the money.” 
+1140000-24: “Nope.  Deal’s off.”
 1150000-24: “How goes the adventuring, Felix?” 
 1160000-24: “Same as usual; perfectly.”   
 1170000-24: “Really?  No flaws, no mistakes?”  

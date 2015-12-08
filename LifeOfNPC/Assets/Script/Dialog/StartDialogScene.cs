@@ -92,14 +92,13 @@ public class StartDialogScene : MonoBehaviour {
 
 	// start the day phase
 	public void StartDayPhase(){
-
-        this.GetComponent<CreateHero>().StartCreateHero();
         this.GetComponent<DialogDebug> ().day = true;
-	}
+        this.GetComponent<CreateHero>().StartCreateHero();
+        SpecialHeroServed = false;
+    }
 
 	// end the day phase
 	public void EndDayPhase(){
-        this.GetComponent<StartDialogScene>().SpecialHeroServed = false;
         CreateHero.DismissHero();
 		this.GetComponent<DialogDebug> ().day = false;
 	}

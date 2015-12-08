@@ -14,8 +14,19 @@ public class HeroComponent : MonoBehaviour {
     
     public void DismissClick()
     {
+        Debug.Log(StartDialogScene.NumHeroesToday);
         CreateHero.DismissHero();
         StartDialogScene.NumHeroesToday--;//decrease number of heroes in line
         _createhero.StartCreateHero();
+    }
+
+    public void SellClick()
+    {
+        StartDialogScene.SellHeroPanel();
+    }
+
+    public void BuyClick()
+    {
+        StartDialogScene.BuyHeroPanel();
     }
 }

@@ -4,11 +4,11 @@
 1050000-24: “I always work to accommodate my customers.”  
 1060000-24: “Uh huh.  Anyways, I’m looking for a new bow; something better than the last one, given that it broke.  Some armor too, but keep it cheap and keep it light.  And if there’s anything else of use, I’ll take that as well.”
 2080700-24: “Well, let’s see what I can do for you.” 
-1120000-24: [Success case] “Fine.  Here you go, Shopkeeper.”  
-1090000-24: [Failure case] “Like I’d pay that much.”
+1120000-24: “Fine.  Here you go, Shopkeeper.”  
+1090000-24: “Like I’d pay that much.”
 2111000-24: “Try $.”  
-1120000-24: [Success case] “Tch, fine.  Here’s the money.” 
-1120000-24: [Failure case] “Nope.  Deal’s off.”
+1120000-24: “Tch, fine.  Here’s the money.” 
+1120000-24: “Nope.  Deal’s off.”
 1130000-24: “Your bow broke?  Sounds like a hard fight.” 
 1140000-24: “I got caught off guard while fighting a boss some idiot ranger girl set off on the 40th floor.  Seriously, didn’t she know to get of its horns first so that projectiles work on it?”   
 1150000-24: “Sounds like you were lucky to get out of there alive.”  

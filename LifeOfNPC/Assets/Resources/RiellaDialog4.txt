@@ -4,12 +4,12 @@
 1050000-24: “All three?”  
 1060000-24: “All three!  I’ve been having all sorts of trouble because I wasn’t able to damage some enemies with one class, so that’s when I thought ‘Why don’t I just be all of them!’  So give me everything you’ve got, Shopkeeper!  I’m going to be very busy soon, and I’ll need everything I can use!”
 2080700-24: “Well, let’s see what we have for you!” 
-1130000-24: [Success case] “I can accept that, Shopkeeper.”
-2100900-24: [Failure case] “This time I’m the one who can’t accept the price, Shopkeeper.  $ is my offer.”
-1130000-24: [Success case] “They look good to me.” 
-2111200-24: [Failure case] “This time I’m the one who can’t accept the price, Shopkeeper.  $ is my final offer.”
-1130000-24: [Success case] “Very well then.  Here is the payment, Shopkeeper.” 
-1130000-24: [Failure case] “How disappointing.  I guess here won’t work out after all...”
+1130000-24: “I can accept that, Shopkeeper.”
+2100900-24: “This time I’m the one who can’t accept the price, Shopkeeper.  $ is my offer.”
+1130000-24: “They look good to me.” 
+2111200-24: “This time I’m the one who can’t accept the price, Shopkeeper.  $ is my final offer.”
+1130000-24: “Very well then.  Here is the payment, Shopkeeper.” 
+1130000-24: “How disappointing.  I guess here won’t work out after all...”
 1140000-24: “Would you accept $ as payment?”  
 1150000-24: “Everything, huh?  I’m amazed; you’re quite talented to pull that off.” 
 1160000-24: “Thank you, Shopkeeper!  At first I was worried that I wouldn’t be able to do everything, but then I found a great way to make it all possible!.”   

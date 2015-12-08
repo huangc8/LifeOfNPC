@@ -8,13 +8,13 @@
 1090000-24: “And some other stuff, right?”
 1100000-24: “Right.”
 2121100-24: “Well Felix, let’s see what I’ve got for you.” 
-1180000-24: [Success case] “I’ll accept that, Shopkeep.”
-2141300-24: [Failure case] “Nice try, Shopkeep.  $ is my final offer.”
-1180000-24: [Success case] “Alright.  Here you go, Shopkeep.”  
-1150000-24: [Failure case] “Like I’d pay that much.”
+1180000-24: “I’ll accept that, Shopkeep.”
+2141300-24: “Nice try, Shopkeep.  $ is my final offer.”
+1180000-24: “Alright.  Here you go, Shopkeep.”  
+1150000-24: “Like I’d pay that much.”
 2171600-24: “Try $.”  
-1180000-24: [Success case] “Tch, fine.  Here’s the money, you skinflint.” 
-1180000-24: [Failure case] “Sorry, Shopkeep.  Not today.”
+1180000-24: “Tch, fine.  Here’s the money, you skinflint.” 
+1180000-24: “Sorry, Shopkeep.  Not today.”
 1190000-24: “So how are things going?” 
 1200000-24: “Hit the 70th floor yesterday.”   
 1210000-24: “The 70th floor?  Impressive!”  

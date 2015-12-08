@@ -3,22 +3,17 @@
 1040000-3: “Erm, I’m Quar- Wait, let me start over.  I-I’m Quartz Phoenixtail, and one day I’ll be the Greatest Adventurer in the World!”  
 1050000-4: “Alright then... Quartz... What does the Greatest Adventurer in the World want?”  
 1060000-5: “Well, you see... the truth is... I haven’t actually gone on an adventure yet.  Today’ll be my first day in the Dungeon, but I don’t have a sword.  So that’s where you come in.  I can’t afford anything but a Trusty Sword, though...”
-1070000-6: “Well, let’s see what we have for you!” 
-1080000-7: “Say, you have any materials you want to sell me?” 
-1090000-8: “Huh?  No, I haven’t even gone to the Dungeon yet.”  
-1100000-9: “I’d like a Trusty Sword, if you have one.  Maybe some basic healing items too...”
-2121100-10: “I’ve got [insert items here] for you.  That sound acceptable?” 
-1100000-11: [Success case] “Yeah, that’s fine!  What’s the price?” 
-1130000-12: [Failure case] “I don’t really want those items...” 
-2151400-13: “I’ll sell them all to you for [price player sets].”
-1100000-14: [Success case] “Alright then.  Here’s your money, Shopkeeper; thanks for the sword!”  
-1020000-15: [Failure case] “I can’t pay that much, Shopkeeper...”
-1020000-16: “If it was [randomly generated price within customer’s thriftiness range], then I could afford it.”  
-2191800-17: “Then how does [new price player sets] sound?” 
-1100000-18: [Success case] “Alright then. Here’s your money, Shopkeeper; thanks for the sword!” 
-1200000-19: [Failure case] “I can’t pay that much.  I guess I’ll have to go somewhere else...”
+1070000-9: “I’d like a Trusty Sword, if you have one.  Maybe some basic healing items too...”
+2090800-6: “Well, let’s see what we have for you!” 
+1150000-11: “Yeah, that’s fine!  What’s the price?” 
+2111000-12: “I don’t really want those items...” 
+1150000-14: “Alright then.  Here’s your money, Shopkeeper; thanks for the sword!”  
+1120000-15: “I can’t pay that much, Shopkeeper...”
+2141300-16: “If it was $, then I could afford it.”  
+1150000-18: “Alright then. Here’s your money, Shopkeeper; thanks for the sword!” 
+1150000-19: “I can’t pay that much.  I guess I’ll have to go somewhere else...”
 1210000-20: “Quartz, huh?  That’s an interesting name.” 
 1220000-21: “It was my mother’s idea, haha.  Dad wanted a more traditional name like Cirrus, Chain, or Hoshi, but Mom wouldn’t hear a word of it.” 
 1230000-22: “Well, you certainly won’t be forgotten any time soon.”  
 1240000-23: “Mom said something like that herself.  She always wanted people to know who I was.  So that’s why I need to be the Greatest Adventurer in the World - so I can make her proud.”  
-1000000-24: [Successful transaction] “Thanks again, Shopkeeper!  Take heed of this moment!  For this is the birth of the Greatest Adventurer in the World!”  
+1000000-24: “Thanks again, Shopkeeper!  Take heed of this moment!  For this is the birth of the Greatest Adventurer in the World!”  

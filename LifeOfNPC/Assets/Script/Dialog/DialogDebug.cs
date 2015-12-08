@@ -15,8 +15,9 @@ public class DialogDebug : MonoBehaviour {
         if(StartDialogScene.NumHeroesToday == 0)
         {
             this.GetComponent<GameMaster>().ChangePhase();
-            StartDialogScene.NumHeroesToday = UnityEngine.Random.Range(1, 6);
+            StartDialogScene.NumHeroesToday = UnityEngine.Random.Range(2, 6);
         }
+
 
         if (day)
         {
@@ -24,8 +25,7 @@ public class DialogDebug : MonoBehaviour {
             {
                 this.GetComponent<CreateHero>().StartCreateHero();
             }*/
-
-                       
+                                   
                     if (GUI.Button(new Rect(10, 230, 100, 30), "Dismiss Hero"))//dismiss only if there is a hero
                     {
                         //this.GetComponent<CreateHero>().DismissHero();
