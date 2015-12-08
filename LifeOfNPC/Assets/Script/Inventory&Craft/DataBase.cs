@@ -917,5 +917,6 @@ public class DataBase : MonoBehaviour {
 			return new Item(name, 3, this.getDescription(name), this.getOfficalPrice(name), 0);
 			break;
 		}
-	}
+        return null;
+    }
 }

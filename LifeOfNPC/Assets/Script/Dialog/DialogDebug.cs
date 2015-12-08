@@ -28,7 +28,7 @@ public class DialogDebug : MonoBehaviour {
                        
                     if (GUI.Button(new Rect(10, 230, 100, 30), "Dismiss Hero"))//dismiss only if there is a hero
                     {
-                        this.GetComponent<CreateHero>().DismissHero();
+                        //this.GetComponent<CreateHero>().DismissHero();
                         StartDialogScene.NumHeroesToday--;//decrease number of heroes in line
                         //Debug.Log(StartDialogScene.NumHeroesToday);
                         this.GetComponent<CreateHero>().StartCreateHero();

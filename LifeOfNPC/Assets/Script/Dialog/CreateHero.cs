@@ -11,6 +11,7 @@ public class CreateHero : MonoBehaviour {
     public static GameObject Hero;
     public static GameObject canvas;            // the Canvas object
     public static Text HeroDialogBox;
+    public Image HeroSprite;
 
     public static GameObject HeroPF;
 
@@ -36,19 +37,21 @@ public class CreateHero : MonoBehaviour {
             {
                 this.GetComponent<StartDialogScene>().SpecialHeroServed = true;
                 Hero.AddComponent<Hero>();//adds hero component upon creation
+                Hero.GetComponent<HeroComponent>()._createhero = this;
 
                 LoadSpecialHero();
 
-                HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
+                HeroDialogBox = Hero.GetComponent<HeroComponent>().DialogBox as Text;//sets dialog
                 HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
             }
             else
             {
                 Hero.AddComponent<Hero>();//adds hero component upon creation
+                Hero.GetComponent<HeroComponent>()._createhero = this;
 
                 CreateGenericHero();//only this is new
 
-                HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
+                HeroDialogBox = Hero.GetComponent<HeroComponent>().DialogBox;//sets dialog
                 HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
             }
         }
@@ -57,6 +60,7 @@ public class CreateHero : MonoBehaviour {
         else
         {
             Hero.AddComponent<Hero>();//adds hero component upon creation
+            Hero.GetComponent<HeroComponent>()._createhero = this;
 
             CreateGenericHero();//only this is new
 
@@ -66,7 +70,7 @@ public class CreateHero : MonoBehaviour {
 
     }
 
-    public void DismissHero()
+    public static void DismissHero()
     {
         if (Hero != null)
         {
@@ -140,6 +144,7 @@ public class CreateHero : MonoBehaviour {
         Hero.GetComponent<Hero>().patience = 0;
         Hero.GetComponent<Hero>().lines = new List<DialogTree.DialogTreeNode>();
         Hero.GetComponent<Hero>().purpose = UnityEngine.Random.Range(0, 1);
+        Hero.GetComponent<Hero>()._database = this.GetComponent<DataBase>();
         StreamReader Dialog;//text file asset that contains dialog
 
         int HeroClass = Hero.GetComponent<Hero>().HeroClass;
@@ -175,7 +180,7 @@ public class CreateHero : MonoBehaviour {
         }
 
         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
 
 
         Hero.GetComponent<Hero>().FillInventory(Hero.GetComponent<Hero>().qii);//fill hero inventory based on quality of inventory variable
@@ -453,4 +458,18 @@ public class CreateHero : MonoBehaviour {
                 CreateGenericHero();
             }
         }
+
+
+    public void LoadHeroSprite(string name)
+    {
+        if( name != "Quartz" || name != "Riella" || name != "Felix")
+        {
+            //HeroSprite.sprite = Resources.Load<Sprite>("Sprite/" + name);
+            //Hero.GetComponent<HeroComponent>().HeroPortrait.sprite = Resources.Load<Sprite>("Sprite/" + name);
+        }
     }
+
+
+}
+
+

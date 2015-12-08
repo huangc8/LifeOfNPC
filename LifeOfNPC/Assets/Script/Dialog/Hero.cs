@@ -30,6 +30,7 @@ public class Hero : MonoBehaviour {
     public bool Encounter1Success;
     public bool Encounter2Success;
     public bool Encounter3Success;
+    public DataBase _database;
 
     //for determining dialog
     public int HeroClass;//whether hero is a wizard, warrior, or ranger
@@ -60,7 +61,7 @@ public class Hero : MonoBehaviour {
                 CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("#")) + ItemBeingSold.name + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("#") + 1);
             }
 
-            CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+            CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
         }
     }
 
@@ -78,32 +79,32 @@ public class Hero : MonoBehaviour {
         switch (qii)
         {
             case 1:
-                int lowItems = UnityEngine.Random.Range(2, 7);
+                int lowItems = UnityEngine.Random.Range(2, 5);
                 for (int i = 0; i < lowItems; i++)
                 {
                     Debug.Log("low quality");
                     //add random low quality items to hero inventory
-                    H_Inventory.Add(new Item("Apple", 1, "An Apple"));
+                    H_Inventory.Add(_database.getRandomItem(1));
                 }
                 break;
 
             case 2:
-                int mediItems = UnityEngine.Random.Range(2, 7);
+                int mediItems = UnityEngine.Random.Range(2, 5);
                 for (int i = 0; i < mediItems; i++)
                 {
                     Debug.Log("medium quality");
                     //add random medium quality items to hero inventory
-                    H_Inventory.Add(new Item("Orange", 1, "An Orange"));
+                    H_Inventory.Add(_database.getRandomItem(2));
                 }
                 break;
 
             case 3:
-                int highItems = UnityEngine.Random.Range(2, 7);
+                int highItems = UnityEngine.Random.Range(2, 5);
                 for (int i = 0; i < highItems; i++)
                 {
                     Debug.Log("high quality");
                     //add random high quality items to hero inventory
-                    H_Inventory.Add(new Item("Banana", 1, "A Banana"));
+                    H_Inventory.Add(_database.getRandomItem(3));
                 }
                 break;
 

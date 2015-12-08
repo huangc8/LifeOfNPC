@@ -66,7 +66,7 @@ public class StartDialogScene : MonoBehaviour {
         inMenu = false;
         NoSale = new List<string>();
         timer = 1;
-        NumHeroesToday = UnityEngine.Random.Range(1, 6);
+        NumHeroesToday = UnityEngine.Random.Range(2, 6);
         SpecialHeroes = new List<Hero>();
         SpecialHeroServed = false;
         
@@ -83,7 +83,7 @@ public class StartDialogScene : MonoBehaviour {
                 }
                 else
                 {
-                    this.GetComponent<CreateHero>().DismissHero();//dismiss special hero once final line read
+                    CreateHero.DismissHero();//dismiss special hero once final line read
                 }
 			}
 			timer++;
@@ -100,7 +100,7 @@ public class StartDialogScene : MonoBehaviour {
 	// end the day phase
 	public void EndDayPhase(){
         this.GetComponent<StartDialogScene>().SpecialHeroServed = false;
-        this.GetComponent<CreateHero>().DismissHero();
+        CreateHero.DismissHero();
 		this.GetComponent<DialogDebug> ().day = false;
 	}
 
