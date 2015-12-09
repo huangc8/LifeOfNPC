@@ -56,6 +56,7 @@ public class SellToHero : MonoBehaviour {
             GameMaster.AddGold(OfferedPrice);
             StartDialogScene.CloseSellToPanel();
             StartDialogScene.SellHeroPanel();
+			GameMaster.sold++;
         }
     }
 

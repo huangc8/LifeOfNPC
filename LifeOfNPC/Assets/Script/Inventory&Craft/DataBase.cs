@@ -904,6 +904,51 @@ public class DataBase : MonoBehaviour {
 		}
 	}
 
+	public void addDungeon(){
+		// level 1
+		DungeonFloor df_1 = new DungeonFloor ();
+		df_1.level = 1;
+		df_1.goodItem = new List<string>(){
+			"Elixir of Minor Rejuvenation",
+			"Unguent of Minor Invigoration", 
+			"Trusty Sword", "Wooden Shield", 
+			"Emblem of Power", "Emblem of Endurance", 
+			"Staff of Blasting", "Staff of Healing, Monk's Robes", 
+			"Page's Armor", "Short Bow"};
+		df_1.badItem = new List<string>();
+		df_1.goodClass = -1;	// 1 - wizard, 2 - warrior, 3 - ranger 
+		df_1.badClass = -1;
+		df_1.monsters = new List<string>() {
+			"Kocowardly", "Crimson Slime", "Azure Slime"};
+		df_1.boss = "Werefrog";
+		
+		df_1.levelPoints = 500;
+		df_1.bossPoints = 250;
+		this.GetComponent<Dungeon> ().floors.Add (df_1);
+
+		// level 2
+		DungeonFloor df_2 = new DungeonFloor ();
+		df_2.level = 2;
+		df_2.goodItem = new List<string>(){
+			"Elixir of Minor Rejuvenation",
+			"Unguent of Minor Invigoration", 
+			"Trusty Sword", "Wooden Shield", 
+			"Emblem of Power", "Emblem of Endurance", 
+			"Staff of Blasting", "Staff of Healing, Monk's Robes", 
+			"Page's Armor", "Short Bow"};
+		df_2.badItem = new List<string>();
+		df_2.goodClass = -1;	// 1 - wizard, 2 - warrior, 3 - ranger 
+		df_2.badClass = -1;
+		df_2.monsters = new List<string>() {
+			"Kocowardly", "Crimson Slime", "Azure Slime"};
+		df_2.boss = "Weregoose";
+		
+		df_2.levelPoints = 600;
+		df_2.bossPoints = 300;
+		this.GetComponent<Dungeon> ().floors.Add (df_2);
+
+	}
+
 	public Item getRandomItem(int quality){
 		string name = "";
 		string[] names = null;

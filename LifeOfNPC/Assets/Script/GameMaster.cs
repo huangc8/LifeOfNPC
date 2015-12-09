@@ -11,6 +11,8 @@ public class GameMaster : MonoBehaviour {
 	public static GameObject DayPanel;
 	public static GameObject NightPanel;
 	public static int currentPhase;
+	public static int sold;
+	public static int customer;
 	public GameObject canvas;
 	public GameObject NightMenuPf;
 	public GameObject DayPanelPf;
@@ -26,9 +28,11 @@ public class GameMaster : MonoBehaviour {
 	// Use this for Debug
 	void Start () {
 		// Debug
-		gold = 30;
+		gold = 3000;
 		currentDay = 0;
 		currentPhase = 1;
+		sold = 0;
+		customer = 0;
 		ChangePhase ();
 	}
 
@@ -105,6 +109,7 @@ public class GameMaster : MonoBehaviour {
 	// change phase
 	public void ChangePhase(){
 		if (currentPhase == 0) {
+			CheckGameOver();
 			EndDayPhase ();
 			ClearCanvas();
 			currentPhase = 1;
@@ -136,6 +141,14 @@ public class GameMaster : MonoBehaviour {
 		foreach (Transform child in canvas.transform) {
 			if(child.name != "Background" && child.name != "EventSystem"){
 				GameObject.Destroy(child.gameObject);
+			}
+		}
+	}
+
+	public void CheckGameOver(){
+		if (currentDay == 7) {
+			if((float)sold/(float)customer > 0.5){
+				Debug.Log("Game Over");
 			}
 		}
 	}

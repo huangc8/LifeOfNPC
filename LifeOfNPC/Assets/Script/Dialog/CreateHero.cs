@@ -136,6 +136,7 @@ public class CreateHero : MonoBehaviour {
             Destroy(Hero);//should remove hero object after it has been saved
         }
 		_DataBase.lastItem.Clear ();
+		GameMaster.customer++;
     }
 
     public void CreateGenericHero()
