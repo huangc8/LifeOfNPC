@@ -11,7 +11,7 @@ public class InventoryPanelScript : MonoBehaviour {
 	public List<GameObject> slots;			// the slots of inventory
 	public GameObject inventoryPanel; 		// the inventory panel
 	public GameObject slotPanel;			// the slot panel
-	public int slotAmount = 32;				// the amount of slots *32
+	public int slotAmount = 40;				// the amount of slots *32
 	public GameObject backButton;			// the close inventory button
 	public GameObject detailPanel;			// the detail panel
 	public Text detailName;					// the detail name
@@ -67,6 +67,7 @@ public class InventoryPanelScript : MonoBehaviour {
 				if(Inventory._Items[i].type == type){
 					GameObject newItem = Instantiate (inventoryItemPF) as GameObject;
 					newItem.GetComponent<Item> ().DisplayItem (Inventory._Items [i]);
+					newItem.GetComponent<ClickandDrag>()._IPS = this;
 					newItem.transform.SetParent (slots [slotindex].transform, false);
 					slotindex++;
 				}
@@ -106,7 +107,7 @@ public class InventoryPanelScript : MonoBehaviour {
 	public void OpenDetail(Item it){
 		detailPanel.SetActive (true);
 		detailName.text = it.name;
-		detailDescription.text = it.description;
+		detailDescription.text = _Inventory.GetComponent<DataBase>().getDescription(it.name);
 		detailImage.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
 	}
 

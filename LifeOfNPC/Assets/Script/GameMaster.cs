@@ -111,6 +111,9 @@ public class GameMaster : MonoBehaviour {
 			ImportSupply();
 			OpenNightMenu ();
 			Background.sprite = Resources.Load<Sprite>("Sprite/backgroundCraftroom");
+			foreach(Transform tf in Background.transform){
+				tf.gameObject.SetActive(false);
+			}
 			_AudioScript.playNightTheme();
 		} else {
 			CloseNightMenu();
@@ -118,6 +121,9 @@ public class GameMaster : MonoBehaviour {
 			currentPhase = 0;
 			StartDayPhase();
 			Background.sprite = Resources.Load<Sprite>("Sprite/backgroundStorefront");
+			foreach(Transform tf in Background.transform){
+				tf.gameObject.SetActive(true);
+			}
 			currentDay++;
 			_AudioScript.playDayTheme();
 		}

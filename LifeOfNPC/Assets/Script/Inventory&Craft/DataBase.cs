@@ -5,9 +5,11 @@ using System.Collections.Generic;
 public class DataBase : MonoBehaviour {
 	
 	public Supply _Supply;
+	public List<int> lastItem;
 
 	void Start(){
 		_Supply = this.GetComponent<Supply> ();
+		lastItem = new List<int> ();
 	}
 
 	public void addRecipe(string name){
@@ -170,7 +172,7 @@ public class DataBase : MonoBehaviour {
 			ltmp.Add("Sacred Yew Sapling x 5");
 			ltmp.Add("Golden Slime Jelly x 1");
 			ltmp.Add("Elder Dragon's Heart x 1");
-			type = 1;
+			type = 2;
 			break;
 		case "Monk's Robes":
 			ltmp.Add("Arachne Gossamer x 3");
@@ -874,6 +876,7 @@ public class DataBase : MonoBehaviour {
 			tmp.Add("Salamander Oil");
 			tmp.Add("Cerberus Fang");
 			tmp.Add("Powdered Fairy Wing");
+			tmp.Add("Albino Goblin's Eye");
 			tmp.Add("Werewolf Hide");
 			tmp.Add("Fermented Yeti Blood");
 			tmp.Add("Sacred Yew Sapling");
@@ -903,20 +906,42 @@ public class DataBase : MonoBehaviour {
 
 	public Item getRandomItem(int quality){
 		string name = "";
+		string[] names = null;
+
 		switch (quality) {
 		case 1:
-			name = "Consecrated Spring Water";
-			return new Item(name, 3, this.getDescription(name), this.getOfficalPrice(name), 0);
+			names = new string[] { 
+				"Salamander Oil", "Eight-Leaf Clover",
+				"Consecrated Spring Water", "Sacred Yew Sapling",
+				"Albino Goblin's Eye", "Ectoplasmic Ooze",
+				"Crimson Slime Jelly", "Azure Slime Jelly",
+				"Arachne Gossamer", "Dire Bear Derriere"};
 			break;
 		case 2:
-			name = "Eight-Leaf Clover";
-			return new Item(name, 3, this.getDescription(name), this.getOfficalPrice(name), 0);
+			names = new string[] { 
+				"Cerberus Fang", "Powdered Fairy Wing",
+				"Werewolf Hide", "Fermented Yeti Blood",
+				"Luminescent Scale", "Meteoric Iron",
+				"Kobold Tears", "Minotaur's Horn",
+				"Manticore Quill"};
 			break;
 		case 3:
-			name = "Salamander Oil";
-			return new Item(name, 3, this.getDescription(name), this.getOfficalPrice(name), 0);
+			names = new string[] { 
+				"Elder Dragon's Heart", "Ancient Phylactery",
+				"Mythreal Ore", "Golden Slime Jelly"};
 			break;
 		}
-        return null;
+
+		Random.seed = System.Environment.TickCount;
+		int r = 0;
+		while (true) {
+			r = Random.Range (0, names.Length - 1);
+			if(!lastItem.Contains(r)){
+				lastItem.Add(r);
+				break;
+			}
+		}
+		name = names[r];
+		return new Item(name, r, this.getDescription(name), this.getOfficalPrice(name), 0);
     }
 }

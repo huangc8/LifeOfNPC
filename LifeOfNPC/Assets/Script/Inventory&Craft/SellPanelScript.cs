@@ -27,6 +27,7 @@ public class SellPanelScript : MonoBehaviour {
 	}
 
 	public void ClosePanel(){
+		StartDialogScene.inMenu = false;
 		GameObject.Destroy (gameObject);
 	}
 
@@ -44,9 +45,9 @@ public class SellPanelScript : MonoBehaviour {
 				SellListButtonScript slbs = newButton.GetComponent<SellListButtonScript>();
 				slbs._SPS = this;
 				slbs.NameLabel.text = it.name;
-				slbs.PriceLabel.text = "$" + it.sellPrice.ToString();
+				slbs.PriceLabel.text = it.sellPrice.ToString();
 				slbs.QuantityLabel.text = it.amount.ToString();
-				//slbs.icon.sprite = 
+				slbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
 				slbs.listIndex = listIndex;
 				slbs.itemIndex = itemIndex;
 				slbs.updateInfo(it.sellPrice, 1);
@@ -72,9 +73,9 @@ public class SellPanelScript : MonoBehaviour {
 				SellListButtonScript slbs = newButton.GetComponent<SellListButtonScript>();
 				slbs._SPS = this;
 				slbs.NameLabel.text = it.name;
-				slbs.PriceLabel.text = "$" + it.sellPrice.ToString();
+				slbs.PriceLabel.text = it.sellPrice.ToString();
 				slbs.QuantityLabel.text = it.amount.ToString();
-				//slbs.icon.sprite = 
+				slbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
 				slbs.listIndex = listIndex;
 				slbs.itemIndex = itemIndex;
 				slbs.updateInfo(it.sellPrice, 1);
@@ -100,9 +101,9 @@ public class SellPanelScript : MonoBehaviour {
 				SellListButtonScript slbs = newButton.GetComponent<SellListButtonScript>();
 				slbs._SPS = this;
 				slbs.NameLabel.text = it.name;
-				slbs.PriceLabel.text = "$" + it.sellPrice.ToString();
+				slbs.PriceLabel.text = it.sellPrice.ToString();
 				slbs.QuantityLabel.text = it.amount.ToString();
-				//slbs.icon.sprite = 
+				slbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
 				slbs.listIndex = listIndex;
 				slbs.itemIndex = itemIndex;
 				slbs.updateInfo(it.sellPrice, 1);
@@ -122,7 +123,7 @@ public class SellPanelScript : MonoBehaviour {
 		Item it = Inventory._Items [itemIndex];
 		icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
 		dealPrice = price;
-		PriceLabel.text = "$" + dealPrice.ToString();
+		PriceLabel.text = dealPrice.ToString();
 		dealQuantity = quantity;
 		QuantityLabel.text = dealQuantity.ToString();
 		currentIndex = listIndex;
@@ -131,13 +132,13 @@ public class SellPanelScript : MonoBehaviour {
 
 	public void IncreasePrice(){
 		dealPrice += 10;
-		PriceLabel.text = "$" + dealPrice.ToString();
+		PriceLabel.text = dealPrice.ToString();
 	}
 
 	public void DecreasePrice(){
 		if (dealPrice > 0) {
 			dealPrice -= 10;
-			PriceLabel.text = "$" + dealPrice.ToString ();
+			PriceLabel.text = dealPrice.ToString ();
 		}
 	}
 

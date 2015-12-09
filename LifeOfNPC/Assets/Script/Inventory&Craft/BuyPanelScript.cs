@@ -24,6 +24,7 @@ public class BuyPanelScript : MonoBehaviour {
 	}
 	
 	public void ClosePanel(){
+		StartDialogScene.inMenu = false;
 		GameObject.Destroy (gameObject);
 	}
 	
@@ -35,7 +36,7 @@ public class BuyPanelScript : MonoBehaviour {
 			BuyListButtonScript slbs = newButton.GetComponent<BuyListButtonScript>();
 			slbs._BPS = this;
 			slbs.NameLabel.text = it.name;
-			slbs.PriceLabel.text = "$" + it.supplyPrice.ToString();
+			slbs.PriceLabel.text = it.supplyPrice.ToString();
 			slbs.QuantityLabel.text = it.amount.ToString();
 			slbs.icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
 			slbs.index = index;
@@ -53,7 +54,7 @@ public class BuyPanelScript : MonoBehaviour {
 		Item it = CreateHero.Hero.GetComponent<Hero>().H_Inventory [index];
 		icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
 		dealPrice = price;
-		PriceLabel.text = "$" + dealPrice.ToString();
+		PriceLabel.text = dealPrice.ToString();
 		dealQuantity = quantity;
 		QuantityLabel.text = dealQuantity.ToString();
 		currentIndex = index;
@@ -61,13 +62,13 @@ public class BuyPanelScript : MonoBehaviour {
 	
 	public void IncreasePrice(){
 		dealPrice += 10;
-		PriceLabel.text = "$" + dealPrice.ToString();
+		PriceLabel.text = dealPrice.ToString();
 	}
 	
 	public void DecreasePrice(){
 		if (dealPrice > 0) {
 			dealPrice -= 10;
-			PriceLabel.text = "$" + dealPrice.ToString ();
+			PriceLabel.text = dealPrice.ToString ();
 		}
 	}
 	

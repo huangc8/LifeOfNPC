@@ -177,6 +177,7 @@ public class Inventory : MonoBehaviour {
 	public void OpenSetPricePanel(){
 		if (SetPricePanel == null) {
 			SetPricePanel = Instantiate(SetPricePanelPf) as GameObject;
+			SetPricePanel.GetComponent<SetPricePanelScript>()._dataBase = this.GetComponent<DataBase>();
 			SetPricePanel.GetComponent<SetPricePanelScript>()._Inventory = this;
 			SetPricePanel.GetComponent<SetPricePanelScript>().PopulateSetPriceButton();
 			SetPricePanel.transform.SetParent(canvas.transform, false);
@@ -188,10 +189,9 @@ public class Inventory : MonoBehaviour {
 	public void CloseSetPricePanel(){
 		// update sell price in inventory
 		GameObject contentPanel = SetPricePanel.GetComponent<SetPricePanelScript> ().contentPanel;		
-		int index = 0;
 		foreach (Transform gb in contentPanel.transform) {
+			int index = gb.GetComponent<PriceListButtonScript>().index;
 			Inventory._Items[index].sellPrice = gb.GetComponent<PriceListButtonScript>().price;
-			index++;
 		}
 
 		// destroy set price panel

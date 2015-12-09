@@ -22,6 +22,7 @@ public class Item : MonoBehaviour {
 		this.amount = amount;
 		this.type = 0;
 		this.description = description;
+		this.sellPrice = 0;
 	}
 
 	// constructor with price
@@ -32,6 +33,7 @@ public class Item : MonoBehaviour {
 		this.supplyPrice = officalPrice;
 		this.sellPrice = officalPrice;
 		this.type = type;
+		this.sellPrice = 0;
 	}
 
 	// copy constructor
@@ -39,6 +41,7 @@ public class Item : MonoBehaviour {
 		this.name = it.name;
 		this.amount = it.amount;
 		this.description = it.description;
+		this.sellPrice = 0;
 	}
 
 	#region Display

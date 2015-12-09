@@ -11,6 +11,7 @@ public class CreateHero : MonoBehaviour {
     public static GameObject Hero;
     public static GameObject canvas;            // the Canvas object
     public static Text HeroDialogBox;
+	public static DataBase _DataBase;
     public Image HeroSprite;
 
     public static GameObject HeroPF;
@@ -22,6 +23,8 @@ public class CreateHero : MonoBehaviour {
 
     // Use this for initialization
     public void StartCreateHero () {
+
+		_DataBase = this.GetComponent<DataBase> ();
 
         HeroPF = HeroPf_r;
         canvas = canvas_r;
@@ -132,7 +135,7 @@ public class CreateHero : MonoBehaviour {
             }
             Destroy(Hero);//should remove hero object after it has been saved
         }
-
+		_DataBase.lastItem.Clear ();
     }
 
     public void CreateGenericHero()
@@ -480,7 +483,7 @@ public class CreateHero : MonoBehaviour {
         string CharacterBodySprite;
         string CharacterPortraitSprite;
 
-        if ( name != "Quartz" || name != "Riella" || name != "Felix")
+        if (name != "Quartz" && name != "Riella" && name != "Felix")
         {
 
             int num = UnityEngine.Random.Range(1, 3);
