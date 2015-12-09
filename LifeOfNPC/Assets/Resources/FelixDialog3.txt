@@ -1,37 +1,37 @@
-1020000-24: “Yo, Shopkeeper.”  
-1030000-24: “Ah, Felix.  What would you like to buy?”  
-1040000-24: “Not calling me something random?  That’s a change.”  
-1050000-24: “I always work to accommodate my customers.”  
-1060000-24: “Uh huh.  Anyways, I’m looking for a new bow; something better than the last one, given that it broke.  Some armor too, but keep it cheap and keep it light.  And if there’s anything else of use, I’ll take that as well.”
-2080700-24: “Well, let’s see what I can do for you.” 
-1120000-24: “Fine.  Here you go, Shopkeeper.”  
-1090000-24: “Like I’d pay that much.”
-2111000-24: “Try $.”  
-1120000-24: “Tch, fine.  Here’s the money.” 
-1120000-24: “Nope.  Deal’s off.”
-1130000-24: “Your bow broke?  Sounds like a hard fight.” 
-1140000-24: “I got caught off guard while fighting a boss some idiot ranger girl set off on the 40th floor.  Seriously, didn’t she know to get of its horns first so that projectiles work on it?”   
-1150000-24: “Sounds like you were lucky to get out of there alive.”  
-1160000-24: “Lucky, huh?  No, she was the lucky one.”  
-1170000-24: “What makes you say that?”
-1180000-24: “Because she didn’t die, even when I showed up.” 
-1190000-24: “Even when you showed up?  This has to do with you not forming a party, doesn’t it?” 
-1200000-24: “And so what if it does?  I’ve said it before, and I’ve said it again!  I’m not joining a party!” 
-1210000-24: “You can’t keep going through the Dungeon alone Felix, no matter how skilled you are.  One day your luck will run out.”  
-1220000-24: “No it won’t.  And that’s the problem.” 
-1230000-24: “What do you mean?” 
-1240000-24: “You know the phrase ‘born lucky’?  That’s me.  I’ve been freakishly lucky every since I was born.  Every raffle ticket is a grand prize winner, every chest has the rarest treasures, every monster drops the best possible items.”
-1250000-24: “So what’s the catch?” 
-1260000-24: “It’s only me that’s lucky.  If a barn collapses on top of me, I’ll be the only one that’s uninjured.  If a fire rips through a village, my house will be the only one that’s fine.  And if I get caught in a room full of monsters with my party - then I’m the only one who survives.  So I can’t party with other people.  I can’t work with other people.  I can’t be near other people.  Because every time I do, they suffer.  Every time I do, they die.”  
-1270000-24: “Am I dead?” 
-1280000-24: “What?” 
-1290000-24: “Are your ears clogged?  Am I dead?” 
-1300000-24: “Well, no, but-”
-1310000-24: “Have I been horribly injured, or robbed, or otherwise harmed recently?”
-1320000-24: “I don’t know, I’m not here all the time, but it doesn’t look like it, but that doesn’t prove-”
-1330000-24: “Then you can be near other people.  You don’t have to torture yourself, Felix.” 
-1340000-24: “What are you talking about!  I killed those people!  Shana, Rilian, Wercell - I killed them all!  It was my fault!” 
-1350000-24: “No.  You didn’t kill them.  They died.  And one more thing.  You say that you’re the only one that’s lucky, but I’m lucky too.  After all, every customer I get is good luck.”  
-1360000-24: “Every customer you... What kind of stupidity is that!?  Just because something hasn’t happened yet doesn’t mean it won’t!”  
-1370000-24: “And just because something happened once before doesn’t mean it’ll happen again!  I promise you, Felic Kyculun, that no harm will come to me while you shop here.  You aren’t bad luck, and I’ll prove it to you.” 
-1000000-24: “Why don’t you understand!?  Ugh, just finish the transaction already.”
+1020000-24: Yo, Shopkeeper.
+1030000-24: Ah, Felix.  What would you like to buy?
+1040000-24: Not calling me something random?  That’s a change. 
+1050000-24: I always work to accommodate my customers.
+1060000-24: Uh huh.  Anyways, I’m looking for a new bow; something better than the last one, given that it broke.  Some armor too, but keep it cheap and keep it light.  And if there’s anything else of use, I’ll take that as well.”
+2080700-24: Well, let’s see what I can do for you.
+1120000-24: Fine.  Here you go, Shopkeeper.
+1090000-24: Like I’d pay that much.
+2111000-24: Try $.
+1120000-24: Tch, fine.  Here’s the money.
+1120000-24: Nope.  Deal’s off.
+1130000-24: Your bow broke?  Sounds like a hard fight.
+1140000-24: I got caught off guard while fighting a boss some idiot ranger girl set off on the 40th floor.  Seriously, didn’t she know to get of its horns first so that projectiles work on it? 
+1150000-24: Sounds like you were lucky to get out of there alive. 
+1160000-24: Lucky, huh?  No, she was the lucky one.
+1170000-24: What makes you say that?
+1180000-24: Because she didn’t die, even when I showed up.
+1190000-24: Even when you showed up?  This has to do with you not forming a party, doesn’t it? 
+1200000-24: And so what if it does?  I’ve said it before, and I’ve said it again!  I’m not joining a party! 
+1210000-24: You can’t keep going through the Dungeon alone Felix, no matter how skilled you are.  One day your luck will run out.  
+1220000-24: No it won’t.  And that’s the problem.
+1230000-24: What do you mean?
+1240000-24: You know the phrase ‘born lucky’?  That’s me.  I’ve been freakishly lucky every since I was born.  Every raffle ticket is a grand prize winner, every chest has the rarest treasures, every monster drops the best possible items.
+1250000-24: So what’s the catch?
+1260000-24: It’s only me that’s lucky.  If a barn collapses on top of me, I’ll be the only one that’s uninjured.  If a fire rips through a village, my house will be the only one that’s fine.  And if I get caught in a room full of monsters with my party - then I’m the only one who survives.  So I can’t party with other people.  I can’t work with other people.  I can’t be near other people.  Because every time I do, they suffer.  Every time I do, they die. 
+1270000-24: Am I dead?
+1280000-24: What?
+1290000-24: Are your ears clogged?  Am I dead?
+1300000-24: Well, no, but-
+1310000-24: Have I been horribly injured, or robbed, or otherwise harmed recently?
+1320000-24: I don’t know, I’m not here all the time, but it doesn’t look like it, but that doesn’t prove-
+1330000-24: Then you can be near other people.  You don’t have to torture yourself, Felix.
+1340000-24: What are you talking about!  I killed those people!  Shana, Rilian, Wercell - I killed them all!  It was my fault!
+1350000-24: No.  You didn’t kill them.  They died.  And one more thing.  You say that you’re the only one that’s lucky, but I’m lucky too.  After all, every customer I get is good luck.
+1360000-24: Every customer you... What kind of stupidity is that!?  Just because something hasn’t happened yet doesn’t mean it won’t! 
+1370000-24: And just because something happened once before doesn’t mean it’ll happen again!  I promise you, Felic Kyculun, that no harm will come to me while you shop here.  You aren’t bad luck, and I’ll prove it to you.
+1000000-24: Why don’t you understand!?  Ugh, just finish the transaction already.
