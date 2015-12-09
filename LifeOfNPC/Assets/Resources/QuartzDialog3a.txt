@@ -1,27 +1,27 @@
-1020000-1: “Once again, greetings Shopkeeper!  The Greatest Adventurer in the World is here to purchase your wares!”  
-1030000-1: “Quartz, good to see you!  How goes things with the party?  Did you have enough potions?”  
-1040000-1: “Funny you should mention that.  Things were going extraordinarily easy; too easy, really.  We got surrounded by a horde of monsters, and if it wasn’t for those potions we’d have been done for.”  
-1050000-1: “I’m glad that my products could be of use!”  
-1060000-1: “And so am I!  However, my last sword quite unfortunately broke while I faced a dragon.  And that is why I am here, Shopkeeper!.  For a weapon!  For restorative items!  And you know what?  Surprise me.  If there’s anything else that could be of use to the Greatest Adventurer in the World, I’ll take it!”
-2080700-1: “Well, let’s see what we have for you!” 
-1100000-1: [Success case] “Very well then, Shopkeeper.  Let it not be said that the Greatest Adventurer in the World is not generous!”
-2090700-1: [Failure case] “I’m afraid that won’t do, Shopkeeper.  $ is my offer.”
-2121000-1: [Failure case] “I’m afraid that won’t do, Shopkeeper.  $ is my final offer.”
-1110000-1: “A pleasure doing business with you, Shopkeeper!”
-1120000-1: “I’m afraid that’s that then, Shopkeeper.”  
-2141300-1: “I’m looking for a Lakeborn Sword, if you happen to have one in stock.  Some Elixirs of Rejuvenation, Unguents of Invigoration, and Tonics of Restoration as well, and anything else you think is useful.”
-1180000-1: [Success case] “Such a price is nothing for the Greatest Adventurer in the World!  I accept your offer, Shopkeeper!”  
-1150000-1: [Failure case] “That price will not do, Shopkeeper!”
-2171600-1: “If you must insist, I’ll pay $.”  
-1180000-1: [Success case] “Very well then, Shopkeeper!  I accept your offer!” 
-1180000-1: [Failure case] “That price will simply not do!  The Greatest Adventurer in the World will have to seek his goods in another store!”
-1190000-1: “So, how are things with the party?  That paladin still giving you trouble?” 
-1200000-1: “Tarkin?  He’ll still insufferable, and always bragging every time he blocks an attack or parries a blow!  Still, he’s reliable, even if a bit flamboyant.  Kaysel’s still doing all sorts of weird experiments, but he’s actually able to talk to people for more than five minutes without giving them some sort of horrible disfigurement!”   
-1210000-1: “And what about that cleric?  Aurora, was it?”  
-1220000-1: “Her name is Amara, Shopkeeper!  And well, you see... The truth is... we’re married!”  
-1230000-1: “You are?  Congratulations!  How did that happen?” 
-1240000-1: “It started way back when I was thinking about getting a new sword.  My old one gave out on me at the worst possible time, and monsters swarmed in.  I don’t remember much of what happened next; one moment, three Orcs were about to kill her, the next, I’d torn them all to pieces.  There were still far too many of them to face, however, and even running away was a challenge.  If we hadn’t had enough healing potions, things could have gone very badly.”  
-1250000-1: “So she warmed up to you after that?” 
-1260000-1: “It turns out that she liked me too!  O-Of course, that would only be natural for the Greatest Adventurer in the World.  We got married and things have gone wonderfully ever since.  She’s still a bit of a worrywart, but I humor her anyways.”
-1270000-1: “I’m glad you’re doing well, Quartz.”
-1000000-1: “So am I, Shopkeeper.  So am I.”
+1020000-1:  Once again, greetings Shopkeeper!  The Greatest Adventurer in the World is here to purchase your wares!
+1030000-1:  Quartz, good to see you!  How goes things with the party?  Did you have enough potions? 
+1040000-1:  Funny you should mention that.  Things were going extraordinarily easy; too easy, really.  We got surrounded by a horde of monsters, and if it wasn’t for those potions we’d have been done for.
+1050000-1:  I’m glad that my products could be of use!
+1060000-1:  And so am I!  However, my last sword quite unfortunately broke while I faced a dragon.  And that is why I am here, Shopkeeper!.  For a weapon!  For restorative items!  And you know what?  Surprise me.  If there’s anything else that could be of use to the Greatest Adventurer in the World, I’ll take it!
+2080700-1:  Well, let’s see what we have for you!
+1100000-1:  Very well then, Shopkeeper.  Let it not be said that the Greatest Adventurer in the World is not generous!
+2090700-1:  I’m afraid that won’t do, Shopkeeper.  $ is my offer.
+2121000-1:  I’m afraid that won’t do, Shopkeeper.  $ is my final offer.
+1110000-1:  A pleasure doing business with you, Shopkeeper!
+1120000-1:  I’m afraid that’s that then, Shopkeeper.
+2141300-1:  I’m looking for a Lakeborn Sword, if you happen to have one in stock.  Some Elixirs of Rejuvenation, Unguents of Invigoration, and Tonics of Restoration as well, and anything else you think is useful.
+1180000-1:  Such a price is nothing for the Greatest Adventurer in the World!  I accept your offer, Shopkeeper!
+1150000-1:  That price will not do, Shopkeeper!
+2171600-1:  If you must insist, I’ll pay $.
+1180000-1:  Very well then, Shopkeeper!  I accept your offer!
+1180000-1:  That price will simply not do!  The Greatest Adventurer in the World will have to seek his goods in another store!
+1190000-1:  So, how are things with the party?  That paladin still giving you trouble?
+1200000-1:  Tarkin?  He’ll still insufferable, and always bragging every time he blocks an attack or parries a blow!  Still, he’s reliable, even if a bit flamboyant.  Kaysel’s still doing all sorts of weird experiments, but he’s actually able to talk to people for more than five minutes without giving them some sort of horrible disfigurement!  
+1210000-1:  And what about that cleric?  Aurora, was it?
+1220000-1:  Her name is Amara, Shopkeeper!  And well, you see... The truth is... we’re married!
+1230000-1:  You are?  Congratulations!  How did that happen?
+1240000-1:  It started way back when I was thinking about getting a new sword.  My old one gave out on me at the worst possible time, and monsters swarmed in.  I don’t remember much of what happened next; one moment, three Orcs were about to kill her, the next, I’d torn them all to pieces.  There were still far too many of them to face, however, and even running away was a challenge.  If we hadn’t had enough healing potions, things could have gone very badly.  
+1250000-1:  So she warmed up to you after that?
+1260000-1:  It turns out that she liked me too!  O-Of course, that would only be natural for the Greatest Adventurer in the World.  We got married and things have gone wonderfully ever since.  She’s still a bit of a worrywart, but I humor her anyways.
+1270000-1:  I’m glad you’re doing well, Quartz.
+1000000-1:  So am I, Shopkeeper.  So am I.

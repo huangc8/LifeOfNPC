@@ -11,6 +11,7 @@ public class CreateHero : MonoBehaviour {
     public static GameObject Hero;
     public static GameObject canvas;            // the Canvas object
     public static Text HeroDialogBox;
+    public Image HeroSprite;
 
     public static GameObject HeroPF;
 
@@ -28,27 +29,29 @@ public class CreateHero : MonoBehaviour {
         Hero = Instantiate(HeroPF) as GameObject;
         Hero.transform.SetParent(canvas.transform, false);
 
-        if(GameMaster.currentDay == 3 || GameMaster.currentDay == 5 || GameMaster.currentDay == 10 || GameMaster.currentDay == 15 || GameMaster.currentDay == 19 ||
-            GameMaster.currentDay == 22 || GameMaster.currentDay == 26 || GameMaster.currentDay == 30 || GameMaster.currentDay == 34 || GameMaster.currentDay == 39 ||
-            GameMaster.currentDay == 42 || GameMaster.currentDay == 46)
+        if(!this.GetComponent<StartDialogScene>().SpecialHeroServed)
         {
-            if (!this.GetComponent<StartDialogScene>().SpecialHeroServed)//if special hero has not been served yet
+            if (GameMaster.currentDay == 3 || GameMaster.currentDay == 5 || GameMaster.currentDay == 10 || GameMaster.currentDay == 15 || GameMaster.currentDay == 19 ||
+            GameMaster.currentDay == 22 || GameMaster.currentDay == 26 || GameMaster.currentDay == 30 || GameMaster.currentDay == 34 || GameMaster.currentDay == 39 ||
+            GameMaster.currentDay == 42 || GameMaster.currentDay == 46)//if special hero has not been served yet
             {
-                this.GetComponent<StartDialogScene>().SpecialHeroServed = true;
                 Hero.AddComponent<Hero>();//adds hero component upon creation
+                Hero.GetComponent<HeroComponent>()._createhero = this;
+                this.GetComponent<StartDialogScene>().SpecialHeroServed = true;
 
                 LoadSpecialHero();
 
-                HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
+                HeroDialogBox = Hero.GetComponent<HeroComponent>().DialogBox as Text;//sets dialog
                 HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
             }
             else
             {
                 Hero.AddComponent<Hero>();//adds hero component upon creation
+                Hero.GetComponent<HeroComponent>()._createhero = this;
 
                 CreateGenericHero();//only this is new
 
-                HeroDialogBox = Hero.GetComponentInChildren<Text>() as Text;//sets dialog
+                HeroDialogBox = Hero.GetComponent<HeroComponent>().DialogBox;//sets dialog
                 HeroDialogBox.text = Hero.GetComponent<Hero>().dialog;//prints text to heros text box
             }
         }
@@ -57,6 +60,7 @@ public class CreateHero : MonoBehaviour {
         else
         {
             Hero.AddComponent<Hero>();//adds hero component upon creation
+            Hero.GetComponent<HeroComponent>()._createhero = this;
 
             CreateGenericHero();//only this is new
 
@@ -66,7 +70,7 @@ public class CreateHero : MonoBehaviour {
 
     }
 
-    public void DismissHero()
+    public static void DismissHero()
     {
         if (Hero != null)
         {
@@ -140,6 +144,7 @@ public class CreateHero : MonoBehaviour {
         Hero.GetComponent<Hero>().patience = 0;
         Hero.GetComponent<Hero>().lines = new List<DialogTree.DialogTreeNode>();
         Hero.GetComponent<Hero>().purpose = UnityEngine.Random.Range(0, 1);
+        Hero.GetComponent<Hero>()._database = this.GetComponent<DataBase>();
         StreamReader Dialog;//text file asset that contains dialog
 
         int HeroClass = Hero.GetComponent<Hero>().HeroClass;
@@ -150,7 +155,8 @@ public class CreateHero : MonoBehaviour {
                 Dialog = new StreamReader("Assets/Resources/StockWizardDialog.txt");//text file that is loaded from resourses
                 DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                 Dialog.Close();//closes streamreader
-                Debug.Log("Your a wizard Harry");
+                //Debug.Log("Your a wizard Harry");
+                LoadHeroSprite("Wizard");
                 break;
 
             case 2:
@@ -158,7 +164,8 @@ public class CreateHero : MonoBehaviour {
                 Dialog = new StreamReader("Assets/Resources/StockWarriorDialog.txt"); ;//text file that is loaded from resourses
                 DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                 Dialog.Close();//closes stream reader
-                Debug.Log("I am a warrior");
+                //Debug.Log("I am a warrior");
+                LoadHeroSprite("Knight");
                 break;
 
             case 3:
@@ -166,7 +173,8 @@ public class CreateHero : MonoBehaviour {
                 Dialog = new StreamReader("Assets/Resources/StockRangerDialog.txt"); ;//text file that is loaded from resourses
                 DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                 Dialog.Close();//closes stream reader
-                Debug.Log("I am a ranger");
+                //Debug.Log("I am a ranger");
+                LoadHeroSprite("Ranger");
                 break;
 
             default:
@@ -175,7 +183,7 @@ public class CreateHero : MonoBehaviour {
         }
 
         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
 
 
         Hero.GetComponent<Hero>().FillInventory(Hero.GetComponent<Hero>().qii);//fill hero inventory based on quality of inventory variable
@@ -231,8 +239,9 @@ public class CreateHero : MonoBehaviour {
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
                         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
-                        break;
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Quartz");
+                    break;
 
                     case "Felix":
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
@@ -247,8 +256,9 @@ public class CreateHero : MonoBehaviour {
                         Dialog = new StreamReader("Assets/Resources/FelixDialog.txt");//text file that is loaded from resourses
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
-                    Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                    CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
+                    CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                    LoadHeroSprite("Felix");
                     break;
 
                     case "Riella":
@@ -264,8 +274,9 @@ public class CreateHero : MonoBehaviour {
                         Dialog = new StreamReader("Assets/Resources/RiellaDialog.txt");//text file that is loaded from resourses
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
-                    Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                    CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
+                    CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                    LoadHeroSprite("Riella");
                     break;
                 }
             }
@@ -293,8 +304,9 @@ public class CreateHero : MonoBehaviour {
                             DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                             Dialog.Close();//closes streamreader
                             Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                            CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
-                        }
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Quartz");
+                    }
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 2 && StartDialogScene.SpecialHeroes[SHeroIndex].Encounter2Success)//if Quartz was sold all the potions
                     {
                         Hero.GetComponent<Hero>().name = SpecialHeroName;
@@ -310,7 +322,8 @@ public class CreateHero : MonoBehaviour {
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
                         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Quartz");
                     }
 
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 2 && !StartDialogScene.SpecialHeroes[SHeroIndex].Encounter2Success)//if Quartz was not sold all the potions
@@ -328,7 +341,8 @@ public class CreateHero : MonoBehaviour {
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
                         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Quartz");
                     }
 
                     break;
@@ -350,7 +364,8 @@ public class CreateHero : MonoBehaviour {
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
                         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Felix");
                     }
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 2)
                     {
@@ -367,7 +382,8 @@ public class CreateHero : MonoBehaviour {
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
                         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Felix");
                     }
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 3)
                     {
@@ -384,7 +400,8 @@ public class CreateHero : MonoBehaviour {
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
                         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Felix");
                     }
 
                     break;
@@ -406,7 +423,8 @@ public class CreateHero : MonoBehaviour {
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
                         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Riella");
                     }
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 2)
                     {
@@ -423,7 +441,8 @@ public class CreateHero : MonoBehaviour {
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
                         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Riella");
                     }
                     if (StartDialogScene.SpecialHeroes[SHeroIndex].EncounterNumber == 3)
                     {
@@ -440,7 +459,8 @@ public class CreateHero : MonoBehaviour {
                         DialogTree.CreateTree(Dialog, Hero.GetComponent<Hero>().lines);//fills dialog tree
                         Dialog.Close();//closes streamreader
                         Hero.GetComponent<Hero>().CurrentNode = Hero.GetComponent<Hero>().lines[0];
-                        CreateHero.Hero.GetComponent<Text>().text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
+                        LoadHeroSprite("Riella");
                     }
 
                     break;
@@ -453,4 +473,52 @@ public class CreateHero : MonoBehaviour {
                 CreateGenericHero();
             }
         }
+
+
+    public void LoadHeroSprite(string name)
+    {
+        string CharacterBodySprite;
+        string CharacterPortraitSprite;
+
+        if ( name != "Quartz" || name != "Riella" || name != "Felix")
+        {
+
+            int num = UnityEngine.Random.Range(1, 3);
+            
+            if (num == 1)
+            {
+                CharacterBodySprite = "character" + name;
+                CharacterPortraitSprite = "portrait" + name;
+            }
+            else
+            {
+                CharacterBodySprite = "character" + name + num;
+                CharacterPortraitSprite = "portrait" + name + num;
+            }
+            HeroSprite.sprite = Resources.Load<Sprite>("Sprite/" + CharacterBodySprite);
+            Hero.GetComponent<HeroComponent>().HeroPortrait.sprite = Resources.Load<Sprite>("Sprite/" + CharacterPortraitSprite);
+        }
+        else//if i didn't do this it couldn't find the images
+        {
+            if (name == "Quartz")
+            {
+                HeroSprite.sprite = Resources.Load<Sprite>("Sprite/characterQuartz");
+                Hero.GetComponent<HeroComponent>().HeroPortrait.sprite = Resources.Load<Sprite>("Sprite/portraitQuartz");
+            }
+            if (name == "Felix")
+            {
+                HeroSprite.sprite = Resources.Load<Sprite>("Sprite/characterFelix");
+                Hero.GetComponent<HeroComponent>().HeroPortrait.sprite = Resources.Load<Sprite>("Sprite/portraitFelix");
+            }
+            if (name == "Riella")
+            {
+                HeroSprite.sprite = Resources.Load<Sprite>("Sprite/characterRiella");
+                Hero.GetComponent<HeroComponent>().HeroPortrait.sprite = Resources.Load<Sprite>("Sprite/portraitRiella");
+            }
+        }
     }
+
+
+}
+
+

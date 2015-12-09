@@ -15,74 +15,10 @@ public class DialogDebug : MonoBehaviour {
         if(StartDialogScene.NumHeroesToday == 0)
         {
             this.GetComponent<GameMaster>().ChangePhase();
-            StartDialogScene.NumHeroesToday = UnityEngine.Random.Range(1, 6);
+            StartDialogScene.NumHeroesToday = UnityEngine.Random.Range(2, 6);
         }
 
-        if (day)
-        {
-            /*if (GUI.Button(new Rect(10, 190, 100, 30), "Next Hero") && CreateHero.Hero == null)
-            {
-                this.GetComponent<CreateHero>().StartCreateHero();
-            }*/
 
-                       
-                    if (GUI.Button(new Rect(10, 230, 100, 30), "Dismiss Hero"))//dismiss only if there is a hero
-                    {
-                        this.GetComponent<CreateHero>().DismissHero();
-                        StartDialogScene.NumHeroesToday--;//decrease number of heroes in line
-                        //Debug.Log(StartDialogScene.NumHeroesToday);
-                        this.GetComponent<CreateHero>().StartCreateHero();
-                    }
 
-            if (CreateHero.Hero != null)
-            {
-
-                if (CreateHero.Hero.GetComponent<Hero>().name == null)
-                {
-                    if (CreateHero.Hero.GetComponent<Hero>().CurrentNode != null) {
-                        if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.lvl >= 4)
-                        {
-                            if (GUI.Button(new Rect(10, 310, 100, 30), "Sell to Hero"))
-                            {
-                                StartDialogScene.SellHeroPanel();
-                            }
-
-                            if (GUI.Button(new Rect(10, 345, 100, 30), "Buy from Hero"))
-                            {
-                                StartDialogScene.BuyHeroPanel();
-                            }
-
-                            if (GUI.Button(new Rect(10, 385, 100, 30), "Back"))
-                            {
-                                StartDialogScene.CloseBuyFromPanel();
-                                StartDialogScene.CloseSellToPanel();
-                            }
-                        }
-                    }
-                }
-
-                else
-                {
-                    if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.lvl >= 4)
-                    {
-                        if (GUI.Button(new Rect(10, 310, 100, 30), "Sell to Hero"))
-                        {
-                            StartDialogScene.SellHeroPanel();
-                        }
-
-                        if (GUI.Button(new Rect(10, 345, 100, 30), "Buy from Hero"))
-                        {
-                            StartDialogScene.BuyHeroPanel();
-                        }
-
-                        if (GUI.Button(new Rect(10, 385, 100, 30), "Back"))
-                        {
-                            StartDialogScene.CloseBuyFromPanel();
-                            StartDialogScene.CloseSellToPanel();
-                        }
-                    }
-                }
-            }
-          }
          }
         }

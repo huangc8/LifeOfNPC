@@ -55,6 +55,7 @@ public class BuyFromHero : MonoBehaviour {
             CreateHero.Hero.GetComponent<Hero>().CurrentNode = CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(CreateHero.Hero.GetComponent<Hero>().CurrentNode, true)];
             Debug.Log(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex].name);
             Inventory.AddItem(CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory[Itemindex]);//moves item from hero inventory to players inventory
+            GameMaster.ReduceGold(OfferedPrice);
 
             CreateHero.Hero.GetComponentInChildren<Hero>().H_Inventory.RemoveAt(Itemindex);//remove item from hero inventory
             CreateHero.Hero.GetComponentInChildren<Hero>().money += OfferedPrice;//add money to hero

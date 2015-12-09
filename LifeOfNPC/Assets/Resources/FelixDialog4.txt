@@ -1,35 +1,35 @@
-1020000-24: “Hello, Shopkeeper.”  
-1030000-24: “Felix, hello!  What would you like to buy?”  
-1040000-24: “You’re certainly more energetic than before.”  
-1050000-24: “Should I not be?.”  
-1060000-24: “It’s actually really creepy.” 
-1070000-24: “Sorry about that.  What are you getting this time?”
-1080000-24: “That’s more like it, Shopkeep.  I need a new sword, a new bow, new armor-.”
-1090000-24: “And some other stuff, right?”
-1100000-24: “Right.”
-2121100-24: “Well Felix, let’s see what I’ve got for you.” 
-1180000-24: [Success case] “I’ll accept that, Shopkeep.”
-2141300-24: [Failure case] “Nice try, Shopkeep.  $ is my final offer.”
-1180000-24: [Success case] “Alright.  Here you go, Shopkeep.”  
-1150000-24: [Failure case] “Like I’d pay that much.”
-2171600-24: “Try $.”  
-1180000-24: [Success case] “Tch, fine.  Here’s the money, you skinflint.” 
-1180000-24: [Failure case] “Sorry, Shopkeep.  Not today.”
-1190000-24: “So how are things going?” 
-1200000-24: “Hit the 70th floor yesterday.”   
-1210000-24: “The 70th floor?  Impressive!”  
-1220000-24: “It sounds great, but it was a pain in the behind.  You’d think more people would make it easier, but nope!  Just how many traps can one girl set off?”  
-1230000-24: “Oh?  You’re traveling with a girl?”
-1240000-24: “It’s nowhere even close to what you’re thinking.” 
-1250000-24: “Really now?” 
-1260000-24: “Really now.  I just met up with someone at random while I was exploring the Dungeon; Rielle or something.  What kind of crazy person thanks someone who saved their life by kicking them in the face?” 
-1270000-24: “She seems like quite the character.”  
-1280000-24: “Ugh, you have no idea!  She swans in out of nowhere, copies my style, ‘but I’m a wizard too, so it’s completely original, really’, and sets off every trap in the next five floors!  And she has the gall to complain when I tell her about the best course of action!  Honestly, she’s lucky I was around to save her so many times.” 
-1290000-24: “She’s lucky you were around, huh?  Sounds nice to me.” 
-1300000-24: “I guess.”
-1310000-24: “She ever help you at all?” 
-1320000-24: “Not in the slightest!  Well, there was that one time with the Minotaur Dracolich... But she was the one who got us into that fight anyways!”  
-1330000-24: “Sounds like you’re having quite a bit of fun in the Dungeon.” 
-1340000-24: “Ugh, don’t wear that smile on your face.  It’s creepy.  Besides, it’s not like I’m in a permanent party or anything.  I’m just occasionally working with anyone I happen to meet.” 
-1350000-24: “Still, I’m glad that things are looking up for you, Felix.” 
-1000000-24: “Yeah, yeah, Shopkeep.  Get back to business.”
+1020000-24: Hello, Shopkeeper.
+1030000-24: Felix, hello!  What would you like to buy?
+1040000-24: You’re certainly more energetic than before.
+1050000-24: Should I not be?.
+1060000-24: It’s actually really creepy.
+1070000-24: Sorry about that.  What are you getting this time?
+1080000-24: That’s more like it, Shopkeep.  I need a new sword, a new bow, new armor-.
+1090000-24: And some other stuff, right?
+1100000-24: Right.
+2121100-24: Well Felix, let’s see what I’ve got for you.
+1180000-24: I’ll accept that, Shopkeep.
+2141300-24: Nice try, Shopkeep.  $ is my final offer.
+1180000-24: Alright.  Here you go, Shopkeep.
+1150000-24: Like I’d pay that much.
+2171600-24: Try $.
+1180000-24: Tch, fine.  Here’s the money, you skinflint.
+1180000-24: Sorry, Shopkeep.  Not today.
+1190000-24: So how are things going?
+1200000-24: Hit the 70th floor yesterday.
+1210000-24: The 70th floor?  Impressive!
+1220000-24: It sounds great, but it was a pain in the behind.  You’d think more people would make it easier, but nope!  Just how many traps can one girl set off?
+1230000-24: Oh?  You’re traveling with a girl?
+1240000-24: It’s nowhere even close to what you’re thinking.
+1250000-24: Really now?
+1260000-24: Really now.  I just met up with someone at random while I was exploring the Dungeon; Rielle or something.  What kind of crazy person thanks someone who saved their life by kicking them in the face?
+1270000-24: She seems like quite the character.
+1280000-24: Ugh, you have no idea!  She swans in out of nowhere, copies my style, ‘but I’m a wizard too, so it’s completely original, really’, and sets off every trap in the next five floors!  And she has the gall to complain when I tell her about the best course of action!  Honestly, she’s lucky I was around to save her so many times.
+1290000-24: She’s lucky you were around, huh?  Sounds nice to me.
+1300000-24: I guess.
+1310000-24: She ever help you at all?
+1320000-24: Not in the slightest!  Well, there was that one time with the Minotaur Dracolich... But she was the one who got us into that fight anyways!
+1330000-24: Sounds like you’re having quite a bit of fun in the Dungeon.
+1340000-24: Ugh, don’t wear that smile on your face.  It’s creepy.  Besides, it’s not like I’m in a permanent party or anything.  I’m just occasionally working with anyone I happen to meet.
+1350000-24: Still, I’m glad that things are looking up for you, Felix.
+1000000-24: Yeah, yeah, Shopkeep.  Get back to business.

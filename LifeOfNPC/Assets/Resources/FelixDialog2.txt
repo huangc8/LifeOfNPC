@@ -1,25 +1,25 @@
-1020000-24: “Oi, Shopkeeper.  You around?”  
-1030000-24: “Oh, it’s you.  What do you want?”  
-1040000-24: “My name’s not You; it’s Felix Kyculun.  First Adventurer, and now You?  You must have a really weird taste in names..”  
-1050000-24: Alright, Felix.  What do you want?”  
-1060000-24: “I want you to sell me something, duh.”
-1070000-24: “What do you want me to sell you, Felix?”
-1080000-24: “I’m glad you asked!  Get me a better bow and a better sword and some other stuff.”
-2100900-24: “Well, let’s see what other stuff I have for you.” 
-1140000-24: [Success case] “Fine.  Here you go, Shopkeeper.”  
-1110000-24: [Failure case] “Like I’d pay that much.”
-2131200-24: “Try $.”  
-1140000-24: [Success case] “Tch, fine.  Here’s the money.” 
-1140000-24: [Failure case] “Nope.  Deal’s off.”
-1150000-24: “How goes the adventuring, Felix?” 
-1160000-24: “Same as usual; perfectly.”   
-1170000-24: “Really?  No flaws, no mistakes?”  
-1180000-24: “Nope.  I’m too good for that.  In all of the times I’ve been in the Dungeon, I’ve never had a challenge.”  
-1190000-24: “That’s impressive.  I take it you’re not just hanging around the upper levels?”
-1200000-24: “Pfft, no.  I’ve already cleared floor 30.” 
-1210000-24: “With your current equipment?  That’s incredible!” 
-1220000-24: “It was a pain in the behind; killing the monsters took forever!” 
-1230000-24: “It probably would’ve gone faster if you were in a party.” 
-1240000-24: “I don’t work in parties.” 
-1250000-24: “Why, because people don’t like you?  You’re too skilled not for people to want to work with you if you cleared the 30th floor with equipment like that.” 
-1000000-24: “Because I always win, and I always survive.  Me.  Now can we get back to the buying and the selling?”  
+1020000-24: Oi, Shopkeeper.  You around?
+1030000-24: Oh, it’s you.  What do you want?
+1040000-24: My name’s not You; it’s Felix Kyculun.  First Adventurer, and now You?  You must have a really weird taste in names..
+1050000-24: lright, Felix.  What do you want?
+1060000-24: I want you to sell me something, duh.
+1070000-24: What do you want me to sell you, Felix?
+1080000-24: I’m glad you asked!  Get me a better bow and a better sword and some other stuff.
+2100900-24: Well, let’s see what other stuff I have for you.
+1140000-24: Fine.  Here you go, Shopkeeper.
+1110000-24: Like I’d pay that much.
+2131200-24: Try $.
+1140000-24: Tch, fine.  Here’s the money.
+1140000-24: Nope.  Deal’s off.
+1150000-24: How goes the adventuring, Felix?
+1160000-24: Same as usual; perfectly.
+1170000-24: Really?  No flaws, no mistakes?
+1180000-24: Nope.  I’m too good for that.  In all of the times I’ve been in the Dungeon, I’ve never had a challenge.
+1190000-24: That’s impressive.  I take it you’re not just hanging around the upper levels?
+1200000-24: Pfft, no.  I’ve already cleared floor 30.
+1210000-24: With your current equipment?  That’s incredible!
+1220000-24: It was a pain in the behind; killing the monsters took forever!
+1230000-24: It probably would’ve gone faster if you were in a party.
+1240000-24: I don’t work in parties.
+1250000-24: Why, because people don’t like you?  You’re too skilled not for people to want to work with you if you cleared the 30th floor with equipment like that.
+1000000-24: Because I always win, and I always survive.  Me.  Now can we get back to the buying and the selling?

@@ -1,21 +1,21 @@
-1020000-24: “Is this the Item and Treasure Emporium?”  
-1030000-24: “That it is, madam, that it is!  What can I do for you, Miss... ?”  
-1040000-24: “Riella Crenshaw.  I’ve decided to go into the Dungeon, but I don’t have any tools or weapons or such.”  
-1050000-24: “That’s why I’m here, Riella.  Got an idea of what you want?”  
-1060000-24: “Well, I do have some skill with magic... I’ll look at those sorts of goods, I suppose.”
-2080700-24: “Well, let’s see what we have for you!” 
-1120000-24: [Success case] “That’s acceptable.  Here is the payment, Shopkeeper.”  
-1090000-24: [Failure case] “I’m afraid I can’t pay that much, Shopkeeper.”
-2111000-24: “Would you accept $ as payment?”  
-1120000-24: [Success case] “Very well then.  Here is the payment, Shopkeeper.” 
-1120000-24: [Failure case] “How disappointing.  I’ll have to go to another store...”
-1130000-24: “Heading to the Dungeon for the first time, are we?” 
-1140000-24: “Yes, that’s correct.  It’s somewhat intimidating, but with some good equipment I should be able to at least clear the first levels.”   
-1150000-24: “Why do you want to clear the Dungeon, Riella?”  
-1160000-24: “It’s a bit embarrassing of a reason, really.”  
-1170000-24: “I’ve heard all sorts of stories from all sorts of adventurers.  Believe me, I won’t be fazed.” 
-1180000-24: “Oh, alright then.  My parents always wanted me to be a banker.  They said it was safe, that it was dependable.  Of course, I hated that idea; bankers are such horrible droll people after all, and being robbed isn’t something I want in my daily schedule.”  
-1190000-24: “And they all have to wear those dull suits day in and day out.” 
-1200000-24: “Exactly!  And the glasses, and those bland hair buns!  Definitely not the job I wanted to do.  But I couldn’t decide on what I really wanted to do, and now I’m here, hoping that this goes well.”
-1210000-24: “Well, I’ll do the best that I can to ensure you get the right goods, Riella.”
-1000000-24: “Thank you, Shopkeeper.”
+1020000-24: “Is this the Item and Treasure Emporium?  
+1030000-24: “That it is, madam, that it is!  What can I do for you, Miss... ?  
+1040000-24: “Riella Crenshaw.  I’ve decided to go into the Dungeon, but I don’t have any tools or weapons or such.  
+1050000-24: “That’s why I’m here, Riella.  Got an idea of what you want? 
+1060000-24: “Well, I do have some skill with magic... I’ll look at those sorts of goods, I suppose.
+2080700-24: “Well, let’s see what we have for you! 
+1120000-24: “That’s acceptable.  Here is the payment, Shopkeeper. 
+1090000-24: “I’m afraid I can’t pay that much, Shopkeeper.
+2111000-24: “Would you accept $ as payment?  
+1120000-24: “Very well then.  Here is the payment, Shopkeeper.
+1120000-24: “How disappointing.  I’ll have to go to another store...
+1130000-24: “Heading to the Dungeon for the first time, are we? 
+1140000-24: “Yes, that’s correct.  It’s somewhat intimidating, but with some good equipment I should be able to at least clear the first levels.   
+1150000-24: “Why do you want to clear the Dungeon, Riella?  
+1160000-24: “It’s a bit embarrassing of a reason, really.  
+1170000-24: “I’ve heard all sorts of stories from all sorts of adventurers.  Believe me, I won’t be fazed. 
+1180000-24: “Oh, alright then.  My parents always wanted me to be a banker.  They said it was safe, that it was dependable.  Of course, I hated that idea; bankers are such horrible droll people after all, and being robbed isn’t something I want in my daily schedule.  
+1190000-24: “And they all have to wear those dull suits day in and day out. 
+1200000-24: “Exactly!  And the glasses, and those bland hair buns!  Definitely not the job I wanted to do.  But I couldn’t decide on what I really wanted to do, and now I’m here, hoping that this goes well.
+1210000-24: “Well, I’ll do the best that I can to ensure you get the right goods, Riella.
+1000000-24: “Thank you, Shopkeeper.

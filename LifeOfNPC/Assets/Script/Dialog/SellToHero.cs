@@ -53,6 +53,7 @@ public class SellToHero : MonoBehaviour {
             CreateHero.Hero.GetComponent<Hero>().H_Inventory.Add(item);
             Inventory.RemoveItem(item.name, sellQuantity);
             CreateHero.Hero.GetComponentInChildren<Hero>().money -= OfferedPrice;
+            GameMaster.AddGold(OfferedPrice);
             StartDialogScene.CloseSellToPanel();
             StartDialogScene.SellHeroPanel();
         }
