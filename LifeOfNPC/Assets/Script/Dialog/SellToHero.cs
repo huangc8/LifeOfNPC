@@ -13,6 +13,7 @@ public class SellToHero : MonoBehaviour {
     public int attempt;
     public Item item;
 	public int sellQuantity;
+	public AudioSource cash;
 
     public void OnStart()
     {
@@ -57,6 +58,7 @@ public class SellToHero : MonoBehaviour {
             StartDialogScene.CloseSellToPanel();
             StartDialogScene.SellHeroPanel();
 			GameMaster.sold++;
+			cash.Play();
         }
     }
 
