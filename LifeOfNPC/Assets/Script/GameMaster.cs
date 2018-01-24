@@ -121,6 +121,7 @@ public class GameMaster : MonoBehaviour {
 			}
 			_AudioScript.playNightTheme();
 		} else {
+			currentDay++;
 			CloseNightMenu();
 			ClearCanvas();
 			currentPhase = 0;
@@ -129,7 +130,6 @@ public class GameMaster : MonoBehaviour {
 			foreach(Transform tf in Background.transform){
 				tf.gameObject.SetActive(true);
 			}
-			currentDay++;
 			_AudioScript.playDayTheme();
 		}
 		UpdateGoldDisplay ();

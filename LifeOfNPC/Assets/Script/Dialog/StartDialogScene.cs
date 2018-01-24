@@ -48,12 +48,12 @@ public class StartDialogScene : MonoBehaviour {
 
     public bool HaveInventory = false;
     public static List<string> NoSale;
-    public bool SpecialHeroServed;
+	public bool SpecialHeroServed = false;
 
 
     // Use this for initialization
     void Start() {
-        BuyFromPanelPF = BuyFromPanelPf_r;
+		BuyFromPanelPF = BuyFromPanelPf_r;
         SellToPanelPF = SellToPanelPf_r;
         ContentPanelPF = ContentPanelPf_r;
         BuyButtonPF = BuyButtonPf_r;
@@ -67,7 +67,6 @@ public class StartDialogScene : MonoBehaviour {
         timer = 1;
         NumHeroesToday = 5;
         SpecialHeroes = new List<Hero>();
-        SpecialHeroServed = false;
     }
 
 	// read dialog
@@ -91,15 +90,12 @@ public class StartDialogScene : MonoBehaviour {
 
 	// start the day phase
 	public void StartDayPhase(){
-        this.GetComponent<DialogDebug> ().day = true;
         this.GetComponent<CreateHero>().StartCreateHero();
-        SpecialHeroServed = false;
     }
 
 	// end the day phase
 	public void EndDayPhase(){
         CreateHero.DismissHero();
-		this.GetComponent<DialogDebug> ().day = false;
 	}
 
     #region Sell to hero
@@ -111,13 +107,9 @@ public class StartDialogScene : MonoBehaviour {
             SellToPanel = Instantiate(SellToPanelPF) as GameObject;
             SellToPanel.transform.SetParent(canvas.transform, false);
             inMenu = true;
-
         }
     }
-
     #endregion
-
-
 
     #region Buy From Hero
     public static void BuyHeroPanel()
