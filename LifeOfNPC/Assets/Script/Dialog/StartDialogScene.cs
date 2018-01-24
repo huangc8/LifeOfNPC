@@ -53,7 +53,6 @@ public class StartDialogScene : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        
         BuyFromPanelPF = BuyFromPanelPf_r;
         SellToPanelPF = SellToPanelPf_r;
         ContentPanelPF = ContentPanelPf_r;
@@ -66,12 +65,12 @@ public class StartDialogScene : MonoBehaviour {
         inMenu = false;
         NoSale = new List<string>();
         timer = 1;
-        NumHeroesToday = UnityEngine.Random.Range(2, 6);
+        NumHeroesToday = 5;
         SpecialHeroes = new List<Hero>();
         SpecialHeroServed = false;
-        
     }
 
+	// read dialog
     void Update(){
 		if (CreateHero.Hero != null && CreateHero.Hero.GetComponent<Hero>().CurrentNode != null) {
 			//advances dialog until branch is found

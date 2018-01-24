@@ -36,11 +36,14 @@ public class Hero : MonoBehaviour {
     public int HeroClass;//whether hero is a wizard, warrior, or ranger
     public int purpose;
 
+	void Awake(){
+		HeroClass = UnityEngine.Random.Range(1, 3);
+	}
+
     //constructor
     public Hero()
     {
         name = null;
-        HeroClass = UnityEngine.Random.Range(1, 3);
         List<string> RequiredItemList = new List<string>();
         EncounterNumber = 0;
 
