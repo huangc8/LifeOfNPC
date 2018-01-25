@@ -35,7 +35,6 @@ public class CreateHero : MonoBehaviour
 
 		Hero = Instantiate (HeroPF) as GameObject;
 		Hero.transform.SetParent (canvas.transform, false);
-		Debug.Log ("Day! " + GameMaster.currentDay);
 		if (!this.GetComponent<StartDialogScene> ().SpecialHeroServed) {
 			if (GameMaster.currentDay == 1 || GameMaster.currentDay == 3 || GameMaster.currentDay == 5 || GameMaster.currentDay == 10 || GameMaster.currentDay == 15 || GameMaster.currentDay == 19 ||
 			    GameMaster.currentDay == 22 || GameMaster.currentDay == 26 || GameMaster.currentDay == 30 || GameMaster.currentDay == 34 || GameMaster.currentDay == 39 ||
@@ -66,7 +65,6 @@ public class CreateHero : MonoBehaviour
 			HeroDialogBox = Hero.GetComponentInChildren<Text> () as Text;//sets dialog
 			HeroDialogBox.text = Hero.GetComponent<Hero> ().dialog;//prints text to heros text box
 		}
-
 	}
 
 	public static void DismissHero ()

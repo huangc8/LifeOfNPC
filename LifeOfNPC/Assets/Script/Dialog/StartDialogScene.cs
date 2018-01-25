@@ -86,6 +86,11 @@ public class StartDialogScene : MonoBehaviour {
 			}
 			timer++;
 		}
+		if(StartDialogScene.NumHeroesToday == 0)
+		{
+			this.GetComponent<GameMaster>().ChangePhase();
+			StartDialogScene.NumHeroesToday = UnityEngine.Random.Range(2, 6);
+		}
     }
 
 	// start the day phase
