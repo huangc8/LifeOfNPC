@@ -99,7 +99,6 @@ public class Hero : MonoBehaviour {
                 int lowItems = UnityEngine.Random.Range(2, 5);
                 for (int i = 0; i < lowItems; i++)
                 {
-                    Debug.Log("low quality");
                     //add random low quality items to hero inventory
                     H_Inventory.Add(_database.getRandomItem(1));
                 }
@@ -109,7 +108,6 @@ public class Hero : MonoBehaviour {
                 int mediItems = UnityEngine.Random.Range(2, 5);
                 for (int i = 0; i < mediItems; i++)
                 {
-                    Debug.Log("medium quality");
                     //add random medium quality items to hero inventory
                     H_Inventory.Add(_database.getRandomItem(2));
                 }
@@ -119,7 +117,6 @@ public class Hero : MonoBehaviour {
                 int highItems = UnityEngine.Random.Range(2, 5);
                 for (int i = 0; i < highItems; i++)
                 {
-                    Debug.Log("high quality");
                     //add random high quality items to hero inventory
                     H_Inventory.Add(_database.getRandomItem(3));
                 }

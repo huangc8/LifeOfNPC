@@ -23,105 +23,124 @@ public class CreateHero : MonoBehaviour
 	// non static canvas reference
 
 	public string SpecialHeroName;
+	public StartDialogScene _StartDialogScene;
+
+	public void Awake(){
+		_StartDialogScene = this.GetComponent<StartDialogScene>();
+		_DataBase = this.GetComponent<DataBase> ();
+	}
 
 	// Use this for initialization
 	public void StartCreateHero ()
 	{
-
-		_DataBase = this.GetComponent<DataBase> ();
-
 		HeroPF = HeroPf_r;
 		canvas = canvas_r;
 
 		Hero = Instantiate (HeroPF) as GameObject;
 		Hero.transform.SetParent (canvas.transform, false);
+
+		Hero.AddComponent<Hero> ();//adds hero component upon creation
+		Hero.GetComponent<HeroComponent> ()._createhero = this;
+		Hero.GetComponent<HeroComponent> ()._startDialogScene = _StartDialogScene;
+
 		if (!this.GetComponent<StartDialogScene> ().SpecialHeroServed) {
 			if (GameMaster.currentDay == 1 || GameMaster.currentDay == 3 || GameMaster.currentDay == 5 || GameMaster.currentDay == 10 || GameMaster.currentDay == 15 || GameMaster.currentDay == 19 ||
 			    GameMaster.currentDay == 22 || GameMaster.currentDay == 26 || GameMaster.currentDay == 30 || GameMaster.currentDay == 34 || GameMaster.currentDay == 39 ||
 			    GameMaster.currentDay == 42 || GameMaster.currentDay == 46) {//if special hero has not been served yet
-				Hero.AddComponent<Hero> ();//adds hero component upon creation
-				Hero.GetComponent<HeroComponent> ()._createhero = this;
 				this.GetComponent<StartDialogScene> ().SpecialHeroServed = true;
-
 				LoadSpecialHero ();
-
-				HeroDialogBox = Hero.GetComponent<HeroComponent> ().DialogBox as Text;//sets dialog
-				HeroDialogBox.text = Hero.GetComponent<Hero> ().dialog;//prints text to heros text box
 			} else {
-				Hero.AddComponent<Hero> ();//adds hero component upon creation
-				Hero.GetComponent<HeroComponent> ()._createhero = this;
-
 				CreateGenericHero ();//only this is new
-
-				HeroDialogBox = Hero.GetComponent<HeroComponent> ().DialogBox;//sets dialog
-				HeroDialogBox.text = Hero.GetComponent<Hero> ().dialog;//prints text to heros text box
 			}
 		} else {
-			Hero.AddComponent<Hero> ();//adds hero component upon creation
-			Hero.GetComponent<HeroComponent> ()._createhero = this;
-
 			CreateGenericHero ();//only this is new
-
-			HeroDialogBox = Hero.GetComponentInChildren<Text> () as Text;//sets dialog
-			HeroDialogBox.text = Hero.GetComponent<Hero> ().dialog;//prints text to heros text box
 		}
+		HeroDialogBox = Hero.GetComponentInChildren<Text> () as Text;//sets dialog
+		HeroDialogBox.text = Hero.GetComponent<Hero> ().dialog;//prints text to heros text box
 	}
 
-	public static void DismissHero ()
+	public void CreateKnock ()
 	{
-		if (Hero != null) {
-			if (Hero.GetComponent<Hero> ().name == null) {
-				Destroy (Hero);//should remove hero object
-			} else {
-				if (Hero.GetComponent<Hero> ().name == "Quartz" && Hero.GetComponent<Hero> ().NumberOfEncounters == 1) {
-					bool potion1 = false, potion2 = false, potion3 = false;
-					foreach (Item it in Hero.GetComponent<Hero>().H_Inventory) {
-						if (it.name == "Elixirs of Minor Rejuvenation") {
-							potion1 = true;
-						}
-						if (it.name == "Unguents of Minor Invigoration") {
-							potion2 = true;
-						}
-						if (it.name == "tonics of Minor Restoration") {
-							potion3 = true;
-						}
-					}
-					if (potion1 && potion2 && potion3) {
-						Hero.GetComponent<Hero> ().Encounter2Success = true;
-					}
-				}
-				Hero.GetComponent<Hero> ().NumberOfEncounters++;//increases the number of times encountered
+		HeroPF = HeroPf_r;
+		canvas = canvas_r;
 
-				if (StartDialogScene.SpecialHeroes.Count == 0) {//if first hero encountered
-					Hero.GetComponent<Hero> ().EncounterNumber++;
-					StartDialogScene.SpecialHeroes.Add (Hero.GetComponent<Hero> ());//add the hero component to the list
-				} else {
-					bool InList = false;
-					int SHeroIndex = 0;
-					int index = 0;
-					foreach (Hero SHero in StartDialogScene.SpecialHeroes) {
-						if (SHero.name == Hero.GetComponent<Hero> ().name) {
-							InList = true;
-							SHeroIndex = index;
-						}
-						index++;
-					}
-
-					Hero.GetComponent<Hero> ().EncounterNumber++;//increases number of times hero has been encountered
-
-					if (InList) {//if hero is in list
-						StartDialogScene.SpecialHeroes.RemoveAt (SHeroIndex);//remove old hero component
-						StartDialogScene.SpecialHeroes.Add (Hero.GetComponent<Hero> ());//add new hero component to the list
-					} else {//if hero is not in the list already
-						StartDialogScene.SpecialHeroes.Add (Hero.GetComponent<Hero> ());//adds the hero component to the list
-					}
-
-				}
-			}
-			Destroy (Hero);//should remove hero object after it has been saved
+		Hero = Instantiate (HeroPF) as GameObject;
+		Hero.transform.SetParent (canvas.transform, false);
+		Hero.AddComponent<Hero> ();//adds hero component upon creation
+		foreach (Button button in Hero.GetComponent<Hero>().GetComponentsInChildren<Button>())
+		{
+			button.interactable = false;
 		}
-		_DataBase.lastItem.Clear ();
-		GameMaster.customer++;
+		Hero.GetComponent<HeroComponent> ()._createhero = this;
+		HeroDialogBox = Hero.GetComponentInChildren<Text> () as Text;//sets dialog
+		HeroDialogBox.text = "Knock Knock";
+
+		HeroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterEmpty");
+		//Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/portraitTutorial");
+	}
+
+	public static bool DismissHero (bool knocked)
+	{
+		if (knocked) {
+			if (Hero != null) {
+				if (Hero.GetComponent<Hero> ().name == null) {
+					Destroy (Hero);//should remove hero object
+				} else {
+					if (Hero.GetComponent<Hero> ().name == "Quartz" && Hero.GetComponent<Hero> ().NumberOfEncounters == 1) {
+						bool potion1 = false, potion2 = false, potion3 = false;
+						foreach (Item it in Hero.GetComponent<Hero>().H_Inventory) {
+							if (it.name == "Elixirs of Minor Rejuvenation") {
+								potion1 = true;
+							}
+							if (it.name == "Unguents of Minor Invigoration") {
+								potion2 = true;
+							}
+							if (it.name == "tonics of Minor Restoration") {
+								potion3 = true;
+							}
+						}
+						if (potion1 && potion2 && potion3) {
+							Hero.GetComponent<Hero> ().Encounter2Success = true;
+						}
+					}
+					Hero.GetComponent<Hero> ().NumberOfEncounters++;//increases the number of times encountered
+
+					if (StartDialogScene.SpecialHeroes.Count == 0) {//if first hero encountered
+						Hero.GetComponent<Hero> ().EncounterNumber++;
+						StartDialogScene.SpecialHeroes.Add (Hero.GetComponent<Hero> ());//add the hero component to the list
+					} else {
+						bool InList = false;
+						int SHeroIndex = 0;
+						int index = 0;
+						foreach (Hero SHero in StartDialogScene.SpecialHeroes) {
+							if (SHero.name == Hero.GetComponent<Hero> ().name) {
+								InList = true;
+								SHeroIndex = index;
+							}
+							index++;
+						}
+
+						Hero.GetComponent<Hero> ().EncounterNumber++;//increases number of times hero has been encountered
+
+						if (InList) {//if hero is in list
+							StartDialogScene.SpecialHeroes.RemoveAt (SHeroIndex);//remove old hero component
+							StartDialogScene.SpecialHeroes.Add (Hero.GetComponent<Hero> ());//add new hero component to the list
+						} else {//if hero is not in the list already
+							StartDialogScene.SpecialHeroes.Add (Hero.GetComponent<Hero> ());//adds the hero component to the list
+						}
+
+					}
+				}
+				Destroy (Hero);//should remove hero object after it has been saved
+			}
+			_DataBase.lastItem.Clear ();
+			GameMaster.customer++;
+			StartDialogScene.NumHeroesToday--;//decrease number of heroes in line
+			return false;
+		} else {
+			Destroy (Hero);
+		}
+		return true;
 	}
 
 	public void CreateGenericHero ()

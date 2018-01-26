@@ -11,13 +11,14 @@ public class HeroComponent : MonoBehaviour {
     public Image HeroPortrait;
     public Text DialogBox;
     public CreateHero _createhero;
+	public StartDialogScene _startDialogScene;
     
     public void DismissClick()
     {
-        Debug.Log(StartDialogScene.NumHeroesToday);
-        CreateHero.DismissHero();
-        StartDialogScene.NumHeroesToday--;//decrease number of heroes in line
-        _createhero.StartCreateHero();
+		_startDialogScene.HeroKnocked = CreateHero.DismissHero(_startDialogScene.HeroKnocked);
+		if (StartDialogScene.NumHeroesToday > 0) {
+			_createhero.CreateKnock ();
+		}
     }
 
     public void SellClick()

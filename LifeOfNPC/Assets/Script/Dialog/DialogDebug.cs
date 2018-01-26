@@ -12,11 +12,7 @@ public class DialogDebug : MonoBehaviour {
     {
         hero = CreateHero.Hero;
 
-        if(StartDialogScene.NumHeroesToday == 0)
-        {
-            this.GetComponent<GameMaster>().ChangePhase();
-            StartDialogScene.NumHeroesToday = UnityEngine.Random.Range(2, 6);
-        }
+
 
 
 
