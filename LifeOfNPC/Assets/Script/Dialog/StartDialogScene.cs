@@ -72,6 +72,8 @@ public class StartDialogScene : MonoBehaviour
 	public bool HeroKnocked = false;
 	public bool Day = false;
 
+	public AudioSource knockSound;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -127,7 +129,7 @@ public class StartDialogScene : MonoBehaviour
 	public void StartDayPhase ()
 	{
 		Day = true;
-		StartDialogScene.NumHeroesToday = 1;
+		StartDialogScene.NumHeroesToday = UnityEngine.Random.Range(2, 6);
 		this.GetComponent<CreateHero> ().CreateKnock ();
 	}
 

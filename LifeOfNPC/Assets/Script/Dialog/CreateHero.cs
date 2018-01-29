@@ -61,6 +61,7 @@ public class CreateHero : MonoBehaviour
 
 	public void CreateKnock ()
 	{
+		_StartDialogScene.knockSound.Play();
 		HeroPF = HeroPf_r;
 		canvas = canvas_r;
 
