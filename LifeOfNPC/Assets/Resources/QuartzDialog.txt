@@ -1,4 +1,4 @@
-1020000-1:  H-Hello?  Is this the Item and Treasure Emporium?
+﻿1020000-1:  H-Hello?  Is this the Item and Treasure Emporium?
 1030000-2:  That it is, young’un!  What can I do for you?
 1040000-3:  Erm, I’m Quar- Wait, let me start over.  I-I’m Quartz Phoenixtail, and one day I’ll be the Greatest Adventurer in the World!
 1050000-4:  Alright then... Quartz... What does the Greatest Adventurer in the World want? 

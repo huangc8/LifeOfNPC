@@ -71,6 +71,7 @@ public class StartDialogScene : MonoBehaviour
 	public bool SpecialHeroServed = false;
 	public bool HeroKnocked = false;
 	public bool Day = false;
+	public bool Tutorial = false;
 
 	public AudioSource knockSound;
 
@@ -106,8 +107,13 @@ public class StartDialogScene : MonoBehaviour
 								CreateHero.Hero.GetComponent<Hero> ().CurrentNode = CreateHero.Hero.GetComponent<Hero> ().lines [DialogTree.Traverse (CreateHero.Hero.GetComponent<Hero> ().CurrentNode, false)];
 								timer = 1;
 							}
+						} else if (timer % 180 != 0) {
+							timer++;
+						} else if (!Tutorial) {
+							Tutorial = true;
+							HeroKnocked = CreateHero.DismissHero (HeroKnocked);
+							this.GetComponent<CreateHero> ().CreateKnock ();
 						}
-						timer++;
 					}
 				} else {
 					if (knockTimer % 100 == 0) {
