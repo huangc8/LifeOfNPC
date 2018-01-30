@@ -327,15 +327,15 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 337234231}
+  - component: {fileID: 337234234}
+  - component: {fileID: 337234238}
   - component: {fileID: 337234230}
   - component: {fileID: 337234229}
-  - component: {fileID: 337234237}
-  - component: {fileID: 337234234}
   - component: {fileID: 337234233}
   - component: {fileID: 337234236}
   - component: {fileID: 337234235}
-  - component: {fileID: 337234238}
   - component: {fileID: 337234239}
+  - component: {fileID: 337234232}
   m_Layer: 0
   m_Name: Master
   m_TagString: Untagged
@@ -384,6 +384,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &337234232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337234228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6615cf7bb9a234aa4dd8d7dc19ae91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &337234233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +455,7 @@ MonoBehaviour:
   SpecialHeroServed: 0
   HeroKnocked: 0
   Day: 0
+  Tutorial: 0
   knockSound: {fileID: 446670233}
 --- !u!114 &337234236
 MonoBehaviour:
@@ -461,21 +473,6 @@ MonoBehaviour:
   canvas_r: {fileID: 238626934}
   SpecialHeroName: 
   _StartDialogScene: {fileID: 0}
---- !u!114 &337234237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 337234228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d0b005cd68905d4d884e95499af89d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sellPanel: {fileID: 0}
-  sellPanelPf: {fileID: 131436, guid: e40350ebfce80b449b032755a0aaf9cb, type: 2}
-  day: 0
-  hero: {fileID: 0}
 --- !u!114 &337234238
 MonoBehaviour:
   m_ObjectHideFlags: 0

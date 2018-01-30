@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour {
 	#endregion
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		_Items = new List<Item>();
 		_RemoveIndex = new List<int> ();
 		_DataBase = this.GetComponent<DataBase> ();
@@ -41,14 +41,15 @@ public class Inventory : MonoBehaviour {
 	public static void AddItem(string name, int addAmount){
 		// increase exisitng item amount
 		bool found = false;
-		foreach(Item it in _Items){
-			if(it.name == name){
-				it.AddMore(addAmount);
-				found = true;
-				break;
+		if (_Items.Count > 0) {
+			foreach (Item it in _Items) {
+				if (it.name == name) {
+					it.AddMore (addAmount);
+					found = true;
+					break;
+				}
 			}
 		}
-		
 		// add a new item
 		if (found == false) {
 			string description = _DataBase.getDescription(name);

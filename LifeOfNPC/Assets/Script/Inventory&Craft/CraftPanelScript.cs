@@ -187,6 +187,7 @@ public class CraftPanelScript : MonoBehaviour {
 			newButton.GetComponentInChildren<Text>().text = name + " (" + amount.ToString() + ")";
 			newButton.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Sprite/" + name);
 			newButton.transform.SetParent(detailContentPanel.transform, false);
+			newButton.GetComponent<Button> ().interactable = false;
 		}
 	}
 	

@@ -146,7 +146,7 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	public void CheckGameOver(){
-		if (currentDay == 7) {
+		if (currentDay == 13) {
 			if((float)sold/(float)customer > 0.5){
 				Debug.Log("Game Over");
 			}

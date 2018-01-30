@@ -10,9 +10,14 @@ public class DebugScript : MonoBehaviour {
 	void Start(){
 		#region Item
 		// inventory
-		Inventory.AddItem ("Consecrated Spring Water", 2);
-		Inventory.AddItem ("Eight-Leaf Clover", 3);
+		Inventory.AddItem ("Consecrated Spring Water", 10);
+		Inventory.AddItem ("Eight-Leaf Clover", 10);
 		Inventory.AddItem ("Elixir of Minor Rejuvenation", 5, "Blah", 3);
+		Inventory.AddItem ("Azure Slime Jelly", 10);
+		Inventory.AddItem ("Crimson Slime Jelly", 10);
+		Inventory.AddItem ("Sacred Yew Sapling", 10);
+		Inventory.AddItem ("Arachne Gossamer", 10);
+		Inventory.AddItem ("Meteoric Iron", 10);
 		#endregion
 
 		#region Recipe

@@ -23,7 +23,7 @@ public class Craft : MonoBehaviour {
 	#endregion
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		_Recipes = new List<Recipe> ();
 		CraftPanelPf = CraftPanelPf_r;
 		RecipePanelPf = RecipePanelPf_r;
@@ -74,8 +74,6 @@ public class Craft : MonoBehaviour {
 			if (material_3 != null) {
 				Inventory.RemoveItem (material_3.name, material_3.amount);
 			}
-
-			Debug.Log(rt.type);
 
 			// add crafted item
 			Inventory.AddItem (rt.name, 1, rt.description, rt.type);

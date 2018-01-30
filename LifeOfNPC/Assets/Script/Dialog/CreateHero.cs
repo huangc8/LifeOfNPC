@@ -25,8 +25,9 @@ public class CreateHero : MonoBehaviour
 	public string SpecialHeroName;
 	public StartDialogScene _StartDialogScene;
 
-	public void Awake(){
-		_StartDialogScene = this.GetComponent<StartDialogScene>();
+	public void Awake ()
+	{
+		_StartDialogScene = this.GetComponent<StartDialogScene> ();
 		_DataBase = this.GetComponent<DataBase> ();
 	}
 
@@ -44,14 +45,8 @@ public class CreateHero : MonoBehaviour
 		Hero.GetComponent<HeroComponent> ()._startDialogScene = _StartDialogScene;
 
 		if (!this.GetComponent<StartDialogScene> ().SpecialHeroServed) {
-			if (GameMaster.currentDay == 1 || GameMaster.currentDay == 3 || GameMaster.currentDay == 5 || GameMaster.currentDay == 10 || GameMaster.currentDay == 15 || GameMaster.currentDay == 19 ||
-			    GameMaster.currentDay == 22 || GameMaster.currentDay == 26 || GameMaster.currentDay == 30 || GameMaster.currentDay == 34 || GameMaster.currentDay == 39 ||
-			    GameMaster.currentDay == 42 || GameMaster.currentDay == 46) {//if special hero has not been served yet
-				this.GetComponent<StartDialogScene> ().SpecialHeroServed = true;
-				LoadSpecialHero ();
-			} else {
-				CreateGenericHero ();//only this is new
-			}
+			this.GetComponent<StartDialogScene> ().SpecialHeroServed = true;
+			LoadSpecialHero ();
 		} else {
 			CreateGenericHero ();//only this is new
 		}
@@ -61,20 +56,19 @@ public class CreateHero : MonoBehaviour
 
 	public void CreateKnock ()
 	{
-		_StartDialogScene.knockSound.Play();
+		_StartDialogScene.knockSound.Play ();
 		HeroPF = HeroPf_r;
 		canvas = canvas_r;
 
 		Hero = Instantiate (HeroPF) as GameObject;
 		Hero.transform.SetParent (canvas.transform, false);
 		Hero.AddComponent<Hero> ();//adds hero component upon creation
-		foreach (Button button in Hero.GetComponent<Hero>().GetComponentsInChildren<Button>())
-		{
+		foreach (Button button in Hero.GetComponent<Hero>().GetComponentsInChildren<Button>()) {
 			button.interactable = false;
 		}
 		Hero.GetComponent<HeroComponent> ()._createhero = this;
 		HeroDialogBox = Hero.GetComponentInChildren<Text> () as Text;//sets dialog
-		HeroDialogBox.text = "Knock Knock";
+		HeroDialogBox.text = "*Bell Ring*";
 
 		HeroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterEmpty");
 		//Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/portraitTutorial");
@@ -205,13 +199,13 @@ public class CreateHero : MonoBehaviour
 		if (GameMaster.currentDay == 1) {
 			SpecialHeroName = "Tutorial";
 		}
-		if (GameMaster.currentDay == 3 || GameMaster.currentDay == 10 || GameMaster.currentDay == 22) {
+		if (GameMaster.currentDay == 2 || GameMaster.currentDay == 5 || GameMaster.currentDay == 8) {
 			SpecialHeroName = "Quartz";
 		}
-		if (GameMaster.currentDay == 5 || GameMaster.currentDay == 19 || GameMaster.currentDay == 39 || GameMaster.currentDay == 46) {
+		if (GameMaster.currentDay == 3 || GameMaster.currentDay == 6 || GameMaster.currentDay == 9 || GameMaster.currentDay == 11) {
 			SpecialHeroName = "Riella";
 		}
-		if (GameMaster.currentDay == 15 || GameMaster.currentDay == 26 || GameMaster.currentDay == 30 || GameMaster.currentDay == 42) {
+		if (GameMaster.currentDay == 4 || GameMaster.currentDay == 7 || GameMaster.currentDay == 10 || GameMaster.currentDay == 12) {
 			SpecialHeroName = "Felix";
 		}
 

@@ -145,6 +145,7 @@ public class StartDialogScene : MonoBehaviour
 		Day = false;
 		CreateHero.DismissHero (HeroKnocked);
 		HeroKnocked = false;
+		SpecialHeroServed = false;
 	}
 
 	#region Sell to hero
