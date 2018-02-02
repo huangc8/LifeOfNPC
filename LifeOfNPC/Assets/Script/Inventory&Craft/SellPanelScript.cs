@@ -159,7 +159,7 @@ public class SellPanelScript : MonoBehaviour {
 	public void Confirm()
     {
 		DialogTree.DialogTreeNode node = CreateHero.Hero.GetComponent<Hero>().CurrentNode;
-		if (node.numbranches > 1) {
+		if (node.stop == 0) {
             CreateHero.Hero.GetComponent<Hero>().ItemBeingSold = Inventory._Items[currentIndex];
             StartDialogScene.timer = 1;
 			itemList [currentIndex].GetComponent<SellToHero> ().SelltoHero (dealPrice, dealQuantity);

@@ -101,12 +101,13 @@ public class StartDialogScene : MonoBehaviour
 			if (StartDialogScene.NumHeroesToday > 0) {
 				if (HeroKnocked == true) {
 					if (CreateHero.Hero != null && CreateHero.Hero.GetComponent<Hero> ().CurrentNode != null) {
-						//advances dialog until branch is found
-						if (CreateHero.Hero.GetComponent<Hero> ().CurrentNode.numbranches == 1 && timer % 180 == 0) {
-							if (CreateHero.Hero.GetComponent<Hero> ().CurrentNode.next != 0) {
-								CreateHero.Hero.GetComponent<Hero> ().CurrentNode = CreateHero.Hero.GetComponent<Hero> ().lines [DialogTree.Traverse (CreateHero.Hero.GetComponent<Hero> ().CurrentNode, false)];
-								timer = 1;
-							}
+						DialogTree.DialogTreeNode cn = CreateHero.Hero.GetComponent<Hero> ().CurrentNode;
+						// switch between 
+						if (cn.stop == 0 && timer % 180 == 0) {
+							// move to next node
+							CreateHero.Hero.GetComponent<Hero> ().NextDialog ();
+							CreateHero.HeroDialogBox.text = CreateHero.Hero.GetComponent<Hero> ().dialog;
+							timer = 1;
 						} else if (timer % 180 != 0) {
 							timer++;
 						} else if (!Tutorial) {
@@ -135,7 +136,7 @@ public class StartDialogScene : MonoBehaviour
 	public void StartDayPhase ()
 	{
 		Day = true;
-		StartDialogScene.NumHeroesToday = UnityEngine.Random.Range(2, 6);
+		StartDialogScene.NumHeroesToday = UnityEngine.Random.Range (2, 6);
 		this.GetComponent<CreateHero> ().CreateKnock ();
 	}
 

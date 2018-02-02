@@ -89,7 +89,7 @@ public class BuyPanelScript : MonoBehaviour {
 	public void Confirm()
 	{
 		DialogTree.DialogTreeNode node = CreateHero.Hero.GetComponent<Hero>().CurrentNode;
-		if (node.numbranches > 1) {
+		if (node.stop == 0) {
 			itemList [currentIndex].GetComponent<BuyFromHero> ().BuyfromHero (dealPrice, dealQuantity);
 		} else {
 			CreateHero.Hero.GetComponent<Hero>().CurrentNode = 

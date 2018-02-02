@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class HeroComponent : MonoBehaviour {
 
     public Image HeroPortrait;
-    public Text DialogBox;
     public CreateHero _createhero;
 	public StartDialogScene _startDialogScene;
     

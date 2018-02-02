@@ -19,6 +19,8 @@ public class Hero : MonoBehaviour {
     public List<Item> H_Inventory;//heros inventory
     public List<DialogTree.DialogTreeNode> lines;
     public DialogTree.DialogTreeNode CurrentNode;
+	public int BuyNode;
+	public int SellNode;
     public string dialog;
     public int patience;
     public int OfferPrice;
@@ -51,9 +53,9 @@ public class Hero : MonoBehaviour {
 
     void Update()
     {
-        if (CreateHero.Hero.GetComponent<Hero>().CurrentNode != null)
+      /* if (CreateHero.Hero.GetComponent<Hero>().CurrentNode != null)
         {
-            if(CreateHero.Hero.GetComponent<Hero>().CurrentNode.lvl >= 4)
+			if(CreateHero.Hero.GetComponent<Hero>().CurrentNode.stop == 1)
             {
                 foreach (Button button in CreateHero.Hero.GetComponent<Hero>().GetComponentsInChildren<Button>())
                 {
@@ -80,6 +82,7 @@ public class Hero : MonoBehaviour {
 
             CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
         }
+        */
     }
 
     public void printInventory()
@@ -128,5 +131,9 @@ public class Hero : MonoBehaviour {
         }//ends switch
     }
 
-
+	// move to the next dialog
+	public void NextDialog(){
+		CurrentNode = lines [CurrentNode.id + 1];
+		dialog = CurrentNode.line;
+	}
 }//ends class

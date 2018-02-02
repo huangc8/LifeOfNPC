@@ -1,10 +1,11 @@
 1020000-24: Hello?  Anyone here?
 1030000-24: Greetings, adventurer!  What can I do for you?
-1040000-24: My name’s not Adventurer; it’s Felix Kyculun.  Seriously, what kind of a name is Adventurer?  You must be a real idiot.  
-1050000-24: Well then, Felix... What can I do for you?
-1060000-24: Uhh, sell me stuff?  Are you new to this, Shopkeeper?
-1070000-24: I mean, what do you want to buy, Felix?
-1080000-24: Ohhhhhh!  You should’ve just said that!  I want a bow and a sword and some other stuff.
+1040000-24: My name’s not Adventurer; it’s Felix Kyculun.    
+1050000-24: Seriously, what kind of a name is Adventurer? You must be a real idiot.
+1060000-24: Well then, Felix... What can I do for you?
+1070000-24: Uhh, sell me stuff?  Are you new to this, Shopkeeper?
+1080000-24: I mean, what do you want to buy, Felix?
+1090000-24: Ohhhhhh!  You should’ve just said that!  I want a bow and a sword and some other stuff.
 2100900-24: Well, let’s see what we have for you.
 1140000-24: Fine.  Here you go, Shopkeeper.
 1110000-24: Like I’d pay that much.
@@ -14,7 +15,7 @@
 1150000-24: Rather aggravating, aren’t you Felix?
 1160000-24: Huh?  Nah, drawing aggro is a tank’s job. 
 1170000-24: Can’t say I’ve heard that terminology before.
-1180000-24: Pfft, how out of it are you?  That’s like, the basics of the basics of party composition.
+1180000-24: Pfft, how out of it are you? That’s like,the basics of the basics of party composition.
 1190000-24: Oh, you’re in a party then?
 1200000-24: No.  No one wants to party with me.
 1210000-24: Oh?  And why is that?

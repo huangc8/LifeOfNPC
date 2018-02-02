@@ -1,5 +1,5 @@
-﻿1020000-1:  Looks like a customer knocked on the door of my item shop.
-1030000-2:  I am the humble shopkeeper of this little item shop next to a dungeon.
-1040000-3:  I have adventurer come in everyday for my product that I craft during the night.
-1050000-4:  This is what I do for a living and sometime my item means life or dead for adventurer. 
-2080600-5:  So I take this job very seriously! Now let's see what this adventurer wants.
+﻿0000000-0:  Looks like a customer knocked on the door of my item shop.
+0000000-0:  I am the humble shopkeeper of this little item shop next to a dungeon.
+0000000-0:  I have adventurer come in everyday for my product that I craft during the night.
+0000000-0:  This is what I do for a living and sometime my item means life or dead for adventurer. 
+0010000-0:  So I take this job very seriously! Now let's see what this adventurer wants.

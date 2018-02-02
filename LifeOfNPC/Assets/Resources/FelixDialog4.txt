@@ -18,18 +18,26 @@
 1190000-24: So how are things going?
 1200000-24: Hit the 70th floor yesterday.
 1210000-24: The 70th floor?  Impressive!
-1220000-24: It sounds great, but it was a pain in the behind.  You’d think more people would make it easier, but nope!  Just how many traps can one girl set off?
-1230000-24: Oh?  You’re traveling with a girl?
-1240000-24: It’s nowhere even close to what you’re thinking.
-1250000-24: Really now?
-1260000-24: Really now.  I just met up with someone at random while I was exploring the Dungeon; Rielle or something.  What kind of crazy person thanks someone who saved their life by kicking them in the face?
-1270000-24: She seems like quite the character.
-1280000-24: Ugh, you have no idea!  She swans in out of nowhere, copies my style, ‘but I’m a wizard too, so it’s completely original, really’, and sets off every trap in the next five floors!  And she has the gall to complain when I tell her about the best course of action!  Honestly, she’s lucky I was around to save her so many times.
-1290000-24: She’s lucky you were around, huh?  Sounds nice to me.
-1300000-24: I guess.
-1310000-24: She ever help you at all?
-1320000-24: Not in the slightest!  Well, there was that one time with the Minotaur Dracolich... But she was the one who got us into that fight anyways!
-1330000-24: Sounds like you’re having quite a bit of fun in the Dungeon.
-1340000-24: Ugh, don’t wear that smile on your face.  It’s creepy.  Besides, it’s not like I’m in a permanent party or anything.  I’m just occasionally working with anyone I happen to meet.
-1350000-24: Still, I’m glad that things are looking up for you, Felix.
+1220000-24: It sounds great, but it was a pain in the behind.  You’d think more people would make 
+1230000-24: it easier, but nope!  Just how many traps can one girl set off?
+1240000-24: Oh?  You’re traveling with a girl?
+1250000-24: It’s nowhere even close to what you’re thinking.
+1260000-24: Really now?
+1270000-24: Really now.  I just met up with someone at random while I was exploring the Dungeon; 
+1280000-24: Rielle or something.  What kind of crazy person thanks someone who saved their life by
+1290000-24: kicking them in the face?
+1300000-24: She seems like quite the character.
+1310000-24: Ugh, you have no idea!  She swans in out of nowhere, copies my style, ‘but I’m a wizard
+1320000-24: too, so it’s completely original, really’, and sets off every trap in the next five 
+1330000-24: floors! And she has the gall to complain when I tell her about the best course of 
+1340000-24: action!  Honestly, she’s lucky I was around to save her so many times.
+1350000-24: She’s lucky you were around, huh?  Sounds nice to me.
+1360000-24: I guess.
+1370000-24: She ever help you at all?
+1380000-24: Not in the slightest!  Well, there was that one time with the Minotaur Dracolich... 
+1390000-24: But she was the one who got us into that fight anyways!
+1400000-24: Sounds like you’re having quite a bit of fun in the Dungeon.
+1410000-24: Ugh, don’t wear that smile on your face.  It’s creepy.  Besides, it’s not like I’m in a
+1420000-24: permanent party or anything. I’m just occasionally working with anyone I happen to meet.
+1430000-24: Still, I’m glad that things are looking up for you, Felix.
 1000000-24: Yeah, yeah, Shopkeep.  Get back to business.

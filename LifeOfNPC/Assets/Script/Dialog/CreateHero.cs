@@ -148,49 +148,39 @@ public class CreateHero : MonoBehaviour
 		Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 		Hero.GetComponent<Hero> ().purpose = UnityEngine.Random.Range (0, 1);
 		Hero.GetComponent<Hero> ()._database = this.GetComponent<DataBase> ();
-		StreamReader Dialog;//text file asset that contains dialog
-
+		StreamReader Dialog = new StreamReader ("Assets/Resources/TmpDialog.txt");
 		int HeroClass = Hero.GetComponent<Hero> ().HeroClass;
+
 		switch (HeroClass) {
 		case 1:
-                //wizard
-			Dialog = new StreamReader ("Assets/Resources/StockWizardDialog.txt");//text file that is loaded from resourses
-			DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-			Dialog.Close ();//closes streamreader
-                //Debug.Log("Your a wizard Harry");
+            //wizard
+			Dialog = new StreamReader ("Assets/Resources/StockWizardDialog.txt");
 			LoadHeroSprite ("Wizard");
 			break;
 
 		case 2:
-                //warrior
+            //warrior
 			Dialog = new StreamReader ("Assets/Resources/StockWarriorDialog.txt");
-			;//text file that is loaded from resourses
-			DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-			Dialog.Close ();//closes stream reader
-                //Debug.Log("I am a warrior");
 			LoadHeroSprite ("Knight");
 			break;
 
 		case 3:
-                //ranger
+            //ranger
 			Dialog = new StreamReader ("Assets/Resources/StockRangerDialog.txt");
-			;//text file that is loaded from resourses
-			DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-			Dialog.Close ();//closes stream reader
-                //Debug.Log("I am a ranger");
 			LoadHeroSprite ("Ranger");
 			break;
 
 		default:
+			Debug.Log ("No Such Class of Generic Hero");
 			break;
-
 		}
 
+		DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines, Hero.GetComponent<Hero> ().BuyNode, Hero.GetComponent<Hero> ().SellNode);//fills dialog tree
+		Dialog.Close ();//closes streamreader
 		Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-		CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
+		CreateHero.Hero.GetComponent<Hero>().dialog = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
 
-
-		Hero.GetComponent<Hero> ().FillInventory (Hero.GetComponent<Hero> ().qii);//fill hero inventory based on quality of inventory variable
+		Hero.GetComponent<Hero> ().FillInventory (Hero.GetComponent<Hero> ().qii);
 	}
 
 
@@ -227,257 +217,169 @@ public class CreateHero : MonoBehaviour
 		}
         
 		if (!InList) {//meeting for the first time
-			//Hero.AddComponent<Hero>();//adds hero component upon creation
-			StreamReader Dialog;//text file asset that contains dialog
+			StreamReader Dialog = new StreamReader ("Assets/Resources/TmpDialog.txt");
 			//fill in hero stats
 			switch (SpecialHeroName) {
 			case "Tutorial":
-				Hero.GetComponent<Hero> ().name = SpecialHeroName;
-				Hero.GetComponent<Hero> ().EncounterNumber = 0;
 				Hero.GetComponent<Hero> ().NumberOfEncounters = 1;
 				Hero.GetComponent<Hero> ().money = 0;
 				Hero.GetComponent<Hero> ().thriftiness = 0;
 				Hero.GetComponent<Hero> ().RequiredItem = "Trusty Sword";
 				Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 				Hero.GetComponent<Hero> ().patience = 0;
-				Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 				Dialog = new StreamReader ("Assets/Resources/TutorialDialog.txt");//text file that is loaded from resourses
-				DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-				Dialog.Close ();//closes streamreader
-				Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-				CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
 				LoadHeroSprite ("Tutorial");
 				break;
 
 			case "Quartz":
-				Hero.GetComponent<Hero> ().name = SpecialHeroName;
-				Hero.GetComponent<Hero> ().EncounterNumber = 0;
+
 				Hero.GetComponent<Hero> ().NumberOfEncounters = 3;
 				Hero.GetComponent<Hero> ().money = 3000;
 				Hero.GetComponent<Hero> ().thriftiness = 0;
 				Hero.GetComponent<Hero> ().RequiredItem = "Trusty Sword";
 				Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 				Hero.GetComponent<Hero> ().patience = 0;
-				Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 				Dialog = new StreamReader ("Assets/Resources/QuartzDialog.txt");//text file that is loaded from resourses
-				DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-				Dialog.Close ();//closes streamreader
-				Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-				CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
 				LoadHeroSprite ("Quartz");
 				break;
 
 			case "Felix":
-				Hero.GetComponent<Hero> ().name = SpecialHeroName;
-				Hero.GetComponent<Hero> ().EncounterNumber = 0;
+
 				Hero.GetComponent<Hero> ().NumberOfEncounters = 4;
 				Hero.GetComponent<Hero> ().money = 5280;
 				Hero.GetComponent<Hero> ().thriftiness = 40;
 				Hero.GetComponent<Hero> ().RequiredItem = "none";
 				Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 				Hero.GetComponent<Hero> ().patience = 0;
-				Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 				Dialog = new StreamReader ("Assets/Resources/FelixDialog.txt");//text file that is loaded from resourses
-				DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-				Dialog.Close ();//closes streamreader
-				Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-				CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
 				LoadHeroSprite ("Felix");
 				break;
 
 			case "Riella":
-				Hero.GetComponent<Hero> ().name = SpecialHeroName;
-				Hero.GetComponent<Hero> ().EncounterNumber = 0;
+
 				Hero.GetComponent<Hero> ().NumberOfEncounters = 4;
 				Hero.GetComponent<Hero> ().money = 18060;
 				Hero.GetComponent<Hero> ().thriftiness = 10;
 				Hero.GetComponent<Hero> ().RequiredItem = "none";
 				Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 				Hero.GetComponent<Hero> ().patience = 0;
-				Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 				Dialog = new StreamReader ("Assets/Resources/RiellaDialog.txt");//text file that is loaded from resourses
-				DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-				Dialog.Close ();//closes streamreader
-				Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-				CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
 				LoadHeroSprite ("Riella");
 				break;
-			}
+			}// end of switch
+			Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
+			Hero.GetComponent<Hero> ().name = SpecialHeroName;
+			Hero.GetComponent<Hero> ().EncounterNumber = 0;
+			DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines, Hero.GetComponent<Hero> ().BuyNode, Hero.GetComponent<Hero> ().SellNode);//fills dialog tree
+			Dialog.Close ();//closes streamreader
+			Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
+			CreateHero.Hero.GetComponent<Hero> ().dialog = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
 		}
 
 		if (InList && StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber != StartDialogScene.SpecialHeroes [SHeroIndex].NumberOfEncounters) {//if hero has returned after first encounter
-			StreamReader Dialog;//text file asset that contains dialog
+			StreamReader Dialog = new StreamReader ("Assets/Resources/TmpDialog.txt");
 			//alter stats as needed
+
 			switch (StartDialogScene.SpecialHeroes [SHeroIndex].name) {
 			case "Quartz":
-                        //Hero.AddComponent<Hero>();//adds hero component upon creation
 				if (StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == 1) {
-					Hero.GetComponent<Hero> ().name = SpecialHeroName;
-					Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
 					Hero.GetComponent<Hero> ().NumberOfEncounters = 3;
 					Hero.GetComponent<Hero> ().money = 4725;
 					Hero.GetComponent<Hero> ().thriftiness = 15;
 					Hero.GetComponent<Hero> ().RequiredItem = "none";
-					Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 					Hero.GetComponent<Hero> ().patience = 0;
-					Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 					Dialog = new StreamReader ("Assets/Resources/QuartzDialog2.txt");//text file that is loaded from resourses
-					DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-					Dialog.Close ();//closes streamreader
-					Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-					CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
-					LoadHeroSprite ("Quartz");
 				}
 				if (StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == 2 && StartDialogScene.SpecialHeroes [SHeroIndex].Encounter2Success) {//if Quartz was sold all the potions
-					Hero.GetComponent<Hero> ().name = SpecialHeroName;
-					Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
+
 					Hero.GetComponent<Hero> ().NumberOfEncounters = 3;
 					Hero.GetComponent<Hero> ().money = 22000;
 					Hero.GetComponent<Hero> ().thriftiness = 25;
 					Hero.GetComponent<Hero> ().RequiredItem = "none";
-					Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 					Hero.GetComponent<Hero> ().patience = 0;
-					Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 					Dialog = new StreamReader ("Assets/Resources/QuartzDialog3a.txt");//text file that is loaded from resourses
-					DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-					Dialog.Close ();//closes streamreader
-					Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-					CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
-					LoadHeroSprite ("Quartz");
 				}
 
 				if (StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == 2 && !StartDialogScene.SpecialHeroes [SHeroIndex].Encounter2Success) {//if Quartz was not sold all the potions
-					Hero.GetComponent<Hero> ().name = SpecialHeroName;
-					Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
 					Hero.GetComponent<Hero> ().NumberOfEncounters = 3;
 					Hero.GetComponent<Hero> ().money = 22500;
 					Hero.GetComponent<Hero> ().thriftiness = 0;
 					Hero.GetComponent<Hero> ().RequiredItem = "none";
-					Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 					Hero.GetComponent<Hero> ().patience = 0;
-					Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 					Dialog = new StreamReader ("Assets/Resources/QuartzDialog3b.txt");//text file that is loaded from resourses
-					DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-					Dialog.Close ();//closes streamreader
-					Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-					CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
-					LoadHeroSprite ("Quartz");
-				}
 
+				}
+				LoadHeroSprite ("Quartz");
 				break;
 
 			case "Felix":
                     //Hero.AddComponent<Hero>();//adds hero component upon creation
 				if (StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == 1) {
-					Hero.GetComponent<Hero> ().name = SpecialHeroName;
-					Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
 					Hero.GetComponent<Hero> ().NumberOfEncounters = 4;
 					Hero.GetComponent<Hero> ().money = 14805;
 					Hero.GetComponent<Hero> ().thriftiness = 45;
 					Hero.GetComponent<Hero> ().RequiredItem = "none";
-					Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 					Hero.GetComponent<Hero> ().patience = 0;
-					Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 					Dialog = new StreamReader ("Assets/Resources/FelixDialog2.txt");//text file that is loaded from resourses
-					DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-					Dialog.Close ();//closes streamreader
-					Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-					CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
-					LoadHeroSprite ("Felix");
+
 				}
 				if (StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == 2) {
-					Hero.GetComponent<Hero> ().name = SpecialHeroName;
-					Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
 					Hero.GetComponent<Hero> ().NumberOfEncounters = 4;
 					Hero.GetComponent<Hero> ().money = 19200;
 					Hero.GetComponent<Hero> ().thriftiness = 50;
 					Hero.GetComponent<Hero> ().RequiredItem = "none";
-					Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 					Hero.GetComponent<Hero> ().patience = 0;
-					Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 					Dialog = new StreamReader ("Assets/Resources/FelixDialog3.txt");//text file that is loaded from resourses
-					DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-					Dialog.Close ();//closes streamreader
-					Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-					CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
-					LoadHeroSprite ("Felix");
 				}
 				if (StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == 3) {
-					Hero.GetComponent<Hero> ().name = SpecialHeroName;
-					Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
 					Hero.GetComponent<Hero> ().NumberOfEncounters = 4;
 					Hero.GetComponent<Hero> ().money = 66000;
 					Hero.GetComponent<Hero> ().thriftiness = 30;
 					Hero.GetComponent<Hero> ().RequiredItem = "none";
-					Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 					Hero.GetComponent<Hero> ().patience = 0;
-					Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 					Dialog = new StreamReader ("Assets/Resources/FelixDialog4.txt");//text file that is loaded from resourses
-					DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-					Dialog.Close ();//closes streamreader
-					Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-					CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
-					LoadHeroSprite ("Felix");
 				}
-
+				LoadHeroSprite ("Felix");
 				break;
 
 			case "Riella":
                     //Hero.AddComponent<Hero>();//adds hero component upon creation
 				if (StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == 1) {
-					Hero.GetComponent<Hero> ().name = SpecialHeroName;
-					Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
 					Hero.GetComponent<Hero> ().NumberOfEncounters = 4;
 					Hero.GetComponent<Hero> ().money = 26910;
 					Hero.GetComponent<Hero> ().thriftiness = 20;
 					Hero.GetComponent<Hero> ().RequiredItem = "none";
-					Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 					Hero.GetComponent<Hero> ().patience = 0;
-					Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 					Dialog = new StreamReader ("Assets/Resources/RiellaDialog2.txt");//text file that is loaded from resourses
-					DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-					Dialog.Close ();//closes streamreader
-					Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-					CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
-					LoadHeroSprite ("Riella");
+
 				}
 				if (StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == 2) {
-					Hero.GetComponent<Hero> ().name = SpecialHeroName;
-					Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
 					Hero.GetComponent<Hero> ().NumberOfEncounters = 4;
 					Hero.GetComponent<Hero> ().money = 25000;
 					Hero.GetComponent<Hero> ().thriftiness = 20;
 					Hero.GetComponent<Hero> ().RequiredItem = "none";
-					Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 					Hero.GetComponent<Hero> ().patience = 0;
-					Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 					Dialog = new StreamReader ("Assets/Resources/RiellaDialog3.txt");//text file that is loaded from resourses
-					DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-					Dialog.Close ();//closes streamreader
-					Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-					CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
-					LoadHeroSprite ("Riella");
 				}
 				if (StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == 3) {
-					Hero.GetComponent<Hero> ().name = SpecialHeroName;
-					Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
 					Hero.GetComponent<Hero> ().NumberOfEncounters = 4;
 					Hero.GetComponent<Hero> ().money = 85675;
 					Hero.GetComponent<Hero> ().thriftiness = 35;
 					Hero.GetComponent<Hero> ().RequiredItem = "none";
-					Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 					Hero.GetComponent<Hero> ().patience = 0;
-					Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 					Dialog = new StreamReader ("Assets/Resources/RiellaDialog4.txt");//text file that is loaded from resourses
-					DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
-					Dialog.Close ();//closes streamreader
-					Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-					CreateHero.Hero.GetComponent<HeroComponent> ().DialogBox.text = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
-					LoadHeroSprite ("Riella");
 				}
-
+				LoadHeroSprite ("Riella");
 				break;
-			}
+			}// end of switch
+			Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
+			Hero.GetComponent<Hero> ().name = SpecialHeroName;
+			Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
+			Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
+			DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines, Hero.GetComponent<Hero> ().BuyNode, Hero.GetComponent<Hero> ().SellNode);//fills dialog tree
+			Dialog.Close ();//closes streamreader
+			Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
+			CreateHero.Hero.GetComponent<Hero> ().dialog = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
 		}
 
 		if (InList && StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber == StartDialogScene.SpecialHeroes [SHeroIndex].NumberOfEncounters) {//if hero arch is done

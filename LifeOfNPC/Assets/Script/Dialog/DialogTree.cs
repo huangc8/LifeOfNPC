@@ -10,53 +10,67 @@ public class DialogTree : MonoBehaviour
 {
     public class DialogTreeNode
     {
-        public int next;
-        public int lvl;
-        public int success;
-        public int fail;
-        public int numbranches;
-        public int price;
+		public int id; // id of the node
+		public int dialogType; // dialog type 0 - conv, 1 - buy, 2 - sell
+		public int who;	// who is talking 0 - shopkeeper, 1 - hero
+		public int stop; // end dialog 0 - continue, 1 - stop
+		public int success; // success node numb
+		public int fail; // fail node numb
 
         //line of dialog the will be put in dialog box
         public string line;
     }
 
-    public static void CreateTree(StreamReader file, List<DialogTreeNode> HeroDialogTree)
+	public static void CreateTree(StreamReader file, List<DialogTreeNode> HeroDialogTree, int BuyNode, int SellNode)
     {
         
         string ReadLine = file.ReadLine();//reads in first line of text file
-        //string Tempstring;
-        int counter = 1;
-        while (ReadLine != null)
+		DialogTreeNode lastNode = null;
+		int currentNode = 0;
+		while (ReadLine != null)
         {
-            DialogTreeNode node = new DialogTreeNode();
-            node.lvl = counter;
-            counter++;
-            node.numbranches = int.Parse(ReadLine.Substring(0, 1));//gets number of branches
-            if (node.numbranches > 1)//if more than 1 branch
-            {
-                node.fail = int.Parse(ReadLine.Substring(1, 2)) - 1;//gets number of next node
-                node.success = int.Parse(ReadLine.Substring(3, 2)) - 1;//gets number of next node
-            }
-            else
-            {
-                node.next = int.Parse(ReadLine.Substring(1, 2)) - 1;
-            }
+            
+			DialogTreeNode node = new DialogTreeNode();
 
-            //Tempstring = ReadLine.Substring(12);//sets nodes line of dialog
+			// id
+			node.id = currentNode;
+
+			// dialog type
+			node.dialogType = int.Parse(ReadLine.Substring(0, 1)); //get the conversation type
+			if (lastNode != null && node.dialogType != lastNode.dialogType) {
+				if (node.dialogType == 1) {
+					BuyNode = currentNode;
+				} else if (node.dialogType == 2) {
+					SellNode = currentNode;
+				} else {
+					Debug.Log ("Error: no such dialogType");
+				}
+			}
+
+			// who
+			node.who = int.Parse(ReadLine.Substring(1,2));
+
+			// stop
+			node.stop = int.Parse(ReadLine.Substring(2,3));
+
+			if (node.dialogType != 0 && node.stop == 1) {
+				node.success = int.Parse (ReadLine.Substring (3	,5));
+				node.fail = int.Parse (ReadLine.Substring (5,7));
+			}
             
             node.line = ReadLine.Substring(12);//sets nodes line of dialog
-
             HeroDialogTree.Add(node);//adds node to dialog "tree"
 
             ReadLine = file.ReadLine();//reads in next line of text file
+			lastNode = node;
+			currentNode++;
         }
 
     }
 
     public static int Traverse(DialogTreeNode Node, bool success)
     {
-        if(Node.next == 0)//if node has more than 1 branch
+		if(Node.stop == 1)//if node has more than 1 branch
         {
             if (success)//if transaction was successful
             {
@@ -69,7 +83,7 @@ public class DialogTree : MonoBehaviour
         }
         else
         {
-            return Node.next;
+			return Node.stop;
         }
 
     }
