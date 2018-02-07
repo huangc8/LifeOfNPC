@@ -23,10 +23,12 @@ public class HeroComponent : MonoBehaviour {
     public void SellClick()
     {
         StartDialogScene.SellHeroPanel();
+		this.GetComponent<Hero> ().MoveToSell ();
     }
 
     public void BuyClick()
     {
         StartDialogScene.BuyHeroPanel();
+		this.GetComponent<Hero> ().MoveToBuy ();
     }
 }

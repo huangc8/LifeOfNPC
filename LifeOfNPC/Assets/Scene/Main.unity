@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253e18539c123df4ba36922b50d1145b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeroSprite: {fileID: 1817768862}
+  heroSprite: {fileID: 1817768862}
   HeroPf_r: {fileID: 148022, guid: 105ae4035a00e9e4e8976af087c3d4dd, type: 2}
   canvas_r: {fileID: 238626934}
   SpecialHeroName: 

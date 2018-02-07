@@ -101,12 +101,11 @@ public class StartDialogScene : MonoBehaviour
 			if (StartDialogScene.NumHeroesToday > 0) {
 				if (HeroKnocked == true) {
 					if (CreateHero.Hero != null && CreateHero.Hero.GetComponent<Hero> ().CurrentNode != null) {
-						DialogTree.DialogTreeNode cn = CreateHero.Hero.GetComponent<Hero> ().CurrentNode;
-						// switch between 
-						if (cn.stop == 0 && timer % 180 == 0) {
+						// switch between
+						Hero hero = CreateHero.Hero.GetComponent<Hero>();
+						if (hero.CurrentNode.stop == 0 && timer % 180 == 0) {
 							// move to next node
-							CreateHero.Hero.GetComponent<Hero> ().NextDialog ();
-							CreateHero.HeroDialogBox.text = CreateHero.Hero.GetComponent<Hero> ().dialog;
+							hero.NextDialog ();
 							timer = 1;
 						} else if (timer % 180 != 0) {
 							timer++;
@@ -115,11 +114,21 @@ public class StartDialogScene : MonoBehaviour
 							HeroKnocked = CreateHero.DismissHero (HeroKnocked);
 							this.GetComponent<CreateHero> ().CreateKnock ();
 						}
+							
+						// turn on and off the button interaction
+						if (hero.CurrentNode.stop == 1 && !hero.buttonInteractable && hero.name != "Tutorial") {
+							hero.ButtonInteraction (true);
+							hero.buttonInteractable = true;
+						} else if (hero.CurrentNode.stop == 0 && hero.buttonInteractable){
+							hero.ButtonInteraction (false);
+							hero.buttonInteractable = false;
+						}
 					}
 				} else {
 					if (knockTimer % 100 == 0) {
 						HeroKnocked = CreateHero.DismissHero (HeroKnocked);
 						knockTimer = 1;
+						timer = 1;
 						this.GetComponent<CreateHero> ().StartCreateHero ();
 					} else {
 						knockTimer++;
@@ -189,6 +198,4 @@ public class StartDialogScene : MonoBehaviour
 		inMenu = false;
 		Destroy (SellToPanel);
 	}
-
-
 }

@@ -8,6 +8,7 @@ public class SellPanelScript : MonoBehaviour {
 	public GameObject contentPanel;
 	public GameObject SellListButtonPf;
 	public GameObject SellListLabelPf;
+	public Button confirmButton;
 	public Image icon;
 	public Text PriceLabel;
 	public Text QuantityLabel;
@@ -16,6 +17,7 @@ public class SellPanelScript : MonoBehaviour {
 	public List<GameObject> itemList;
 	public int currentIndex;
 	public int currentItemIndex;
+	public bool selected;
 
 	void Start(){
 		itemList = new List<GameObject> ();
@@ -24,6 +26,7 @@ public class SellPanelScript : MonoBehaviour {
 		currentItemIndex = 0;
 		dealPrice = 0;
 		dealQuantity = 1;
+		currentIndex = -1;
 	}
 
 	public void ClosePanel(){
@@ -119,15 +122,22 @@ public class SellPanelScript : MonoBehaviour {
 	}
 
 	public void ItemSelected(int itemIndex, int listIndex, int price, int quantity){
-		itemList [currentIndex].GetComponent<SellListButtonScript> ().updateInfo (dealPrice, dealQuantity);
-		Item it = Inventory._Items [itemIndex];
-		icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
-		dealPrice = price;
-		PriceLabel.text = dealPrice.ToString();
-		dealQuantity = quantity;
-		QuantityLabel.text = dealQuantity.ToString();
-		currentIndex = listIndex;
-		currentItemIndex = itemIndex;
+		if (listIndex != currentIndex) {
+			if (currentIndex != -1) {
+				itemList [currentIndex].GetComponent<SellListButtonScript> ().updateInfo (dealPrice, dealQuantity);
+			} else {
+				selected = true;
+				confirmButton.interactable = true;
+			}
+			Item it = Inventory._Items [itemIndex];
+			icon.sprite = Resources.Load<Sprite>("Sprite/" + it.name);
+			dealPrice = price;
+			PriceLabel.text = dealPrice.ToString();
+			dealQuantity = quantity;
+			QuantityLabel.text = dealQuantity.ToString();
+			currentIndex = listIndex;
+			currentItemIndex = itemIndex;
+		}
 	}
 
 	public void IncreasePrice(){
@@ -158,15 +168,7 @@ public class SellPanelScript : MonoBehaviour {
     
 	public void Confirm()
     {
-		DialogTree.DialogTreeNode node = CreateHero.Hero.GetComponent<Hero>().CurrentNode;
-		if (node.stop == 0) {
-            CreateHero.Hero.GetComponent<Hero>().ItemBeingSold = Inventory._Items[currentIndex];
-            StartDialogScene.timer = 1;
-			itemList [currentIndex].GetComponent<SellToHero> ().SelltoHero (dealPrice, dealQuantity);
-		} else {
-            StartDialogScene.timer = 1;
-            CreateHero.Hero.GetComponent<Hero>().CurrentNode = 
-			CreateHero.Hero.GetComponent<Hero>().lines[DialogTree.Traverse(node, false)];
-		}
+		contentPanel.GetComponentInChildren<SellToHero> ().SelltoHero (dealPrice, dealQuantity);
+		StartDialogScene.CloseSellToPanel ();
     }
 }

@@ -21,7 +21,7 @@ public class DialogTree : MonoBehaviour
         public string line;
     }
 
-	public static void CreateTree(StreamReader file, List<DialogTreeNode> HeroDialogTree, int BuyNode, int SellNode)
+	public static void CreateTree(StreamReader file, List<DialogTreeNode> HeroDialogTree)
     {
         
         string ReadLine = file.ReadLine();//reads in first line of text file
@@ -29,7 +29,6 @@ public class DialogTree : MonoBehaviour
 		int currentNode = 0;
 		while (ReadLine != null)
         {
-            
 			DialogTreeNode node = new DialogTreeNode();
 
 			// id
@@ -39,23 +38,24 @@ public class DialogTree : MonoBehaviour
 			node.dialogType = int.Parse(ReadLine.Substring(0, 1)); //get the conversation type
 			if (lastNode != null && node.dialogType != lastNode.dialogType) {
 				if (node.dialogType == 1) {
-					BuyNode = currentNode;
+					CreateHero.Hero.GetComponent<Hero>().BuyNode = currentNode;
 				} else if (node.dialogType == 2) {
-					SellNode = currentNode;
+					CreateHero.Hero.GetComponent<Hero>().SellNode = currentNode;
 				} else {
 					Debug.Log ("Error: no such dialogType");
 				}
 			}
 
+
 			// who
-			node.who = int.Parse(ReadLine.Substring(1,2));
+			node.who = int.Parse(ReadLine.Substring(1,1));
 
 			// stop
-			node.stop = int.Parse(ReadLine.Substring(2,3));
+			node.stop = int.Parse(ReadLine.Substring(2,1));
 
 			if (node.dialogType != 0 && node.stop == 1) {
-				node.success = int.Parse (ReadLine.Substring (3	,5));
-				node.fail = int.Parse (ReadLine.Substring (5,7));
+				node.success = int.Parse (ReadLine.Substring (3,2)) - 1;
+				node.fail = int.Parse (ReadLine.Substring (5,2)) - 1;
 			}
             
             node.line = ReadLine.Substring(12);//sets nodes line of dialog
@@ -65,27 +65,5 @@ public class DialogTree : MonoBehaviour
 			lastNode = node;
 			currentNode++;
         }
-
     }
-
-    public static int Traverse(DialogTreeNode Node, bool success)
-    {
-		if(Node.stop == 1)//if node has more than 1 branch
-        {
-            if (success)//if transaction was successful
-            {
-                return Node.success;
-            }
-            else//if transaction failed
-            {
-                return Node.fail;
-            }
-        }
-        else
-        {
-			return Node.stop;
-        }
-
-    }
-
 }

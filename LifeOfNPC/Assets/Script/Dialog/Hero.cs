@@ -24,7 +24,10 @@ public class Hero : MonoBehaviour {
     public string dialog;
     public int patience;
     public int OfferPrice;
+	public int OfferQuantity;
 	public int OfferPriceToQty;
+	public int sellAttempt;
+	public int buyAttempt;
     public Item ItemBeingSold;
     public string RequiredItem;
     public int NumberOfEncounters;
@@ -33,6 +36,7 @@ public class Hero : MonoBehaviour {
     public bool Encounter2Success;
     public bool Encounter3Success;
     public DataBase _database;
+	public bool buttonInteractable;
 
     //for determining dialog
     public int HeroClass;//whether hero is a wizard, warrior, or ranger
@@ -40,6 +44,9 @@ public class Hero : MonoBehaviour {
 
 	void Awake(){
 		HeroClass = UnityEngine.Random.Range(1, 3);
+		buttonInteractable = false;
+		sellAttempt = 3;
+		buyAttempt = 3;
 	}
 
     //constructor
@@ -48,42 +55,7 @@ public class Hero : MonoBehaviour {
         name = null;
         List<string> RequiredItemList = new List<string>();
         EncounterNumber = 0;
-
     }//ends hero constructor
-
-    void Update()
-    {
-      /* if (CreateHero.Hero.GetComponent<Hero>().CurrentNode != null)
-        {
-			if(CreateHero.Hero.GetComponent<Hero>().CurrentNode.stop == 1)
-            {
-                foreach (Button button in CreateHero.Hero.GetComponent<Hero>().GetComponentsInChildren<Button>())
-                {
-                    button.interactable = true;
-                }
-            }
-            else
-            {
-                foreach (Button button in CreateHero.Hero.GetComponent<Hero>().GetComponentsInChildren<Button>())
-                {
-                    button.interactable = false;
-                }
-            }
-            
-            if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("$"))//check for insert money
-            {
-                CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$")) + CreateHero.Hero.GetComponent<Hero>().OfferPriceToQty + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("$") + 1);
-            }
-
-            if (CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Contains("#"))//check for insert item being sold
-            {
-                CreateHero.Hero.GetComponent<Hero>().CurrentNode.line = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(0, CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("#")) + ItemBeingSold.name + CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.Substring(CreateHero.Hero.GetComponent<Hero>().CurrentNode.line.IndexOf("#") + 1);
-            }
-
-            CreateHero.Hero.GetComponent<HeroComponent>().DialogBox.text = CreateHero.Hero.GetComponent<Hero>().CurrentNode.line;
-        }
-        */
-    }
 
     public void printInventory()
     {
@@ -130,10 +102,79 @@ public class Hero : MonoBehaviour {
                 break;
         }//ends switch
     }
-
+		
 	// move to the next dialog
 	public void NextDialog(){
 		CurrentNode = lines [CurrentNode.id + 1];
-		dialog = CurrentNode.line;
+		updateDialog(CurrentNode.line);
+	}
+
+	public void MoveToBuy(){
+		if (CurrentNode.dialogType != 1) {
+			CurrentNode = lines [BuyNode];
+			updateDialog (CurrentNode.line);
+		}
+	}
+
+	public void MoveToSell(){
+		if (CurrentNode.dialogType != 2) {
+			CurrentNode = lines [SellNode];
+			updateDialog (CurrentNode.line);
+		}
+	}
+
+	public void BuyDialog(bool success){
+		if (success) {
+			CurrentNode = lines [CurrentNode.success];
+			updateDialog(CurrentNode.line);
+		} else {
+			CurrentNode = lines [CurrentNode.fail];
+			String hline = CurrentNode.line;
+			if(hline.Contains("$")){
+				hline = hline.Substring(0, hline.IndexOf("$")) + OfferPriceToQty + hline.Substring(hline.IndexOf("$") + 1);
+			}
+			if (hline.Contains ("#")) {
+				hline = hline.Substring(0, hline.IndexOf("#")) + OfferQuantity + hline.Substring(hline.IndexOf("#") + 1);
+				CurrentNode.line = hline;
+			}
+			updateDialog(hline);
+		}
+	}
+
+	public void SellDialog(bool success){
+		if (success) {
+			CurrentNode = lines [CurrentNode.success];
+			updateDialog(CurrentNode.line);
+		} else {
+			CurrentNode = lines [CurrentNode.fail];
+			String hline = CurrentNode.line;
+			if(hline.Contains("$")){
+				hline = hline.Substring(0, hline.IndexOf("$")) + OfferPriceToQty + hline.Substring(hline.IndexOf("$") + 1);
+			}
+			if (hline.Contains ("#")) {
+				hline = hline.Substring(0, hline.IndexOf("#")) + OfferQuantity + hline.Substring(hline.IndexOf("#") + 1);
+				CurrentNode.line = hline;
+			}
+			updateDialog(hline);
+		}
+	}
+
+	public void updateDialog(string line){
+		dialog = line;
+		CreateHero.HeroDialogBox.text = dialog;
+		if (CurrentNode.who == 0) {
+			this.GetComponent<HeroComponent> ()._createhero.LoadHeroSprite ("Shopkeeper");
+		} else {
+			this.GetComponent<HeroComponent> ()._createhero.LoadHeroSprite (name);
+		}
+
+	}
+
+	// turn on and off the buttons
+	public void ButtonInteraction(bool on){
+		foreach (Button button in this.GetComponentsInChildren<Button>())
+		{	
+			button.interactable = on;
+		}
 	}
 }//ends class

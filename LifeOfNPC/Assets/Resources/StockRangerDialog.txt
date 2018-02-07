@@ -1,27 +1,14 @@
-1020000-1:  Shopkeeper?  Are you in?
-1030000-2:  Greetings, customer!  What can I do for you?  
-1040000-3:  I’d like to see what you have in stock.
-2050600-4:  Well, let’s see what we have for you!
-2080600-5:  For $, I’ll buy these #.
-1070000-6:  Pleasure doing business with you.
-1040000-7:  Of course.
-1090000-8:  I’m afraid I can’t accept that price.
-2111000-9:  For $, I’ll buy them.
-1040000-10:  Alright then.
-2141200-11:  That’s too high of a price for me. $ is my final offer.
-1130000-12:  Very well then.
-1040000-13:  Thank you, Shopkeeper.
-1150000-14:  That’s not a price I can accept.
-1040000-15:  I guess I won’t be buying any, then.
-1170000-16:  Shopkeeper?  Are you in?
-1180000-17:  Greetings, customer!  What can I do for you?
-1190000-18:  I want [items customer wants] please.
-2212000-19:  Here are [insert items here].  What do you think?
-1040000-21:  Yes, I’d like those.
-1230000-22:  No, thank you.
-2252400-23:  I’ll sell them all to you for [price player sets].
-1040000-24:  Certainly.  Thank you, Shopkeeper.
-1260000-25:  I can’t pay that price. I’ll pay $, if you insist.
-2292800-27:  Then how does [new price player sets] sound?
-1040000-28:  I’ll accept that, Shopkeeper.
-1040000-29:  I’ll have to take my business elsewhere, then.
+0100000-0:  Hello Shopkeeper, you there?
+0000000-0:  Greetings, customer!  What can I do for you?  
+0100000-0:  I’d like to see what you have in stock.
+0010000-0:  Well, let’s see what we have for you!
+1110906-0:  Want to buy something from me?
+1110907-0:  I’m afraid I can’t accept that price. I can do # with $.
+1110908-0:  That’s not a price I can accept. Try again.
+1110000-0:  Guess we can't reach an agreement.
+1110000-0:  Pleasure doing business with you.
+2111411-0:  What are you selling?
+2111412-0:  It would be a deal if you sell # of them to me for $.
+2111413-0:  For $, I’ll buy # of them, final offer.
+2110000-0:  I’m afraid I can’t accept that price.
+2110000-0:  Alright then.

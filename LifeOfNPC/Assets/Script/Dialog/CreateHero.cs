@@ -14,8 +14,8 @@ public class CreateHero : MonoBehaviour
 	// the Canvas object
 	public static Text HeroDialogBox;
 	public static DataBase _DataBase;
-	public Image HeroSprite;
 
+	public Image heroSprite;
 	public static GameObject HeroPF;
 
 	public GameObject HeroPf_r;
@@ -70,8 +70,7 @@ public class CreateHero : MonoBehaviour
 		HeroDialogBox = Hero.GetComponentInChildren<Text> () as Text;//sets dialog
 		HeroDialogBox.text = "*Bell Ring*";
 
-		HeroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterEmpty");
-		//Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/portraitTutorial");
+		heroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterEmpty");
 	}
 
 	public static bool DismissHero (bool knocked)
@@ -140,47 +139,48 @@ public class CreateHero : MonoBehaviour
 
 	public void CreateGenericHero ()
 	{
-		Hero.GetComponent<Hero> ().money = UnityEngine.Random.Range (1000, 4000);
-		Hero.GetComponent<Hero> ().thriftiness = UnityEngine.Random.Range (0, 51);
-		Hero.GetComponent<Hero> ().qii = UnityEngine.Random.Range (1, 3);
-		Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
-		Hero.GetComponent<Hero> ().patience = 0;
-		Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
-		Hero.GetComponent<Hero> ().purpose = UnityEngine.Random.Range (0, 1);
-		Hero.GetComponent<Hero> ()._database = this.GetComponent<DataBase> ();
+		Hero hero = Hero.GetComponent<Hero> ();
+		hero.money = UnityEngine.Random.Range (1000, 4000);
+		hero.thriftiness = UnityEngine.Random.Range (0, 51);
+		hero.qii = UnityEngine.Random.Range (1, 3);
+		hero.H_Inventory = new List<Item> ();
+		hero.patience = 0;
+		hero.lines = new List<DialogTree.DialogTreeNode> ();
+		hero.purpose = UnityEngine.Random.Range (0, 1);
+		hero._database = this.GetComponent<DataBase> ();
 		StreamReader Dialog = new StreamReader ("Assets/Resources/TmpDialog.txt");
-		int HeroClass = Hero.GetComponent<Hero> ().HeroClass;
-
+		int HeroClass = hero.HeroClass;
+		int num = UnityEngine.Random.Range (1, 3);
 		switch (HeroClass) {
 		case 1:
             //wizard
 			Dialog = new StreamReader ("Assets/Resources/StockWizardDialog.txt");
-			LoadHeroSprite ("Wizard");
+			hero.name = "Wizard" + num;
 			break;
 
 		case 2:
             //warrior
 			Dialog = new StreamReader ("Assets/Resources/StockWarriorDialog.txt");
-			LoadHeroSprite ("Knight");
+			hero.name = "Knight" + num;
 			break;
 
 		case 3:
             //ranger
 			Dialog = new StreamReader ("Assets/Resources/StockRangerDialog.txt");
-			LoadHeroSprite ("Ranger");
+			hero.name = "Ranger" + num;
 			break;
 
 		default:
 			Debug.Log ("No Such Class of Generic Hero");
 			break;
 		}
-
-		DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines, Hero.GetComponent<Hero> ().BuyNode, Hero.GetComponent<Hero> ().SellNode);//fills dialog tree
+		LoadHeroSprite (hero.name);
+		DialogTree.CreateTree (Dialog, hero.lines);//fills dialog tree
 		Dialog.Close ();//closes streamreader
-		Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
-		CreateHero.Hero.GetComponent<Hero>().dialog = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
+		hero.CurrentNode = hero.lines [0];
+		hero.dialog = hero.CurrentNode.line;
 
-		Hero.GetComponent<Hero> ().FillInventory (Hero.GetComponent<Hero> ().qii);
+		hero.FillInventory (hero.qii);
 	}
 
 
@@ -224,7 +224,7 @@ public class CreateHero : MonoBehaviour
 				Hero.GetComponent<Hero> ().NumberOfEncounters = 1;
 				Hero.GetComponent<Hero> ().money = 0;
 				Hero.GetComponent<Hero> ().thriftiness = 0;
-				Hero.GetComponent<Hero> ().RequiredItem = "Trusty Sword";
+				Hero.GetComponent<Hero> ().RequiredItem = "none";
 				Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
 				Hero.GetComponent<Hero> ().patience = 0;
 				Dialog = new StreamReader ("Assets/Resources/TutorialDialog.txt");//text file that is loaded from resourses
@@ -270,7 +270,7 @@ public class CreateHero : MonoBehaviour
 			Hero.GetComponent<Hero> ().lines = new List<DialogTree.DialogTreeNode> ();
 			Hero.GetComponent<Hero> ().name = SpecialHeroName;
 			Hero.GetComponent<Hero> ().EncounterNumber = 0;
-			DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines, Hero.GetComponent<Hero> ().BuyNode, Hero.GetComponent<Hero> ().SellNode);//fills dialog tree
+			DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
 			Dialog.Close ();//closes streamreader
 			Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
 			CreateHero.Hero.GetComponent<Hero> ().dialog = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
@@ -376,7 +376,7 @@ public class CreateHero : MonoBehaviour
 			Hero.GetComponent<Hero> ().name = SpecialHeroName;
 			Hero.GetComponent<Hero> ().EncounterNumber = StartDialogScene.SpecialHeroes [SHeroIndex].EncounterNumber;
 			Hero.GetComponent<Hero> ().H_Inventory = new List<Item> ();
-			DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines, Hero.GetComponent<Hero> ().BuyNode, Hero.GetComponent<Hero> ().SellNode);//fills dialog tree
+			DialogTree.CreateTree (Dialog, Hero.GetComponent<Hero> ().lines);//fills dialog tree
 			Dialog.Close ();//closes streamreader
 			Hero.GetComponent<Hero> ().CurrentNode = Hero.GetComponent<Hero> ().lines [0];
 			CreateHero.Hero.GetComponent<Hero> ().dialog = CreateHero.Hero.GetComponent<Hero> ().CurrentNode.line;
@@ -388,40 +388,29 @@ public class CreateHero : MonoBehaviour
 		}
 	}
 
-
 	public void LoadHeroSprite (string name)
 	{
-		string CharacterBodySprite;
-		string CharacterPortraitSprite;
-
-		if (name != "Quartz" && name != "Riella" && name != "Felix" && name != "Tutorial") {
-
-			int num = UnityEngine.Random.Range (1, 3);
-            
-			if (num == 1) {
-				CharacterBodySprite = "character" + name;
-				CharacterPortraitSprite = "portrait" + name;
-			} else {
-				CharacterBodySprite = "character" + name + num;
-				CharacterPortraitSprite = "portrait" + name + num;
-			}
-			HeroSprite.sprite = Resources.Load<Sprite> ("Sprite/" + CharacterBodySprite);
-			Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/" + CharacterPortraitSprite);
+		if (name != "Quartz" && name != "Riella" && name != "Felix" && name != "Tutorial" && name != "Shopkeeper") {
+			heroSprite.sprite = Resources.Load<Sprite> ("Sprite/character" + name);
+			Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/portrait" + name);
 		} else {//if i didn't do this it couldn't find the images
 			if (name == "Quartz") {
-				HeroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterQuartz");
+				heroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterQuartz");
 				Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/portraitQuartz");
 			}
 			if (name == "Felix") {
-				HeroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterFelix");
+				heroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterFelix");
 				Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/portraitFelix");
 			}
 			if (name == "Riella") {
-				HeroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterRiella");
+				heroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterRiella");
 				Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/portraitRiella");
 			}
 			if (name == "Tutorial") {
-				HeroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterEmpty");
+				heroSprite.sprite = Resources.Load<Sprite> ("Sprite/characterEmpty");
+				Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/portraitTutorial");
+			}
+			if (name == "Shopkeeper") {
 				Hero.GetComponent<HeroComponent> ().HeroPortrait.sprite = Resources.Load<Sprite> ("Sprite/portraitTutorial");
 			}
 		}
